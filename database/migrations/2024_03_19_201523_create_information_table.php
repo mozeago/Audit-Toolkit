@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('information', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreign('question_id')->constrained();
+            $table->text('content');
+            $table->foreignUuid('question_id')->constrained();
             $table->index('question_id');
             $table->timestamps();
         });

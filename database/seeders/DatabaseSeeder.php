@@ -2,9 +2,14 @@
 
 namespace Database\Seeders;
 
+use App\Models\Section;
+use App\Models\Question;
+use App\Models\Control;
+use App\Models\Information;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,5 +24,17 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+        // Seed Sections with random names and related Controls
+        Section::factory(10)->create()->each(function ($section) {
+            $section->hasManyControls()->saveMany(Control::factory(5)->make());
+        });
+
+        // Seed Questions with random text and related Information within existing Controls
+        Control::factory(20)->create()->each(function ($control) {
+            $questions = $control->questions()->saveMany(Question::factory(3)->make()); // Create Questions first
+            foreach ($questions as $question) {
+                $question->information()->save(Information::factory()->make()); // Create Information for each Question
+            }
+        });
     }
 }

@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('controls', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->string('name');
+            $table->foreignUuid('section_id')->constrained();
             $table->index('section_id');
-            $table->foreign('section_id')->constrained();
             $table->timestamps();
         });
     }
