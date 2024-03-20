@@ -31,9 +31,9 @@ class DatabaseSeeder extends Seeder
 
         // Seed Questions with random text and related Information within existing Controls
         Control::factory(20)->create()->each(function ($control) {
-            $questions = $control->questions()->saveMany(Question::factory(3)->make()); // Create Questions first
+            $questions = $control->hasManyQuestions()->saveMany(Question::factory(3)->make()); // Create Questions first
             foreach ($questions as $question) {
-                $question->information()->save(Information::factory()->make()); // Create Information for each Question
+                $question->hasOneInformation()->save(Information::factory()->make()); // Create Information for each Question
             }
         });
     }
