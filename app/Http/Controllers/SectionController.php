@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Section;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class SectionController extends Controller
@@ -10,9 +11,9 @@ class SectionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
-        //
+        return view('sections', []);
     }
 
     /**
