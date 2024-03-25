@@ -26,13 +26,13 @@ new class extends Component {
         ]);
         $this->reset('name', 'message');
         $this->message = 'Section created successfully!';
+        $this->dispatch('section-created');
     }
 }; ?>
 
 <div>
     <form wire:submit.prevent="store">
         <div>
-            <label for="section_name" class="block text-sm font-semibold leading-6 text-gray-900">Section Name</label>
             <div class="mt-2.5">
                 <input wire:model="name" placeholder="{{ __('Audit Section Name') }}" type="text" name="section_name"
                     id="section_name" autocomplete=""
@@ -49,10 +49,6 @@ new class extends Component {
         @if ($message)
             <div class="mt-2 text-green-500">{{ $message }}</div>
         @endif
-
         <br />
-        <br />
-        <br />
-
     </div>
 </div>
