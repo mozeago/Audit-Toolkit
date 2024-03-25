@@ -14,7 +14,7 @@ class Control extends BaseModel
     protected $keyType = 'string';
     public $incrementing = false;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'section_id'];
 
     public function belongsToSection()
     {

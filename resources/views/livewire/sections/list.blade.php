@@ -47,21 +47,21 @@ new class extends Component {
             {{ session('message') }}
         </div>
     @endif
-    <table class="table border border-collapse">
-        <thead>
-            <tr>
-                <th
-                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-200 border border-gray-200">
-                    Section Name
-                </th>
-                <th
-                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-200 border border-gray-200">
-                    Action
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (count($sections) > 0)
+    @if (count($sections) > 0)
+        <table class="table border border-collapse">
+            <thead>
+                <tr>
+                    <th
+                        class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-200 border border-gray-200">
+                        Section Name
+                    </th>
+                    <th
+                        class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-200 border border-gray-200">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
                 @foreach ($sections as $section)
                     <tr>
                         @if ($section->is($editing))
@@ -78,9 +78,9 @@ new class extends Component {
                         </td>
                     </tr>
                 @endforeach
-        </tbody>
-    </table>
-@else
-    <p>No sections saved.</p>
+            </tbody>
+        </table>
+    @else
+        <p>No sections saved.</p>
     @endif
 </div>

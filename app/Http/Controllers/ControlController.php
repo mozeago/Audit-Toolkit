@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Control;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ControlController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
-        //
+        return View('controls');
     }
 
     /**
