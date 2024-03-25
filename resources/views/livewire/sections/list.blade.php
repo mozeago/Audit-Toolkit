@@ -1,9 +1,10 @@
 <?php
 
 use Livewire\Volt\Component;
+use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\On;
 use App\Models\Section;
-use Illuminate\Database\Eloquent\Collection;
+
 new class extends Component {
     public Collection $sections;
 
@@ -20,7 +21,7 @@ new class extends Component {
         $this->sections = Section::orderBy('created_at', 'desc')->get();
     }
 
-    public function edit(Section $section): void
+    public function edit(Section $section)
     {
         $this->editing = $section;
         $this->getSections();
@@ -37,16 +38,10 @@ new class extends Component {
     public function delete(Section $section): void
     {
         $section->delete();
-        session()->flash('message', 'Deleted Successfully.');
         $this->getSections();
     }
 }; ?>
 <div class="overflow-x-auto bg-white rounded-lg shadow">
-    @if (session()->has('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
-        </div>
-    @endif
     <div class="overflow-x-auto bg-white rounded-lg shadow">
         <table class="w-full min-w-full leading-normal">
             <thead>
@@ -63,7 +58,7 @@ new class extends Component {
             </thead>
             <tbody>
                 @foreach ($sections as $section)
-                    <tr wire:key="{{ $section->id }}" class="hover:bg-gray-100">
+                    <tr class="hover:bg-gray-100">
                         <td class="px-5 py-5 text-sm font-normal text-gray-700 border-b border-gray-200">
                             @if ($section->is($editing))
                                 <livewire:sections.edit :section="$section" :key="$section->id" />
@@ -73,7 +68,7 @@ new class extends Component {
                         </td>
                         <td
                             class="flex justify-end px-5 py-5 text-sm font-normal text-gray-700 border-b border-gray-200">
-                            <button wire:click="edit('{{ $section->id }}')" type="button"
+                            <button wire:click.prevent="edit('{{ $section->id }}')" type="button"
                                 class="inline-flex px-2 py-1 text-sm font-medium text-blue-500 border rounded-full hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                                 Edit
                             </button>
@@ -88,3 +83,10 @@ new class extends Component {
         </table>
     </div>
 </div>
+@push('scripts')
+    <script>
+        Livewire.on('sectionDeleted', function() {
+            session() - > forget('message');
+        });
+    </script>
+@endpush

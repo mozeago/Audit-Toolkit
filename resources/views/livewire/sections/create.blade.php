@@ -24,9 +24,8 @@ new class extends Component {
         $section = Section::create([
             'name' => $validatedData['name'],
         ]);
-        $this->reset('name', 'message');
-        $this->message = 'Section created successfully!';
         $this->dispatch('section-created');
+        $this->reset('name', 'message');
     }
 }; ?>
 

@@ -15,6 +15,7 @@ new class extends Component {
     {
         return [
             'name' => 'required|string|max:255',
+            'section_id' => 'required|uuid',
         ];
     }
     public function mount()
