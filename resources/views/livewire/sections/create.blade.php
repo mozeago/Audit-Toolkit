@@ -42,12 +42,6 @@ new class extends Component {
             </div>
         </div>
         <x-input-error :messages="$errors->get('message')" class="mt-2" />
-        <x-primary-button class="mt-4">{{ __('Save Section') }}</x-primary-button>
+        <x-primary-button class="mt-4">{{ __('Save') }}</x-primary-button>
     </form>
-    <div>
-        @if ($message)
-            <div class="mt-2 text-green-500">{{ $message }}</div>
-        @endif
-        <br />
-    </div>
 </div>

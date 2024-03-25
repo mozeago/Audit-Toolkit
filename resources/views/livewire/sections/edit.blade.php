@@ -42,8 +42,8 @@ new class extends Component {
                     placeholder="Question Text" value="{{ $section->name }}">
             </div>
             <div class="flex justify-start space-x-4">
-                <x-primary-button type="submit" class="btn btn-primary">Update</x-primary-button>
-                <button wire:click="cancel" type="button" class="btn btn-secondary">Cancel</button>
+                <x-primary-button type="submit" class="btn btn-primary">{{ __('Update') }}</x-primary-button>
+                <button wire:click="cancel" type="button" class="btn btn-secondary">{{ __('Cancel') }}</button>
             </div>
     </form>
 </div>

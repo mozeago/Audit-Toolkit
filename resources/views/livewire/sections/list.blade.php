@@ -70,11 +70,11 @@ new class extends Component {
                             class="flex justify-end px-5 py-5 text-sm font-normal text-gray-700 border-b border-gray-200">
                             <button wire:click.prevent="edit('{{ $section->id }}')" type="button"
                                 class="inline-flex px-2 py-1 text-sm font-medium text-blue-500 border rounded-full hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                Edit
+                                {{ __('Edit') }}
                             </button>
-                            <button wire:click="delete('{{ $section->id }}')" type="button"
+                            <button wire:click.prevent="delete('{{ $section->id }}')" type="button"
                                 class="inline-flex px-2 py-1 ml-2 text-sm font-medium text-red-500 border rounded-full hover:bg-red-100 focus">
-                                Delete
+                                {{ __('Delete') }}
                             </button>
                         </td>
                     </tr>
@@ -83,10 +83,3 @@ new class extends Component {
         </table>
     </div>
 </div>
-@push('scripts')
-    <script>
-        Livewire.on('sectionDeleted', function() {
-            session() - > forget('message');
-        });
-    </script>
-@endpush
