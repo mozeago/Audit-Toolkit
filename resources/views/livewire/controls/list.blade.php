@@ -19,7 +19,7 @@ new class extends Component {
     {
         $this->controls = Control::orderBy('created_at', 'desc')->get();
     }
-    #[On('control-edit-canceled')]
+    #[On('control-edit-cancelled')]
     #[On('control-updated')]
     public function disableEditing(): void
     {
@@ -54,11 +54,11 @@ new class extends Component {
                     <tr>
                         <th
                             class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-700 uppercase border-b border-gray-200">
-                            Name
+                            {{ __('Name') }}
                         </th>
                         <th
                             class="px-5 py-3 text-xs font-semibold tracking-wider text-right text-gray-700 uppercase border-b border-gray-200">
-                            Actions
+                            {{ __('Actions') }}
                         </th>
                     </tr>
                 </thead>
@@ -75,13 +75,13 @@ new class extends Component {
                             </td>
                             <td
                                 class="flex justify-end px-5 py-5 text-sm font-normal text-gray-700 border-b border-gray-200">
-                                <button wire:click="edit('{{ $control->id }}')" type="button"
+                                <button wire:click.prevent="edit('{{ $control->id }}')" type="button"
                                     class="inline-flex px-2 py-1 text-sm font-medium text-blue-500 border rounded-full hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                    Edit
+                                    {{ __('Edit') }}
                                 </button>
-                                <button wire:click="delete('{{ $control->id }}')" type="button"
+                                <button wire:click.prevent="delete('{{ $control->id }}')" type="button"
                                     class="inline-flex px-2 py-1 ml-2 text-sm font-medium text-red-500 border rounded-full hover:bg-red-100 focus">
-                                    Delete
+                                    {{ __('Delete') }}
                                 </button>
                             </td>
                         </tr>

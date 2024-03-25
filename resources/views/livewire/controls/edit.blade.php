@@ -15,7 +15,7 @@ new class extends Component {
     {
         return [
             'name' => 'required|string|max:255',
-            'section_id' => 'required|uuid',
+            'section_id' => 'required|max:36',
         ];
     }
     public function mount()
@@ -39,35 +39,32 @@ new class extends Component {
     }
     public function cancel(): void
     {
-        $this->editing = null;
-        $this->dispatch('control-update-cancelled');
+        $this->dispatch('control-edit-cancelled');
     }
 }; ?>
 
 <div>
     <form wire:submit.prevent="update">
-        <div class="mb-3">
-            <label for="name" class="form-label">Question:</label>
+        <div class="flex flex-col w-full mb-4">
+            <label for="name" class="form-label">{{ __('Question') }}</label>
             <input wire:model="name" type="text" id="name"
                 class="form-control @error('name') is-invalid @enderror" />
             @error('name')
-                <div class="invalid-feedback">{{ $message }}</div>
+                <div class="invalid-feedback error-class">{{ $message }}</div>
             @enderror
         </div>
-        <div class="mb-3">
-            <label for="section_id" class="form-label">Control</label>
+        <div class="flex flex-col w-full mb-4">
             <select wire:model="section_id" id="section_id"
                 class="form-control @error('section_id') is-invalid @enderror">
                 @foreach ($sections as $section)
-                    <option value="'{{ $section->id }}'">{{ $section->name }}</option>
+                    <option value="{{ $section->id }}">{{ $section->name }}</option>
                 @endforeach
-
             </select>
             @error('section_id')
-                <div class="invalid-feedback">{{ $message }}</div>
+                <div class="invalid-feedback error-class">{{ $message }}</div>
             @enderror
         </div>
-        <x-primary-button type="submit" class="btn btn-primary">Update</x-primary-button>
-        <button wire:click="cancel" type="button" class="btn btn-secondary">Cancel</button>
+        <x-primary-button type="submit" class="btn btn-primary">{{ __('Update') }}</x-primary-button>
+        <button wire:click.prevent="cancel" type="button" class="btn btn-secondary">{{ __('Cancel') }}</button>
     </form>
 </div>
