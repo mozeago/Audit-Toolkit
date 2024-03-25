@@ -2,84 +2,71 @@
 
 use Livewire\Volt\Component;
 use Illuminate\Database\Eloquent\Collection;
+use App\Models\Question;
 use Livewire\Attributes\On;
-use App\Models\Control;
 new class extends Component {
-    public Collection $controls;
-
-    public ?Control $editing = null;
-
+    public Collection $questions;
+    public ?Question $editing = null;
     public function mount()
     {
-        $this->getControls();
+        $this->getQuestions();
     }
-
-    #[On('control-created')]
-    public function getControls()
+    public function getQuestions()
     {
-        $this->controls = Control::orderBy('created_at', 'desc')->get();
+        $this->questions = Question::orderBy('created_at', 'desc')->get();
     }
-    #[On('control-edit-canceled')]
-    #[On('control-updated')]
+    public function edit(Question $question)
+    {
+        $this->editing = $question;
+        $this->getQuestions();
+    }
+    #[On('question-edit-canceled')]
     public function disableEditing(): void
     {
         $this->editing = null;
 
-        $this->getControls();
-    }
-
-    public function edit(Control $control): void
-    {
-        $this->editing = $control;
-        $this->getControls();
-    }
-    public function delete(Control $control): void
-    {
-        $control->delete();
-
-        $this->getControls();
+        $this->getQuestions();
     }
 }; ?>
 
 <div class="overflow-x-auto bg-white rounded-lg shadow">
-    @if (session()->has('message'))
+    {{-- @if (session()->has('message'))
         <div class="alert alert-success">
             {{ session('message') }}
         </div>
-    @endif
+    @endif --}}
     <div class="overflow-x-auto bg-white rounded-lg shadow">
-        @if (count($controls) > 0)
+        @if (count($questions) > 0)
             <table class="w-full min-w-full leading-normal">
                 <thead>
                     <tr>
                         <th
                             class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-700 uppercase border-b border-gray-200">
-                            Name
+                            Question
                         </th>
                         <th
                             class="px-5 py-3 text-xs font-semibold tracking-wider text-right text-gray-700 uppercase border-b border-gray-200">
-                            Actions
+                            Action
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-
-                    @foreach ($controls as $control)
-                        <tr wire:key="{{ $control->id }}">
+                    @foreach ($questions as $question)
+                        <tr class="hover:bg-gray-100">
                             <td class="px-5 py-5 text-sm font-normal text-gray-700 border-b border-gray-200">
-                                @if ($control->is($editing))
-                                    <livewire:controls.edit :control="$control" :key="$control->id" />
+                                @if ($question->is($editing))
+                                    <livewire:questions.edit :question="$question" :key="$question->id" />
                                 @else
-                                    {{ $control->name }}
+                                    {{ $question->text }}
                                 @endif
                             </td>
                             <td
                                 class="flex justify-end px-5 py-5 text-sm font-normal text-gray-700 border-b border-gray-200">
-                                <button wire:click="edit('{{ $control->id }}')" type="button"
+                                <button wire:click="edit('{{ $question->id }}')" type="button"
                                     class="inline-flex px-2 py-1 text-sm font-medium text-blue-500 border rounded-full hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                                     Edit
                                 </button>
-                                <button wire:click="delete('{{ $control->id }}')" type="button"
+                                <button wire:click="" type="button"
                                     class="inline-flex px-2 py-1 ml-2 text-sm font-medium text-red-500 border rounded-full hover:bg-red-100 focus">
                                     Delete
                                 </button>
@@ -88,8 +75,6 @@ new class extends Component {
                     @endforeach
                 </tbody>
             </table>
-        @else
-            <p class="alert alert-success">No Controls saved yet !</p>
         @endif
     </div>
 </div>

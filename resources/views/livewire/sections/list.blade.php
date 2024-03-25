@@ -41,46 +41,50 @@ new class extends Component {
         $this->getSections();
     }
 }; ?>
-<div>
+<div class="overflow-x-auto bg-white rounded-lg shadow">
     @if (session()->has('message'))
         <div class="alert alert-success">
             {{ session('message') }}
         </div>
     @endif
-    @if (count($sections) > 0)
-        <table class="table border border-collapse">
+    <div class="overflow-x-auto bg-white rounded-lg shadow">
+        <table class="w-full min-w-full leading-normal">
             <thead>
                 <tr>
                     <th
-                        class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-200 border border-gray-200">
+                        class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-700 uppercase border-b border-gray-200">
                         Section Name
                     </th>
                     <th
-                        class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-200 border border-gray-200">
-                        Action
+                        class="px-5 py-3 text-xs font-semibold tracking-wider text-right text-gray-700 uppercase border-b border-gray-200">
+                        Actions
                     </th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($sections as $section)
-                    <tr>
-                        @if ($section->is($editing))
-                            <livewire:sections.edit :section="$section" :key="$section->id" />
-                        @else
-                            <td>{{ $section->name }}</td>
-                        @endif
-                        <td><x-primary-button wire:click="edit('{{ $section->id }}')">
-                                {{ __('Edit') }}
-                            </x-primary-button>
-                            <button wire:click="delete('{{ $section->id }}')">
-                                {{ __('Delete') }}
+                    <tr wire:key="{{ $section->id }}" class="hover:bg-gray-100">
+                        <td class="px-5 py-5 text-sm font-normal text-gray-700 border-b border-gray-200">
+                            @if ($section->is($editing))
+                                <livewire:sections.edit :section="$section" :key="$section->id" />
+                            @else
+                                {{ $section->name }}
+                            @endif
+                        </td>
+                        <td
+                            class="flex justify-end px-5 py-5 text-sm font-normal text-gray-700 border-b border-gray-200">
+                            <button wire:click="edit('{{ $section->id }}')" type="button"
+                                class="inline-flex px-2 py-1 text-sm font-medium text-blue-500 border rounded-full hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                Edit
+                            </button>
+                            <button wire:click="delete('{{ $section->id }}')" type="button"
+                                class="inline-flex px-2 py-1 ml-2 text-sm font-medium text-red-500 border rounded-full hover:bg-red-100 focus">
+                                Delete
                             </button>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-    @else
-        <p>No sections saved.</p>
-    @endif
+    </div>
 </div>

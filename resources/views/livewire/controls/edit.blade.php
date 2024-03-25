@@ -1,29 +1,72 @@
 <?php
 
 use Livewire\Volt\Component;
+use Livewire\Attributes\Validate;
+use App\Models\Control;
+use App\Models\Section;
+use Illuminate\Database\Eloquent\Collection;
 
 new class extends Component {
     public Control $control;
-    public string $controlName = '';
-    public string $sectionId = '';
+    public Collection $sections;
+    public string $name = '';
+    public string $section_id = '';
+    public function rules(): array
+    {
+        return [
+            'name' => 'required|string|max:255',
+        ];
+    }
     public function mount()
     {
+        $this->name = $this->control->name;
+        $this->section_id = $this->control->section_id;
+        $this->fetchSections();
+    }
+    public function fetchSections()
+    {
+        $this->sections = Section::orderBy('created_at', 'desc')->get();
+    }
+    public function update(): void
+    {
+        $this->validate();
+        $this->control->update([
+            'name' => $this->name,
+            'section_id' => $this->section_id,
+        ]);
+        $this->dispatch('control-updated');
+    }
+    public function cancel(): void
+    {
+        $this->editing = null;
+        $this->dispatch('control-update-cancelled');
     }
 }; ?>
 
 <div>
-    <div wire:model="control" class="flex items-center w-full">
-        <input wire:model="" type="text"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-indigo-500">
-        <div class="flex ml-2 space-x-2">
-            <button wire:click="update" type="button"
-                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-indigo-500 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                Update
-            </button>
-            <button wire:click="cancel" type="button"
-                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-gray-500 border border-gray-300 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-                Cancel
-            </button>
+    <form wire:submit.prevent="update">
+        <div class="mb-3">
+            <label for="name" class="form-label">Question:</label>
+            <input wire:model="name" type="text" id="name"
+                class="form-control @error('name') is-invalid @enderror" />
+            @error('name')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
-    </div>
+        <div class="mb-3">
+            <label for="section_id" class="form-label">Control</label>
+            <select wire:model="section_id" id="section_id"
+                class="form-control @error('section_id') is-invalid @enderror">
+                @foreach ($sections as $section)
+                    <option value="'{{ $section->id }}'">{{ $section->name }}</option>
+                @endforeach
+
+            </select>
+            @error('section_id')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+        <x-primary-button type="submit" class="btn btn-primary">Update</x-primary-button>
+        <button wire:click="cancel" type="button" class="btn btn-secondary">Cancel</button>
+    </form>
 </div>

@@ -17,7 +17,7 @@ new class extends Component {
 
     public function mount(): void
     {
-        // $this->section = Section::where('id', $section->id)->get();
+        $this->section = Section::where('id', $section->id)->get();
         $this->name = $this->section->name;
     }
 
