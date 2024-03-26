@@ -11,6 +11,7 @@ new class extends Component {
     {
         $this->getQuestions();
     }
+    #[On('question-created')]
     public function getQuestions()
     {
         $this->questions = Question::orderBy('created_at', 'desc')->get();
@@ -52,7 +53,7 @@ new class extends Component {
                 </thead>
                 <tbody>
                     @foreach ($questions as $question)
-                        <tr class="hover:bg-gray-100">
+                        <tr class="hover:bg-gray-100 ">
                             <td class="px-5 py-5 text-sm font-normal text-gray-700 border-b border-gray-200">
                                 @if ($question->is($editing))
                                     <livewire:questions.edit :question="$question" :key="$question->id" />
