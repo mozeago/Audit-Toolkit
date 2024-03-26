@@ -15,7 +15,16 @@ new class extends Component {
     public string $control_id = '';
     public function mount()
     {
+        $this->text = $this->question->text;
+        $this->control_id = $this->question->control_id;
         $this->fetchControls();
+    }
+    public function rules()
+    {
+        return [
+            'text' => 'required|string|min:20',
+            'control_id' => 'required|uuid|min:36',
+        ];
     }
     public function fetchControls()
     {
@@ -23,8 +32,9 @@ new class extends Component {
     }
     public function update()
     {
-        $this->text = $this->question->text;
-        $this->control_id = $this->question->control_id;
+        $validatedData = $this->validate();
+        $this->question->update($validatedData);
+        $this->dispatch('question-updated');
     }
     public function cancel(): void
     {
@@ -37,7 +47,11 @@ new class extends Component {
     <form wire:submit.prevent="update">
         <div class="flex flex-col space-y-4">
             <div class="flex border border-gray-300 rounded-md shadow-sm">
+<<<<<<< HEAD
                 <input wire:model="text" type="text" value="{{ $text }}"
+=======
+                <input wire:model="text" type="text" value="{{ $question->text }}"
+>>>>>>> questions-crud
                     class="flex-grow p-3 border-r border-gray-300 focus:outline-none focus:ring focus:ring-blue-500 focus:ring-opacity-50 rounded-l-md"
                     placeholder="Question Text">
             </div>
@@ -50,8 +64,8 @@ new class extends Component {
                 </select>
             </div>
         </div>
-        <button type="submit"
-            class="px-4 py-2 mt-4 text-white bg-blue-500 rounded shadow hover:bg-blue-700">Submit</button>
-        <button wire:click="cancel" type="button" class="btn btn-secondary">Cancel</button>
+        <x-primary-button type="submit"
+            class="px-4 py-2 mt-4 text-white bg-blue-500 rounded shadow hover:bg-blue-700">{{ __('Update') }}</x-primary-button>
+        <button wire:click.prevent="cancel" type="button" class="btn btn-secondary">{{ __('Cancel') }}</button>
     </form>
 </div>
