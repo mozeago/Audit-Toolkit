@@ -47,15 +47,7 @@ new class extends Component {
     <form wire:submit.prevent="update">
         <div class="flex flex-col space-y-4">
             <div class="flex border border-gray-300 rounded-md shadow-sm">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                <input wire:model="text" type="text" value="{{ $text }}"
-=======
                 <input wire:model="text" type="text" value="{{ $question->text }}"
->>>>>>> questions-crud
-=======
-                <input wire:model="text" type="text" value="{{ $question->text }}"
->>>>>>> questions-crud
                     class="flex-grow p-3 border-r border-gray-300 focus:outline-none focus:ring focus:ring-blue-500 focus:ring-opacity-50 rounded-l-md"
                     placeholder="Question Text">
             </div>

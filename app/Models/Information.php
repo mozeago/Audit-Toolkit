@@ -14,7 +14,7 @@ class Information extends BaseModel
     protected $keyType = 'string';
     public $incrementing = false;
 
-    protected $fillable = ['content'];
+    protected $fillable = ['content', 'question_id'];
 
     public function belongsToQuestion()
     {

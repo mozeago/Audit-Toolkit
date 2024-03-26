@@ -64,7 +64,7 @@ new class extends Component {
                     <span class="mt-2 text-xs text-red-500">{{ $message }}</span>
                 @enderror
             </div>
-            <div class="flex justify-end">
+            <div class="flex justify-start">
                 <x-primary-button type="submit"
                     class="px-4 py-2 mt-4 text-white bg-blue-500 rounded shadow hover:bg-blue-700">
                     {{ __('Save') }}
