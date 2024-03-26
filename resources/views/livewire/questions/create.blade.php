@@ -2,6 +2,7 @@
 
 use Livewire\Volt\Component;
 <<<<<<< HEAD
+<<<<<<< HEAD
 use App\Models\Control;
 use App\Models\Question;
 use Livewire\Attributes\Validate;
@@ -106,6 +107,46 @@ new class extends Component {
     }
 }; ?>
 
+=======
+use App\Models\Question;
+use App\Models\Control;
+use Illuminate\Database\Eloquent\Collection;
+new class extends Component {
+    public Collection $controls;
+    public $questionText = '';
+    public $controlId = '';
+    public function mount()
+    {
+        $this->fetchControls();
+    }
+    public function rules()
+    {
+        return [
+            'questionText' => 'required|min:20',
+            'controlId' => 'required|uuid',
+        ];
+    }
+    public function fetchControls()
+    {
+        $this->controls = Control::orderBy('created_at', 'desc')->get();
+    }
+    public function store()
+    {
+        $validatedData = $this->validate();
+        $question = Question::create([
+            'text' => $validatedData['questionText'],
+            'control_id' => $validatedData['controlId'],
+        ]);
+        $this->dispatch('question-created');
+        $this->resetFields();
+    }
+    public function resetFields()
+    {
+        return $this->reset('questionText', 'controlId');
+    }
+}; ?>
+
+>>>>>>> questions-crud
 <div class="flex">
     <div class="w-full max-w-md min-w-full px-8 py-6 leading-normal bg-white rounded">
         <form wire:submit.prevent="store">
@@ -139,5 +180,8 @@ new class extends Component {
             </div>
         </form>
     </div>
+<<<<<<< HEAD
+>>>>>>> questions-crud
+=======
 >>>>>>> questions-crud
 </div>
