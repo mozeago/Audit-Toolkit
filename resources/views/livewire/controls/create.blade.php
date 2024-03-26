@@ -52,7 +52,7 @@ new class extends Component {
             <label for="sectionId" class="mb-2 text-sm font-semibold">{{ __('Audit Section Name') }}</label>
             <select wire:model="sectionId" id="sectionId"
                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-indigo-500">
-                <option value="">Select...</option>
+                <option value="" disabled selected>Select...</option>
                 @foreach ($sections as $section)
                     <option value="{{ $section->id }}">{{ $section->name }}</option>
                 @endforeach

@@ -11,6 +11,7 @@ new class extends Component {
     {
         $this->getQuestions();
     }
+    #[On('question-created')]
     public function getQuestions()
     {
         $this->questions = Question::orderBy('created_at', 'desc')->get();
@@ -20,11 +21,17 @@ new class extends Component {
         $this->editing = $question;
         $this->getQuestions();
     }
-    #[On('question-edit-canceled')]
+    #[On('question-updated')]
+    #[On('question-update-cancelled')]
     public function disableEditing(): void
     {
         $this->editing = null;
 
+        $this->getQuestions();
+    }
+    public function delete(Question $question)
+    {
+        $question->delete();
         $this->getQuestions();
     }
 }; ?>
@@ -62,11 +69,11 @@ new class extends Component {
                             </td>
                             <td
                                 class="flex justify-end px-5 py-5 text-sm font-normal text-gray-700 border-b border-gray-200">
-                                <button wire:click="edit('{{ $question->id }}')" type="button"
+                                <button wire:click.prevent="edit('{{ $question->id }}')" type="button"
                                     class="inline-flex px-2 py-1 text-sm font-medium text-blue-500 border rounded-full hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                                     Edit
                                 </button>
-                                <button wire:click="" type="button"
+                                <button wire:click.prevent="delete('{{ $question->id }}')" type="button"
                                     class="inline-flex px-2 py-1 ml-2 text-sm font-medium text-red-500 border rounded-full hover:bg-red-100 focus">
                                     Delete
                                 </button>

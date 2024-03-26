@@ -14,7 +14,7 @@ class Question extends BaseModel
     protected $keyType = 'string';
     public $incrementing = false;
 
-    protected $fillable = ['text'];
+    protected $fillable = ['text', 'control_id'];
 
     public function belongsToControl()
     {
