@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Question;
+use App\Models\UserResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class QuestionController extends Controller
+class UserResponseController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index()
     {
-        return View('questions');
+        return View('userresponses');
     }
 
     /**
@@ -33,17 +33,17 @@ class QuestionController extends Controller
     }
 
     /**
-     * Display all questions
+     * Display the specified resource.
      */
-    public function show()
+    public function show(UserResponse $userResponse)
     {
-        return View('questionnaire');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Question $question)
+    public function edit(UserResponse $userResponse)
     {
         //
     }
@@ -51,7 +51,7 @@ class QuestionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Question $question)
+    public function update(Request $request, UserResponse $userResponse)
     {
         //
     }
@@ -59,7 +59,7 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Question $question)
+    public function destroy(UserResponse $userResponse)
     {
         //
     }

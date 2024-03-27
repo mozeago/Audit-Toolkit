@@ -15,6 +15,7 @@ Route::get('/controls', [ControlController::class, 'index'])->name('controls');
 Route::get('/questions', [QuestionController::class, 'index'])->name('questions');
 Route::get('/information', [InformationController::class, 'index'])->name('information');
 Route::get('/recommendations', [RecommendationController::class, 'index'])->name('recommendations');
+Route::get('/questionnaire', [QuestionController::class, 'show'])->name('questionnaire');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
