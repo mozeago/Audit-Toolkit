@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('recommendations', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->text('content');
+            $table->enum('question_response', ['true', 'false']);
+            $table->foreignUuid('question_id')->constrained();
             $table->foreignUuid('information_id')->constrained()->references('id')->on('information');
             $table->index('information_id');
             $table->timestamps();
