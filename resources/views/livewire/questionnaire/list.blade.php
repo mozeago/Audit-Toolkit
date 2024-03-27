@@ -1,0 +1,98 @@
+<?php
+
+use Livewire\Volt\Component;
+use App\Models\Question;
+new class extends Component {
+    public $currentQuestionIndex = 0;
+    public $userAnswers = [];
+    public $questions;
+
+    public function mount()
+    {
+        $this->fetchQuestions();
+    }
+
+    public function fetchQuestions()
+    {
+        $this->questions = Question::all();
+    }
+    public function answer($answer)
+    {
+        $this->userAnswers[$this->currentQuestionIndex] = $answer;
+    }
+
+    public function nextQuestion()
+    {
+        $this->currentQuestionIndex++;
+    }
+
+    public function previousQuestion()
+    {
+        if ($this->currentQuestionIndex > 0) {
+            $this->currentQuestionIndex--;
+        }
+    }
+
+    public function submitAnswers()
+    {
+        // Implement logic to save user responses (userAnswers array) to database
+        // ...
+    }
+}; ?>
+
+<div>
+    <div class="container px-4 py-8 mx-auto">
+        <div class="flex flex-col md:flex-row md:space-x-4">
+            <button wire:click="previousQuestion" class="btn btn-outline-secondary disabled:opacity-50"
+                :disabled="$currentQuestionIndex === 0" {{ $currentQuestionIndex > 0 ? '' : 'hidden' }}>
+                <div class="flex flex-col items-center">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="5"
+                            d="M15 19l-7-7 7-7-1.41-1.41L6 12l8.41 8.41z"></path>
+                    </svg>
+                    <span>{{ __('Previous') }}</span>
+                </div>
+            </button>
+            <div class="w-full p-6 bg-white rounded-lg shadow-md md:w-3/4">
+                @if (count($questions) > 0)
+                    <h2 class="mb-4 text-2xl font-semibold">Question {{ $currentQuestionIndex + 1 }} of
+                        {{ count($questions) }}</h2>
+                    <p class="mb-8 text-lg leading-loose">{{ $questions[$currentQuestionIndex]->text }}</p>
+                    <div class="flex items-center space-x-4">
+                        <label for="answer-yes" class="flex items-center space-x-2">
+                            <input id="answer-yes" type="radio" name="answer"
+                                wire:model="userAnswers.{{ $currentQuestionIndex }}" value="true"
+                                class="w-6 h-6 bg-gray-200 border-gray-300 rounded-full focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 checked:bg-indigo-500 checked:border-transparent">
+                            <span class="text-sm font-medium text-gray-700">Yes</span>
+                        </label>
+                        <label for="answer-no" class="flex items-center space-x-2">
+                            <input id="answer-no" type="radio" name="answer"
+                                wire:model="userAnswers.{{ $currentQuestionIndex }}" value="false"
+                                class="w-6 h-6 bg-gray-200 border-gray-300 rounded-full focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 checked:bg-indigo-500 checked:border-transparent">
+                            <span class="text-sm font-medium text-gray-700">No</span>
+                        </label>
+                    </div>
+                @else
+                    <p>No questions here to answer !</p>
+                @endif
+            </div>
+            <button wire:click="submitAnswers"
+                class="btn btn-success disabled:opacity-50 {{ !($currentQuestionIndex == count($questions) - 1) ? 'hidden' : '' }}"
+                :disabled="count($userAnswers) !== count($questions)">
+                <span>{{ __('Submit Answers') }}</span>
+            </button>
+            <button wire:click="nextQuestion"
+                class="btn btn-primary {{ $currentQuestionIndex == count($questions) - 1 ? 'hidden' : '' }}"
+                :disabled="$currentQuestionIndex == count($questions) - 1">
+                <div class="flex flex-col items-center">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="5" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                    <span>{{ __('Next') }}</span>
+                </div>
+            </button>
+        </div>
+    </div>
+</div>
