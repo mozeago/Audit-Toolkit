@@ -11,6 +11,7 @@ class Recommendation extends Model
 {
     use HasFactory;
     use HasUuids;
+    protected $fillable = ['content', 'information_id'];
     public function belongsToInformations()
     {
         return $this->belongsToInformations(Information::class);
