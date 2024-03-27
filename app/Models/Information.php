@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use App\Models\Recommendation;
 
 class Information extends BaseModel
 {
@@ -19,5 +20,9 @@ class Information extends BaseModel
     public function belongsToQuestion()
     {
         return $this->belongsTo(Question::class);
+    }
+    public function hasManyReccommendations()
+    {
+        return $this->hasMany(Recommendation::class);
     }
 }
