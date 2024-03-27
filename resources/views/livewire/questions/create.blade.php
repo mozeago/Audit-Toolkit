@@ -55,7 +55,7 @@ new class extends Component {
                 <label for="category" class="block mb-2 text-sm text-gray-700">{{ __('Audit Control Name') }}</label>
                 <select wire:model="controlId"
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                    <option value="" disabled selected>{{ __('Select Category') }}</option>
+                    <option value="" disabled selected>{{ __('Select....') }}</option>
                     @foreach ($controls as $control)
                         <option value="{{ $control->id }}">{{ $control->name }}</option>
                     @endforeach

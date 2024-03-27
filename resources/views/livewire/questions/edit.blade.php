@@ -54,6 +54,7 @@ new class extends Component {
             <div class="border border-gray-300 rounded-md shadow-sm">
                 <select wire:model="control_id"
                     class="block w-full p-3 rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+                    <option value="" disabled selected>{{ __('Select ...') }}</option>
                     @foreach ($controls as $control)
                         <option value="{{ $control->id }}">{{ $control->name }}</option>
                     @endforeach

@@ -11,22 +11,26 @@ new class extends Component {
     {
         $this->fetchQuestionInformation();
     }
+
     #[On('question-information-created')]
-    #[On('information-edit-cancelled')]
     public function fetchQuestionInformation()
     {
         $this->questionsInformation = Information::orderBy('created_at', 'desc')->get();
     }
+
     public function edit(Information $questionInfo)
     {
         $this->editing = $questionInfo;
         $this->fetchQuestionInformation();
     }
+    #[On('information-updated')]
+    #[On('information-edit-cancelled')]
     public function disableEditing()
     {
         $this->editing = null;
         $this->fetchQuestionInformation();
     }
+
     public function delete(Information $questionInfo)
     {
         $questionInfo->delete();
@@ -53,7 +57,7 @@ new class extends Component {
                 <tr class="hover:bg-gray-100 ">
                     <td class="px-5 py-5 text-sm font-normal text-gray-700 border-b border-gray-200">
                         @if ($questionInformation->is($editing))
-                            <livewire:information.edit />
+                            <livewire:information.edit :information="$questionInformation" :key="$questionInformation->id" />
                         @else
                             {{ $questionInformation->content }}
                         @endif
@@ -61,11 +65,11 @@ new class extends Component {
                     <td class="flex justify-end px-5 py-5 text-sm font-normal text-gray-700 border-b border-gray-200">
                         <button wire:click.prevent="edit('{{ $questionInformation->id }}')" type="button"
                             class="inline-flex px-2 py-1 text-sm font-medium text-blue-500 border rounded-full hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                            Edit
+                            {{ __('Edit') }}
                         </button>
                         <button wire:click.prevent="delete('{{ $questionInformation->id }}')" type="button"
                             class="inline-flex px-2 py-1 ml-2 text-sm font-medium text-red-500 border rounded-full hover:bg-red-100 focus">
-                            Delete
+                            {{ __('Delete') }}
                         </button>
                     </td>
                 </tr>

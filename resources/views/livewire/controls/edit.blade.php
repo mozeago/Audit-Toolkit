@@ -55,7 +55,8 @@ new class extends Component {
         </div>
         <div class="flex flex-col w-full mb-4">
             <select wire:model="section_id" id="section_id"
-                class="form-control @error('section_id') is-invalid @enderror">
+                class="block w-full p-3 rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+                <option value="" disabled selected>{{ __('Select ...') }}</option>
                 @foreach ($sections as $section)
                     <option value="{{ $section->id }}">{{ $section->name }}</option>
                 @endforeach

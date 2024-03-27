@@ -60,7 +60,7 @@ new class extends Component {
                 </select>
             </div>
 
-            <x-primary-button class="mt-4">Save</x-primary-button>
+            <x-primary-button type="submit">{{ __('Save') }}</x-primary-button>
         </form>
     </div>
 </div>
