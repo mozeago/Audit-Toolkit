@@ -13,7 +13,7 @@ class Recommendation extends Model
     use HasFactory;
     use HasUuids;
     use SoftDeletes;
-    protected $fillable = ['content', 'information_id'];
+    protected $fillable = ['content', 'information_id', 'question_id'];
     public function belongsToInformations()
     {
         return $this->belongsToInformations(Information::class);

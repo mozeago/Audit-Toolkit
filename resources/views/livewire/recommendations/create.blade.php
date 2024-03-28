@@ -22,6 +22,7 @@ new class extends Component {
             'relatedInformationId' => 'required|uuid|min:36',
             'recommendationText' => 'required|string|min:20',
             'questionResponse' => 'required|in:true,false',
+            'question_id' => 'required|uuid|min:36',
         ];
     }
     public function store()
@@ -31,8 +32,17 @@ new class extends Component {
             'content' => $validatedData['recommendationText'],
             'information_id' => $validatedData['relatedInformationId'],
             'question_response' => $validatedData['questionResponse'],
+            'question_id' => $validatedData['question_id'],
         ]);
         $this->dispatch('recommendation-created');
+        $this->clearFiedls();
+    }
+    public function clearFiedls()
+    {
+        $this->recommendationText = '';
+        $this->relatedInformationId = '';
+        $this->questionResponse = '';
+        $this->question_idaa = '';
     }
     public function getInformationText()
     {
