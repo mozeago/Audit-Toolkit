@@ -1,6 +1,7 @@
 <?php
 
 use Livewire\Volt\Component;
+use App\Models\UserResponse;
 use App\Models\Question;
 new class extends Component {
     public $currentQuestionIndex = 0;
@@ -11,7 +12,12 @@ new class extends Component {
     {
         $this->fetchQuestions();
     }
-
+    public function rules()
+    {
+        return [
+            'userAnswers.*.answer' => ['required'],
+        ];
+    }
     public function fetchQuestions()
     {
         $this->questions = Question::all();
@@ -23,6 +29,7 @@ new class extends Component {
 
     public function nextQuestion()
     {
+        $this->saveAnswer();
         $this->currentQuestionIndex++;
     }
 
@@ -30,7 +37,26 @@ new class extends Component {
     {
         if ($this->currentQuestionIndex > 0) {
             $this->currentQuestionIndex--;
+            $this->saveAnswer();
         }
+    }
+
+    private function saveAnswer()
+    {
+        $this->validateOnly('userAnswers.' . $this->currentQuestionIndex); // Validate the answer for the current question
+
+        $userResponse = UserResponse::updateOrCreate(
+            [
+                'user_id' => auth()->id(),
+                'question_id' => $this->questions[$this->currentQuestionIndex]->id,
+            ],
+            [
+                'answer' => $this->userAnswers[$this->currentQuestionIndex],
+            ],
+        );
+
+        // Optional: Trigger a Livewire event for other components to react to the saved response
+        $this->emit('responseSaved', $userResponse);
     }
 
     public function submitAnswers()
@@ -59,7 +85,7 @@ new class extends Component {
                     <h2 class="mb-4 text-2xl font-semibold">Question {{ $currentQuestionIndex + 1 }} of
                         {{ count($questions) }}</h2>
                     <p class="mb-8 text-lg leading-loose">{{ $questions[$currentQuestionIndex]->text }}</p>
-                    <div class="flex items-center space-x-4">
+                    <div class="flex items-center mt-4 space-x-4">
                         <label for="answer-yes" class="flex items-center space-x-2">
                             <input id="answer-yes" type="radio" name="answer"
                                 wire:model="userAnswers.{{ $currentQuestionIndex }}" value="true"
@@ -76,7 +102,17 @@ new class extends Component {
                 @else
                     <p>No questions here to answer !</p>
                 @endif
+                <div class="w-full p-4 mt-12 border border-t border-gray-200 rounded-lg shadow-md bg-gray-50">
+                    <div class="prose max-w-none">
+                        @if ($questions[$currentQuestionIndex]->relatedInformation)
+                            {{ $questions[$currentQuestionIndex]->relatedInformation }}
+                        @else
+                            <p>No related information available for this question.</p>
+                        @endif
+                    </div>
+                </div>
             </div>
+
             <button wire:click="submitAnswers"
                 class="btn btn-success disabled:opacity-50 {{ !($currentQuestionIndex == count($questions) - 1) ? 'hidden' : '' }}"
                 :disabled="count($userAnswers) !== count($questions)">
