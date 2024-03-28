@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignUuid('information_id')->constrained()->references('id')->on('information');
             $table->index('information_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -28,5 +29,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('recommendations');
+        Schema::table('recommendations', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 };

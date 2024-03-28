@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use App\Models\Recommendation;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Information extends BaseModel
 {
     use HasFactory;
     use HasUuids;
+    use SoftDeletes;
 
     protected $keyType = 'string';
     public $incrementing = false;

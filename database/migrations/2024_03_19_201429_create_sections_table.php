@@ -15,6 +15,8 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
+            $table->softDeletes();
         });
     }
 
@@ -23,6 +25,9 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('sections', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
         Schema::dropIfExists('sections');
     }
 };
