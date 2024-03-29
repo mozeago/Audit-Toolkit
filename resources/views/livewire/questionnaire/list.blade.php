@@ -10,6 +10,7 @@ new class extends Component {
     public $questions;
     public function mount()
     {
+        $this->setUserAnswers();
         $this->fetchQuestions();
     }
 
@@ -25,7 +26,7 @@ new class extends Component {
     }
     public function answer($answer)
     {
-        $this->userAnswers[$this->questions[$this->currentQuestionIndex]->id] = $answer;
+        $answer = $this->userAnswers[$this->questions[$this->currentQuestionIndex]->id];
     }
 
     public function nextQuestion()
@@ -39,6 +40,7 @@ new class extends Component {
         if ($this->currentQuestionIndex > 0) {
             $this->saveAnswer();
             $this->currentQuestionIndex--;
+            $this->setUserAnswers(); // Call setUserAnswers to set preselected answer
         }
     }
 
@@ -48,17 +50,34 @@ new class extends Component {
         if (empty($this->userAnswers)) {
             return 'No answer yet !';
         }
+
+        $questionId = $this->questions[$this->currentQuestionIndex]->id;
+        if (!array_key_exists($questionId, $this->userAnswers)) {
+            return 'No answer selected for question ' . $questionId;
+        }
+
         $this->validateOnly('userAnswers.' . $this->currentQuestionIndex); // Validate for current question
 
-        $userResponse = UserResponse::updateOrCreate(
+        UserResponse::updateOrCreate(
             [
                 'user_id' => auth()->id(),
-                'question_id' => $this->questions[$this->currentQuestionIndex]->id,
+                'question_id' => $questionId,
             ],
             [
-                'answer' => $this->userAnswers[$this->questions[$this->currentQuestionIndex]->id],
+                'answer' => $this->userAnswers[$questionId],
             ],
         );
+    }
+
+    private function setUserAnswers()
+    {
+        $userResponses = UserResponse::where('user_id', auth()->id())->get();
+        $this->userAnswers = []; // Reset userAnswers to avoid duplication
+        foreach ($userResponses as $response) {
+            $this->userAnswers[$response->question_id] = $response->answer;
+        }
+        // Emit an event to trigger Livewire update
+        $this->dispatch('userAnswersUpdated');
     }
 
     public function submitAnswers()
@@ -132,7 +151,7 @@ new class extends Component {
                     <div class="flex flex-col items-center">
                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="5" d="M9 5l7 7-7 7">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="7" d="M9 5l7 7-7 7">
                             </path>
                         </svg>
                         <span>{{ __('Next') }}</span>
@@ -141,4 +160,15 @@ new class extends Component {
             </div>
         </div>
     </div>
+    <script>
+        Livewire.on('userAnswersUpdated', () => {
+            const radioInputs = document.querySelectorAll('input[name="answer"]');
+            for (const radioInput of radioInputs) {
+                const questionId = radioInput.value;
+                if (questionId && window.livewire_components[0].userAnswers[questionId]) {
+                    radioInput.checked = window.livewire_components[0].userAnswers[questionId] === radioInput.value;
+                }
+            }
+        });
+    </script>
 </div>
