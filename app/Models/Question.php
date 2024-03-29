@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Question extends BaseModel
@@ -22,7 +23,7 @@ class Question extends BaseModel
     {
         return $this->belongsTo(Control::class);
     }
-    public function hasOneInformation()
+    public function hasOneInformation(): HasOne
     {
         return $this->hasOne(Information::class);
     }

@@ -35,7 +35,8 @@ new class extends Component {
     }
     public function resetFields()
     {
-        $this->reset('questionId', 'questionInformation');
+        $this->questionInformation = '';
+        $this->questionId = '';
     }
 }; ?>
 
