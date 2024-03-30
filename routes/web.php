@@ -18,7 +18,7 @@ Route::get('/information', [InformationController::class, 'index'])->name('infor
 Route::get('/recommendations', [RecommendationController::class, 'index'])->name('recommendations');
 Route::get('/questionnaire', [QuestionController::class, 'show'])->name('questionnaire');
 Route::get('/templates', [TemplateController::class, 'index'])->name('templates');
-
+Route::get('/downloadtemplates', [TemplateController::class, 'show'])->name('downloadtemplates');
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');

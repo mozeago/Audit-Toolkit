@@ -35,9 +35,9 @@ class TemplateController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Template $template)
+    public function show(): View
     {
-        //
+        return View('templatesdownload');
     }
 
     /**
