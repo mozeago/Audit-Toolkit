@@ -3,5 +3,7 @@
         <h1 class="text-3xl font-bold text-center text-gray-800">
             Policy and Notice Templates
         </h1>
+        </br>
+        <livewire:templatesupload.templatesupload />
     </div>
 </x-app-layout>
