@@ -5,6 +5,7 @@ use App\Http\Controllers\ControlController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\InformationController;
 use App\Http\Controllers\RecommendationController;
+use App\Http\Controllers\TemplateController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,6 +17,7 @@ Route::get('/questions', [QuestionController::class, 'index'])->name('questions'
 Route::get('/information', [InformationController::class, 'index'])->name('information');
 Route::get('/recommendations', [RecommendationController::class, 'index'])->name('recommendations');
 Route::get('/questionnaire', [QuestionController::class, 'show'])->name('questionnaire');
+Route::get('/templates', [TemplateController::class, 'index'])->name('templates');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
