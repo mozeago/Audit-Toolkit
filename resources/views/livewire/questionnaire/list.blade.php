@@ -7,24 +7,11 @@ use App\Models\Information;
 new class extends Component {
     public $currentQuestionIndex = 0;
     public $userAnswers = [];
+    public $userAnswer = [];
     public $questions;
     public function mount()
     {
         $this->fetchQuestions();
-    }
-
-    private function saveUserResponse($questionId)
-    {
-        $userResponse = UserResponse::updateOrCreate(
-            [
-                'user_id' => auth()->id(), // Assuming you have user authentication
-                'question_id' => $questionId,
-            ],
-            [
-                'answer' => $this->userAnswers[$questionId],
-            ],
-        );
-        dd($userResponse);
     }
 
     private function getUserResponse(int $questionId): ?string
@@ -35,7 +22,9 @@ new class extends Component {
     public function rules()
     {
         return [
-            'userAnswers.*.answer' => ['required'],
+            'userAnswers.*.answer' => 'required',
+            'userAnswers.*.user_id' => 'required',
+            'userAnswers.*.question_id' => 'required',
         ];
     }
     public function fetchQuestions()
@@ -45,39 +34,47 @@ new class extends Component {
 
     public function nextQuestion()
     {
-        // Validate user answer for current question
-        $this->validateOnly($this->currentQuestionIndex, 'userAnswers.' . $this->currentQuestionIndex . '.answer');
+        // Prepare user answer data (only if answer exists)
+        if (isset($this->userAnswers[$this->currentQuestionIndex])) {
+            $userAnswer = $this->userAnswers[$this->currentQuestionIndex];
+            $userAnswer['user_id'] = auth()->id();
+            $userAnswer['question_id'] = $this->questions[$this->currentQuestionIndex]->id;
 
-        // Save user response to database
-        $this->saveUserResponse($this->currentQuestionIndex);
-
+            // Save user response to database
+            $this->saveUserResponse($userAnswer);
+        }
+        // Increment question index
         $this->currentQuestionIndex++;
 
         // Clear error messages after validation and saving
         $this->resetValidation();
     }
 
+    private function saveUserResponse($userAnswer)
+    {
+        $userResponse = new UserResponse();
+        $userResponse->user_id = $userAnswer['user_id'];
+        $userResponse->question_id = $userAnswer['question_id'];
+        $userResponse->answer = $userAnswer['answer'];
+        $userResponse->updateOrCreate(['question_id' => $userAnswer['question_id']], $userAnswer);
+    }
+
     public function previousQuestion()
     {
         if ($this->currentQuestionIndex > 0) {
             $this->currentQuestionIndex--;
-
-            // Pre-select radio button based on saved response
-            $this->userAnswers[$this->currentQuestionIndex] = $this->getUserResponse($this->currentQuestionIndex);
         }
     }
     public function submitAnswers()
     {
-        // Validate all user answers
-        $this->validate();
+        if (isset($this->userAnswers[$this->currentQuestionIndex])) {
+            $userAnswer = $this->userAnswers[$this->currentQuestionIndex];
+            $userAnswer['user_id'] = auth()->id();
+            $userAnswer['question_id'] = $this->questions[$this->currentQuestionIndex]->id;
 
-        // Save all user responses to database (optional, can be done in nextQuestion)
-        // foreach ($this->userAnswers as $questionId => $answer) {
-        //     $this->saveUserResponse($questionId);
-        // }
-
-        // Handle form submission after all answers are saved
-        // ...
+            // Save user response to database
+            $this->saveUserResponse($userAnswer);
+        }
     }
 }; ?>
 
@@ -107,13 +104,13 @@ new class extends Component {
                         <div class="flex items-center mt-4 mb-8 space-x-4">
                             <label for="answer-yes" class="flex items-center space-x-2">
                                 <input id="answer-yes" type="radio" name="answer"
-                                    wire:model.defer="userAnswers.{{ $currentQuestionIndex . answer }}" value="true"
+                                    wire:model.defer="userAnswers.{{ $currentQuestionIndex }}.answer" value="true"
                                     class="w-6 h-6 bg-gray-200 border-gray-300 rounded-full focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 checked:bg-indigo-500 checked:border-transparent">
                                 <span class="text-sm font-medium text-gray-700">Yes</span>
                             </label>
                             <label for="answer-no" class="flex items-center space-x-2">
                                 <input id="answer-no" type="radio" name="answer"
-                                    wire:model.defer="userAnswers.{{ $currentQuestionIndex . answer }}" value="false"
+                                    wire:model.defer="userAnswers.{{ $currentQuestionIndex }}.answer" value="false"
                                     class="w-6 h-6 bg-gray-200 border-gray-300 rounded-full focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 checked:bg-indigo-500 checked:border-transparent">
                                 <span class="text-sm font-medium text-gray-700">No</span>
                             </label>
