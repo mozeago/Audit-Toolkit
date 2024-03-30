@@ -10,8 +10,26 @@ new class extends Component {
     public $questions;
     public function mount()
     {
-        $this->setUserAnswers();
         $this->fetchQuestions();
+    }
+
+    private function saveUserResponse($questionId)
+    {
+        $userResponse = UserResponse::updateOrCreate(
+            [
+                'user_id' => auth()->id(), // Assuming you have user authentication
+                'question_id' => $questionId,
+            ],
+            [
+                'answer' => $this->userAnswers[$questionId],
+            ],
+        );
+        dd($userResponse);
+    }
+
+    private function getUserResponse(int $questionId): ?string
+    {
+        return UserResponse::where('user_id', auth()->id())->where('question_id', $questionId)->value('answer');
     }
 
     public function rules()
@@ -24,65 +42,41 @@ new class extends Component {
     {
         $this->questions = Question::with('hasOneInformation')->get();
     }
-    public function answer($answer)
-    {
-        $answer = $this->userAnswers[$this->questions[$this->currentQuestionIndex]->id];
-    }
 
     public function nextQuestion()
     {
-        $this->saveAnswer();
+        // Validate user answer for current question
+        $this->validateOnly($this->currentQuestionIndex, 'userAnswers.' . $this->currentQuestionIndex . '.answer');
+
+        // Save user response to database
+        $this->saveUserResponse($this->currentQuestionIndex);
+
         $this->currentQuestionIndex++;
+
+        // Clear error messages after validation and saving
+        $this->resetValidation();
     }
 
     public function previousQuestion()
     {
         if ($this->currentQuestionIndex > 0) {
-            $this->saveAnswer();
             $this->currentQuestionIndex--;
-            $this->setUserAnswers(); // Call setUserAnswers to set preselected answer
+
+            // Pre-select radio button based on saved response
+            $this->userAnswers[$this->currentQuestionIndex] = $this->getUserResponse($this->currentQuestionIndex);
         }
     }
-
-    private function saveAnswer()
-    {
-        $this->userAnswers = $this->userAnswers ?? [];
-        if (empty($this->userAnswers)) {
-            return 'No answer yet !';
-        }
-
-        $questionId = $this->questions[$this->currentQuestionIndex]->id;
-        if (!array_key_exists($questionId, $this->userAnswers)) {
-            return 'No answer selected for question ' . $questionId;
-        }
-
-        $this->validateOnly('userAnswers.' . $this->currentQuestionIndex); // Validate for current question
-
-        UserResponse::updateOrCreate(
-            [
-                'user_id' => auth()->id(),
-                'question_id' => $questionId,
-            ],
-            [
-                'answer' => $this->userAnswers[$questionId],
-            ],
-        );
-    }
-
-    private function setUserAnswers()
-    {
-        $userResponses = UserResponse::where('user_id', auth()->id())->get();
-        $this->userAnswers = []; // Reset userAnswers to avoid duplication
-        foreach ($userResponses as $response) {
-            $this->userAnswers[$response->question_id] = $response->answer;
-        }
-        // Emit an event to trigger Livewire update
-        $this->dispatch('userAnswersUpdated');
-    }
-
     public function submitAnswers()
     {
-        // Implement logic to save user responses (userAnswers array) to database
+        // Validate all user answers
+        $this->validate();
+
+        // Save all user responses to database (optional, can be done in nextQuestion)
+        // foreach ($this->userAnswers as $questionId => $answer) {
+        //     $this->saveUserResponse($questionId);
+        // }
+
+        // Handle form submission after all answers are saved
         // ...
     }
 }; ?>
@@ -113,13 +107,13 @@ new class extends Component {
                         <div class="flex items-center mt-4 mb-8 space-x-4">
                             <label for="answer-yes" class="flex items-center space-x-2">
                                 <input id="answer-yes" type="radio" name="answer"
-                                    wire:model.defer="userAnswers.{{ $currentQuestionIndex }}" value="true"
+                                    wire:model.defer="userAnswers.{{ $currentQuestionIndex . answer }}" value="true"
                                     class="w-6 h-6 bg-gray-200 border-gray-300 rounded-full focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 checked:bg-indigo-500 checked:border-transparent">
                                 <span class="text-sm font-medium text-gray-700">Yes</span>
                             </label>
                             <label for="answer-no" class="flex items-center space-x-2">
                                 <input id="answer-no" type="radio" name="answer"
-                                    wire:model.defer="userAnswers.{{ $currentQuestionIndex }}" value="false"
+                                    wire:model.defer="userAnswers.{{ $currentQuestionIndex . answer }}" value="false"
                                     class="w-6 h-6 bg-gray-200 border-gray-300 rounded-full focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 checked:bg-indigo-500 checked:border-transparent">
                                 <span class="text-sm font-medium text-gray-700">No</span>
                             </label>
@@ -160,15 +154,4 @@ new class extends Component {
             </div>
         </div>
     </div>
-    <script>
-        Livewire.on('userAnswersUpdated', () => {
-            const radioInputs = document.querySelectorAll('input[name="answer"]');
-            for (const radioInput of radioInputs) {
-                const questionId = radioInput.value;
-                if (questionId && window.livewire_components[0].userAnswers[questionId]) {
-                    radioInput.checked = window.livewire_components[0].userAnswers[questionId] === radioInput.value;
-                }
-            }
-        });
-    </script>
 </div>
