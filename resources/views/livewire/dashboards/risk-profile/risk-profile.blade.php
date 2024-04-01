@@ -13,13 +13,6 @@ new class extends Component {
             'Values' => [0, 0, 0, 0], // Initialize all values to 0
             'tableData' => [
                 [
-                    'Name' => 'John Doe',
-                    'Email' => 'john.doe@example.com',
-                    'Organization' => 'ABC Corporation',
-                    'Department' => 'Marketing',
-                    'Score' => 85,
-                ],
-                [
                     'Name' => 'Jane Smith',
                     'Email' => 'jane.smith@example.com',
                     'Organization' => 'XYZ Inc.',
@@ -82,30 +75,23 @@ new class extends Component {
                     'Department' => 'Sales',
                     'Score' => 88,
                 ],
-                [
-                    'Name' => 'Christopher Rodriguez',
-                    'Email' => 'christopher.rodriguez@example.com',
-                    'Organization' => 'PQR Ltd.',
-                    'Department' => 'Human Resources',
-                    'Score' => 55,
-                ],
             ],
         ];
 
         // Calculate the distribution of scores
         foreach ($this->data['tableData'] as $row) {
-            if ($row['Score'] < 60) {
+            if ($row['Score'] < 50) {
                 $this->data['Values'][0]++; // Poor
-            } elseif ($row['Score'] < 80) {
+            } elseif ($row['Score'] < 60) {
                 $this->data['Values'][1]++; // Average
-            } elseif ($row['Score'] < 90) {
+            } elseif ($row['Score'] < 80) {
                 $this->data['Values'][2]++; // Good
             } else {
                 $this->data['Values'][3]++; // Excellent
             }
         }
 
-        $this->chartColors = ['#FF6384', '#22C55E', '#FCD34D', '#4BC0C0'];
+        $this->chartColors = ['#FF5733', '#FFA500', '#BAB86C', '#22C55E'];
     }
 }; ?>
 <div>
