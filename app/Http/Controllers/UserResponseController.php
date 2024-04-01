@@ -13,7 +13,7 @@ class UserResponseController extends Controller
      */
     public function index()
     {
-        return View('userresponses');
+        return View('user-responses');
     }
 
     /**

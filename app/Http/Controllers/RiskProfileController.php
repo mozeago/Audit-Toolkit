@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Template;
+use App\Models\RiskProfile;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class TemplateController extends Controller
+class RiskProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
-        return View('templates');
+        return View('risk-profile-dashboard');
     }
 
     /**
@@ -35,15 +35,15 @@ class TemplateController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(): View
+    public function show(RiskProfile $riskProfile)
     {
-        return View('templates-download');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Template $template)
+    public function edit(RiskProfile $riskProfile)
     {
         //
     }
@@ -51,7 +51,7 @@ class TemplateController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Template $template)
+    public function update(Request $request, RiskProfile $riskProfile)
     {
         //
     }
@@ -59,7 +59,7 @@ class TemplateController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Template $template)
+    public function destroy(RiskProfile $riskProfile)
     {
         //
     }
