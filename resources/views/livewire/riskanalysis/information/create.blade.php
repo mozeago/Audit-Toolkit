@@ -34,7 +34,7 @@ new class extends Component {
     }
     public function resetFields()
     {
-        return $this->reset('riskInformationText', 'riskInformationText', 'message');
+        return $this->reset('riskInformationText', 'rikSubSectionId', 'message');
     }
 }; ?>
 
