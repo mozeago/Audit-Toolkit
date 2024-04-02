@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\RiskInformation;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class RiskInformationController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
-        //
+        return View('risk-information');
     }
 
     /**
