@@ -12,8 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('risk_sub_sections', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->string('text');
+            $table->foreignUuid('risk_section_id')->constrained();
+            $table->index('risk_section_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -22,6 +26,9 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('risk_sub_sections', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
         Schema::dropIfExists('risk_sub_sections');
     }
 };

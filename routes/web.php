@@ -8,6 +8,7 @@ use App\Http\Controllers\RecommendationController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\RiskProfileController;
 use App\Http\Controllers\RiskSectionController;
+use App\Http\Controllers\RiskSubSectionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,9 +22,9 @@ Route::get('/recommendations', [RecommendationController::class, 'index'])->name
 Route::get('/questionnaire', [QuestionController::class, 'show'])->name('questionnaire');
 Route::get('/templates', [TemplateController::class, 'index'])->name('templates');
 Route::get('/templates-download', [TemplateController::class, 'show'])->name('templates-download');
-
 Route::get('/risk-profile-dashboard', [RiskProfileController::class, 'index'])->name('risk-profile-dashboard');
 Route::get('/risk-analysis-section', [RiskSectionController::class, 'index'])->name('risk-analysis-section');
+Route::get('/risk-analysis-subsection', [RiskSubSectionController::class, 'index'])->name('risk-analysis-subsection');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

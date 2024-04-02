@@ -3,8 +3,10 @@
 use Livewire\Volt\Component;
 use App\Models\RiskSection;
 use Livewire\Attributes\Validate;
+use Illuminate\Database\Eloquent\Collection;
 new class extends Component {
     public RiskSection $riskSection;
+    public Collection $riskSections;
 
     #[Validate('required|string|max:255')]
     public string $name = '';

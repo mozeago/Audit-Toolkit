@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\RiskSubSection;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class RiskSubSectionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
-        //
+        return View('risk-sub-section');
     }
 
     /**
