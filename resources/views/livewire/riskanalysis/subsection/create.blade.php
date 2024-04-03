@@ -1,41 +1,39 @@
-<?php
-
 use Livewire\Volt\Component;
 use App\Models\RiskSection;
 use App\Models\RiskSubSection;
 
 new class extends Component {
-    public string $message = '';
-    public $riskSections = [];
-    public $rikSectionId = '';
-    public $subSectionText = '';
-    public function mount()
-    {
-        $this->riskSections = RiskSection::all();
-    }
-    public function rules(): array
-    {
-        return [
-            'subSectionText' => 'required|string|min:20',
-            'rikSectionId' => 'required|string',
-        ];
-    }
-    public function store(): void
-    {
-        $validatedData = $this->validate();
-        $riskSubSection = RiskSubSection::create([
-            'text' => $validatedData['subSectionText'],
-            'risk_section_id' => $validatedData['rikSectionId'],
-        ]);
+public string $message = '';
+public $riskSections = [];
+public $rikSectionId = '';
+public $subSectionText = '';
+public function mount()
+{
+$this->riskSections = RiskSection::all();
+}
+public function rules(): array
+{
+return [
+'subSectionText' => 'required|string|min:20',
+'rikSectionId' => 'required|string',
+];
+}
+public function store(): void
+{
+$validatedData = $this->validate();
+$riskSubSection = RiskSubSection::create([
+'text' => $validatedData['subSectionText'],
+'risk_section_id' => $validatedData['rikSectionId'],
+]);
 
-        $this->message = 'Sub-Section Saved!';
-        $this->dispatch('risk-sub-section-created');
-        $this->resetFields();
-    }
-    public function resetFields()
-    {
-        return $this->reset('subSectionText', 'rikSectionId', 'message');
-    }
+$this->message = 'Sub-Section Saved!';
+$this->dispatch('risk-sub-section-created');
+$this->resetFields();
+}
+public function resetFields()
+{
+return $this->reset('subSectionText', 'rikSectionId', 'message');
+}
 }; ?>
 
 <div class="flex">
