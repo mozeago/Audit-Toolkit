@@ -14,7 +14,7 @@ new class extends Component {
     {
         $this->getRecommendations();
     }
-    #[On('risk-recommendation-edit-canceled')]
+    #[On('risk-recommendation-cancelled')]
     #[On('risk-recommendation-updated')]
     public function disableEditing(): void
     {

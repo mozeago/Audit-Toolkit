@@ -9,6 +9,7 @@ new class extends Component {
     public Collection $informationText;
     public string $recommendationText = '';
     public string $informationId = '';
+    public string $recommendationFor = '';
     public function mount()
     {
         $this->recommendationText = $this->recommendation->content;
@@ -24,6 +25,7 @@ new class extends Component {
         return [
             'recommendationText' => 'required|min:20',
             'informationId' => 'required|uuid|min:36',
+            'recommendationFor' => 'required|in:true,false',
         ];
     }
     public function update()
@@ -32,6 +34,7 @@ new class extends Component {
         $this->recommendation->update([
             'content' => $this->recommendationText,
             'information_id' => $this->informationId,
+            'question_response' => $this->recommendationFor,
         ]);
         $this->dispatch('recommendation-updated');
     }
@@ -52,6 +55,22 @@ new class extends Component {
                     @error('recommendationText')
                         <span class="mt-2 text-xs text-red-500">{{ $message }}</span>
                     @enderror
+                </div>
+                <div class="flex items-center mt-4 mb-8 space-x-4">
+                    <label for="recommendationFor"
+                        class="block mb-2 font-bold text-gray-700">{{ __('Recommendation For') }}:</label>
+                    <label for="answer-yes" class="flex items-center space-x-2">
+                        <input id="answer-yes" type="radio" name="answer" wire:model="recommendationFor"
+                            value="true"
+                            class="w-6 h-6 bg-gray-200 border-gray-300 rounded-full focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 checked:bg-indigo-500 checked:border-transparent">
+                        <span class="text-sm font-medium text-gray-700">Yes</span>
+                    </label>
+                    <label for="answer-no" class="flex items-center space-x-2">
+                        <input id="answer-no" type="radio" name="answer" wire:model="recommendationFor"
+                            value="false"
+                            class="w-6 h-6 bg-gray-200 border-gray-300 rounded-full focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 checked:bg-indigo-500 checked:border-transparent">
+                        <span class="text-sm font-medium text-gray-700">No</span>
+                    </label>
                 </div>
                 <div class="border border-gray-300 rounded-md shadow-sm">
                     <select wire:model="informationId" class="block w-full p-3 rounded-md focus:outline-none">
