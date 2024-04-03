@@ -49,6 +49,9 @@ new class extends Component {
                     <textarea wire:model="infoContent" type="text"
                         class="flex-grow p-3 border-r border-gray-300 focus:outline-none focus:ring focus:ring-green-500 focus:ring-opacity-50 rounded-l-md"
                         placeholder="{{ __('Quesion Information Text') }}" value="{{ $information->content }}"></textarea>
+                    @error('infoContent')
+                        <span class="mt-2 text-xs text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="border border-gray-300 rounded-md shadow-sm">
                     <select wire:model="questionId" class="block w-full p-3 rounded-md focus:outline-none">
@@ -58,6 +61,9 @@ new class extends Component {
                             <option value="{{ $question->id }}">{{ $question->text }}</option>
                         @endforeach
                     </select>
+                    @error('questionId')
+                        <span class="mt-2 text-xs text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="flex justify-start space-x-4">
                     <x-primary-button type="submit" class="btn btn-primary">{{ __('Update') }}</x-primary-button>

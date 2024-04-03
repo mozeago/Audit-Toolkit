@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\RiskRecommendation;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class RiskRecommendationController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
-        //
+        return View('risk-recommendation');
     }
 
     /**

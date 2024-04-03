@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('risk_sections', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('name');
+            $table->text('name');
             $table->timestamps();
             $table->softDeletes();
         });

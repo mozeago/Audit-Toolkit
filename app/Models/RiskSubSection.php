@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class RiskSubSection extends Model
+class RiskSubSection extends BaseModel
 {
     use HasFactory;
     use HasUuids;
@@ -20,5 +20,9 @@ class RiskSubSection extends Model
     public function belongsToRiskSection()
     {
         return $this->belongsTo(RiskSection::class);
+    }
+    public function hasManyRiskInformation()
+    {
+        return $this->hasMany(RiskInformation::class);
     }
 }

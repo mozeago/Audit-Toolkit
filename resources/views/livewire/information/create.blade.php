@@ -48,6 +48,9 @@ new class extends Component {
                 <textarea wire:model.defer="questionInformation" type="text" id="questionInformation"
                     placeholder="{{ __('Information Text') }}"
                     class="w-full h-32 px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                @error('questionInformation')
+                    <span class="mt-2 text-xs text-red-500">{{ $message }}</span>
+                @enderror
             </div>
 
             <div class="mb-4">
@@ -59,6 +62,9 @@ new class extends Component {
                         <option value="{{ $question->id }}">{{ $question->text }}</option>
                     @endforeach
                 </select>
+                @error('questionId')
+                    <span class="mt-2 text-xs text-red-500">{{ $message }}</span>
+                @enderror
             </div>
 
             <x-primary-button type="submit">{{ __('Save') }}</x-primary-button>

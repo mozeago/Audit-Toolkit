@@ -3,40 +3,40 @@
 use Livewire\Volt\Component;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\On;
-use App\Models\RiskInformation;
+use App\Models\RiskRecommendation;
 
 new class extends Component {
-    public Collection $riskInformation;
+    public Collection $riskRecommendations;
 
-    public ?RiskInformation $editing = null;
+    public ?RiskRecommendation $editing = null;
 
     public function mount(): void
     {
-        $this->getRiskInformation();
+        $this->getRecommendations();
     }
-    #[On('risk-information-edit-canceled')]
-    #[On('risk-information-updated')]
+    #[On('risk-recommendation-edit-canceled')]
+    #[On('risk-recommendation-updated')]
     public function disableEditing(): void
     {
         $this->editing = null;
 
-        $this->getRiskInformation();
+        $this->getRecommendations();
     }
-    #[On('risk-information-created')]
-    public function getRiskInformation(): void
+    #[On('risk-recommendation-created')]
+    public function getRecommendations(): void
     {
-        $this->riskInformation = RiskInformation::orderBy('created_at', 'desc')->get();
+        $this->riskRecommendations = RiskRecommendation::orderBy('created_at', 'desc')->get();
     }
 
-    public function edit(RiskInformation $riskInfo)
+    public function edit(RiskRecommendation $riskRecommendation)
     {
-        $this->editing = $riskInfo;
-        $this->getRiskInformation();
+        $this->editing = $riskRecommendation;
+        $this->getRecommendations();
     }
-    public function delete(RiskInformation $riskInformation): void
+    public function delete(RiskRecommendation $riskRecommendation): void
     {
-        $riskInformation->delete();
-        $this->getRiskInformation();
+        $riskRecommendation->delete();
+        $this->getRecommendations();
     }
 }; ?>
 <div class="overflow-x-auto bg-white rounded-lg shadow">
@@ -46,7 +46,7 @@ new class extends Component {
                 <tr>
                     <th
                         class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-700 uppercase border-b border-gray-200">
-                        Risk Information Text
+                        Risk Recommendation Text
                     </th>
                     <th
                         class="px-5 py-3 text-xs font-semibold tracking-wider text-right text-gray-700 uppercase border-b border-gray-200">
@@ -55,22 +55,22 @@ new class extends Component {
                 </tr>
             </thead>
             <tbody>
-                @foreach ($riskInformation as $riskInfo)
+                @foreach ($riskRecommendations as $riskRecommendation)
                     <tr class="hover:bg-gray-100">
                         <td class="px-5 py-5 text-sm font-normal text-gray-700 border-b border-gray-200">
-                            @if ($riskInfo->is($editing))
-                                <livewire:riskanalysis.information.edit :riskInfo="$riskInfo" :key="$riskInfo->id" />
+                            @if ($riskRecommendation->is($editing))
+                                <livewire:riskanalysis.recommendation.edit :riskRecommendation="$riskRecommendation" :key="$riskRecommendation->id" />
                             @else
-                                {{ $riskInfo->text }}
+                                {{ $riskRecommendation->text }}
                             @endif
                         </td>
                         <td
                             class="flex justify-end px-5 py-5 text-sm font-normal text-gray-700 border-b border-gray-200">
-                            <button wire:click.prevent="edit('{{ $riskInfo->id }}')" type="button"
+                            <button wire:click.prevent="edit('{{ $riskRecommendation->id }}')" type="button"
                                 class="inline-flex px-2 py-1 text-sm font-medium text-blue-500 border rounded-full hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                                 {{ __('Edit') }}
                             </button>
-                            <button wire:click.prevent="delete('{{ $riskInfo->id }}')" type="button"
+                            <button wire:click.prevent="delete('{{ $riskRecommendation->id }}')" type="button"
                                 class="inline-flex px-2 py-1 ml-2 text-sm font-medium text-red-500 border rounded-full hover:bg-red-100 focus">
                                 {{ __('Delete') }}
                             </button>

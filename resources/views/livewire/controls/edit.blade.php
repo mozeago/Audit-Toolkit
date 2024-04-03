@@ -50,7 +50,7 @@ new class extends Component {
             <input wire:model="name" type="text" id="name"
                 class="form-control @error('name') is-invalid @enderror" />
             @error('name')
-                <div class="invalid-feedback error-class">{{ $message }}</div>
+                <div class="text-red-500 invalid-feedback error-class">{{ $message }}</div>
             @enderror
         </div>
         <div class="flex flex-col w-full mb-4">
@@ -62,7 +62,7 @@ new class extends Component {
                 @endforeach
             </select>
             @error('section_id')
-                <div class="invalid-feedback error-class">{{ $message }}</div>
+                <div class="text-red-500 invalid-feedback error-class">{{ $message }}</div>
             @enderror
         </div>
         <x-primary-button type="submit" class="btn btn-primary">{{ __('Update') }}</x-primary-button>

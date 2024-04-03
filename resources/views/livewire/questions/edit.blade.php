@@ -50,6 +50,9 @@ new class extends Component {
                 <input wire:model="text" type="text" value="{{ $question->text }}"
                     class="flex-grow p-3 border-r border-gray-300 focus:outline-none focus:ring focus:ring-blue-500 focus:ring-opacity-50 rounded-l-md"
                     placeholder="Question Text">
+                @error('text')
+                    <span class="mt-2 text-xs text-red-500">{{ $message }}</span>
+                @enderror
             </div>
             <div class="border border-gray-300 rounded-md shadow-sm">
                 <select wire:model="control_id"
@@ -59,6 +62,9 @@ new class extends Component {
                         <option value="{{ $control->id }}">{{ $control->name }}</option>
                     @endforeach
                 </select>
+                @error('control_id')
+                    <span class="mt-2 text-xs text-red-500">{{ $message }}</span>
+                @enderror
             </div>
         </div>
         <x-primary-button type="submit"

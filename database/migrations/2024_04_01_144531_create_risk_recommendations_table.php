@@ -12,8 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('risk_recommendations', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->text('text');
+            $table->enum('question_response', ['true', 'false']);
+            $table->foreignUuid('risk_information_id')->constrained()->references('id')->on('risk_information');
+            $table->index('risk_information_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -22,6 +27,9 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('risk_recommendations', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
         Schema::dropIfExists('risk_recommendations');
     }
 };

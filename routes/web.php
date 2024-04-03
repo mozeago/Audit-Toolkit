@@ -10,6 +10,7 @@ use App\Http\Controllers\RiskProfileController;
 use App\Http\Controllers\RiskSectionController;
 use App\Http\Controllers\RiskSubSectionController;
 use App\Http\Controllers\RiskInformationController;
+use App\Http\Controllers\RiskRecommendationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,6 +28,7 @@ Route::get('/risk-profile-dashboard', [RiskProfileController::class, 'index'])->
 Route::get('/risk-analysis-section', [RiskSectionController::class, 'index'])->name('risk-analysis-section');
 Route::get('/risk-analysis-subsection', [RiskSubSectionController::class, 'index'])->name('risk-analysis-subsection');
 Route::get('/risk-analysis-information', [RiskInformationController::class, 'index'])->name('risk-analysis-information');
+Route::get('/risk-analysis-recommendation', [RiskRecommendationController::class, 'index'])->name('risk-analysis-recommendation');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

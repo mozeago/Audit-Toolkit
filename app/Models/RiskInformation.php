@@ -9,7 +9,7 @@ use App\Models\RiskSubSection;
 use App\Models\RiskRecommendation;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class RiskInformation extends Model
+class RiskInformation extends BaseModel
 {
     use HasFactory;
     use HasUuids;

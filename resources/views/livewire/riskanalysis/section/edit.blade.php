@@ -43,6 +43,9 @@ new class extends Component {
                     <input wire:model="name" type="text"
                         class="flex-grow p-3 border-r border-gray-300 focus:outline-none focus:ring focus:ring-green-500 focus:ring-opacity-50 rounded-l-md"
                         placeholder="Question Text" value="{{ $riskSection->name }}">
+                    @error('name')
+                        <span class="mt-2 text-xs text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="flex justify-start space-x-4">
                     <x-primary-button type="submit" class="btn btn-primary">{{ __('Update') }}</x-primary-button>

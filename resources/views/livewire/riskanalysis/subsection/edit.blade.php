@@ -59,7 +59,7 @@ new class extends Component {
                         class="flex-grow p-3 border-r border-gray-300 focus:outline-none focus:ring focus:ring-green-500 focus:ring-opacity-50 rounded-l-md"
                         placeholder="Risk Sub-Section Text" value="{{ $riskSubSection->text }}">
                     @error('text')
-                        <div class="invalid-feedback error-class">{{ $message }}</div>
+                        <div class="text-red-500 invalid-feedback error-class">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="flex flex-col w-full mb-4">
@@ -71,7 +71,7 @@ new class extends Component {
                         @endforeach
                     </select>
                     @error('riskSectionId')
-                        <div class="invalid-feedback error-class">{{ $message }}</div>
+                        <div class="text-red-500 invalid-feedback error-class">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="flex justify-start space-x-4">
