@@ -12,8 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('templates', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->text('name');
+            $table->text('category');
+            $table->text('url');
+            $table->text('thumbnail');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -22,6 +27,9 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('templates', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
         Schema::dropIfExists('templates');
     }
 };

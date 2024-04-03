@@ -12,4 +12,9 @@ class Template extends BaseModel
     use HasFactory;
     use HasUuids;
     use SoftDeletes;
+    protected $keyType = 'string';
+
+    public $incrementing = false;
+
+    protected $fillable = ['name', 'category', 'url', 'thumbnail'];
 }
