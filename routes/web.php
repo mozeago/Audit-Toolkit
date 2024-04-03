@@ -11,6 +11,7 @@ use App\Http\Controllers\RiskSectionController;
 use App\Http\Controllers\RiskSubSectionController;
 use App\Http\Controllers\RiskInformationController;
 use App\Http\Controllers\RiskRecommendationController;
+use App\Http\Controllers\GoogleLoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -29,7 +30,10 @@ Route::get('/risk-analysis-section', [RiskSectionController::class, 'index'])->n
 Route::get('/risk-analysis-subsection', [RiskSubSectionController::class, 'index'])->name('risk-analysis-subsection');
 Route::get('/risk-analysis-information', [RiskInformationController::class, 'index'])->name('risk-analysis-information');
 Route::get('/risk-analysis-recommendation', [RiskRecommendationController::class, 'index'])->name('risk-analysis-recommendation');
-
+// google login routes
+Route::get('/google/redirect', [GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');
+Route::get('/google/callback', [GoogleLoginController::class, 'handleGoogleCallback'])->name('google.callback');
+// end google login
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
