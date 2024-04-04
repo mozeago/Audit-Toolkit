@@ -163,12 +163,13 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <x-nav-link :href="route('risk-profile-dashboard')" wire:navigate
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 
-                        <span class="ms-3">Risk Profile Dashboard</span>
-                    </x-nav-link>
+                <li>
+                    <a href="{{ route('risk-profile-dashboard') }}"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <span>Risk Profile Dashboard</span>
+                    </a>
+
                 </li>
 
             </ul>
