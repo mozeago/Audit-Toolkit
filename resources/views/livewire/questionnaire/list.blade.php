@@ -56,7 +56,7 @@ new class extends Component {
         $userResponse->user_id = $userAnswer['user_id'];
         $userResponse->question_id = $userAnswer['question_id'];
         $userResponse->answer = $userAnswer['answer'];
-        $userResponse->updateOrCreate(['question_id' => $userAnswer['question_id']], $userAnswer);
+        $userResponse->save();
     }
 
     public function previousQuestion()
