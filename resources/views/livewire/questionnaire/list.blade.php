@@ -74,6 +74,7 @@ new class extends Component {
 
             // Save user response to database
             $this->saveUserResponse($userAnswer);
+            return redirect('dashboard');
         }
     }
 }; ?>
