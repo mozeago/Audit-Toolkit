@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('user_responses', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->enum('answer', ['true', 'false']);
-            $table->foreignId('user_id')->constrained();
+            $table->foreignUuid('user_id')->constrained();
             $table->foreignUuid('question_id')->constrained();
             $table->timestamps();
             $table->softDeletes();
