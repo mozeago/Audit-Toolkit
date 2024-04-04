@@ -1,7 +1,8 @@
 <?php
 
 use Livewire\Volt\Component;
-
+use App\Models\UserResponse;
+use App\Models\User;
 new class extends Component {
     public $data = [];
     public $chartColors = [];
@@ -11,80 +12,15 @@ new class extends Component {
         $this->data = [
             'Labels' => ['Poor', 'Average', 'Good', 'Excellent'], // Updated labels
             'Values' => [0, 0, 0, 0], // Initialize all values to 0
-            'tableData' => [
-                [
-                    'Name' => 'Jane Smith',
-                    'Email' => 'jane.smith@example.com',
-                    'Organization' => 'XYZ Inc.',
-                    'Department' => 'Human Resources',
-                    'Score' => 60,
-                ],
-                [
-                    'Name' => 'Michael Johnson',
-                    'Email' => 'michael.johnson@example.com',
-                    'Organization' => 'LMN Enterprises',
-                    'Department' => 'Finance',
-                    'Score' => 52,
-                ],
-                [
-                    'Name' => 'Emily Brown',
-                    'Email' => 'emily.brown@example.com',
-                    'Organization' => 'PQR Ltd.',
-                    'Department' => 'Information Technology',
-                    'Score' => 98,
-                ],
-                [
-                    'Name' => 'David Wilson',
-                    'Email' => 'david.wilson@example.com',
-                    'Organization' => 'XYZ Inc.',
-                    'Department' => 'Sales',
-                    'Score' => 75,
-                ],
-                [
-                    'Name' => 'Sarah Martinez',
-                    'Email' => 'sarah.martinez@example.com',
-                    'Organization' => 'ABC Corporation',
-                    'Department' => 'Human Resources',
-                    'Score' => 45,
-                ],
-                [
-                    'Name' => 'James Taylor',
-                    'Email' => 'james.taylor@example.com',
-                    'Organization' => 'PQR Ltd.',
-                    'Department' => 'Finance',
-                    'Score' => 80,
-                ],
-                [
-                    'Name' => 'Jessica Miller',
-                    'Email' => 'jessica.miller@example.com',
-                    'Organization' => 'XYZ Inc.',
-                    'Department' => 'Marketing',
-                    'Score' => 65,
-                ],
-                [
-                    'Name' => 'Robert Davis',
-                    'Email' => 'robert.davis@example.com',
-                    'Organization' => 'LMN Enterprises',
-                    'Department' => 'Information Technology',
-                    'Score' => 70,
-                ],
-                [
-                    'Name' => 'Amanda Garcia',
-                    'Email' => 'amanda.garcia@example.com',
-                    'Organization' => 'ABC Corporation',
-                    'Department' => 'Sales',
-                    'Score' => 88,
-                ],
-            ],
+            'tableData' => $this->getUserAnswers(),
         ];
-
         // Calculate the distribution of scores
         foreach ($this->data['tableData'] as $row) {
-            if ($row['Score'] < 50) {
+            if ($row['score'] < 50) {
                 $this->data['Values'][0]++; // Poor
-            } elseif ($row['Score'] < 60) {
+            } elseif ($row['score'] < 60) {
                 $this->data['Values'][1]++; // Average
-            } elseif ($row['Score'] < 80) {
+            } elseif ($row['score'] < 80) {
                 $this->data['Values'][2]++; // Good
             } else {
                 $this->data['Values'][3]++; // Excellent
@@ -92,6 +28,11 @@ new class extends Component {
         }
 
         $this->chartColors = ['#FF5733', '#FFA500', '#BAB86C', '#22C55E'];
+    }
+    public function getUserAnswers()
+    {
+        $groupedAnswers = User::select('users.name', 'users.email', 'user_responses.user_id')->leftJoin('user_responses', 'users.id', '=', 'user_responses.user_id')->groupBy('users.id', 'users.name', 'users.email', 'user_responses.user_id')->selectRaw('sum(case when user_responses.answer = \'false\' then 1 else 0 end) as false_count')->selectRaw('sum(case when user_responses.answer = \'true\' then 1 else 0 end) as true_count')->selectRaw('round( (sum(case when user_responses.answer = \'true\' then 1 else 0 end) / count(*)) * 100, 2) as score')->get();
+        return $groupedAnswers->toArray();
     }
 }; ?>
 <div>
@@ -110,24 +51,20 @@ new class extends Component {
                 <tr class="font-medium text-left text-white bg-gray-500">
                     <th class="px-4 py-2">Name</th>
                     <th class="px-4 py-2">Email</th>
-                    <th class="px-4 py-2">Organization</th>
-                    <th class="px-4 py-2">Department</th>
                     <th class="px-4 py-2">Score</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($data['tableData'] as $row)
                     <tr>
-                        <td class="px-4 py-2 border-b border-gray-200">{{ $row['Name'] }}</td>
-                        <td class="px-4 py-2 border-b border-gray-200">{{ $row['Email'] }}</td>
-                        <td class="px-4 py-2 border-b border-gray-200">{{ $row['Organization'] }}</td>
-                        <td class="px-4 py-2 border-b border-gray-200">{{ $row['Department'] }}</td>
+                        <td class="px-4 py-2 border-b border-gray-200">{{ $row['name'] }}</td>
+                        <td class="px-4 py-2 border-b border-gray-200">{{ $row['email'] }}</td>
                         <td class="px-4 py-2 border-b border-gray-200">
                             <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs">
-                                {{ $row['Score'] }}
-                                @if ($row['Score'] >= 80)
+                                {{ $row['score'] }}
+                                @if ($row['score'] >= 70)
                                     <span class="ml-2 bg-green-500 text-white rounded-full px-1.5 py-0.5">Good</span>
-                                @elseif ($row['Score'] >= 60)
+                                @elseif ($row['score'] >= 40)
                                     <span
                                         class="ml-2 bg-orange-500 text-white rounded-full px-1.5 py-0.5">Average</span>
                                 @else
