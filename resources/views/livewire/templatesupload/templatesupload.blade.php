@@ -20,32 +20,32 @@ new class extends Component {
     {
         return [
             'file' => 'required|file|mimetypes:application/pdf,application/msword',
-            // 'thumbnail' => 'nullable|image|max:2048|mimetypes:application/jpg,application/jpeg,application/png',
-            // 'filename' => 'nullable|required|string|max:255',
+            'thumbnail' => 'nullable|image|max:2048|mimetypes:image/jpg,image/jpeg,image/png',
+            'filename' => 'nullable|required|string|max:255',
             'template_category' => 'required|string|max:255',
         ];
     }
 
     public function save()
     {
-        // if (!isset($this->thumbnail) || !isset($this->filename)) {
-        //     $this->addError('filename', 'Filename and/or thumbnail is required');
-        //     return;
-        // }
+        if (!isset($this->thumbnail) || !isset($this->filename)) {
+            $this->addError('filename', 'Filename and/or thumbnail is required');
+            return;
+        }
 
         $this->validate();
 
         $extension = $this->file->getClientOriginalExtension();
         $this->file->storeAs('templates', $this->filename . '.' . $extension);
-        // $thumbnailExtension = $this->thumbnail->getClientOriginalExtension();
-        // $this->thumbnail->storeAs('thumbnails', $this->filename . '-thumb.' . $thumbnailExtension);
+        $thumbnailExtension = $this->thumbnail->getClientOriginalExtension();
+        $this->thumbnail->storeAs('thumbnails', $this->filename . '-thumb.' . $thumbnailExtension);
 
-        // Template::create([
-        //     'name' => $this->filename . '.' . $extension,
-        //     'url' => $this->filename . '.' . $extension,
-        //     'category' => $this->template_category,
-        //     // 'thumbnail' => $this->filename . '-thumb.' . $thumbnailExtension,
-        // ]);
+        Template::create([
+            'name' => $this->filename . '.' . $extension,
+            'url' => $this->filename . '.' . $extension,
+            'category' => $this->template_category,
+            'thumbnail' => $this->filename . '-thumb.' . $thumbnailExtension,
+        ]);
 
         $this->showSuccessToast = true;
         $this->reset();
@@ -91,7 +91,7 @@ new class extends Component {
                 <span class="text-xs text-gray-500">{{ __('Allowed file types: PDF, Word (.docx)') }}</span>
             </div>
 
-            {{-- <div class="mb-8">
+            <div class="mb-8">
                 <label for="thumbnail" class="block text-sm font-medium text-gray-700">{{ __('Thumbnail') }}:</label>
                 <div class="relative">
                     <input wire:model="thumbnail" type="file" id="thumbnail"
@@ -101,7 +101,7 @@ new class extends Component {
                     <span class="text-xs text-red-500">{{ $message }}</span>
                 @enderror
                 <span class="text-xs text-gray-500">{{ __('Allowed file types: Images (.jpg, .jpeg, .png)') }}</span>
-            </div> --}}
+            </div>
             <x-primary-button wire:click.prevent="save"
                 class="px-4 py-2 mt-4 text-white bg-blue-500 rounded shadow hover:bg-blue-700">
                 {{ __('Upload Template') }}
