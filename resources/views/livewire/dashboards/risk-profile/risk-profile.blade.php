@@ -31,7 +31,15 @@ new class extends Component {
     }
     public function getUserAnswers()
     {
-        $groupedAnswers = User::select('users.name', 'users.email', 'user_responses.user_id')->leftJoin('user_responses', 'users.id', '=', 'user_responses.user_id')->groupBy('users.id', 'users.name', 'users.email', 'user_responses.user_id')->selectRaw('sum(case when user_responses.answer = \'false\' then 1 else 0 end) as false_count')->selectRaw('sum(case when user_responses.answer = \'true\' then 1 else 0 end) as true_count')->selectRaw('round( (sum(case when user_responses.answer = \'true\' then 1 else 0 end) / count(*)) * 100) as score')->get();
+        $groupedAnswers = User::select('users.name', 'users.email')
+            ->leftJoin('user_responses', 'users.id', '=', 'user_responses.user_id')
+            ->groupBy('users.id', 'users.name', 'users.email')
+            ->havingRaw('count(user_responses.id) > 0') // This line ensures users with data
+            ->selectRaw('sum(case when user_responses.answer = \'false\' then 1 else 0 end) as false_count')
+            ->selectRaw('sum(case when user_responses.answer = \'true\' then 1 else 0 end) as true_count')
+            ->selectRaw('round( (sum(case when user_responses.answer = \'true\' then 1 else 0 end) / count(*)) * 100) as score')
+            ->get();
+
         return $groupedAnswers->toArray();
     }
 }; ?>
