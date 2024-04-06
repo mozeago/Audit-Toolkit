@@ -48,7 +48,7 @@ new class extends Component {
         ]);
 
         $this->showSuccessToast = true;
-        $this->reset();
+        $this->reset('filename', 'template_category', 'file', '');
     }
 }; ?>
 

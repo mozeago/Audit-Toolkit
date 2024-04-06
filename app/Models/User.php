@@ -15,7 +15,8 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
     use SoftDeletes;
     use HasUuids;
-
+    protected $keyType = 'string';
+    public $incrementing = false;
     /**
      * The attributes that are mass assignable.
      *
