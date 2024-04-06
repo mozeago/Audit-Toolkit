@@ -128,14 +128,14 @@ new class extends Component {
                         {{ count($questions) }}</h2>
                     <p class="mb-8 text-lg leading-loose">{{ $questions[$currentQuestionIndex]->text }}</p>
                     <div class="flex items-center mt-4 space-x-4">
-                        <div class="flex items-center mt-4 mb-8 space-x-4">
-                            <label for="answer-yes" class="flex items-center space-x-2">
+                        <div class="flex items-center w-full mt-4 mb-8 space-x-4">
+                            <label for="answer-yes" class="flex items-center w-full space-x-2">
                                 <input id="answer-yes" type="radio" name="answer"
                                     wire:model.defer="userAnswers.{{ $currentQuestionIndex }}.answer" value="true"
                                     class="w-6 h-6 bg-gray-200 border-gray-300 rounded-full focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 checked:bg-indigo-500 checked:border-transparent">
                                 <span class="text-sm font-medium text-gray-700">Yes</span>
                             </label>
-                            <label for="answer-no" class="flex items-center space-x-2">
+                            <label for="answer-no" class="flex items-center w-full space-x-2">
                                 <input id="answer-no" type="radio" name="answer"
                                     wire:model.defer="userAnswers.{{ $currentQuestionIndex }}.answer" value="false"
                                     class="w-6 h-6 bg-gray-200 border-gray-300 rounded-full focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 checked:bg-indigo-500 checked:border-transparent">
