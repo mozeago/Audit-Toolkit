@@ -29,8 +29,8 @@ Route::get('/recommendations', [RecommendationController::class, 'index'])
     ->middleware(['auth'])->name('recommendations');
 Route::get('/questionnaire', [QuestionController::class, 'show'])
     ->middleware(['auth'])->name('questionnaire');
-Route::get('/templates', [TemplateController::class, 'index'])
-    ->middleware(['auth'])->name('templates');
+Route::get('/templates-upload', [TemplateController::class, 'index'])
+    ->middleware(['auth'])->name('templates-upload');
 Route::get('/templates-download', [TemplateController::class, 'show'])
     ->middleware(['auth'])->name('templates-download');
 Route::get('/risk-profile-dashboard', [RiskProfileController::class, 'index'])

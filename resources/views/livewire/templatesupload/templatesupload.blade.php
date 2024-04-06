@@ -42,13 +42,13 @@ new class extends Component {
 
         Template::create([
             'name' => $this->filename . '.' . $extension,
-            'url' => $this->filename . '.' . $extension,
+            'url' => 'templates/' . $this->filename . '.' . $extension,
+            'thumbnail' => 'thumbnails/' . $this->filename . '-thumb.' . $thumbnailExtension,
             'category' => $this->template_category,
-            'thumbnail' => $this->filename . '-thumb.' . $thumbnailExtension,
         ]);
 
         $this->showSuccessToast = true;
-        $this->reset('filename', 'template_category', 'file', '');
+        $this->reset('filename', 'template_category', 'file', 'thumbnail');
     }
 }; ?>
 

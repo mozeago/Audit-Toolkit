@@ -14,7 +14,7 @@ new class extends Component {
 
     public function loadTemplates()
     {
-        return Template::all()->sortBy('created_at', 'desc')->get();
+        return Template::orderBy('created_at', 'desc')->get();
     }
 }; ?>
 
@@ -24,11 +24,14 @@ new class extends Component {
             <div class="rounded-lg shadow-md card">
                 <div class="card-body">
                     @if ($template->thumbnail != '')
-                        <img src="{{ 'storage/app/thumbnails/.'$template->thumbnail }}" alt="{{ $template->name }} thumbnail">
+                        <img src="{{ asset('storage/thumbnails/' . $template->thumbnail) }}"
+                            alt="{{ $template->name }} thumbnail">
                     @endif
                     <h5 class="card-title">{{ $template->name }}</h5>
-                    <a href="{{ 'storage/app/templates/'.$template->url }}" target="_blank" class="btn btn-primary">Preview</a>
-                    <a href="{{ $template->url }}" download class="btn btn-secondary">Download</a>
+                    <a href="{{ 'storage/app/templates/' . $template->url }}" target="_blank"
+                        class="btn btn-primary">Preview</a>
+                    <a href="{{ 'storage/app/templates/' . $template->url }}" download
+                        class="btn btn-secondary">Download</a>
                 </div>
             </div>
         @endforeach
