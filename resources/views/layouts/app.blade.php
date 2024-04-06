@@ -25,9 +25,15 @@
             <ul>
                 <li>
                     <button @click="open = !open"
-                        class="flex items-center justify-between w-full px-4 py-2 text-gray-500 hover:bg-gray-700 hover:text-white focus:outline-none focus:bg-gray-600">
+                        class="flex w-full px-1 py-2 text-gray-500 hover:bg-gray-700 hover:text-white focus:outline-none focus:bg-gray-600">
 
-                        <span class="ml-5">Audit TooKit</span>
+                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                            viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9.5 11.5 11 13l4-3.5M12 20a16.405 16.405 0 0 1-5.092-5.804A16.694 16.694 0 0 1 5 6.666L12 4l7 2.667a16.695 16.695 0 0 1-1.908 7.529A16.406 16.406 0 0 1 12 20Z" />
+                        </svg>
+                        <span class="ml-2">Audit TooKit</span>
                         <svg :class="{ 'rotate-180': open }" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -114,24 +120,32 @@
                         {{ __('Audit Questionnaire') }}
                     </x-nav-link>
                 </li>
-                <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
-                    :href="route('risk-profile-dashboard')" :active="request()->routeIs('risk-profile-dashboard')" wire:navigate>
-                    <svg class="w-6 h-6 mr-2 text-gray-800 dark:text-white" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                        viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M10 6.025A7.5 7.5 0 1 0 17.975 14H10V6.025Z" />
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M13.5 3c-.169 0-.334.014-.5.025V11h7.975c.011-.166.025-.331.025-.5A7.5 7.5 0 0 0 13.5 3Z" />
-                    </svg>
+                <li>
+                    <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
+                        :href="route('risk-profile-dashboard')" :active="request()->routeIs('risk-profile-dashboard')" wire:navigate>
+                        <svg class="w-6 h-6 mr-2 text-gray-800 dark:text-white" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                            viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 6.025A7.5 7.5 0 1 0 17.975 14H10V6.025Z" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13.5 3c-.169 0-.334.014-.5.025V11h7.975c.011-.166.025-.331.025-.5A7.5 7.5 0 0 0 13.5 3Z" />
+                        </svg>
 
-                    {{ __('Risk Profile Dashboard') }}
-                </x-nav-link>
+                        {{ __('Risk Profile Dashboard') }}
+                    </x-nav-link>
                 </li>
                 <li>
                     <button @click="isOpen = !isOpen"
-                        class="flex items-center justify-between w-full px-4 py-2 text-gray-500 hover:bg-gray-700 hover:text-white focus:outline-none focus:bg-gray-600">
-                        <span class="ml-5">{{ __('Risk Analysis') }}</span>
+                        class="flex w-full px-1 py-2 text-gray-500 hover:bg-gray-700 hover:text-white focus:outline-none focus:bg-gray-600">
+                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                            viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M4 4.5V19a1 1 0 0 0 1 1h15M7 14l4-4 4 4 5-5m0 0h-3.207M20 9v3.207" />
+                        </svg>
+                        <span class="ml-2">{{ __('Risk Analysis') }}</span>
                         <svg :class="{ 'rotate-180': open }" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
