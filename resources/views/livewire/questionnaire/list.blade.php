@@ -39,7 +39,6 @@ new class extends Component {
             $this->addError('answer', 'Please select an answer before proceeding.');
             return;
         }
-
         // Prepare user answer data (only if answer exists)
         if (isset($this->userAnswers[$this->currentQuestionIndex])) {
             $userAnswer = $this->userAnswers[$this->currentQuestionIndex];
@@ -99,6 +98,15 @@ new class extends Component {
 
 <div>
     <div class="container px-4 py-8 mx-auto">
+        <!-- Progress Indicator -->
+        <div class="mb-4">
+            <div class="h-4 bg-gray-200 rounded-lg">
+                <div class="h-full bg-green-500 rounded-lg"
+                    style="width: {{ (($currentQuestionIndex + 1) / count($questions)) * 100 }}%"></div>
+            </div>
+            <div class="mt-1 text-xs text-gray-600">{{ $currentQuestionIndex + 1 }} of {{ count($questions) }} questions
+                answered</div>
+        </div>
         <div class="flex flex-col md:flex-row md:space-x-4">
             <div class="flex flex-col md:flex-row md:space-x-4">
                 <button wire:click="previousQuestion" class="btn btn-outline-secondary disabled:opacity-50"
