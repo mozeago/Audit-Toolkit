@@ -34,6 +34,12 @@ new class extends Component {
 
     public function nextQuestion()
     {
+        // Check if user has provided an answer before proceeding
+        if (!isset($this->userAnswers[$this->currentQuestionIndex]['answer'])) {
+            $this->addError('answer', 'Please select an answer before proceeding.');
+            return;
+        }
+
         // Prepare user answer data (only if answer exists)
         if (isset($this->userAnswers[$this->currentQuestionIndex])) {
             $userAnswer = $this->userAnswers[$this->currentQuestionIndex];
@@ -52,11 +58,23 @@ new class extends Component {
 
     private function saveUserResponse($userAnswer)
     {
-        $userResponse = new UserResponse();
-        $userResponse->user_id = $userAnswer['user_id'];
-        $userResponse->question_id = $userAnswer['question_id'];
-        $userResponse->answer = $userAnswer['answer'];
-        $userResponse->save();
+        // Check if a response already exists for the current question
+        $existingResponse = UserResponse::where('user_id', $userAnswer['user_id'])
+            ->where('question_id', $userAnswer['question_id'])
+            ->first();
+
+        if ($existingResponse) {
+            // Update the existing response
+            $existingResponse->answer = $userAnswer['answer'];
+            $existingResponse->save();
+        } else {
+            // Create a new response
+            $userResponse = new UserResponse();
+            $userResponse->user_id = $userAnswer['user_id'];
+            $userResponse->question_id = $userAnswer['question_id'];
+            $userResponse->answer = $userAnswer['answer'];
+            $userResponse->save();
+        }
     }
 
     public function previousQuestion()
@@ -115,10 +133,20 @@ new class extends Component {
                                     class="w-6 h-6 bg-gray-200 border-gray-300 rounded-full focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 checked:bg-indigo-500 checked:border-transparent">
                                 <span class="text-sm font-medium text-gray-700">No</span>
                             </label>
+                            @error('answer')
+                                <span class="mt-2 text-red-500 text-l">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                 @else
-                    <p>No questions here to answer !</p>
+                    <div class="w-full text-center">
+                        <svg class="w-24 h-24 mx-auto text-gray-400" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                        <p class="mt-4 text-lg text-gray-500">No questions available.</p>
+                    </div>
                 @endif
                 <div class="w-full p-4 mt-12 border border-t border-gray-200 rounded-lg shadow-md bg-gray-50">
                     <div class="prose max-w-none">
