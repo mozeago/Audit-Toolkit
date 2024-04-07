@@ -31,9 +31,9 @@ new class extends Component {
     }
     public function getUserAnswers()
     {
-        $groupedAnswers = User::select('users.name', 'users.email')
+        $groupedAnswers = User::select('users.name', 'users.email', 'user_responses.organization', 'user_responses.department')
             ->leftJoin('user_responses', 'users.id', '=', 'user_responses.user_id')
-            ->groupBy('users.id', 'users.name', 'users.email')
+            ->groupBy('users.id', 'users.name', 'users.email', 'user_responses.organization', 'user_responses.department')
             ->havingRaw('count(user_responses.id) > 0') // This line ensures users with data
             ->selectRaw('sum(case when user_responses.answer = \'false\' then 1 else 0 end) as false_count')
             ->selectRaw('sum(case when user_responses.answer = \'true\' then 1 else 0 end) as true_count')
@@ -59,6 +59,8 @@ new class extends Component {
                 <tr class="font-medium text-left text-white bg-gray-500">
                     <th class="px-4 py-2">Name</th>
                     <th class="px-4 py-2">Email</th>
+                    <th class="px-4 py-2">Organization</th>
+                    <th class="px-4 py-2">Department</th>
                     <th class="px-4 py-2">Score</th>
                 </tr>
             </thead>
@@ -67,6 +69,8 @@ new class extends Component {
                     <tr>
                         <td class="px-4 py-2 border-b border-gray-200">{{ $row['name'] }}</td>
                         <td class="px-4 py-2 border-b border-gray-200">{{ $row['email'] }}</td>
+                        <td class="px-4 py-2 border-b border-gray-200">{{ $row['organization'] }}</td>
+                        <td class="px-4 py-2 border-b border-gray-200">{{ $row['department'] }}</td>
                         <td class="px-4 py-2 border-b border-gray-200">
                             <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs">
                                 {{ $row['score'] }}
