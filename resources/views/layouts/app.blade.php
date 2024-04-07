@@ -117,7 +117,7 @@
                                 d="M9.529 9.988a2.502 2.502 0 1 1 5 .191A2.441 2.441 0 0 1 12 12.582V14m-.01 3.008H12M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
 
-                        {{ __('Audit Questionnaire') }}
+                        {{ __('Audit Toolkit Questionnaire') }}
                     </x-nav-link>
                 </li>
                 <li>
@@ -181,6 +181,21 @@
                             </li>
                         </ul>
                     </div>
+                </li>
+                <li>
+                    <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
+                        :href="route('risk-analysis-questionnaire')" :active="request()->routeIs('risk-analysis-questionnaire')" wire:navigate>
+                        <svg class="w-6 h-6 mr-2 text-gray-800 dark:text-white" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                            viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z" />
+                        </svg>
+
+
+                        {{ __('Risk Analysis Questionnaire') }}
+                    </x-nav-link>
                 </li>
             </ul>
         </div>
