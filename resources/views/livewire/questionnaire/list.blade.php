@@ -9,11 +9,32 @@ new class extends Component {
     public $userAnswers = [];
     public $userAnswer = [];
     public $questions;
+    public $organization;
+    public $department;
+    public $answeredQuestionsCount = 0;
+    public $totalQuestionsCount = 0;
     public function mount()
     {
+        $this->answeredQuestionsCount = UserResponse::where('user_id', auth()->id())->count();
+        $this->totalQuestionsCount = Question::count();
+        $this->hasAnsweredQuestions();
         $this->fetchQuestions();
     }
-
+    public function hasAnsweredQuestions()
+    {
+        if ($this->totalQuestionsCount > 0) {
+            if ($this->answeredQuestionsCount >= 0 && $this->answeredQuestionsCount !== $this->totalQuestionsCount) {
+                $this->showQuestionnairePage = true;
+            }
+        }
+    }
+    public function openQuestionnaire()
+    {
+        $this->validate([
+            'organization' => 'required|min:3',
+            'department' => 'required|min:2',
+        ]);
+    }
     private function getUserResponse(int $questionId): ?string
     {
         return UserResponse::where('user_id', auth()->id())->where('question_id', $questionId)->value('answer');
@@ -44,7 +65,8 @@ new class extends Component {
             $userAnswer = $this->userAnswers[$this->currentQuestionIndex];
             $userAnswer['user_id'] = auth()->id();
             $userAnswer['question_id'] = $this->questions[$this->currentQuestionIndex]->id;
-
+            $userAnswer['organization'] = $this->organization;
+            $userAnswer['department'] = $this->department;
             // Save user response to database
             $this->saveUserResponse($userAnswer);
         }
@@ -72,6 +94,8 @@ new class extends Component {
             $userResponse->user_id = $userAnswer['user_id'];
             $userResponse->question_id = $userAnswer['question_id'];
             $userResponse->answer = $userAnswer['answer'];
+            $userResponse->organization = $userAnswer['organization'];
+            $userResponse->department = $userAnswer['department'];
             $userResponse->save();
         }
     }
@@ -88,6 +112,8 @@ new class extends Component {
             $userAnswer = $this->userAnswers[$this->currentQuestionIndex];
             $userAnswer['user_id'] = auth()->id();
             $userAnswer['question_id'] = $this->questions[$this->currentQuestionIndex]->id;
+            $userAnswer['organization'] = $this->organization;
+            $userAnswer['department'] = $this->department;
 
             // Save user response to database
             $this->saveUserResponse($userAnswer);
@@ -98,6 +124,30 @@ new class extends Component {
 
 <div>
     <div class="container px-4 py-8 mx-auto">
+        <div class="mb-4">
+            <h2 class="mb-4 text-2xl font-semibold">Organization and Department Information</h2>
+            <form wire:submit.prevent="openQuestionnaire">
+                <div class="mb-4">
+                    <label for="organization" class="block mb-1 text-gray-700">Organization</label>
+                    <input id="organization" type="text" wire:model.defer="organization"
+                        class="w-full px-4 py-2 border rounded-md" value="{{ $this->organization }}">
+                    @error('organization')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="mb-4">
+                    <label for="department" class="block mb-1 text-gray-700">Department</label>
+                    <input id="department" type="text" wire:model.defer="department"
+                        class="w-full px-4 py-2 border rounded-md" value="{{ $this->department }}">
+                    @error('department')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div>
+                    <x-primary-button type="submit" class="btn btn-primary">Next</x-primary-button>
+                </div>
+            </form>
+        </div>
         <!-- Progress Indicator -->
         <div class="mb-4">
             <div class="h-4 bg-gray-200 rounded-lg">
