@@ -164,7 +164,7 @@
                             <li class="w-full">
                                 <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
                                     :href="route('risk-analysis-subsection')" :active="request()->routeIs('risk-analysis-subsection')" wire:navigate>
-                                    {{ __('Risk Sub-Section') }}
+                                    {{ __('Risk Analysis Questions') }}
                                 </x-nav-link>
                             </li>
                             <li class="w-full">

@@ -48,7 +48,7 @@ new class extends Component {
                 <tr>
                     <th
                         class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-700 uppercase border-b border-gray-200">
-                        Risk Sub-Section Text
+                        {{ __('Risk Analysis Question Text') }}
                     </th>
                     <th
                         class="px-5 py-3 text-xs font-semibold tracking-wider text-right text-gray-700 uppercase border-b border-gray-200">

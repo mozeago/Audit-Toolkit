@@ -165,7 +165,7 @@ new class extends Component {
                         </div>
                     </form>
                 </div>
-            @else
+            @elseif (count($questions) > 0 && $currentQuestionIndex < count($questions))
                 <!-- Progress Indicator -->
                 <div class="mb-4">
                     <div class="h-4 bg-gray-200 rounded-lg">
