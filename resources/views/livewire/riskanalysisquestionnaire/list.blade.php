@@ -3,6 +3,7 @@
 use Livewire\Volt\Component;
 use App\Models\RiskAnalysisResponse;
 use App\Models\RiskSubSection;
+use App\MOdels\User;
 new class extends Component {
     public $currentQuestionIndex = 0;
     public $userAnswers = [];
@@ -16,6 +17,7 @@ new class extends Component {
     public $hasAnsweredQuestionnaire = true;
     public function mount()
     {
+        $this->currentQuestionIndex = auth()->risk_analysis_last_question_index ?? 0;
         $this->answeredQuestionsCount = RiskAnalysisResponse::where('user_id', auth()->id())->count();
         $this->totalQuestionsCount = RiskSubSection::count();
         $this->hasAnsweredQuestions();
@@ -25,6 +27,12 @@ new class extends Component {
     {
         if ($this->totalQuestionsCount > 0) {
             if ($this->answeredQuestionsCount >= 0 && $this->answeredQuestionsCount !== $this->totalQuestionsCount) {
+                $companyDetails = RiskAnalysisResponse::where('user_id', auth()->id())->first();
+                if ($companyDetails) {
+                    $this->organization = $companyDetails->organization;
+                    $this->department = $companyDetails->department;
+                    $this->showOrganizationForm = false;
+                }
                 return true;
             }
         }
@@ -99,6 +107,11 @@ new class extends Component {
             $userResponse->organization = $userAnswer['organization'];
             $userResponse->department = $userAnswer['department'];
             $userResponse->save();
+            $user = User::find($userAnswer['user_id']);
+            if ($user) {
+                $user->risk_analysis_last_question_index = $this->currentQuestionIndex + 1;
+                $user->save();
+            }
         }
     }
 
@@ -157,7 +170,9 @@ new class extends Component {
                 <div class="mb-4">
                     <div class="h-4 bg-gray-200 rounded-lg">
                         <div class="h-full bg-green-500 rounded-lg"
-                            style="width: {{ (($currentQuestionIndex + 1) / count($questions)) * 100 }}%"></div>
+                            style="width: {{ (($currentQuestionIndex + 1) / count($questions)) * 100 }}%">
+                        </div>
+
                     </div>
                     <div class="mt-1 text-xs text-gray-600">{{ $currentQuestionIndex + 1 }} of {{ count($questions) }}
                         questions
@@ -251,7 +266,8 @@ new class extends Component {
     @else
         <div class="relative px-4 py-3 text-green-700 bg-green-100 border border-green-400 rounded" role="alert">
             <strong class="font-bold">Info:</strong>
-            <span class="block sm:inline">Thank you ! You have already taken the questionnaire.</span>
+            <span class="block sm:inline">Thank you ! You have already taken the <strong>Risk Analysis</strong>
+                questionnaire.</span>
         </div>
     @endif
 </div>
