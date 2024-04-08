@@ -23,72 +23,80 @@
         aria-label="Sidebar">
         <div x-data="{ open: false, isOpen: false }">
             <ul>
-                <li>
-                    <button @click="open = !open"
-                        class="flex w-full px-1 py-2 text-gray-500 hover:bg-gray-700 hover:text-white focus:outline-none focus:bg-gray-600">
+                @if (auth()->user()->role === 'admin')
+                    <li>
+                        <button @click="open = !open"
+                            class="flex w-full px-1 py-2 text-gray-500 hover:bg-gray-700 hover:text-white focus:outline-none focus:bg-gray-600">
 
-                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                            viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9.5 11.5 11 13l4-3.5M12 20a16.405 16.405 0 0 1-5.092-5.804A16.694 16.694 0 0 1 5 6.666L12 4l7 2.667a16.695 16.695 0 0 1-1.908 7.529A16.406 16.406 0 0 1 12 20Z" />
-                        </svg>
-                        <span class="ml-2">Audit TooKit</span>
-                        <svg :class="{ 'rotate-180': open }" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
-                    <div x-show="open" class="block px-8 py-2 text-gray-300 hover:bg-gray-200 hover:text-white">
-                        <ul>
-                            <li class="w-ful">
-                                <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
-                                    :href="route('sections')" :active="request()->routeIs('sections')" wire:navigate>
-                                    {{ __('Sections') }}
-                                </x-nav-link>
-                            </li>
-                            <li>
-                                <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
-                                    :href="route('controls')" :active="request()->routeIs('controls')" wire:navigate>
-                                    {{ __('Controls') }}
-                                </x-nav-link>
-                            </li>
-                            <li>
-                                <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
-                                    :href="route('questions')" :active="request()->routeIs('questions')" wire:navigate>
-                                    {{ __('Questions') }}
-                                </x-nav-link>
-                            </li>
-                            <li>
-                                <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
-                                    :href="route('information')" :active="request()->routeIs('information')" wire:navigate>
-                                    {{ __('Questions Info.') }}
-                                </x-nav-link>
-                            </li>
-                            <li>
-                                <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
-                                    :href="route('recommendations')" :active="request()->routeIs('recommendations')" wire:navigate>
-                                    {{ __('Recommendations') }}
-                                </x-nav-link>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
-                        :href="route('templates-upload')" :active="request()->routeIs('templates-upload')" wire:navigate>
-                        <svg class="w-6 h-6 mr-2 text-gray-800 dark:text-white" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                            viewBox="0 0 24 24">
-                            <path fill-rule="evenodd"
-                                d="M12 3a1 1 0 0 1 .78.375l4 5a1 1 0 1 1-1.56 1.25L13 6.85V14a1 1 0 1 1-2 0V6.85L8.78 9.626a1 1 0 1 1-1.56-1.25l4-5A1 1 0 0 1 12 3ZM9 14v-1H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-4v1a3 3 0 1 1-6 0Zm8 2a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H17Z"
-                                clip-rule="evenodd" />
-                        </svg>
-                        {{ __('Templates Upload') }}
-                    </x-nav-link>
-                </li>
+                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9.5 11.5 11 13l4-3.5M12 20a16.405 16.405 0 0 1-5.092-5.804A16.694 16.694 0 0 1 5 6.666L12 4l7 2.667a16.695 16.695 0 0 1-1.908 7.529A16.406 16.406 0 0 1 12 20Z" />
+                            </svg>
+                            <span class="ml-2">Audit TooKit</span>
+                            <svg :class="{ 'rotate-180': open }" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                        <div x-show="open" class="block px-8 py-2 text-gray-300 hover:bg-gray-200 hover:text-white">
+                            <ul>
+                                <li class="w-ful">
+                                    <x-nav-link
+                                        class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
+                                        :href="route('sections')" :active="request()->routeIs('sections')" wire:navigate>
+                                        {{ __('Sections') }}
+                                    </x-nav-link>
+                                </li>
+                                <li>
+                                    <x-nav-link
+                                        class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
+                                        :href="route('controls')" :active="request()->routeIs('controls')" wire:navigate>
+                                        {{ __('Controls') }}
+                                    </x-nav-link>
+                                </li>
+                                <li>
+                                    <x-nav-link
+                                        class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
+                                        :href="route('questions')" :active="request()->routeIs('questions')" wire:navigate>
+                                        {{ __('Questions') }}
+                                    </x-nav-link>
+                                </li>
+                                <li>
+                                    <x-nav-link
+                                        class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
+                                        :href="route('information')" :active="request()->routeIs('information')" wire:navigate>
+                                        {{ __('Questions Info.') }}
+                                    </x-nav-link>
+                                </li>
+                                <li>
+                                    <x-nav-link
+                                        class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
+                                        :href="route('recommendations')" :active="request()->routeIs('recommendations')" wire:navigate>
+                                        {{ __('Recommendations') }}
+                                    </x-nav-link>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
+                            :href="route('templates-upload')" :active="request()->routeIs('templates-upload')" wire:navigate>
+                            <svg class="w-6 h-6 mr-2 text-gray-800 dark:text-white" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M12 3a1 1 0 0 1 .78.375l4 5a1 1 0 1 1-1.56 1.25L13 6.85V14a1 1 0 1 1-2 0V6.85L8.78 9.626a1 1 0 1 1-1.56-1.25l4-5A1 1 0 0 1 12 3ZM9 14v-1H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-4v1a3 3 0 1 1-6 0Zm8 2a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H17Z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            {{ __('Templates Upload') }}
+                        </x-nav-link>
+                    </li>
+                @endif
                 <li>
                     <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
                         :href="route('templates-download')" :active="request()->routeIs('templates-download')" wire:navigate>
@@ -107,7 +115,6 @@
                     </x-nav-link>
                 </li>
                 <li>
-                <li>
                     <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
                         :href="route('questionnaire')" :active="request()->routeIs('questionnaire')" wire:navigate>
                         <svg class="w-6 h-6 mr-2 text-gray-800 dark:text-white" aria-hidden="true"
@@ -120,68 +127,76 @@
                         {{ __('Audit Toolkit Questionnaire') }}
                     </x-nav-link>
                 </li>
-                <li>
-                    <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
-                        :href="route('risk-profile-dashboard')" :active="request()->routeIs('risk-profile-dashboard')" wire:navigate>
-                        <svg class="w-6 h-6 mr-2 text-gray-800 dark:text-white" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                            viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10 6.025A7.5 7.5 0 1 0 17.975 14H10V6.025Z" />
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13.5 3c-.169 0-.334.014-.5.025V11h7.975c.011-.166.025-.331.025-.5A7.5 7.5 0 0 0 13.5 3Z" />
-                        </svg>
+                @if (auth()->user()->role === 'admin')
+                    <li>
+                        <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
+                            :href="route('risk-profile-dashboard')" :active="request()->routeIs('risk-profile-dashboard')" wire:navigate>
+                            <svg class="w-6 h-6 mr-2 text-gray-800 dark:text-white" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M10 6.025A7.5 7.5 0 1 0 17.975 14H10V6.025Z" />
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M13.5 3c-.169 0-.334.014-.5.025V11h7.975c.011-.166.025-.331.025-.5A7.5 7.5 0 0 0 13.5 3Z" />
+                            </svg>
 
-                        {{ __('Risk Profile Dashboard') }}
-                    </x-nav-link>
-                </li>
-                <li>
-                    <button @click="isOpen = !isOpen"
-                        class="flex w-full px-1 py-2 text-gray-500 hover:bg-gray-700 hover:text-white focus:outline-none focus:bg-gray-600">
-                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                            viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M4 4.5V19a1 1 0 0 0 1 1h15M7 14l4-4 4 4 5-5m0 0h-3.207M20 9v3.207" />
-                        </svg>
-                        <span class="ml-2">{{ __('Risk Analysis') }}</span>
-                        <svg :class="{ 'rotate-180': open }" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
-                    <div x-show="isOpen" class="block px-8 py-2 text-gray-300 hover:bg-gray-200 hover:text-white">
-                        <ul>
-                            <li class="w-full">
-                                <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
-                                    :href="route('risk-analysis-section')" :active="request()->routeIs('risk-analysis-section')" wire:navigate>
-                                    {{ __('Risk Section') }}
-                                </x-nav-link>
-                            </li>
-                            <li class="w-full">
-                                <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
-                                    :href="route('risk-analysis-subsection')" :active="request()->routeIs('risk-analysis-subsection')" wire:navigate>
-                                    {{ __('Risk Analysis Questions') }}
-                                </x-nav-link>
-                            </li>
-                            <li class="w-full">
-                                <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
-                                    :href="route('risk-analysis-information')" :active="request()->routeIs('risk-analysis-information')" wire:navigate>
-                                    {{ __('Risk Information') }}
-                                </x-nav-link>
-                            </li>
-                            <li class="w-full">
-                                <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
-                                    :href="route('risk-analysis-recommendation')" :active="request()->routeIs('risk-analysis-recommendation')" wire:navigate>
-                                    {{ __('Risk Recommendation') }}
-                                </x-nav-link>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                            {{ __('Risk Profile Dashboard') }}
+                        </x-nav-link>
+                    </li>
+
+                    <li>
+                        <button @click="isOpen = !isOpen"
+                            class="flex w-full px-1 py-2 text-gray-500 hover:bg-gray-700 hover:text-white focus:outline-none focus:bg-gray-600">
+                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4 4.5V19a1 1 0 0 0 1 1h15M7 14l4-4 4 4 5-5m0 0h-3.207M20 9v3.207" />
+                            </svg>
+                            <span class="ml-2">{{ __('Risk Analysis') }}</span>
+                            <svg :class="{ 'rotate-180': open }" class="w-5 h-5" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                        <div x-show="isOpen" class="block px-8 py-2 text-gray-300 hover:bg-gray-200 hover:text-white">
+                            <ul>
+                                <li class="w-full">
+                                    <x-nav-link
+                                        class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
+                                        :href="route('risk-analysis-section')" :active="request()->routeIs('risk-analysis-section')" wire:navigate>
+                                        {{ __('Risk Section') }}
+                                    </x-nav-link>
+                                </li>
+                                <li class="w-full">
+                                    <x-nav-link
+                                        class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
+                                        :href="route('risk-analysis-subsection')" :active="request()->routeIs('risk-analysis-subsection')" wire:navigate>
+                                        {{ __('Risk Analysis Questions') }}
+                                    </x-nav-link>
+                                </li>
+                                <li class="w-full">
+                                    <x-nav-link
+                                        class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
+                                        :href="route('risk-analysis-information')" :active="request()->routeIs('risk-analysis-information')" wire:navigate>
+                                        {{ __('Risk Information') }}
+                                    </x-nav-link>
+                                </li>
+                                <li class="w-full">
+                                    <x-nav-link
+                                        class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
+                                        :href="route('risk-analysis-recommendation')" :active="request()->routeIs('risk-analysis-recommendation')" wire:navigate>
+                                        {{ __('Risk Recommendation') }}
+                                    </x-nav-link>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endif
                 <li>
                     <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
                         :href="route('risk-analysis-questionnaire')" :active="request()->routeIs('risk-analysis-questionnaire')" wire:navigate>
