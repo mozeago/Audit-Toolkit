@@ -17,7 +17,7 @@ new class extends Component {
     public $hasAnsweredQuestionnaire = true;
     public function mount()
     {
-        $this->currentQuestionIndex = auth()->risk_analysis_last_question_index ?? 0;
+        $this->currentQuestionIndex = auth()->user()->risk_analysis_last_question_index ?? 0;
         $this->answeredQuestionsCount = RiskAnalysisResponse::where('user_id', auth()->id())->count();
         $this->totalQuestionsCount = RiskSubSection::count();
         $this->hasAnsweredQuestions();

@@ -26,6 +26,12 @@ new class extends Component {
     {
         if ($this->totalQuestionsCount > 0) {
             if ($this->answeredQuestionsCount >= 0 && $this->answeredQuestionsCount !== $this->totalQuestionsCount) {
+                $companyDetails = UserResponse::where('user_id', auth()->id())->first();
+                if ($companyDetails) {
+                    $this->organization = $companyDetails->organization;
+                    $this->department = $companyDetails->department;
+                    $this->showOrganizationForm = false;
+                }
                 return true;
             }
         }
