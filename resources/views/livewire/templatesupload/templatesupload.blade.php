@@ -12,7 +12,7 @@ new class extends Component {
     public $filename;
     public $thumbnail;
     public $template_category;
-    public $showSuccessModal = false;
+    public $showSuccessToast = false;
     public $fullName;
     public $fullThumbnailName;
 
@@ -106,6 +106,13 @@ new class extends Component {
                 class="px-4 py-2 mt-4 text-white bg-blue-500 rounded shadow hover:bg-blue-700">
                 {{ __('Upload Template') }}
             </x-primary-button>
+            {{-- @if ($showSuccessToast)
+                <div id="successToast" class="fixed top-0 left-0 flex items-center justify-center w-full h-full">
+                    <div class="px-6 py-4 text-white bg-green-500 rounded-lg shadow-lg">
+                        <strong>Success!</strong> Your template has been uploaded.
+                    </div>
+                </div>
+            @endif --}}
         </div>
     </div>
 
