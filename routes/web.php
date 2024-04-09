@@ -14,9 +14,10 @@ use App\Http\Controllers\RiskRecommendationController;
 use App\Http\Controllers\RiskAnalysisResponseController;
 use App\Http\Controllers\GoogleLoginController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\View\View;
 
 Route::get('/', function () {
-    return redirect()->route('login');
+    return View('welcome');
 });
 Route::get('/sections', [SectionController::class, 'index'])
     ->middleware(['auth'])->name('sections');
