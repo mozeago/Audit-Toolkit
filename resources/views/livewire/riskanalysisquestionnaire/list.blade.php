@@ -132,6 +132,11 @@ new class extends Component {
 
             // Save user response to database
             $this->saveUserResponse($userAnswer);
+            $user = User::find($userAnswer['user_id']);
+            if ($user) {
+                $user->risk_analysis_last_question_index = null;
+                $user->save();
+            }
             return redirect('dashboard');
         }
     }

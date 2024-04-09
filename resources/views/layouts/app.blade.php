@@ -23,6 +23,20 @@
         aria-label="Sidebar">
         <div x-data="{ open: false, isOpen: false }">
             <ul>
+                <li>
+                    <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
+                        :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
+                        <svg class="w-6 h-6 mr-2 text-gray-800 dark:text-white" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                            viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
+                        </svg>
+
+
+                        {{ __('Dashboard') }}
+                    </x-nav-link>
+                </li>
                 @if (auth()->user()->role === 'admin')
                     <li>
                         <button @click="open = !open"

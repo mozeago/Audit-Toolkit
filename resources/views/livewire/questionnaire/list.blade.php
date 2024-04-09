@@ -4,6 +4,7 @@ use Livewire\Volt\Component;
 use App\Models\UserResponse;
 use App\Models\Question;
 use App\Models\Information;
+use App\Models\User;
 new class extends Component {
     public $currentQuestionIndex = 0;
     public $userAnswers = [];
@@ -17,6 +18,7 @@ new class extends Component {
     public $hasAnsweredQuestionnaire = true;
     public function mount()
     {
+        $this->currentQuestionIndex = auth()->user()->audit_last_question_index ?? 0;
         $this->answeredQuestionsCount = UserResponse::where('user_id', auth()->id())->count();
         $this->totalQuestionsCount = Question::count();
         $this->hasAnsweredQuestions();
@@ -106,6 +108,11 @@ new class extends Component {
             $userResponse->organization = $userAnswer['organization'];
             $userResponse->department = $userAnswer['department'];
             $userResponse->save();
+            $user = User::find($userAnswer['user_id']);
+            if ($user) {
+                $user->audit_last_question_index = $this->currentQuestionIndex + 1;
+                $user->save();
+            }
         }
     }
 
@@ -126,6 +133,11 @@ new class extends Component {
 
             // Save user response to database
             $this->saveUserResponse($userAnswer);
+            $user = User::find($userAnswer['user_id']);
+            if ($user) {
+                $user->audit_last_question_index = null;
+                $user->save();
+            }
             return redirect('dashboard');
         }
     }
