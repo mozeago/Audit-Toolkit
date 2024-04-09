@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 08, 2024 at 05:13 AM
+-- Generation Time: Apr 09, 2024 at 03:20 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,7 +39,11 @@ CREATE TABLE `cache` (
 
 INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
 ('82bb3add6fd3e748bbc77da2338ab556b17c1fa6', 'i:2;', 1712413130),
-('82bb3add6fd3e748bbc77da2338ab556b17c1fa6:timer', 'i:1712413130;', 1712413130);
+('82bb3add6fd3e748bbc77da2338ab556b17c1fa6:timer', 'i:1712413130;', 1712413130),
+('87344ce0fe663baa3248999e997010c9b00ed45c', 'i:2;', 1712580956),
+('87344ce0fe663baa3248999e997010c9b00ed45c:timer', 'i:1712580956;', 1712580956),
+('badc31f0ace8f3f44a1c2ef8f2d5fca7c3c25c94', 'i:2;', 1712660881),
+('badc31f0ace8f3f44a1c2ef8f2d5fca7c3c25c94:timer', 'i:1712660881;', 1712660881);
 
 -- --------------------------------------------------------
 
@@ -174,7 +178,6 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '0001_01_01_000000_create_users_table', 1),
 (2, '0001_01_01_000001_create_cache_table', 1),
 (3, '0001_01_01_000002_create_jobs_table', 1),
 (4, '2024_03_19_201429_create_sections_table', 1),
@@ -189,7 +192,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (14, '2024_04_01_144517_create_risk_information_table', 1),
 (15, '2024_04_01_144531_create_risk_recommendations_table', 1),
 (16, '2024_03_27_185338_create_user_responses_table', 2),
-(17, '2024_04_07_203129_create_risk_analysis_responses_table', 3);
+(17, '2024_04_07_203129_create_risk_analysis_responses_table', 3),
+(20, '0001_01_01_000000_create_users_table', 4);
 
 -- --------------------------------------------------------
 
@@ -272,6 +276,17 @@ CREATE TABLE `risk_analysis_responses` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `risk_analysis_responses`
+--
+
+INSERT INTO `risk_analysis_responses` (`id`, `answer`, `organization`, `department`, `user_id`, `risk_sub_section_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+('9bc3280b-fbf9-4c39-92da-e9c3f694f915', 'true', 'unilever', 'IT', '9bc21a86-52b4-492c-a3c8-c3e3adfc751c', '075ca43d-32ae-4dcd-9ea0-b4264b5e6cd1', '2024-04-08 22:08:48', '2024-04-08 22:08:48', NULL),
+('9bc32826-7f80-41e0-a10c-9ab71292ed1c', 'true', 'unilever', 'IT', '9bc21a86-52b4-492c-a3c8-c3e3adfc751c', '5022bf31-8b6d-4b84-8ed6-4ef8bf393f28', '2024-04-08 22:09:05', '2024-04-08 22:09:05', NULL),
+('9bc32843-87db-4418-8e81-ab381dbd8273', 'true', 'unilever', 'IT', '9bc21a86-52b4-492c-a3c8-c3e3adfc751c', '9c4e454b-2ef3-4859-8b55-71b91865e733', '2024-04-08 22:09:24', '2024-04-08 22:09:24', NULL),
+('9bc32847-ac8b-4e63-ac7a-d82ecc19d579', 'false', 'unilever', 'IT', '9bc21a86-52b4-492c-a3c8-c3e3adfc751c', 'a2ab62a3-855d-42ed-a14b-7a12518c67c2', '2024-04-08 22:09:27', '2024-04-08 22:09:27', NULL),
+('9bc3284a-c728-4532-8d27-743f87c9c5d2', 'true', 'unilever', 'IT', '9bc21a86-52b4-492c-a3c8-c3e3adfc751c', 'a93ff36f-2210-4a5f-9589-b2a1232cb72a', '2024-04-08 22:09:29', '2024-04-08 22:09:29', NULL);
 
 -- --------------------------------------------------------
 
@@ -433,8 +448,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('pptYOjTn3Cxe0L1mAaIOpknBV4JO0Em2LoskjO1t', '9bc06ddc-51ed-4296-9a17-e307c0e3665d', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiZWhnWkZJS3VzU0FveHVGRGVBanROVEQ0R3VadllTRHpiMTdLMHVkTSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9yaXNrLWFuYWx5c2lzLXF1ZXN0aW9ubmFpcmUiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7czozNjoiOWJjMDZkZGMtNTFlZC00Mjk2LTlhMTctZTMwN2MwZTM2NjVkIjt9', 1712525899),
-('rVl2VvJuMj4N0o6BLC4uz2WHWkPDirRKxSfXyG3E', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiSkFiWEtqR2dCS2pMVlRWaDFDOTNzT2NqRGl3WFd6TkkyZFIyTnJtVyI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czo0OToiaHR0cDovLzEyNy4wLjAuMTo4MDAwL3Jpc2stYW5hbHlzaXMtcXVlc3Rpb25uYWlyZSI7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI3OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvbG9naW4iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1712545998);
+('NqN8Dl6kwWLbBeLZO2EKFIsDSERGI4K6XNCieR6Y', '9bc23110-8655-44f2-b0d4-8f4bdfbe0d91', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoia1RXVXhWaWczRUU4VDF1NlhXWmd5Z2FDTzdPdjdOVTFEalpxQm1DZCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC90ZW1wbGF0ZXMtZG93bmxvYWQiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7czozNjoiOWJjMjMxMTAtODY1NS00NGYyLWIwZDQtOGY0YmRmYmUwZDkxIjt9', 1712661206),
+('tSNm6d3aBbdo5JJFbNIcAzzAXfQU69guplW3UaI9', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiRERRcm1EOHBCbkdaVEtDek44aW1LZjJ3R1Y5ZFFxU1pyeTk3UW44bSI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czozMToiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2Rhc2hib2FyZCI7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI3OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvbG9naW4iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1712668814);
 
 -- --------------------------------------------------------
 
@@ -453,6 +468,13 @@ CREATE TABLE `templates` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `templates`
+--
+
+INSERT INTO `templates` (`id`, `name`, `category`, `url`, `thumbnail`, `created_at`, `updated_at`, `deleted_at`) VALUES
+('afaec5f2-7833-4877-b661-81b9841428ff', 'security audit.pdf', 'yearly', 'templates/security audit.pdf', 'thumbnails/security audit-thumb.jpg', '2024-04-09 08:07:07', '2024-04-09 08:07:07', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -463,6 +485,9 @@ CREATE TABLE `users` (
   `id` char(36) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `role` enum('user','admin') NOT NULL DEFAULT 'user',
+  `audit_last_question_index` int(11) DEFAULT NULL,
+  `risk_analysis_last_question_index` int(11) DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
@@ -475,10 +500,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-('9bbe0a99-a388-4977-b090-cbb939911ca4', 'Moses Asiago', 'mozzeago@gmail.com', NULL, '$2y$12$0NKrJO9DhkdaDOf1LVBSCO8Wa3OlbITLjLCAjPYyt/OiHdxvrRvF.', NULL, '2024-04-06 09:07:19', '2024-04-06 09:07:19', NULL),
-('9bc02a3a-d77f-4110-96ea-846b320b048b', 'Moses Asiago', 'asiago.mo@gmail.com', NULL, '$2y$12$cC0BoU/V7TN2W12hwfblAuCQSJct0LOdFtkj/EUXBbSKckREj41ty', NULL, '2024-04-07 10:27:25', '2024-04-07 10:27:25', NULL),
-('9bc06ddc-51ed-4296-9a17-e307c0e3665d', 'The Mass', 'themassinfo@gmail.com', NULL, '$2y$12$aslLlsXMt31YnbxvboYxtO0pU71C2nhQs6ioYv/BauXViRz9khH9u', NULL, '2024-04-07 13:36:31', '2024-04-07 13:36:31', NULL);
+INSERT INTO `users` (`id`, `name`, `email`, `role`, `audit_last_question_index`, `risk_analysis_last_question_index`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
+('9bc21a86-52b4-492c-a3c8-c3e3adfc751c', 'Moses Asiago', 'mozzeago@gmail.com', 'user', NULL, NULL, NULL, '$2y$12$3Sg2MJuqFCijjTB9H0znTOOieFzKKSacsjHNjw0V188B6c/RZaAoK', NULL, '2024-04-08 09:35:09', '2024-04-08 22:09:43', NULL),
+('9bc23110-8655-44f2-b0d4-8f4bdfbe0d91', 'Moses Asiago', 'asiago.mo@gmail.com', 'admin', NULL, NULL, NULL, '$2y$12$IsFSsygTL.NggcCr3zERRe6u5FDPG0JGmHVyr9WJWfSKMv1efoIBe', NULL, '2024-04-08 10:38:11', '2024-04-08 10:38:11', NULL);
 
 -- --------------------------------------------------------
 
@@ -503,13 +527,13 @@ CREATE TABLE `user_responses` (
 --
 
 INSERT INTO `user_responses` (`id`, `answer`, `organization`, `department`, `user_id`, `question_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-('59e77d15-b1c7-497f-b826-70d47c657490', 'true', 'unilever', 'IT', '9bc06ddc-51ed-4296-9a17-e307c0e3665d', '1ed9c4a3-cfa3-4cf2-8cbc-2e1e70340c51', '2024-04-07 17:13:04', '2024-04-07 17:13:04', NULL),
-('5db2ae20-1c0c-4ff2-a774-025439e9ea00', 'true', 'unilever', 'IT', '9bc06ddc-51ed-4296-9a17-e307c0e3665d', '88c07549-7082-44b6-a071-a90e6bc1c91c', '2024-04-07 17:13:10', '2024-04-07 17:13:10', NULL),
-('5f78c428-bd89-4a95-8629-c1f80cad1ce8', 'true', 'unilever', 'IT', '9bc06ddc-51ed-4296-9a17-e307c0e3665d', 'e50d2b36-d41f-404f-812f-a48c087f00ef', '2024-04-07 17:13:21', '2024-04-07 17:13:21', NULL),
-('c176355a-c8b0-41d1-ac3a-b43d799f1dd1', 'true', 'unilever', 'IT', '9bc06ddc-51ed-4296-9a17-e307c0e3665d', 'a6672da1-ac37-48ea-a46c-18742b03164d', '2024-04-07 17:13:13', '2024-04-07 17:13:13', NULL),
-('d903f431-0710-48cf-bd4d-f65e4d4141f5', 'false', 'unilever', 'IT', '9bc06ddc-51ed-4296-9a17-e307c0e3665d', 'd2e6f83f-4f5d-4fd8-ae0e-f3e4d8399b07', '2024-04-07 17:13:19', '2024-04-07 17:13:19', NULL),
-('e1261fd2-95c2-4383-add2-941243069a74', 'true', 'unilever', 'IT', '9bc06ddc-51ed-4296-9a17-e307c0e3665d', 'c95e23ee-7938-4b8e-8ad3-25b9f86a9add', '2024-04-07 17:13:16', '2024-04-07 17:13:16', NULL),
-('f97bd5ef-2044-42a0-baa4-2812f992b827', 'false', 'unilever', 'IT', '9bc06ddc-51ed-4296-9a17-e307c0e3665d', '6ef07ddb-9807-4305-9b21-89c9a503efe5', '2024-04-07 17:13:08', '2024-04-07 17:13:08', NULL);
+('286018bb-d7b2-4b1a-a04e-d02638c59e0a', 'true', 'unilever', 'IT', '9bc21a86-52b4-492c-a3c8-c3e3adfc751c', 'c95e23ee-7938-4b8e-8ad3-25b9f86a9add', '2024-04-08 22:09:38', '2024-04-08 22:09:38', NULL),
+('5f6455b3-0649-4654-8c4d-db8cc46f6c29', 'false', 'unilever', 'IT', '9bc21a86-52b4-492c-a3c8-c3e3adfc751c', 'd2e6f83f-4f5d-4fd8-ae0e-f3e4d8399b07', '2024-04-08 22:09:41', '2024-04-08 22:09:41', NULL),
+('82b77a23-3f3d-442d-ac42-e628f5ecd231', 'true', 'unilever', 'IT', '9bc21a86-52b4-492c-a3c8-c3e3adfc751c', 'e50d2b36-d41f-404f-812f-a48c087f00ef', '2024-04-08 22:09:43', '2024-04-08 22:09:43', NULL),
+('c910b36c-d09a-4cba-80ff-b2706dd96237', 'true', 'unilever', 'IT', '9bc21a86-52b4-492c-a3c8-c3e3adfc751c', '88c07549-7082-44b6-a071-a90e6bc1c91c', '2024-04-08 22:09:19', '2024-04-08 22:09:19', NULL),
+('e983c899-0c27-465d-8708-5a3884e63fbe', 'true', 'unilever', 'IT', '9bc21a86-52b4-492c-a3c8-c3e3adfc751c', 'a6672da1-ac37-48ea-a46c-18742b03164d', '2024-04-08 22:09:36', '2024-04-08 22:09:36', NULL),
+('ee39f6e2-c5e3-4ba2-a6dc-4b238074183a', 'false', 'unilever', 'IT', '9bc21a86-52b4-492c-a3c8-c3e3adfc751c', '1ed9c4a3-cfa3-4cf2-8cbc-2e1e70340c51', '2024-04-08 22:09:00', '2024-04-08 22:09:00', NULL),
+('eee52af7-ba4c-4f9d-b7ab-38d6eb546531', 'false', 'unilever', 'IT', '9bc21a86-52b4-492c-a3c8-c3e3adfc751c', '6ef07ddb-9807-4305-9b21-89c9a503efe5', '2024-04-08 22:09:09', '2024-04-08 22:09:09', NULL);
 
 --
 -- Indexes for dumped tables
@@ -684,7 +708,7 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `risk_profiles`

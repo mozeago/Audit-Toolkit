@@ -24,8 +24,7 @@ new class extends Component {
             <div class="rounded-lg shadow-md card">
                 <div class="card-body">
                     @if ($template->thumbnail != '')
-                        <img src="{{ asset('storage/thumbnails/' . $template->thumbnail) }}"
-                            alt="{{ $template->name }} thumbnail">
+                        <img src="{{ Storage::url($template->thumbnail) }}" alt="{{ $template->name }} thumbnail">
                     @endif
                     <h5 class="card-title">{{ $template->name }}</h5>
                     <a href="{{ 'storage/app/templates/' . $template->url }}" target="_blank"

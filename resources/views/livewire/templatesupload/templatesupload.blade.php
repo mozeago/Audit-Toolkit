@@ -36,9 +36,9 @@ new class extends Component {
         $this->validate();
 
         $extension = $this->file->getClientOriginalExtension();
-        $this->file->storeAs('templates', $this->filename . '.' . $extension);
+        $this->file->storeAs('public/templates', $this->filename . '.' . $extension);
         $thumbnailExtension = $this->thumbnail->getClientOriginalExtension();
-        $this->thumbnail->storeAs('thumbnails', $this->filename . '-thumb.' . $thumbnailExtension);
+        $this->thumbnail->storeAs('public/thumbnails', $this->filename . '-thumb.' . $thumbnailExtension);
 
         Template::create([
             'name' => $this->filename . '.' . $extension,
