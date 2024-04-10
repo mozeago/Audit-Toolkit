@@ -32,36 +32,44 @@
         <div x-data="{ open: false, isOpen: false }">
             <ul>
                 <li class="py-5 border-b border-gray-400">
-                    <x-nav-link class="w-full ml-4 mr-4 " :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
-                        <svg class="w-6 h-6 mr-2 text-gray-800 hover:hover:text-[#C8000B]" aria-hidden="true"
+                    <x-nav-link class="hover:text-[#C8000B] w-full ml-4 mr-4 " :href="route('dashboard')" :active="request()->routeIs('dashboard')"
+                        wire:navigate>
+                        <svg class="w-6 h-6 mr-2 hover:text-[#C8000B]" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                             viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
                         </svg>
-                        <span class="text-xl roboto-medium hover:hover:text-[#C8000B]">{{ __('Dashboard') }}</span>
+                        <span class="text-xl roboto-medium hover:text-[#C8000B]">{{ __('Dashboard') }}</span>
                     </x-nav-link>
                 </li>
                 @if (auth()->user()->role === 'admin')
                     <li class="py-5 border-b border-gray-400">
                         <button @click="open = !open"
-                            class="ml-4 mr-4 flex w-full px-1 py-2 text-gray-500  hover:hover:text-[#C8000B] focus:outline-none focus:bg-gray-600">
+                            class="ml-4 mr-4 flex w-full px-1 py-2  hover:text-[#C8000B] focus:outline-none ">
 
-                            <svg class="w-6 h-6 text-gray-800 dark:hover:text-[#C8000B]" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                                viewBox="0 0 24 24">
-                                <path stroke="[#C8000B]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9.5 11.5 11 13l4-3.5M12 20a16.405 16.405 0 0 1-5.092-5.804A16.694 16.694 0 0 1 5 6.666L12 4l7 2.667a16.695 16.695 0 0 1-1.908 7.529A16.406 16.406 0 0 1 12 20Z" />
-                            </svg>
-                            <span class="ml-2 text-xl text-black roboto-medium hover:hover:text-[#C8000B]">Audit
-                                TooKit</span>
-                            <svg :class="{ 'rotate-180': open }" class="w-5 h-5" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
+                            <div class="flex items-center">
+
+                                <svg class="w-6 h-6  hover:text-[#C8000B]" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <path stroke-width="2" fill-rule="evenodd" stroke="currentColor"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                        d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z" />
+                                </svg>
+                                <span class="ml-2 text-xl text-black roboto-medium hover:text-[#C8000B]">Audit
+                                    TooKit</span>
+
+                                <svg :class="{ 'rotate-180': open }" class="w-6 h-6 ml-4 hover:text-[#C8000B]"
+                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none">
+                                    <path stroke-width="2" fill-rule="evenodd" stroke="currentColor"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
                         </button>
+
                         <div x-show="open"
                             class="block px-8 py-2 text-gray-300 hover:bg-gray-200 hover:hover:text-[#C8000B]">
                             <ul>
@@ -108,7 +116,7 @@
                                     d="M12 3a1 1 0 0 1 .78.375l4 5a1 1 0 1 1-1.56 1.25L13 6.85V14a1 1 0 1 1-2 0V6.85L8.78 9.626a1 1 0 1 1-1.56-1.25l4-5A1 1 0 0 1 12 3ZM9 14v-1H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-4v1a3 3 0 1 1-6 0Zm8 2a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H17Z"
                                     clip-rule="evenodd" />
                             </svg>
-                            <span
+                            <span :class="{ 'text-[#C8000B]': request() - > routeIs('templates-upload') }"
                                 class="text-xl roboto-medium hover:hover:text-[#C8000B]">{{ __('Templates Upload') }}</span>
                         </x-nav-link>
                     </li>
@@ -167,22 +175,26 @@
 
                     <li class="py-5 border-b border-gray-400">
                         <button @click="isOpen = !isOpen"
-                            class=" ml-4 mr-4 flex w-full px-1 py-2 text-gray-500  hover:hover:text-[#C8000B] focus:outline-none focus:bg-gray-600">
-                            <svg class="w-6 h-6 text-xl text-gray-800 dark:hover:text-[#C8000B]" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                                viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M4 4.5V19a1 1 0 0 0 1 1h15M7 14l4-4 4 4 5-5m0 0h-3.207M20 9v3.207" />
-                            </svg>
-                            <span
-                                class="ml-2 text-xl text-black roboto-medium  hover:hover:text-[#C8000B]">{{ __('Risk Analysis') }}</span>
-                            <svg :class="{ 'rotate-180': open }" class="w-5 h-5" fill="currentColor"
-                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
+                            class="ml-4 mr-4 flex w-full px-1 py-2 hover:text-[#C8000B] focus:outline-none ">
+
+                            <div class="flex items-center">
+
+                                <svg class="w-6 h-6 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M4 4.5V19a1 1 0 0 0 1 1h15M7 14l4-4 4 4 5-5m0 0h-3.207M20 9v3.207" />
+                                </svg><span
+                                    class="ml-2 text-xl text-black roboto-medium hover:text-[#C8000B]">{{ __('Risk Analysis') }}</span>
+
+                                <svg :class="{ 'rotate-180': isOpen }" class="w-6 h-6 ml-4 hover:text-[#C8000B]"
+                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none">
+                                    <path stroke-width="2" fill-rule="evenodd" stroke="currentColor"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
                         </button>
                         <div x-show="isOpen"
                             class="block px-8 py-2 text-gray-300 hover:bg-gray-200 hover:hover:text-[#C8000B]">
