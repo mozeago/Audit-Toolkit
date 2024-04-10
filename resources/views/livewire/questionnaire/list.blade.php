@@ -146,124 +146,137 @@ new class extends Component {
     @if ($this->hasAnsweredQuestions())
         <div class="container px-4 py-8 mx-auto">
             @if ($showOrganizationForm)
-                <div class="mb-4">
-                    <h2 class="mb-4 text-2xl font-semibold">Organization and Department Information</h2>
-                    <form wire:submit.prevent="openQuestionnaire">
-                        <div class="mb-4">
-                            <label for="organization" class="block mb-1 text-gray-700">Organization</label>
-                            <input id="organization" type="text" wire:model.defer="organization"
-                                class="w-full px-4 py-2 border rounded-md" value="{{ $this->organization }}">
-                            @error('organization')
-                                <span class="text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="mb-4">
-                            <label for="department" class="block mb-1 text-gray-700">Department</label>
-                            <input id="department" type="text" wire:model.defer="department"
-                                class="w-full px-4 py-2 border rounded-md" value="{{ $this->department }}">
-                            @error('department')
-                                <span class="text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div>
-                            <x-primary-button type="submit" class="btn btn-primary">Next</x-primary-button>
-                        </div>
-                    </form>
-                </div>
-            @else
-                <!-- Progress Indicator -->
-                <div class="mb-4">
-                    <div class="h-4 bg-gray-200 rounded-lg">
-                        <div class="h-full bg-green-500 rounded-lg"
-                            style="width: {{ (($currentQuestionIndex + 1) / count($questions)) * 100 }}%"></div>
-                    </div>
-                    <div class="mt-1 text-xs text-gray-600">{{ $currentQuestionIndex + 1 }} of {{ count($questions) }}
-                        questions
-                        answered</div>
-                </div>
-                <div class="flex flex-col md:flex-row md:space-x-4">
-                    <div class="flex flex-col md:flex-row md:space-x-4">
-                        <button wire:click="previousQuestion" class="btn btn-outline-secondary disabled:opacity-50"
-                            :disabled="$currentQuestionIndex === 0" {{ $currentQuestionIndex > 0 ? '' : 'hidden' }}>
-                            <div class="flex flex-col items-center">
-                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="5"
-                                        d="M15 19l-7-7 7-7-1.41-1.41L6 12l8.41 8.41z"></path>
-                                </svg>
-                                <span>{{ __('Previous') }}</span>
-                            </div>
-                        </button>
+                <div
+                    class="mb-4 flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#C8000B] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#C8000B]">
+
+                    <div
+                        class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#C8000B]/10 sm:size-16">
+                        <svg class="size-5 sm:size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <g fill="#C8000B">
+                                <path
+                                    d="M24 8.25a.5.5 0 0 0-.5-.5H.5a.5.5 0 0 0-.5.5v12a2.5 2.5 0 0 0 2.5 2.5h19a2.5 2.5 0 0 0 2.5-2.5v-12Zm-7.765 5.868a1.221 1.221 0 0 1 0 2.264l-6.626 2.776A1.153 1.153 0 0 1 8 18.123v-5.746a1.151 1.151 0 0 1 1.609-1.035l6.626 2.776ZM19.564 1.677a.25.25 0 0 0-.177-.427H15.6a.106.106 0 0 0-.072.03l-4.54 4.543a.25.25 0 0 0 .177.427h3.783c.027 0 .054-.01.073-.03l4.543-4.543ZM22.071 1.318a.047.047 0 0 0-.045.013l-4.492 4.492a.249.249 0 0 0 .038.385.25.25 0 0 0 .14.042h5.784a.5.5 0 0 0 .5-.5v-2a2.5 2.5 0 0 0-1.925-2.432ZM13.014 1.677a.25.25 0 0 0-.178-.427H9.101a.106.106 0 0 0-.073.03l-4.54 4.543a.25.25 0 0 0 .177.427H8.4a.106.106 0 0 0 .073-.03l4.54-4.543ZM6.513 1.677a.25.25 0 0 0-.177-.427H2.5A2.5 2.5 0 0 0 0 3.75v2a.5.5 0 0 0 .5.5h1.4a.106.106 0 0 0 .073-.03l4.54-4.543Z" />
+                            </g>
+                        </svg>
                     </div>
 
-                    <div class="w-full p-6 bg-white rounded-lg shadow-md md:w-3/4">
-                        @if (count($questions) > 0)
-                            <h2 class="mb-4 text-2xl font-semibold">Question {{ $currentQuestionIndex + 1 }} of
-                                {{ count($questions) }}</h2>
-                            <p class="mb-8 text-lg leading-loose">{{ $questions[$currentQuestionIndex]->text }}</p>
-                            <div class="flex items-center mt-4 space-x-4">
-                                <div class="flex items-center w-full mt-4 mb-8 space-x-4">
-                                    <label for="answer-yes" class="flex items-center w-full space-x-2">
-                                        <input id="answer-yes" type="radio" name="answer"
-                                            wire:model.defer="userAnswers.{{ $currentQuestionIndex }}.answer"
-                                            value="true"
-                                            class="w-6 h-6 bg-gray-200 border-gray-300 rounded-full focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 checked:bg-indigo-500 checked:border-transparent">
-                                        <span class="text-sm font-medium text-gray-700">Yes</span>
-                                    </label>
-                                    <label for="answer-no" class="flex items-center w-full space-x-2">
-                                        <input id="answer-no" type="radio" name="answer"
-                                            wire:model.defer="userAnswers.{{ $currentQuestionIndex }}.answer"
-                                            value="false"
-                                            class="w-6 h-6 bg-gray-200 border-gray-300 rounded-full focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 checked:bg-indigo-500 checked:border-transparent">
-                                        <span class="text-sm font-medium text-gray-700">No</span>
-                                    </label>
-                                    @error('answer')
-                                        <span class="mt-2 text-red-500 text-l">{{ $message }}</span>
-                                    @enderror
-                                </div>
+                    <div class="pt-3 sm:pt-5">
+                        <h2 class="mb-4 text-xl font-semibold text-black">Organization and Department Information</h2>
+
+                        <form wire:submit.prevent="openQuestionnaire">
+                            <div class="mb-4">
+                                <label for="organization" class="block mb-1 text-gray-700">Organization</label>
+                                <input id="organization" type="text" wire:model.defer="organization"
+                                    class="w-full px-4 py-2 border rounded-md" value="{{ $this->organization }}">
+                                @error('organization')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
                             </div>
+                            <div class="mb-4">
+                                <label for="department" class="block mb-1 text-gray-700">Department</label>
+                                <input id="department" type="text" wire:model.defer="department"
+                                    class="w-full px-4 py-2 border rounded-md" value="{{ $this->department }}">
+                                @error('department')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <x-primary-button type="submit" class="btn btn-primary">Next<span><svg
+                                        class="size-6 shrink-0 self-center stroke-[#C8000B]"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                                    </svg></span>
+                            </x-primary-button>
+                        </form>
+                    </div>
+                @else
+                    <!-- Progress Indicator -->
+                    <div class="mb-4">
+                        <div class="h-4 bg-gray-200 rounded-lg">
+                            <div class="h-full bg-green-500 rounded-lg"
+                                style="width: {{ (($currentQuestionIndex + 1) / count($questions)) * 100 }}%"></div>
+                        </div>
+                        <div class="mt-1 text-xs text-gray-600">{{ $currentQuestionIndex + 1 }} of
+                            {{ count($questions) }}
+                            questions
+                            answered</div>
+                    </div>
+                    <div class="flex flex-col w-full md:flex-row md:space-x-4">
+                        {{-- questions --}}
+                        @if (count($questions) > 0)
+                            <div
+                                class="w-full flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-[#C8000B]/[0.05] transition duration-300 hover:text-black/70 hover:ring-[#C8000B]/20 focus:outline-none focus-visible:ring-[#C8000B] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#C8000B]">
+                                <div
+                                    class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#C8000B] sm:size-16 text-white p-1">
+                                    <p><strong>{{ $currentQuestionIndex + 1 }}/{{ count($questions) }}</strong></p>
+                                </div>
+                                {{-- Previous --}}
+                                <svg wire:click="previousQuestion" class="size-6 shrink-0 self-center stroke-[#C8000B]"
+                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M5 12h14M5 12l4-4m-4 4 4 4" />
+                                </svg>
+                                {{-- end Previous --}}
+                                <div class="w-full pt-3 sm:pt-5">
+                                    {{-- <h2 class="w-full text-xl font-semibold text-[#C8000B] ">Question
+                                        {{ $currentQuestionIndex + 1 }} of
+                                        {{ count($questions) }}</h2> --}}
+
+                                    <p class="w-full mt-4 text-lg/relaxed">
+                                        {{ $questions[$currentQuestionIndex]->text }}
+                                    </p>
+                                    <div class="flex items-center w-full mt-4 space-x-4">
+                                        <div class="flex items-center w-full mt-4 mb-8 space-x-4">
+                                            <label for="answer-yes" class="flex items-center w-full space-x-2 ">
+                                                <input id="answer-yes" type="radio" name="answer"
+                                                    wire:model.defer="userAnswers.{{ $currentQuestionIndex }}.answer"
+                                                    value="true" class="w-6 h-6 ">
+                                                <span class="text-sm font-medium text-gray-700">Yes</span>
+                                            </label>
+                                            <label for="answer-no" class="flex items-center w-full space-x-2">
+                                                <input id="answer-no" type="radio" name="answer"
+                                                    wire:model.defer="userAnswers.{{ $currentQuestionIndex }}.answer"
+                                                    value="false" class="w-6 h-6 ">
+                                                <span class="text-sm font-medium text-gray-700">No</span>
+                                            </label>
+                                            @error('answer')
+                                                <span class="mt-2 text-red-500 text-l">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="w-full p-4 mt-12 border border-t border-gray-200 rounded-lg shadow-md bg-gray-50">
+                                        <div class="prose max-w-none">
+                                            @if ($questions[$currentQuestionIndex]->hasOneInformation)
+                                                {{ $questions[$currentQuestionIndex]->hasOneInformation->content }}
+                                            @else
+                                                <p>No related information available for this question.</p>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- next --}}
+                                <svg wire:click="nextQuestion" class="size-6 shrink-0 self-center stroke-[#C8000B]"
+                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    fill="none" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M19 12H5m14 0-4 4m4-4-4-4" />
+                                </svg>
+                                {{-- end next --}}
+                            </div>
+                            {{-- end questions --}}
                         @else
                             <div class="w-full text-center">
-                                <svg class="w-24 h-24 mx-auto text-gray-400" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <svg wire:click="nextQuestion" class="w-24 h-24 mx-auto text-gray-400" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                                 </svg>
                                 <p class="mt-4 text-lg text-gray-500">No questions available.</p>
                             </div>
                         @endif
-                        <div class="w-full p-4 mt-12 border border-t border-gray-200 rounded-lg shadow-md bg-gray-50">
-                            <div class="prose max-w-none">
-                                @if ($questions[$currentQuestionIndex]->hasOneInformation)
-                                    {{ $questions[$currentQuestionIndex]->hasOneInformation->content }}
-                                @else
-                                    <p>No related information available for this question.</p>
-                                @endif
-                            </div>
-                        </div>
                     </div>
-
-                    <div class="flex flex-col mt-4 md:flex-row md:space-x-4">
-                        <button wire:click="submitAnswers"
-                            class="btn btn-success disabled:opacity-50 {{ !($currentQuestionIndex == count($questions) - 1) ? 'hidden' : '' }}"
-                            :disabled="count($userAnswers) !== count($questions)">
-                            <span>{{ __('Submit Answers') }}</span>
-                        </button>
-                        <button wire:click="nextQuestion"
-                            class="btn btn-primary {{ $currentQuestionIndex == count($questions) - 1 ? 'hidden' : '' }}"
-                            :disabled="$currentQuestionIndex == count($questions) - 1">
-                            <div class="flex flex-col items-center">
-                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="7"
-                                        d="M9 5l7 7-7 7">
-                                    </path>
-                                </svg>
-                                <span>{{ __('Next') }}</span>
-                            </div>
-                        </button>
-                    </div>
-                </div>
             @endif
         </div>
     @else
@@ -274,3 +287,11 @@ new class extends Component {
         </div>
     @endif
 </div>
+@push('styles')
+    <style>
+        input[type="radio"]:checked {
+            background-color: #C8000B;
+            border-color: transparent;
+        }
+    </style>
+@endpush

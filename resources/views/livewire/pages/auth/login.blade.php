@@ -22,7 +22,6 @@ new #[Layout('layouts.guest')] class extends Component {
         $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
     }
 }; ?>
-
 <div>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -68,6 +67,14 @@ new #[Layout('layouts.guest')] class extends Component {
                 style="background-color: #BA0C2F;">
                 {{ __('Log in') }}
             </button>
+        </div>
+        <div class="flex items-center justify-end mt-4">
+            @if (Route::has('register'))
+                <a class="text-sm text-gray-600 underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 "
+                    href="{{ route('register') }}" wire:navigate>
+                    {{ __('Dont have an account, Register') }}
+                </a>
+            @endif
         </div>
     </form>
 
