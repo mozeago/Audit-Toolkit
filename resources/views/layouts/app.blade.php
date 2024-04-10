@@ -32,7 +32,7 @@
         <div x-data="{ open: false, isOpen: false }">
             <ul>
                 <li class="py-5 border-b border-gray-400">
-                    <x-nav-link class="w-full text-black" :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
+                    <x-nav-link class="w-full ml-4 mr-4 text-black" :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                         <svg class="w-6 h-6 mr-2 text-gray-800 hover:hover:text-[#C8000B]" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                             viewBox="0 0 24 24">
@@ -46,7 +46,7 @@
                 @if (auth()->user()->role === 'admin')
                     <li class="py-5 border-b border-gray-400">
                         <button @click="open = !open"
-                            class="flex w-full px-1 py-2 text-gray-500  hover:hover:text-[#C8000B] focus:outline-none focus:bg-gray-600">
+                            class="ml-4 mr-4 flex w-full px-1 py-2 text-gray-500  hover:hover:text-[#C8000B] focus:outline-none focus:bg-gray-600">
 
                             <svg class="w-6 h-6 text-gray-800 dark:hover:text-[#C8000B]" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
@@ -100,8 +100,8 @@
                         </div>
                     </li>
                     <li class="py-5 border-b border-gray-400">
-                        <x-nav-link class="block w-full py-2 text-black  hover:hover:text-[#C8000B]" :href="route('templates-upload')"
-                            :active="request()->routeIs('templates-upload')" wire:navigate>
+                        <x-nav-link class="ml-4 mr-4 block w-full py-2 text-black  hover:hover:text-[#C8000B]"
+                            :href="route('templates-upload')" :active="request()->routeIs('templates-upload')" wire:navigate>
                             <svg class="w-6 h-6 mr-2 text-gray-800 dark:hover:text-[#C8000B]" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                                 viewBox="0 0 24 24">
@@ -115,8 +115,8 @@
                     </li>
                 @endif
                 <li class="py-5 border-b border-gray-400">
-                    <x-nav-link class="block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]" :href="route('templates-download')"
-                        :active="request()->routeIs('templates-download')" wire:navigate>
+                    <x-nav-link class="block w-full py-2 text-gray-300 ml-4 mr-4   hover:hover:text-[#C8000B]"
+                        :href="route('templates-download')" :active="request()->routeIs('templates-download')" wire:navigate>
                         <svg class="w-6 h-6 mr-2 text-gray-800 dark:hover:text-[#C8000B]" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                             viewBox="0 0 24 24">
@@ -133,8 +133,8 @@
                     </x-nav-link>
                 </li>
                 <li class="py-5 border-b border-gray-400">
-                    <x-nav-link class="block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]" :href="route('questionnaire')"
-                        :active="request()->routeIs('questionnaire')" wire:navigate>
+                    <x-nav-link class=" ml-4 mr-4 block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
+                        :href="route('questionnaire')" :active="request()->routeIs('questionnaire')" wire:navigate>
                         <svg class="w-6 h-6 mr-2 text-gray-800 dark:hover:text-[#C8000B]" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                             viewBox="0 0 24 24">
@@ -149,7 +149,7 @@
                 </li>
                 @if (auth()->user()->role === 'admin')
                     <li class="py-5 border-b border-gray-400">
-                        <x-nav-link class="block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
+                        <x-nav-link class=" ml-4 mr-4 block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
                             :href="route('risk-profile-dashboard')" :active="request()->routeIs('risk-profile-dashboard')" wire:navigate>
                             <svg class="w-6 h-6 mr-2 text-gray-800 dark:hover:text-[#C8000B]" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
@@ -168,7 +168,7 @@
 
                     <li class="py-5 border-b border-gray-400">
                         <button @click="isOpen = !isOpen"
-                            class="flex w-full px-1 py-2 text-gray-500  hover:hover:text-[#C8000B] focus:outline-none focus:bg-gray-600">
+                            class=" ml-4 mr-4 flex w-full px-1 py-2 text-gray-500  hover:hover:text-[#C8000B] focus:outline-none focus:bg-gray-600">
                             <svg class="w-6 h-6 text-xl text-gray-800 dark:hover:text-[#C8000B]" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                 viewBox="0 0 24 24">
@@ -217,8 +217,8 @@
                     </li>
                 @endif
                 <li class="py-5 border-b border-gray-400">
-                    <x-nav-link class="block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]" :href="route('risk-analysis-questionnaire')"
-                        :active="request()->routeIs('risk-analysis-questionnaire')" wire:navigate>
+                    <x-nav-link class=" ml-4 mr-4 block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
+                        :href="route('risk-analysis-questionnaire')" :active="request()->routeIs('risk-analysis-questionnaire')" wire:navigate>
                         <svg class="w-6 h-6 mr-2 text-gray-800 dark:hover:text-[#C8000B]" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                             viewBox="0 0 24 24">
