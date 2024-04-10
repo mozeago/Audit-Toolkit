@@ -32,15 +32,14 @@
         <div x-data="{ open: false, isOpen: false }">
             <ul>
                 <li class="py-5 border-b border-gray-400">
-                    <x-nav-link class="w-full ml-4 mr-4 text-black" :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
+                    <x-nav-link class="w-full ml-4 mr-4 " :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                         <svg class="w-6 h-6 mr-2 text-gray-800 hover:hover:text-[#C8000B]" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                             viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
                         </svg>
-                        <span
-                            class="text-xl text-black roboto-medium hover:hover:text-[#C8000B]">{{ __('Dashboard') }}</span>
+                        <span class="text-xl roboto-medium hover:hover:text-[#C8000B]">{{ __('Dashboard') }}</span>
                     </x-nav-link>
                 </li>
                 @if (auth()->user()->role === 'admin')
@@ -226,8 +225,6 @@
                                 stroke-width="2"
                                 d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z" />
                         </svg>
-
-
                         <span
                             class="text-xl text-black roboto-medium hover:hover:text-[#C8000B]">{{ __('Risk Questionnaire') }}</span>
                     </x-nav-link>
