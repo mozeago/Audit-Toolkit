@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="w-full">
-        <h1 class="text-3xl font-bold text-center text-gray-800">
+        <h1 class="text-center text-[#19191b]  roboto-bold">
             Templates Download
         </h1>
         </br>
