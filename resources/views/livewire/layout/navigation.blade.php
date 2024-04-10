@@ -14,13 +14,13 @@ new class extends Component {
         $this->redirect('/', navigate: true);
     }
 }; ?>
-<nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+<nav class="bg-[#000000] fixed top-0 z-50 w-full border-b">
     <div class="px-3 py-3 lg:px-5 lg:pl-3">
         <div class="flex items-center justify-between">
             <div class="flex items-center justify-start rtl:justify-end">
                 <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar"
                     type="button"
-                    class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+                    class="inline-flex items-center p-2 text-sm text-white rounded-lg sm:hidden bg-[#C8000B]">
                     <span class="sr-only">Open</span>
                     <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
@@ -40,7 +40,7 @@ new class extends Component {
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
-                            class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none">
+                            class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-[#C8000B] transition duration-150 ease-in-out bg-white border border-transparent rounded-md hover:text-white focus:outline-none hover:bg-[#C8000B]">
                             <div x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name"
                                 x-on:profile-updated.window="name = $event.detail.name"></div>
 

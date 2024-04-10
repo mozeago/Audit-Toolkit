@@ -14,31 +14,37 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body class="font-sans antialiased">
     <livewire:layout.navigation />
     <aside id="logo-sidebar"
-        class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+        class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r sm:translate-x-0"
         aria-label="Sidebar">
         <div x-data="{ open: false, isOpen: false }">
-            <ul>
-                <li>
-                    <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
-                        :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
+            <ul class="overflow-y-auto">
+                <li class="pt-2 pb-4 border-b border-gray-400">
+                    <x-nav-link class="block w-full font-medium text-gray-300" :href="route('dashboard')" :active="request()->routeIs('dashboard')"
+                        wire:navigate>
                         <svg class="w-6 h-6 mr-2 text-gray-800 dark:text-white" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                             viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
                         </svg>
-
-
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </li>
                 @if (auth()->user()->role === 'admin')
-                    <li>
+                    <li class="">
                         <button @click="open = !open"
                             class="flex w-full px-1 py-2 text-gray-500 hover:bg-gray-700 hover:text-white focus:outline-none focus:bg-gray-600">
 
@@ -59,35 +65,35 @@
                         </button>
                         <div x-show="open" class="block px-8 py-2 text-gray-300 hover:bg-gray-200 hover:text-white">
                             <ul>
-                                <li class="w-ful">
+                                <li class=" w-ful">
                                     <x-nav-link
                                         class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
                                         :href="route('sections')" :active="request()->routeIs('sections')" wire:navigate>
                                         {{ __('Sections') }}
                                     </x-nav-link>
                                 </li>
-                                <li>
+                                <li class="">
                                     <x-nav-link
                                         class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
                                         :href="route('controls')" :active="request()->routeIs('controls')" wire:navigate>
                                         {{ __('Controls') }}
                                     </x-nav-link>
                                 </li>
-                                <li>
+                                <li class="">
                                     <x-nav-link
                                         class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
                                         :href="route('questions')" :active="request()->routeIs('questions')" wire:navigate>
                                         {{ __('Questions') }}
                                     </x-nav-link>
                                 </li>
-                                <li>
+                                <li class="">
                                     <x-nav-link
                                         class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
                                         :href="route('information')" :active="request()->routeIs('information')" wire:navigate>
                                         {{ __('Questions Info.') }}
                                     </x-nav-link>
                                 </li>
-                                <li>
+                                <li class="">
                                     <x-nav-link
                                         class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
                                         :href="route('recommendations')" :active="request()->routeIs('recommendations')" wire:navigate>
@@ -97,7 +103,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li>
+                    <li class="">
                         <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
                             :href="route('templates-upload')" :active="request()->routeIs('templates-upload')" wire:navigate>
                             <svg class="w-6 h-6 mr-2 text-gray-800 dark:text-white" aria-hidden="true"
@@ -111,7 +117,7 @@
                         </x-nav-link>
                     </li>
                 @endif
-                <li>
+                <li class="">
                     <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
                         :href="route('templates-download')" :active="request()->routeIs('templates-download')" wire:navigate>
                         <svg class="w-6 h-6 mr-2 text-gray-800 dark:text-white" aria-hidden="true"
@@ -134,7 +140,8 @@
                         <svg class="w-6 h-6 mr-2 text-gray-800 dark:text-white" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                             viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2"
                                 d="M9.529 9.988a2.502 2.502 0 1 1 5 .191A2.441 2.441 0 0 1 12 12.582V14m-.01 3.008H12M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
 
@@ -142,7 +149,7 @@
                     </x-nav-link>
                 </li>
                 @if (auth()->user()->role === 'admin')
-                    <li>
+                    <li class="">
                         <x-nav-link class="block w-full py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
                             :href="route('risk-profile-dashboard')" :active="request()->routeIs('risk-profile-dashboard')" wire:navigate>
                             <svg class="w-6 h-6 mr-2 text-gray-800 dark:text-white" aria-hidden="true"
@@ -159,7 +166,7 @@
                         </x-nav-link>
                     </li>
 
-                    <li>
+                    <li class="">
                         <button @click="isOpen = !isOpen"
                             class="flex w-full px-1 py-2 text-gray-500 hover:bg-gray-700 hover:text-white focus:outline-none focus:bg-gray-600">
                             <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
