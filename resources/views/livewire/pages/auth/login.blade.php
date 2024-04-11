@@ -22,7 +22,7 @@ new #[Layout('layouts.guest')] class extends Component {
         $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
     }
 }; ?>
-<div>
+<div style="background-size: cover; background-image: url('{{ asset('images/bg-login.jpg') }}');">
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
