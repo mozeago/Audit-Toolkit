@@ -227,12 +227,11 @@ new class extends Component {
                                 </div>
                                 {{-- Previous --}}
                                 <button wire:click="previousQuestion"
-                                    class="mr-8 size-6 shrink-0 self-center stroke-[#C8000B] hover:text-[#C8000B] focus:outline-none px-4 py-2">
-                                    <span class="font-bold text-black sr-only">Back</span>
-                                    <span class="font-bold text-black">Back</span>
-                                    <svg wire:click="previousQuestion" class="self-center stroke-black size-6 shrink-0"
-                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 24 24">
+                                    class="mr-8 size-6 shrink-0 self-center stroke-[#000000] hover:text-[#C8000B] focus:outline-none px-4 py-2">
+                                    <span class="font-bold sr-only">Back</span>
+                                    <span class="font-bold">Back</span>
+                                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
                                             d="M5 12h14M5 12l4-4m-4 4 4 4" />
                                     </svg>
