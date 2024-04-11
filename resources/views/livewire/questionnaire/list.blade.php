@@ -5,6 +5,7 @@ use App\Models\UserResponse;
 use App\Models\Question;
 use App\Models\Information;
 use App\Models\User;
+use App\Models\RiskAnalysisResponse;
 new class extends Component {
     public $currentQuestionIndex = 0;
     public $userAnswers = [];
@@ -20,6 +21,9 @@ new class extends Component {
     {
         $this->currentQuestionIndex = auth()->user()->audit_last_question_index ?? 0;
         $this->answeredQuestionsCount = UserResponse::where('user_id', auth()->id())->count();
+        if ($this->answeredQuestionsCount <= 0) {
+            $this->answeredQuestionsCount = RiskAnalysisResponse::where('user_id', auth()->id())->count();
+        }
         $this->totalQuestionsCount = Question::count();
         $this->hasAnsweredQuestions();
         $this->fetchQuestions();
@@ -28,7 +32,13 @@ new class extends Component {
     {
         if ($this->totalQuestionsCount > 0) {
             if ($this->answeredQuestionsCount >= 0 && $this->answeredQuestionsCount !== $this->totalQuestionsCount) {
-                $companyDetails = UserResponse::where('user_id', auth()->id())->first();
+                $companyDetails = null;
+                if ($this->answeredQuestionsCount > 0) {
+                    $companyDetails = RiskAnalysisResponse::where('user_id', auth()->id())->first();
+                }
+                if ($companyDetails == null) {
+                    $companyDetails = UserResponse::where('user_id', auth()->id())->first();
+                }
                 if ($companyDetails) {
                     $this->organization = $companyDetails->organization;
                     $this->department = $companyDetails->department;
@@ -142,58 +152,62 @@ new class extends Component {
         }
     }
 }; ?>
-<div>
+<div x-data="{ infOpen: false }">
     @if ($this->hasAnsweredQuestions())
-        <div class="container px-4 py-8 mx-auto">
+        <div class ="container px-4 py-8 mx-auto">
             @if ($showOrganizationForm)
-                <div
-                    class="mb-4 flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.9] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#C8000B] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#C8000B]">
-
+                <div class="max-w-2xl p-4 mx-auto sm:p-6 lg:p-8">
                     <div
-                        class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#C8000B]/10 sm:size-16">
-                        <svg class="size-5 sm:size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <g fill="#C8000B">
-                                <path
-                                    d="M24 8.25a.5.5 0 0 0-.5-.5H.5a.5.5 0 0 0-.5.5v12a2.5 2.5 0 0 0 2.5 2.5h19a2.5 2.5 0 0 0 2.5-2.5v-12Zm-7.765 5.868a1.221 1.221 0 0 1 0 2.264l-6.626 2.776A1.153 1.153 0 0 1 8 18.123v-5.746a1.151 1.151 0 0 1 1.609-1.035l6.626 2.776ZM19.564 1.677a.25.25 0 0 0-.177-.427H15.6a.106.106 0 0 0-.072.03l-4.54 4.543a.25.25 0 0 0 .177.427h3.783c.027 0 .054-.01.073-.03l4.543-4.543ZM22.071 1.318a.047.047 0 0 0-.045.013l-4.492 4.492a.249.249 0 0 0 .038.385.25.25 0 0 0 .14.042h5.784a.5.5 0 0 0 .5-.5v-2a2.5 2.5 0 0 0-1.925-2.432ZM13.014 1.677a.25.25 0 0 0-.178-.427H9.101a.106.106 0 0 0-.073.03l-4.54 4.543a.25.25 0 0 0 .177.427H8.4a.106.106 0 0 0 .073-.03l4.54-4.543ZM6.513 1.677a.25.25 0 0 0-.177-.427H2.5A2.5 2.5 0 0 0 0 3.75v2a.5.5 0 0 0 .5.5h1.4a.106.106 0 0 0 .073-.03l4.54-4.543Z" />
-                            </g>
-                        </svg>
-                    </div>
+                        class="mb-4 flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.9] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#C8000B] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#C8000B]">
 
-                    <div class="pt-3 sm:pt-5">
-                        <h2 class="mb-4 text-xl font-semibold text-black">Organization and Department Information</h2>
+                        <div
+                            class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#C8000B]/10 sm:size-16">
+                            <svg class="size-5 sm:size-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24">
+                                <g fill="#C8000B">
+                                    <path
+                                        d="M24 8.25a.5.5 0 0 0-.5-.5H.5a.5.5 0 0 0-.5.5v12a2.5 2.5 0 0 0 2.5 2.5h19a2.5 2.5 0 0 0 2.5-2.5v-12Zm-7.765 5.868a1.221 1.221 0 0 1 0 2.264l-6.626 2.776A1.153 1.153 0 0 1 8 18.123v-5.746a1.151 1.151 0 0 1 1.609-1.035l6.626 2.776ZM19.564 1.677a.25.25 0 0 0-.177-.427H15.6a.106.106 0 0 0-.072.03l-4.54 4.543a.25.25 0 0 0 .177.427h3.783c.027 0 .054-.01.073-.03l4.543-4.543ZM22.071 1.318a.047.047 0 0 0-.045.013l-4.492 4.492a.249.249 0 0 0 .038.385.25.25 0 0 0 .14.042h5.784a.5.5 0 0 0 .5-.5v-2a2.5 2.5 0 0 0-1.925-2.432ZM13.014 1.677a.25.25 0 0 0-.178-.427H9.101a.106.106 0 0 0-.073.03l-4.54 4.543a.25.25 0 0 0 .177.427H8.4a.106.106 0 0 0 .073-.03l4.54-4.543ZM6.513 1.677a.25.25 0 0 0-.177-.427H2.5A2.5 2.5 0 0 0 0 3.75v2a.5.5 0 0 0 .5.5h1.4a.106.106 0 0 0 .073-.03l4.54-4.543Z" />
+                                </g>
+                            </svg>
+                        </div>
 
-                        <form wire:submit.prevent="openQuestionnaire">
-                            <div class="mb-4">
-                                <label for="organization" class="block mb-1 text-gray-700">Organization</label>
-                                <input id="organization" type="text" wire:model.defer="organization"
-                                    class="w-full px-4 py-2 border rounded-md" value="{{ $this->organization }}">
-                                @error('organization')
-                                    <span class="text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="mb-4">
-                                <label for="department" class="block mb-1 text-gray-700">Department</label>
-                                <input id="department" type="text" wire:model.defer="department"
-                                    class="w-full px-4 py-2 border rounded-md" value="{{ $this->department }}">
-                                @error('department')
-                                    <span class="text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <x-primary-button type="submit" class="btn btn-primary">Next<span><svg
-                                        class="size-6 shrink-0 self-center stroke-[#C8000B]"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                                    </svg></span>
-                            </x-primary-button>
-                        </form>
+                        <div class="pt-3 sm:pt-5">
+                            <h2 class="mb-4 text-xl font-semibold text-black">Organization and Department Information
+                            </h2>
+
+                            <form wire:submit.prevent="openQuestionnaire">
+                                <div class="mb-4">
+                                    <label for="organization" class="block mb-1 text-gray-700">Organization</label>
+                                    <input id="organization" type="text" wire:model.defer="organization"
+                                        class="w-full px-4 py-2 border rounded-md" value="{{ $this->organization }}">
+                                    @error('organization')
+                                        <span class="text-red-500">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="mb-4">
+                                    <label for="department" class="block mb-1 text-gray-700">Department</label>
+                                    <input id="department" type="text" wire:model.defer="department"
+                                        class="w-full px-4 py-2 border rounded-md" value="{{ $this->department }}">
+                                    @error('department')
+                                        <span class="text-red-500">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <x-primary-button type="submit" class="btn btn-primary">Next<span><svg
+                                            class="size-6 shrink-0 self-center stroke-[#C8000B]"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                                        </svg></span>
+                                </x-primary-button>
+                            </form>
+                        </div>
                     </div>
                 @else
                     <!-- Progress Indicator -->
                     <div class="mb-4">
                         <div class="h-4 bg-gray-200 rounded-lg">
-                            <div class="h-full bg-green-500 rounded-lg"
+                            <div class="h-full bg-[#C8000B]/40 rounded-lg"
                                 style="width: {{ (($currentQuestionIndex + 1) / count($questions)) * 100 }}%"></div>
                         </div>
                         <div class="mt-1 text-xs text-gray-600">{{ $currentQuestionIndex + 1 }} of
@@ -245,16 +259,33 @@ new class extends Component {
                                             @enderror
                                         </div>
                                     </div>
+                                    {{-- start more info --}}
                                     <div
                                         class="w-full p-4 mt-12 border border-t border-gray-200 rounded-lg shadow-md bg-gray-50">
-                                        <div class="prose max-w-none">
-                                            @if ($questions[$currentQuestionIndex]->hasOneInformation)
-                                                {{ $questions[$currentQuestionIndex]->hasOneInformation->content }}
-                                            @else
-                                                <p>No related information available for this question.</p>
-                                            @endif
+                                        <div class="flex items-center justify-between">
+                                            <h2 class="text-lg font-medium">More information about the question</h2>
+                                            <button @click="infOpen = !infOpen" class="ml-4 focus:outline-none">
+                                                <svg :class="{ 'rotate-180': infOpen }"
+                                                    class="w-6 h-6 text-gray-500 transition-transform transform"
+                                                    viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd"
+                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <div x-show="infOpen" class="mt-4 prose max-w-none">
+                                            <p>
+                                                @if ($questions[$currentQuestionIndex]->hasOneInformation)
+                                                    {{ $questions[$currentQuestionIndex]->hasOneInformation->content }}
+                                                @else
+                                                    No related information available for this question.
+                                                @endif
+                                            </p>
+                                            <!-- Add more content here -->
                                         </div>
                                     </div>
+                                    {{-- end more info --}}
                                 </div>
                                 {{-- next --}}
                                 <svg wire:click="nextQuestion" class="size-6 shrink-0 self-center stroke-[#C8000B]"

@@ -31,7 +31,7 @@
     <aside id="logo-sidebar"
         class="fixed top-0 left-0 z-40 w-auto h-screen py-20 mb-20 overflow-y-auto transition-transform -translate-x-full bg-white border-r sm:translate-x-0"
         aria-label="Sidebar">
-        <div x-data="{ open: false, isOpen: false }">
+        <div x-data="{ open: false, isOpen: false, infOpen: false }">
             <ul>
                 <li class="py-5 border-b border-gray-400">
                     <x-nav-link class="no-border-bottom hover:text-[#C8000B] w-full ml-4 mr-4 " :href="route('dashboard')"
