@@ -216,8 +216,9 @@ new class extends Component {
                             answered</div>
                     </div>
                     <div class="flex flex-col w-full md:flex-row md:space-x-4">
-                        {{-- questions --}}
+
                         @if (count($questions) > 0)
+                            {{-- questions --}}
                             <div
                                 class="w-full flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-[#C8000B]/[0.05] transition duration-300 hover:text-black/70 hover:ring-[#C8000B]/20 focus:outline-none focus-visible:ring-[#C8000B] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#C8000B]">
                                 <div
@@ -225,18 +226,20 @@ new class extends Component {
                                     <p><strong>{{ $currentQuestionIndex + 1 }}/{{ count($questions) }}</strong></p>
                                 </div>
                                 {{-- Previous --}}
-                                <svg wire:click="previousQuestion" class="size-6 shrink-0 self-center stroke-[#C8000B]"
-                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                        d="M5 12h14M5 12l4-4m-4 4 4 4" />
-                                </svg>
+                                <button wire:click="previousQuestion"
+                                    class="mr-8 size-6 shrink-0 self-center stroke-[#C8000B] hover:text-[#C8000B] focus:outline-none px-4 py-2">
+                                    <span class="font-bold text-black sr-only">Back</span>
+                                    <span class="font-bold text-black">Back</span>
+                                    <svg wire:click="previousQuestion" class="self-center stroke-black size-6 shrink-0"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                            d="M5 12h14M5 12l4-4m-4 4 4 4" />
+                                    </svg>
+                                </button>
+
                                 {{-- end Previous --}}
                                 <div class="w-full pt-3 sm:pt-5">
-                                    {{-- <h2 class="w-full text-xl font-semibold text-[#C8000B] ">Question
-                                        {{ $currentQuestionIndex + 1 }} of
-                                        {{ count($questions) }}</h2> --}}
-
                                     <p class="w-full mt-4 text-lg/relaxed">
                                         {{ $questions[$currentQuestionIndex]->text }}
                                     </p>
@@ -288,14 +291,19 @@ new class extends Component {
                                     {{-- end more info --}}
                                 </div>
                                 {{-- next --}}
-                                <svg wire:click="nextQuestion" class="size-6 shrink-0 self-center stroke-[#C8000B]"
-                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    fill="none" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                        d="M19 12H5m14 0-4 4m4-4-4-4" />
-                                </svg>
+                                <button wire:click="nextQuestion"
+                                    class="size-6 shrink-0 self-center mr-2 ml-2 stroke-[#C8000B] hover:text-[#C8000B] focus:outline-none px-4 py-2">
+                                    <span class="font-bold sr-only">Next</span>
+                                    <span class="font-bold">Next</span>
+                                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                            d="M19 12H5m14 0-4 4m4-4-4-4" />
+                                    </svg>
+                                </button>
                                 {{-- end next --}}
                             </div>
+
                             {{-- end questions --}}
                         @else
                             <div class="w-full text-center">
@@ -311,18 +319,13 @@ new class extends Component {
             @endif
         </div>
     @else
-        <div class="relative px-4 py-3 text-green-700 bg-green-100 border border-green-400 rounded" role="alert">
-            <strong class="font-bold">Info:</strong>
-            <span class="block sm:inline">Thank you ! You have already taken the<strong> Audit</strong>
-                questionnaire.</span>
+        <div class="max-w-2xl p-4 mx-auto sm:p-6 lg:p-8">
+            <div class="relative px-4 py-3 text-green-700 bg-green-100 border border-green-400 rounded"
+                role="alert">
+                <strong class="font-bold">Info:</strong>
+                <span class="block sm:inline">Thank you ! You have already taken the<strong> Audit</strong>
+                    questionnaire.</span>
+            </div>
         </div>
     @endif
 </div>
-@push('styles')
-    <style>
-        input[type="radio"]:checked {
-            background-color: #C8000B;
-            border-color: transparent;
-        }
-    </style>
-@endpush
