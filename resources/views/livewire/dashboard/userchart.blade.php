@@ -40,8 +40,15 @@ new class extends Component {
         return $score->score;
     }
 }; ?>
-<div>
-    <div class="flex">
+<div class="relative">
+    <div class="absolute top-0 right-0 ml-2">
+        <a href="{{ route('questionnaire') }}"
+            class="block px-4 py-2 font-semibold text-white bg-green-500 rounded-lg shadow-md">
+            Start Questionnaire
+        </a>
+    </div>
+
+    <div class="flex justify-center">
         <!-- Left column -->
         <div class="w-1/3 mr-4 border rounded-lg">
             <h1 class="py-4 text-3xl font-bold text-center text-gray-800">Risk Profile Score</h1>
@@ -51,12 +58,12 @@ new class extends Component {
             </div>
             <div
                 class="h-24 mt-5
-    @if ($riskScore >= 75) bg-green-500 text-white
-    @elseif ($riskScore >= 50)
-        bg-yellow-500 text-black
-    @else
-        bg-red-700 text-white @endif
-    flex flex-col justify-center items-center">
+                    @if ($riskScore >= 75) bg-green-500 text-white
+                    @elseif ($riskScore >= 50)
+                        bg-yellow-500 text-black
+                    @else
+                        bg-red-700 text-white @endif
+                    flex flex-col justify-center items-center">
                 <p class="text-xl font-bold text-center" id="gaugeValue">Average Score: {{ $riskScore }}%</p>
                 <p class="text-xl text-center text-black">
                     @if ($riskScore >= 75)
@@ -68,7 +75,6 @@ new class extends Component {
                     @endif
                 </p>
             </div>
-
         </div>
 
         <!-- Right column -->
@@ -111,8 +117,6 @@ new class extends Component {
                 @endif
             </div>
         </div>
-
-
-
     </div>
+
 </div>

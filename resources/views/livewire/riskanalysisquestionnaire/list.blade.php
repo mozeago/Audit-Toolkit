@@ -151,10 +151,9 @@ new class extends Component {
         }
     }
 }; ?>
-
 <div x-data="{ riskOpen: false }">
     @if ($this->hasAnsweredQuestions())
-        <div class="container px-4 py-8 mx-auto">
+        <div class ="container px-4 py-8 mx-auto">
             @if ($showOrganizationForm)
                 <div class="max-w-2xl p-4 mx-auto sm:p-6 lg:p-8">
                     <div
@@ -216,8 +215,9 @@ new class extends Component {
                             answered</div>
                     </div>
                     <div class="flex flex-col w-full md:flex-row md:space-x-4">
-                        {{-- questions --}}
+
                         @if (count($questions) > 0)
+                            {{-- questions --}}
                             <div
                                 class="w-full flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-[#C8000B]/[0.05] transition duration-300 hover:text-black/70 hover:ring-[#C8000B]/20 focus:outline-none focus-visible:ring-[#C8000B] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#C8000B]">
                                 <div
@@ -225,18 +225,19 @@ new class extends Component {
                                     <p><strong>{{ $currentQuestionIndex + 1 }}/{{ count($questions) }}</strong></p>
                                 </div>
                                 {{-- Previous --}}
-                                <svg wire:click="previousQuestion" class="size-6 shrink-0 self-center stroke-[#C8000B]"
-                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                        d="M5 12h14M5 12l4-4m-4 4 4 4" />
-                                </svg>
+                                <button wire:click="previousQuestion"
+                                    class="mr-8 size-6 shrink-0 self-center stroke-[#000000] hover:text-[#C8000B] focus:outline-none px-4 py-2">
+                                    <span class="font-bold sr-only">Back</span>
+                                    <span class="font-bold">Back</span>
+                                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                            d="M5 12h14M5 12l4-4m-4 4 4 4" />
+                                    </svg>
+                                </button>
+
                                 {{-- end Previous --}}
                                 <div class="w-full pt-3 sm:pt-5">
-                                    {{-- <h2 class="w-full text-xl font-semibold text-[#C8000B] ">Question
-                                        {{ $currentQuestionIndex + 1 }} of
-                                        {{ count($questions) }}</h2> --}}
-
                                     <p class="w-full mt-4 text-lg/relaxed">
                                         {{ $questions[$currentQuestionIndex]->text }}
                                     </p>
@@ -259,7 +260,7 @@ new class extends Component {
                                             @enderror
                                         </div>
                                     </div>
-                                    {{-- start more information --}}
+                                    {{-- start more info --}}
                                     <div
                                         class="w-full p-4 mt-12 border border-t border-gray-200 rounded-lg shadow-md bg-gray-50">
                                         <div class="flex items-center justify-between">
@@ -285,36 +286,79 @@ new class extends Component {
                                             <!-- Add more content here -->
                                         </div>
                                     </div>
-                                    {{-- end more information --}}
+                                    {{-- end more info --}}
                                 </div>
                                 {{-- next --}}
-                                <svg wire:click="nextQuestion" class="size-6 shrink-0 self-center stroke-[#C8000B]"
-                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    fill="none" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                        d="M19 12H5m14 0-4 4m4-4-4-4" />
-                                </svg>
+                                <button wire:click="nextQuestion"
+                                    x-show="$wire.currentQuestionIndex < $wire.totalQuestionsCount-1"
+                                    class="size-6 shrink-0 self-center mr-2 ml-2 stroke-[#C8000B] hover:text-[#C8000B] focus:outline-none px-4 py-2">
+                                    <span class="font-bold sr-only">Next</span>
+                                    <span class="font-bold">Next</span>
+                                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                            d="M19 12H5m14 0-4 4m4-4-4-4" />
+                                    </svg>
+                                </button>
                                 {{-- end next --}}
+                                {{-- submit --}}
+                                <button wire:click="submitAnswers"
+                                    x-show="$wire.currentQuestionIndex === $wire.totalQuestionsCount - 1"
+                                    class="size-6
+                                    shrink-0 self-center mr-8 stroke-[#C8000B] hover:text-[#C8000B]
+                                    focus:outline-none px-4 py-2">
+                                    <span class="font-bold sr-only">Submit</span>
+                                    <span class="font-bold">Submit</span>
+                                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                            d="M19 12H5m14 0-4 4m4-4-4-4" />
+                                    </svg>
+                                </button>
+                                {{-- end submit --}}
                             </div>
+
                             {{-- end questions --}}
                         @else
-                            <div class="w-full text-center">
-                                <svg wire:click="nextQuestion" class="w-24 h-24 mx-auto text-gray-400" fill="none"
-                                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                                </svg>
-                                <p class="mt-4 text-lg text-gray-500">No questions available.</p>
+                            <div class="flex items-center justify-center h-full max-w-2xl p-4 mx-auto sm:p-6 lg:p-8">
+                                <div class="relative flex items-center px-4 py-3 text-blue-700 bg-blue-100 border border-blue-400 rounded"
+                                    role="alert">
+                                    <div class="mr-2">
+                                        <svg class="w-6 h-6 text-blue-600 fill-current"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                            <path
+                                                d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm-1-5.732V9h2v1.268l.764.44-.764 1.32V15h-1.528v-2.972l-.764-1.32.764-.44z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <strong class="font-bold">Information:</strong>
+                                        <span class="block sm:inline">No Questions for answering yet</span>
+                                    </div>
+                                </div>
                             </div>
+
                         @endif
                     </div>
             @endif
         </div>
     @else
-        <div class="relative px-4 py-3 text-green-700 bg-green-100 border border-green-400 rounded" role="alert">
-            <strong class="font-bold">Info:</strong>
-            <span class="block sm:inline">Thank you ! You have already taken the<strong> Audit</strong>
-                questionnaire.</span>
+        <div class="flex items-center justify-center h-full max-w-2xl p-4 mx-auto sm:p-6 lg:p-8">
+            <div class="relative flex items-center px-4 py-3 text-blue-700 bg-blue-100 border border-blue-400 rounded"
+                role="alert">
+                <div class="mr-2">
+                    <svg class="w-6 h-6 text-blue-600 fill-current" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm-1-5.732V9h2v1.268l.764.44-.764 1.32V15h-1.528v-2.972l-.764-1.32.764-.44z" />
+                    </svg>
+                </div>
+                <div>
+                    <strong class="font-bold">Information:</strong>
+                    <span class="block sm:inline">Thank you! You have already taken the<strong> Audit</strong>
+                        questionnaire.</span>
+                </div>
+            </div>
         </div>
+
     @endif
 </div>

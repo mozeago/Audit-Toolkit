@@ -321,26 +321,45 @@ new class extends Component {
 
                             {{-- end questions --}}
                         @else
-                            <div class="w-full text-center">
-                                <svg wire:click="nextQuestion" class="w-24 h-24 mx-auto text-gray-400" fill="none"
-                                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                                </svg>
-                                <p class="mt-4 text-lg text-gray-500">No questions available.</p>
+                            <div class="flex items-center justify-center h-full max-w-2xl p-4 mx-auto sm:p-6 lg:p-8">
+                                <div class="relative flex items-center px-4 py-3 text-blue-700 bg-blue-100 border border-blue-400 rounded"
+                                    role="alert">
+                                    <div class="mr-2">
+                                        <svg class="w-6 h-6 text-blue-600 fill-current"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                            <path
+                                                d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm-1-5.732V9h2v1.268l.764.44-.764 1.32V15h-1.528v-2.972l-.764-1.32.764-.44z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <strong class="font-bold">Information:</strong>
+                                        <span class="block sm:inline">No Questions for answering yet</span>
+                                    </div>
+                                </div>
                             </div>
+
                         @endif
                     </div>
             @endif
         </div>
     @else
-        <div class="max-w-2xl p-4 mx-auto sm:p-6 lg:p-8">
-            <div class="relative px-4 py-3 text-green-700 bg-green-100 border border-green-400 rounded"
+        <div class="flex items-center justify-center h-full max-w-2xl p-4 mx-auto sm:p-6 lg:p-8">
+            <div class="relative flex items-center px-4 py-3 text-blue-700 bg-blue-100 border border-blue-400 rounded"
                 role="alert">
-                <strong class="font-bold">Info:</strong>
-                <span class="block sm:inline">Thank you ! You have already taken the<strong> Audit</strong>
-                    questionnaire.</span>
+                <div class="mr-2">
+                    <svg class="w-6 h-6 text-blue-600 fill-current" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm-1-5.732V9h2v1.268l.764.44-.764 1.32V15h-1.528v-2.972l-.764-1.32.764-.44z" />
+                    </svg>
+                </div>
+                <div>
+                    <strong class="font-bold">Information:</strong>
+                    <span class="block sm:inline">Thank you! You have already taken the<strong> Audit</strong>
+                        questionnaire.</span>
+                </div>
             </div>
         </div>
+
     @endif
 </div>
