@@ -68,3 +68,13 @@
 .no-border-bottom {
     border-bottom: none;
 }
+
+input[type="radio"]:hover {
+    background-color: #C8000B;
+}
+
+input[type="radio"]:checked {
+    background-color: #C8000B;
+    color: #C8000B;
+    border: 1px solid #f0f0f0;
+}
