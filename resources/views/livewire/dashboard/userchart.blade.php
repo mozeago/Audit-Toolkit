@@ -6,6 +6,8 @@ use App\Models\RiskAnalysisResponse;
 new class extends Component {
     public $data = [];
     public $riskScore;
+    public $auditScore;
+    public $riskValue;
 
     public function mount()
     {
@@ -25,7 +27,7 @@ new class extends Component {
         $score = UserResponse::where('user_id', auth()->user()->id)
             ->selectRaw('round( (sum(case when answer = \'true\' then 1 else 0 end) / count(*)) * 100) as score')
             ->first();
-
+        $this->auditScore = $score->score;
         return $score->score;
     }
 
@@ -34,7 +36,7 @@ new class extends Component {
         $score = RiskAnalysisResponse::where('user_id', auth()->user()->id)
             ->selectRaw('round( (sum(case when answer = \'true\' then 1 else 0 end) / count(*)) * 100) as score')
             ->first();
-
+        $this->riskValue = $score->score;
         return $score->score;
     }
 }; ?>
@@ -47,70 +49,70 @@ new class extends Component {
                 <div id="gaugeChartContainer" style="width: 250px; height: 250px;"></div>
                 <!-- Change div id to 'gaugeChartContainer' -->
             </div>
-            <div class="h-24 mt-5 bg-orange-500">
-                <p class="text-xl" id="gaugeValue">{{ $riskScore }}%</p>
+            <div
+                class="h-24 mt-5
+    @if ($riskScore >= 75) bg-green-500 text-white
+    @elseif ($riskScore >= 50)
+        bg-yellow-500 text-black
+    @else
+        bg-red-700 text-white @endif
+    flex flex-col justify-center items-center">
+                <p class="text-xl font-bold text-center" id="gaugeValue">Average Score: {{ $riskScore }}%</p>
+                <p class="text-xl text-center text-black">
+                    @if ($riskScore >= 75)
+                        Low Risk
+                    @elseif ($riskScore >= 50)
+                        Moderate Risk
+                    @else
+                        High Risk
+                    @endif
+                </p>
             </div>
+
         </div>
 
         <!-- Right column -->
         <div class="w-1/4">
             <div class="grid grid-cols-2 gap-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
-                <div class="h-24 bg-green-500"></div>
-                <div class="h-24 bg-orange-500"></div>
-                <div class="h-24 bg-red-500"></div>
-                <div class="h-24 bg-yellow-400"></div>
+                @if ($auditScore >= 70)
+                    <div class="flex items-center justify-center h-24 text-center text-white bg-green-700">
+                        Audit Score: {{ $auditScore }} %
+                    </div>
+                @elseif($auditScore >= 50)
+                    <div class="flex items-center justify-center h-24 text-center text-white bg-green-500">
+                        Audit Score: {{ $auditScore }} %
+                    </div>
+                @elseif($auditScore >= 30)
+                    <div class="flex items-center justify-center h-24 text-center text-white bg-yellow-700">
+                        Audit Score: {{ $auditScore }} %
+                    </div>
+                @else
+                    <div class="flex items-center justify-center h-24 text-center text-white bg-red-700">
+                        Audit Score: {{ $auditScore }} %
+                    </div>
+                @endif
+
+                @if ($riskValue >= 75)
+                    <div class="flex items-center justify-center h-24 text-center text-white bg-green-700">
+                        Risk Score: {{ $riskValue }} %
+                    </div>
+                @elseif($riskValue >= 50)
+                    <div class="flex items-center justify-center h-24 text-center text-white bg-green-500">
+                        Risk Score: {{ $riskValue }} %
+                    </div>
+                @elseif($riskValue >= 30)
+                    <div class="flex items-center justify-center h-24 text-center text-white bg-red-700">
+                        Risk Score: {{ $riskValue }} %
+                    </div>
+                @else
+                    <div class="flex items-center justify-center h-24 text-center text-white bg-yellow-500">
+                        Risk Score: {{ $riskValue }} %
+                    </div>
+                @endif
             </div>
         </div>
 
+
+
     </div>
 </div>
-
-@push('scripts')
-    <script src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
-    <script src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
-    <script>
-        document.addEventListener('livewire:load', function() {
-            var gaugeValue = {{ $riskScore }};
-
-            FusionCharts.ready(function() {
-                var chart = new FusionCharts({
-                    type: 'angulargauge',
-                    renderAt: 'gaugeChartContainer',
-                    width: '100%',
-                    height: '250',
-                    dataFormat: 'json',
-                    dataSource: {
-                        "chart": {
-                            "caption": "Risk Profile Score",
-                            "lowerLimit": "0",
-                            "upperLimit": "100",
-                            "showValue": "1",
-                            "numberSuffix": "%",
-                            "theme": "fusion"
-                        },
-                        "colorRange": {
-                            "color": [{
-                                "minValue": "0",
-                                "maxValue": "50",
-                                "code": "#1aaf5d"
-                            }, {
-                                "minValue": "50",
-                                "maxValue": "75",
-                                "code": "#f2c500"
-                            }, {
-                                "minValue": "75",
-                                "maxValue": "100",
-                                "code": "#c02d00"
-                            }]
-                        },
-                        "dials": {
-                            "dial": [{
-                                "value": gaugeValue
-                            }]
-                        }
-                    }
-                }).render();
-            });
-        });
-    </script>
-@endpush
