@@ -292,6 +292,7 @@ new class extends Component {
                                 </div>
                                 {{-- next --}}
                                 <button wire:click="nextQuestion"
+                                    x-show="$wire.currentQuestionIndex < $wire.totalQuestionsCount-1"
                                     class="size-6 shrink-0 self-center mr-2 ml-2 stroke-[#C8000B] hover:text-[#C8000B] focus:outline-none px-4 py-2">
                                     <span class="font-bold sr-only">Next</span>
                                     <span class="font-bold">Next</span>
@@ -302,6 +303,21 @@ new class extends Component {
                                     </svg>
                                 </button>
                                 {{-- end next --}}
+                                {{-- submit --}}
+                                <button wire:click="submitAnswers"
+                                    x-show="$wire.currentQuestionIndex === $wire.totalQuestionsCount - 1"
+                                    class="size-6
+                                    shrink-0 self-center mr-8 stroke-[#C8000B] hover:text-[#C8000B]
+                                    focus:outline-none px-4 py-2">
+                                    <span class="font-bold sr-only">Submit</span>
+                                    <span class="font-bold">Submit</span>
+                                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                            d="M19 12H5m14 0-4 4m4-4-4-4" />
+                                    </svg>
+                                </button>
+                                {{-- end submit --}}
                             </div>
 
                             {{-- end questions --}}
