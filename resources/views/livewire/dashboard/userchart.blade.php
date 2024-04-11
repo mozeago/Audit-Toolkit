@@ -7,9 +7,29 @@ use App\Models\RiskAnalysisResponse;
 new class extends Component {
     public $data = [];
     public $chartColors = [];
+    public $value = 15;
+    public $color;
+    public $label;
 
     public function mount()
     {
+        $this->setColors();
+    }
+    public function setColors()
+    {
+        if ($this->value < 25) {
+            $this->color = '#FF0000'; // Red
+            $this->label = 'Poor';
+        } elseif ($this->value >= 25 && $this->value < 50) {
+            $this->color = '#FFA500'; // Orange
+            $this->label = 'Average';
+        } elseif ($this->value >= 50 && $this->value < 75) {
+            $this->color = '#FFFF00'; // Yellow
+            $this->label = 'Good';
+        } else {
+            $this->color = '#00FF00'; // Green
+            $this->label = 'Excellent';
+        }
     }
     public function getUserAuditAnswers()
     {
@@ -70,12 +90,22 @@ new class extends Component {
     // }
 }; ?>
 <div>
+    <div class="gauge-container">
+        <div class="gauge-bar"
+            style="background: linear-gradient(to top, {{ $color }}, #00ff00); transform: rotate({{ $value * 1.8 - 135 }}deg);">
+        </div>
+        <div class="gauge-labels">
+            <div class="label top">{{ $label }}</div>
+            <div class="label bottom">0%</div>
+        </div>
+    </div>
     <div class="flex">
         <!-- Left column -->
         <div class="w-1/3 mr-4 border rounded-lg">
             <h1 class="py-4 text-3xl font-bold text-center text-gray-800">Risk Profile Score</h1>
             <div style="display: flex;">
-                <canvas id="gaugeChart" width="250" height="250"></canvas> <!-- Change canvas id to 'gaugeChart' -->
+                <canvas id="gaugeChart" width="250" height="250"></canvas>
+                <!-- Change canvas id to 'gaugeChart' -->
             </div>
             <div class="h-24 mt-5 bg-orange-500">
                 <p class="text-xl">{{ round(($this->getUserRiskAnswers() + $this->getUserAuditAnswers()) / 2, 0) }}%</p>

@@ -32,8 +32,8 @@
         <div x-data="{ open: false, isOpen: false }">
             <ul>
                 <li class="py-5 border-b border-gray-400">
-                    <x-nav-link class="hover:text-[#C8000B] w-full ml-4 mr-4 " :href="route('dashboard')" :active="request()->routeIs('dashboard')"
-                        wire:navigate>
+                    <x-nav-link class="no-border-bottom hover:text-[#C8000B] w-full ml-4 mr-4 " :href="route('dashboard')"
+                        :active="request()->routeIs('dashboard')" wire:navigate>
                         <svg class="w-6 h-6 mr-2 hover:text-[#C8000B]" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                             viewBox="0 0 24 24">
@@ -46,11 +46,10 @@
                 @if (auth()->user()->role === 'admin')
                     <li class="py-5 border-b border-gray-400">
                         <button @click="open = !open"
-                            class="ml-4 mr-4 flex w-full px-1 py-2  hover:text-[#C8000B] focus:outline-none ">
+                            class="ml-4 mr-4 flex justify-between items-center w-full pl-1 pr-8 py-2 hover:text-[#C8000B] focus:outline-none">
 
-                            <div class="flex items-center">
-
-                                <svg class="w-6 h-6  hover:text-[#C8000B]" aria-hidden="true"
+                            <div class="flex items-center flex-grow"> <!-- Added flex-grow to make it expand -->
+                                <svg class="w-6 h-6 hover:text-[#C8000B]" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none">
                                     <path stroke-width="2" fill-rule="evenodd" stroke="currentColor"
@@ -58,47 +57,53 @@
                                         d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z" />
                                 </svg>
                                 <span class="ml-2 text-xl text-black roboto-medium hover:text-[#C8000B]">Audit
-                                    TooKit</span>
-
-                                <svg :class="{ 'rotate-180': open }" class="w-6 h-6 ml-4 hover:text-[#C8000B]"
-                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none">
-                                    <path stroke-width="2" fill-rule="evenodd" stroke="currentColor"
-                                        stroke-linecap="round" stroke-linejoin="round"
-                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
+                                    Toolkit</span>
                             </div>
+
+                            <svg :class="{ 'rotate-180': open }" class="w-6 h-6 ml-4 hover:text-[#C8000B]"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none">
+                                <path stroke-width="2" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
                         </button>
+
 
                         <div x-show="open"
                             class="block px-8 py-2 text-gray-300 hover:bg-gray-200 hover:hover:text-[#C8000B]">
                             <ul>
                                 <li class=" w-ful">
-                                    <x-nav-link class="block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
+                                    <x-nav-link
+                                        class="no-border-bottom block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
                                         :href="route('sections')" :active="request()->routeIs('sections')" wire:navigate>
                                         {{ __('Sections') }}
                                     </x-nav-link>
                                 </li>
                                 <li class="">
-                                    <x-nav-link class="block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
+                                    <x-nav-link
+                                        class="no-border-bottom block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
                                         :href="route('controls')" :active="request()->routeIs('controls')" wire:navigate>
                                         {{ __('Controls') }}
                                     </x-nav-link>
                                 </li>
                                 <li class="">
-                                    <x-nav-link class="block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
+                                    <x-nav-link
+                                        class="no-border-bottom block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
                                         :href="route('questions')" :active="request()->routeIs('questions')" wire:navigate>
                                         {{ __('Questions') }}
                                     </x-nav-link>
                                 </li>
                                 <li class="">
-                                    <x-nav-link class="block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
+                                    <x-nav-link
+                                        class="no-border-bottom block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
                                         :href="route('information')" :active="request()->routeIs('information')" wire:navigate>
                                         {{ __('Questions Info.') }}
                                     </x-nav-link>
                                 </li>
                                 <li class="">
-                                    <x-nav-link class="block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
+                                    <x-nav-link
+                                        class="no-border-bottom block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
                                         :href="route('recommendations')" :active="request()->routeIs('recommendations')" wire:navigate>
                                         {{ __('Recommendations') }}
                                     </x-nav-link>
@@ -107,7 +112,8 @@
                         </div>
                     </li>
                     <li class="py-5 border-b border-gray-400">
-                        <x-nav-link class="ml-4 mr-4 block w-full py-2 text-black  hover:hover:text-[#C8000B]"
+                        <x-nav-link
+                            class="no-border-bottom ml-4 mr-4 block w-full py-2 text-black  hover:hover:text-[#C8000B]"
                             :href="route('templates-upload')" :active="request()->routeIs('templates-upload')" wire:navigate>
                             <svg class="w-6 h-6 mr-2 text-gray-800 dark:hover:text-[#C8000B]" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
@@ -122,7 +128,8 @@
                     </li>
                 @endif
                 <li class="py-5 border-b border-gray-400">
-                    <x-nav-link class="block w-full py-2 text-gray-300 ml-4 mr-4   hover:hover:text-[#C8000B]"
+                    <x-nav-link
+                        class="no-border-bottom block w-full py-2 text-gray-300 ml-4 mr-4   hover:hover:text-[#C8000B]"
                         :href="route('templates-download')" :active="request()->routeIs('templates-download')" wire:navigate>
                         <svg class="w-6 h-6 mr-2 text-gray-800 dark:hover:text-[#C8000B]" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
@@ -140,7 +147,8 @@
                     </x-nav-link>
                 </li>
                 <li class="py-5 border-b border-gray-400">
-                    <x-nav-link class=" ml-4 mr-4 block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
+                    <x-nav-link
+                        class="no-border-bottom  ml-4 mr-4 block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
                         :href="route('questionnaire')" :active="request()->routeIs('questionnaire')" wire:navigate>
                         <svg class="w-6 h-6 mr-2 text-gray-800 dark:hover:text-[#C8000B]" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
@@ -156,7 +164,8 @@
                 </li>
                 @if (auth()->user()->role === 'admin')
                     <li class="py-5 border-b border-gray-400">
-                        <x-nav-link class=" ml-4 mr-4 block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
+                        <x-nav-link
+                            class="no-border-bottom  ml-4 mr-4 block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
                             :href="route('risk-profile-dashboard')" :active="request()->routeIs('risk-profile-dashboard')" wire:navigate>
                             <svg class="w-6 h-6 mr-2 text-gray-800 dark:hover:text-[#C8000B]" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
@@ -175,50 +184,54 @@
 
                     <li class="py-5 border-b border-gray-400">
                         <button @click="isOpen = !isOpen"
-                            class="ml-4 mr-4 flex w-full px-1 py-2 hover:text-[#C8000B] focus:outline-none ">
+                            class="ml-4 mr-4 flex justify-between items-center w-full pl-1 pr-8 py-2 hover:text-[#C8000B] focus:outline-none">
 
-                            <div class="flex items-center">
-
+                            <div class="flex items-center flex-grow"> <!-- Added flex-grow to make it expand -->
                                 <svg class="w-6 h-6 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                     width="24" height="24" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2"
                                         d="M4 4.5V19a1 1 0 0 0 1 1h15M7 14l4-4 4 4 5-5m0 0h-3.207M20 9v3.207" />
-                                </svg><span
-                                    class="ml-2 text-xl text-black roboto-medium hover:text-[#C8000B]">{{ __('Risk Analysis') }}</span>
-
-                                <svg :class="{ 'rotate-180': isOpen }" class="w-6 h-6 ml-4 hover:text-[#C8000B]"
-                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none">
-                                    <path stroke-width="2" fill-rule="evenodd" stroke="currentColor"
-                                        stroke-linecap="round" stroke-linejoin="round"
-                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"></path>
                                 </svg>
+                                <span
+                                    class="ml-2 text-xl text-black roboto-medium hover:text-[#C8000B]">{{ __('Risk Analysis') }}</span>
                             </div>
+
+                            <svg :class="{ 'rotate-180': isOpen }" class="w-6 h-6 hover:text-[#C8000B]"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none">
+                                <path stroke-width="2" fill-rule="evenodd" stroke="currentColor"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
                         </button>
                         <div x-show="isOpen"
                             class="block px-8 py-2 text-gray-300 hover:bg-gray-200 hover:hover:text-[#C8000B]">
                             <ul>
                                 <li class="w-full">
-                                    <x-nav-link class="block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
+                                    <x-nav-link
+                                        class="no-border-bottom block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
                                         :href="route('risk-analysis-section')" :active="request()->routeIs('risk-analysis-section')" wire:navigate>
                                         {{ __('Risk Section') }}
                                     </x-nav-link>
                                 </li>
                                 <li class="w-full">
-                                    <x-nav-link class="block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
+                                    <x-nav-link
+                                        class="no-border-bottom block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
                                         :href="route('risk-analysis-subsection')" :active="request()->routeIs('risk-analysis-subsection')" wire:navigate>
                                         {{ __('Risk Analysis Questions') }}
                                     </x-nav-link>
                                 </li>
                                 <li class="w-full">
-                                    <x-nav-link class="block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
+                                    <x-nav-link
+                                        class="no-border-bottom block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
                                         :href="route('risk-analysis-information')" :active="request()->routeIs('risk-analysis-information')" wire:navigate>
                                         {{ __('Risk Information') }}
                                     </x-nav-link>
                                 </li>
                                 <li class="w-full">
-                                    <x-nav-link class="block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
+                                    <x-nav-link
+                                        class="no-border-bottom block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
                                         :href="route('risk-analysis-recommendation')" :active="request()->routeIs('risk-analysis-recommendation')" wire:navigate>
                                         {{ __('Risk Recommendation') }}
                                     </x-nav-link>
@@ -228,7 +241,8 @@
                     </li>
                 @endif
                 <li class="py-5 border-b border-gray-400">
-                    <x-nav-link class=" ml-4 mr-4 block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
+                    <x-nav-link
+                        class="no-border-bottom  ml-4 mr-4 block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
                         :href="route('risk-analysis-questionnaire')" :active="request()->routeIs('risk-analysis-questionnaire')" wire:navigate>
                         <svg class="w-6 h-6 mr-2 text-gray-800 dark:hover:text-[#C8000B]" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
