@@ -1,0 +1,170 @@
+https://bootcamp.laravel.com/livewire/installation
+config database
+	php artisan migrate
+	
+sections (id, uuid, created_at, updated_at)
+controls (id, uuid, audit_id, title, description, created_at, updated_at)
+questions (id, uuid, control_id, question_text, created_at, updated_at)
+information (id, uuid, question_id, info_text, recommendation, created_at, updated_at)
+
+An section can have many Controls (one-to-many)
+A Control can have many Questions (one-to-many)
+A Question can have one Information (one-to-one)
+
+php artisan make:seeder SectionSeeder
+php artisan make:seeder ControlSeeder
+php artisan make:seeder QuestionSeeder
+php artisan make:seeder InformationSeeder
+
+php artisan make:model Section -c -r -s -m
+php artisan make:model Control -c -r -s -m
+php artisan make:model Question -c -r -s -m
+php artisan make:model Information -c -r -s -m
+php artisan make:model Recommendation -c -r -s -m
+php artisan make:model AuditQuestion -c -r -s -m
+php artisan make:model UserResponse -c -r -s -m
+php artisan make:model Template -c -r -s -m
+php artisan make:model RiskProfile -c -r -s -m
+
+php artisan make:model RiskSection -c -r -s -m
+php artisan make:model RiskSubSection -c -r -s -m
+php artisan make:model RiskInformation -c -r -s -m
+php artisan make:model RiskRecommendation -c -r -s -m
+php artisan make:model RiskAnalysisResponse -c -r -s -m
+
+9bc16d49-7122-4b57-b10b-dd936bd643df
+
+php artisan migrate --path=/database/migrations/0001_01_01_000000_create_users_table.php
+
+
+php artisan make:volt riskanalysisquestionnaire/list --class
+
+php artisan make:factory Section
+php artisan make:factory Control
+php artisan make:factory Question
+php artisan make:factory Information
+	sections
+Data Management
+Legal Basis for Processing Data
+Registration
+Data Subject Rights
+Accountability
+Vendors and Processors
+Data Privacy Risks Management 
+Privacy Impact Assessment
+International transfers
+Data Breach Management
+Employee Training and Awareness
+
+make section trim starting and ending empty space
+make each section unique
+
+make section be unique when adding and fail friendly
+fix the page reload on first edit button click.
+git checkout -b crud-controls b3acf11
+....................
+In your Questionnaire Livewire component, define public properties:
+questions: An array to hold the list of questions retrieved from the database.
+userResponses: An associative array where the key is the question ID and the 
+value is the user's chosen answer (true for yes, false for no).
+
+Create methods to handle user clicks on the "Yes" and "No" buttons 
+for each question. These methods should update the userResponses array 
+with the selected answer (true/false) based on the clicked button.
+
+Based on the current answer (userResponses[$question->id]), 
+conditionally display the relevant recommendation text retrieved from the 
+Recommendation model using the question's foreign key relationship
+//////// should the users see the recommendations on realtime or after finishing answering questions ?
+can users change their responses ?
+.................................................
+on the question  ;;;load its related information to give a user context before choosing an answer
+Data Protection Audit Toolkit (done waiting the part for user to answer questions and get report)
+................
+Risk Profile Analysis
+KPI dashboard
+Data Protection Audit Toolkit [done]
+
+.......................
+
+
+...................
+scores to be the last part after submission
+.........
+collect user details on question submit
+.......
+fix download template error
+.....................
+section need to be categorised into (high risk or low risk)------> Brilliant to Give categories.
+.....................................
+
+
+
+
+
+
+
+
+
+http://127.0.0.1:8000/google/callback
+
+Client ID:  155337406767-64eo2gnk2djpp5nk93hbk66e25uobub0.apps.googleusercontent.com
+Client secret: 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
+
+
+hosting
+testing
+templates[diff thumbnails]
+
+risk profile analysis[4-low,mid high]
+Questions[same weight]
+	yes low risk
+	no high risk
+	0-39%
+	40-69
+	70-100
+php artisan make:volt userdashboard/list --class
+
+
+
+(count($questions) > 0 && $currentQuestionIndex < count($questions))
+
+
+................Remaining..................
+admin risk analysis charts
+...........................................
+
+...////
+/////////ramaining part//////////
+email to user
+Theme: #BA0C2F  #C8000B
+		black
+		white
+background: #F2F2F2
+.............................
+radio button focus ring to be #C8000B
+
+.....................waiting..........
+email response question
+landing page
+no form if no questions
+video svg on company info
+radial graph
+app logo
+
+....................................
+questions to have partial response as well
+the different boxes for different sections
+...........................
+dashboard redesign
+add partial response
+categories for the risk profile analysis
+add admin addring case files and video urls
+
+
+ <div class="w-1/4 mr-4 border rounded-lg">
+ </div>
+
+
+
+	
