@@ -354,7 +354,7 @@ new class extends Component {
                 </div>
                 <div>
                     <strong class="font-bold">Information:</strong>
-                    <span class="block sm:inline">Thank you! You have already taken the<strong> Audit</strong>
+                    <span class="block sm:inline">Thank you! You have already taken the<strong> Risk Analysis</strong>
                         questionnaire.</span>
                 </div>
             </div>
