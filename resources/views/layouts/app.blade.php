@@ -75,39 +75,44 @@
                         <div x-show="open"
                             class="block px-8 py-2 text-gray-300 hover:bg-gray-200 hover:hover:text-[#C8000B]">
                             <ul>
-                                <li class=" w-ful">
+                                <li class="">
                                     <x-nav-link
                                         class="no-border-bottom block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
                                         :href="route('sections')" :active="request()->routeIs('sections')" wire:navigate>
-                                        {{ __('Sections') }}
+                                        <span
+                                            class="text-xl roboto-medium hover:hover:text-[#C8000B] ml-8">{{ __('Sections') }}<span>
                                     </x-nav-link>
                                 </li>
                                 <li class="">
                                     <x-nav-link
                                         class="no-border-bottom block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
                                         :href="route('controls')" :active="request()->routeIs('controls')" wire:navigate>
-                                        {{ __('Controls') }}
+                                        <span
+                                            class="text-xl roboto-medium hover:hover:text-[#C8000B] ml-8">{{ __('Controls') }}</span>
                                     </x-nav-link>
                                 </li>
                                 <li class="">
                                     <x-nav-link
                                         class="no-border-bottom block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
                                         :href="route('questions')" :active="request()->routeIs('questions')" wire:navigate>
-                                        {{ __('Questions') }}
+                                        <span
+                                            class="text-xl roboto-medium hover:hover:text-[#C8000B] ml-8">{{ __('Questions') }}</span>
                                     </x-nav-link>
                                 </li>
                                 <li class="">
                                     <x-nav-link
                                         class="no-border-bottom block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
                                         :href="route('information')" :active="request()->routeIs('information')" wire:navigate>
-                                        {{ __('Questions Info.') }}
+                                        <span
+                                            class="text-xl roboto-medium hover:hover:text-[#C8000B] ml-8">{{ __('Questions Info.') }}</span>
                                     </x-nav-link>
                                 </li>
                                 <li class="">
                                     <x-nav-link
                                         class="no-border-bottom block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
                                         :href="route('recommendations')" :active="request()->routeIs('recommendations')" wire:navigate>
-                                        {{ __('Recommendations') }}
+                                        <span
+                                            class="text-xl roboto-medium hover:hover:text-[#C8000B] ml-8">{{ __('Recommendations') }}</span>
                                     </x-nav-link>
                                 </li>
                             </ul>
@@ -212,33 +217,38 @@
                             <ul>
                                 <li class="w-full">
                                     <x-nav-link
-                                        class="no-border-bottom block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
+                                        class="no-border-bottom block w-full py-2 text-black hover:hover:text-[#C8000B]"
                                         :href="route('risk-analysis-section')" :active="request()->routeIs('risk-analysis-section')" wire:navigate>
-                                        {{ __('Risk Section') }}
+                                        <span
+                                            class="text-xl roboto-medium hover:hover:text-[#C8000B] ml-8">{{ __('Risk Section') }}</span>
                                     </x-nav-link>
                                 </li>
                                 <li class="w-full">
                                     <x-nav-link
-                                        class="no-border-bottom block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
+                                        class="no-border-bottom block w-full py-2 text-black hover:hover:text-[#C8000B]"
                                         :href="route('risk-analysis-subsection')" :active="request()->routeIs('risk-analysis-subsection')" wire:navigate>
-                                        {{ __('Risk Analysis Questions') }}
+                                        <span
+                                            class="text-xl roboto-medium hover:hover:text-[#C8000B] ml-8">{{ __('Risk Analysis Questions') }}</span>
                                     </x-nav-link>
                                 </li>
                                 <li class="w-full">
                                     <x-nav-link
-                                        class="no-border-bottom block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
+                                        class="no-border-bottom block w-full py-2 text-black hover:hover:text-[#C8000B]"
                                         :href="route('risk-analysis-information')" :active="request()->routeIs('risk-analysis-information')" wire:navigate>
-                                        {{ __('Risk Information') }}
+                                        <span
+                                            class="text-xl roboto-medium hover:hover:text-[#C8000B] ml-8">{{ __('Risk Information') }}</span>
                                     </x-nav-link>
                                 </li>
                                 <li class="w-full">
                                     <x-nav-link
-                                        class="no-border-bottom block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
+                                        class="no-border-bottom block w-full py-2 text-black hover:hover:text-[#C8000B]"
                                         :href="route('risk-analysis-recommendation')" :active="request()->routeIs('risk-analysis-recommendation')" wire:navigate>
-                                        {{ __('Risk Recommendation') }}
+                                        <span
+                                            class="text-xl roboto-medium hover:hover:text-[#C8000B] ml-8">{{ __('Risk Recommendation') }}</span>
                                     </x-nav-link>
                                 </li>
                             </ul>
+
                         </div>
                     </li>
                 @endif
