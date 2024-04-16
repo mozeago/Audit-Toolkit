@@ -256,6 +256,12 @@ new class extends Component {
                                                     value="false" class="w-6 h-6 ">
                                                 <span class="text-sm font-medium text-gray-700">No</span>
                                             </label>
+                                            <label for="answer-partial" class="flex items-center w-full space-x-2">
+                                                <input id="answer-partial" type="radio" name="answer"
+                                                    wire:model.defer="userAnswers.{{ $currentQuestionIndex }}.answer"
+                                                    value="partial" class="w-6 h-6 ">
+                                                <span class="text-sm font-medium text-gray-700">Partial</span>
+                                            </label>
                                             @error('answer')
                                                 <span class="mt-2 text-red-500 text-l">{{ $message }}</span>
                                             @enderror
