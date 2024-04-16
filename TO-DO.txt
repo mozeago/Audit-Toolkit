@@ -159,11 +159,14 @@ the different boxes for different sections
 dashboard redesign
 add partial response
 categories for the risk profile analysis
-add admin addring case files and video urls
+add admin adding case files and video urls
 
-
- <div class="w-1/4 mr-4 border rounded-lg">
- </div>
+...................................................complete parts........................
+Templates 100%
+dashboard design [data calculations]
+login logic[password reset link]
+Audit Questionnaire [partial answer]
+Risk Analysis Questionnaire [partial answer]
 
 
 
