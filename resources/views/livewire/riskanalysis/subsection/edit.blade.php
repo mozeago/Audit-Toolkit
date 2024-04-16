@@ -10,17 +10,20 @@ new class extends Component {
     public RiskSubSection $riskSubSection;
     public string $text = '';
     public string $riskSectionId = '';
+    public string $questionTitle = '';
     public function rules(): array
     {
         return [
             'text' => 'required|string|max:255',
             'riskSectionId' => 'required|max:36',
+            'questionTitle' => 'required|string',
         ];
     }
     public function mount(): void
     {
         $this->text = $this->riskSubSection->text;
         $this->riskSectionId = $this->riskSubSection->risk_section_id;
+        $this->questionTitle = $this->riskSubSection->subtitle;
         $this->fetchRiskSections();
 
         session()->forget('message');
@@ -36,6 +39,7 @@ new class extends Component {
         $this->riskSubSection->update([
             'text' => $validatedData['text'],
             'risk_section_id' => $validatedData['riskSectionId'],
+            'subtitle' => $validatedData['questionTitle'],
         ]);
 
         session()->flash('message', 'Risk Sub-Section updated!');
@@ -72,6 +76,14 @@ new class extends Component {
                     </select>
                     @error('riskSectionId')
                         <div class="text-red-500 invalid-feedback error-class">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="flex flex-col w-full mt-4">
+                    <label for="questionTitle" class="mb-2 text-sm font-semibold">{{ __('Question Subtitle') }}:</label>
+                    <textarea placeholder="{{ __('Question Subtitle') }}" wire:model="questionTitle" id="questionTitle" type="text"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-[#C8000B]"></textarea>
+                    @error('questionTitle')
+                        <span class="mt-2 text-xs text-red-500">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="flex justify-start space-x-4">

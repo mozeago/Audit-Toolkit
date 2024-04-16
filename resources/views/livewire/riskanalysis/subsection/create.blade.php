@@ -8,6 +8,7 @@ new class extends Component {
     public $riskSections = [];
     public $rikSectionId = '';
     public $subSectionText = '';
+    public $questionTitle = '';
     public function mount()
     {
         $this->riskSections = RiskSection::all();
@@ -17,6 +18,7 @@ new class extends Component {
         return [
             'subSectionText' => 'required|string|min:20',
             'rikSectionId' => 'required|string',
+            'questionTitle' => 'required|string',
         ];
     }
     public function store(): void
@@ -25,6 +27,7 @@ new class extends Component {
         $riskSubSection = RiskSubSection::create([
             'text' => $validatedData['subSectionText'],
             'risk_section_id' => $validatedData['rikSectionId'],
+            'subtitle' => $validatedData['questionTitle'],
         ]);
 
         $this->message = 'Sub-Section Saved!';
@@ -33,7 +36,7 @@ new class extends Component {
     }
     public function resetFields()
     {
-        return $this->reset('subSectionText', 'rikSectionId', 'message');
+        return $this->reset('subSectionText', 'rikSectionId', 'message', 'questionTitle');
     }
 }; ?>
 <div>
@@ -61,6 +64,14 @@ new class extends Component {
                         @endforeach
                     </select>
                     @error('rikSectionId')
+                        <span class="mt-2 text-xs text-red-500">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="flex flex-col w-full mt-4">
+                    <label for="questionTitle" class="mb-2 text-sm font-semibold">{{ __('Question Subtitle') }}:</label>
+                    <textarea placeholder="{{ __('Question Subtitle') }}" wire:model="questionTitle" id="questionTitle" type="text"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-[#C8000B]"></textarea>
+                    @error('questionTitle')
                         <span class="mt-2 text-xs text-red-500">{{ $message }}</span>
                     @enderror
                 </div>

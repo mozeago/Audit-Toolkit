@@ -238,6 +238,9 @@ new class extends Component {
 
                                 {{-- end Previous --}}
                                 <div class="w-full pt-3 sm:pt-5">
+                                    <p class="w-full mt-4 font-semibold text-sm/relaxed">
+                                        {{ $questions[$currentQuestionIndex]->subtitle }}
+                                    </p>
                                     <p class="w-full mt-4 text-lg/relaxed">
                                         {{ $questions[$currentQuestionIndex]->text }}
                                     </p>

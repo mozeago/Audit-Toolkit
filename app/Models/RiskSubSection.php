@@ -16,7 +16,7 @@ class RiskSubSection extends BaseModel
 
     public $incrementing = false;
 
-    protected $fillable = ['text', 'risk_section_id'];
+    protected $fillable = ['text', 'risk_section_id', 'subtitle'];
     public function belongsToRiskSection()
     {
         return $this->belongsTo(RiskSection::class);

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('risk_sub_sections', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->text('subtitle');
             $table->text('text');
             $table->foreignUuid('risk_section_id')->constrained();
             $table->index('risk_section_id');
