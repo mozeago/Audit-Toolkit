@@ -41,13 +41,6 @@ new class extends Component {
     }
 }; ?>
 <div class="relative">
-    <div class="absolute top-0 right-0 ml-2">
-        <a href="{{ route('questionnaire') }}"
-            class="block px-4 py-2 font-semibold text-white bg-green-500 rounded-lg shadow-md">
-            Start Questionnaire
-        </a>
-    </div>
-
     <div class="flex justify-center">
         <!-- Left column -->
         <div class="w-1/3 mr-4 border rounded-lg">
