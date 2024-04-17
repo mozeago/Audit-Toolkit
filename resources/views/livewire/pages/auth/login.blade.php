@@ -80,7 +80,7 @@ new #[Layout('layouts.guest')] class extends Component {
 
     <div class="flex items-center justify-center mt-4 mb-4 text-gray-600">
         <div class="flex-grow border-b border-gray-300"></div>
-        <span class="px-3">or continue with</span>
+        <span class="px-3 font-bold">or continue with</span>
         <div class="flex-grow border-b border-gray-300"></div>
     </div>
     <!-- Session Status -->
@@ -89,4 +89,9 @@ new #[Layout('layouts.guest')] class extends Component {
         class="inline-flex items-center px-4 py-2 font-bold text-white bg-gray-800 rounded-lg cursor-pointer hover:bg-opacity-75">
         <img src="{{ asset('images/google_logo.png') }}" alt="Google Logo" class="w-4 h-4 mr-2">Sign in with Google
     </a>
+    <button
+        class="flex items-center justify-center w-16 h-16 bg-white rounded-full shadow-md hover:shadow-lg focus:outline-none">
+        <img src="{{ asset('images/google_logo.png') }}" alt="Google Logo" class="w-8 h-8">
+    </button>
+
 </div>

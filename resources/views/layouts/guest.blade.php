@@ -17,8 +17,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased text-gray-900"
-    style="background-image: url('{{ asset('images/bg-login.jpg') }}'); background-size: cover; background-position: center;">
+<body class="font-sans antialiased text-gray-900" style="">
     <div class="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0">
         <div>
             <a href="/" wire:navigate>
