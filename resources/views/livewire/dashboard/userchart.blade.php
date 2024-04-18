@@ -11,7 +11,10 @@ new class extends Component {
 
     public function mount()
     {
-        $this->riskScore = $this->calculateRiskScore();
+        // Attempt to retrieve risk score from cache
+        $this->riskScore = cache()->remember('risk_score_' . auth()->id(), 3600, function () {
+            return $this->calculateRiskScore();
+        });
     }
 
     public function calculateRiskScore()
@@ -24,20 +27,22 @@ new class extends Component {
 
     public function getUserAuditAnswers()
     {
-        $score = UserResponse::where('user_id', auth()->user()->id)
-            ->selectRaw('round( (sum(case when answer = \'true\' then 1 else 0 end) / count(*)) * 100) as score')
-            ->first();
-        $this->auditScore = $score->score;
-        return $score->score;
+        // Attempt to retrieve audit score from cache
+        return cache()->remember('audit_score_' . auth()->id(), 3600, function () {
+            $score = UserResponse::where('user_id', auth()->id())->selectRaw('round( (sum(case when answer = \'true\' then 1 else 0 end) / count(*)) * 100) as score')->first();
+
+            return $score->score ?? 0;
+        });
     }
 
     public function getUserRiskAnswers()
     {
-        $score = RiskAnalysisResponse::where('user_id', auth()->user()->id)
-            ->selectRaw('round( (sum(case when answer = \'true\' then 1 else 0 end) / count(*)) * 100) as score')
-            ->first();
-        $this->riskValue = $score->score;
-        return $score->score;
+        // Attempt to retrieve risk value from cache
+        return cache()->remember('risk_value_' . auth()->id(), 3600, function () {
+            $score = RiskAnalysisResponse::where('user_id', auth()->id())->selectRaw('round( (sum(case when answer = \'true\' then 1 else 0 end) / count(*)) * 100) as score')->first();
+
+            return $score->score ?? 0;
+        });
     }
 }; ?>
 <div>
