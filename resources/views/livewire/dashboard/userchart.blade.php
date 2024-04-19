@@ -8,11 +8,31 @@ new class extends Component {
     public $userId;
     public $auditScore;
     public $riskValue;
+    public $processorController;
+    public $personalDataProcessedByOrganisation;
+    public $sensitivePersonalData;
+    public $commercialUseOfData;
+    public $businessOperation;
 
     public function mount()
     {
         $this->userId = auth()->user()->id;
         $this->auditScore = $this->calculateAuditPercentage(UserResponse::class, $this->userId) ?? 0;
+        $automatedDecisionProfiling = $this->calculateProcessingActivityTypePercentage('Automated Decision and Profiling');
+        $largeScaleProcessing = $this->calculateProcessingActivityTypePercentage('Large Scale Processing');
+        $systematicMonitoring = $this->calculateProcessingActivityTypePercentage('Systematic monitoring');
+        $sensitiveDataProcessing = $this->calculateProcessingActivityTypePercentage('Sensitive data processing');
+        $businessInnovationTechnology = $this->calculateProcessingActivityTypePercentage('Business innovation, expansion, and use of technology');
+        $this->processorController = round(($automatedDecisionProfiling + $largeScaleProcessing + $systematicMonitoring + $sensitiveDataProcessing + $businessInnovationTechnology) / 5);
+        $pinPasswordSecretKeys = $this->calculateProcessingActivityTypePercentage('PIN/Password/Secret keys');
+        $incomeRemuneration = $this->calculateProcessingActivityTypePercentage('Income, remuneration, and net worth');
+        $cardData = $this->calculateProcessingActivityTypePercentage('Card Data');
+        $healthData = $this->calculateProcessingActivityTypePercentage('Health Data');
+        $dataRelatingToVulnerableGroup = $this->calculateProcessingActivityTypePercentage('Data relating to the vulnerable group');
+        $this->personalDataProcessedByOrganisation = round(($pinPasswordSecretKeys + $incomeRemuneration + $cardData + $healthData + $dataRelatingToVulnerableGroup) / 5);
+        $this->sensitivePersonalData = $this->calculateProcessingActivityTypePercentage('Processing of sensitive personal data');
+        $this->commercialUseOfData = $this->calculateProcessingActivityTypePercentage('Commercial use of data');
+        $this->businessOperation = $this->calculateProcessingActivityTypePercentage('Business Operation');
     }
 
     public function calculateAuditPercentage($modelClass, $userId)
@@ -33,24 +53,30 @@ new class extends Component {
 
         return $percentage;
     }
-    public function calculateProcessingActivityTypePercentage($riskProfileCategory)
+    public function calculateProcessingActivityTypePercentage(string $riskProfileCategory)
     {
-        $data = DB::table('risk_analysis_responses AS rar')->select(DB::raw('count(*) as total_count'), DB::raw('sum(answer = true) as true_count'))->join('risk_section AS rs', 'rar.risk_sub_section_id', '=', 'rs.id')->where('rs.name', $riskSectionName)->where('rar.answer', true)->first();
-
+        $data = DB::table('risk_analysis_responses AS rar')
+            ->select(DB::raw('count(*) as total_count'), DB::raw('sum(answer = true) as true_count'))
+            ->join('risk_sub_sections AS rss', 'rar.risk_sub_section_id', '=', 'rss.id')
+            ->where(strtolower(trim('rss.subtitle')), '=', strtolower(trim($riskProfileCategory)))
+            ->where('rar.answer', true)
+            ->first();
         if (!$data) {
             return 0;
         }
         $totalCount = $data->total_count ?? 0;
         $trueCount = $data->true_count ?? 0;
-
-        $percentage = round(($trueCount / $totalCount) * 100) ?? 0;
-
+        if ($totalCount === 0) {
+            $percentage = 0;
+        } else {
+            $percentage = round(($trueCount / $totalCount) * 100) ?? 0;
+        }
         return $percentage;
     }
 }; ?>
 <div>
     <div class="flex justify-center gap-8">
-        <div class="relative flex flex-col w-1/4 p-4 bg-gray-100 rounded-lg shadow-md">
+        <div class="relative flex flex-col w-1/4 p-4 bg-gray-100 rounded-lg shadow-md h-80">
             <h2 class="text-3xl text-center">Privacy Score</h2>
             <div class="flex flex-col justify-center flex-grow">
                 <div class="text-center">Meter Gauge</div>
@@ -77,30 +103,32 @@ new class extends Component {
         <div class="flex flex-col w-3/4 gap-2">
 
             <div class="flex gap-2">
-                <div class="w-1/2 h-32 bg-green-200">
+                <div class="w-1/2 h-32 bg-green-200 rounded-md shadow-md">
                     <h6 class="mt-2 font-semibold text-center text-l">Type of processing activity conducted by
-                        controller/processor: %
+                        controller/processor:
                     </h6>
+                    <p class="mt-4 font-bold text-center">{{ $processorController }} %</p>
                 </div>
-                <div class="w-1/2 h-32 bg-red-300">
+                <div class="w-1/2 h-32 bg-red-300 rounded-md shadow-md">
                     <h6 class="mt-2 font-semibold text-center text-l">Type of personal data processed by the
-                        organisation: %</h6>
+                        organisation:</h6>
+                    <p class="mt-4 font-bold text-center">{{ $personalDataProcessedByOrganisation }} %</p>
                 </div>
             </div>
             <div class="flex gap-2">
-                <div class="w-1/2 h-32 bg-gray-200">
-                    <h6 class="mt-2 font-semibold text-center text-l">Processing of sensitive personal data:%</h6>
+                <div class="w-1/2 h-32 bg-gray-200 rounded-md shadow-md">
+                    <h6 class="mt-2 font-semibold text-center text-l">Processing of sensitive personal data:</h6>
+                    <p class="mt-4 font-bold text-center">{{ $sensitivePersonalData }} %</p>
                 </div>
-                <div class="w-1/2 h-32 bg-orange-300">
-                    <h6 class="mt-2 font-semibold text-center text-l">Commercial use of data: %</h6>
+                <div class="w-1/2 h-32 bg-orange-300 rounded-md shadow-md">
+                    <h6 class="mt-2 font-semibold text-center text-l">Commercial use of data:</h6>
+                    <p class="mt-4 font-bold text-center">{{ $commercialUseOfData }} %</p>
                 </div>
             </div>
             <div class="flex gap-2">
-                <div class="w-1/2 h-32 bg-pink-500">
-                    <h6 class="mt-2 font-semibold text-center text-l">Business Operation: %</h6>
-                </div>
-                <div class="w-1/2 h-32 bg-gray-300">
-                    <h6 class="mt-2 font-semibold text-center text-l">OnBoarding Category: %</h6>
+                <div class="w-full h-32 bg-pink-500 rounded-md shadow-md">
+                    <h6 class="mt-2 font-semibold text-center text-l">Business Operation:</h6>
+                    <p class="mt-4 font-bold text-center">{{ $businessOperation }} %</p>
                 </div>
             </div>
             <div class="flex gap-2">
