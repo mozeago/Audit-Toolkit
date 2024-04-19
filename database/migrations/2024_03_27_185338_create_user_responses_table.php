@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('user_responses', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->enum('answer', ['true', 'false']);
+            $table->enum('answer', ['true', 'false', 'partial']);
             $table->text('organization');
             $table->text('department');
             $table->foreignUuid('user_id')->constrained();

@@ -12,21 +12,38 @@ new class extends Component {
     public function mount()
     {
         $this->userId = auth()->user()->id;
-        $this->auditScore = $this->calculatePercentage(UserResponse::class, $this->userId) ?? 0;
+        $this->auditScore = $this->calculateAuditPercentage(UserResponse::class, $this->userId) ?? 0;
     }
 
-    public function calculatePercentage($modelClass, $userId)
+    public function calculateAuditPercentage($modelClass, $userId)
     {
-        $data = $modelClass::select(DB::raw('count(*) as total_count'), DB::raw('sum(answer = true) as true_count'))->where('user_id', $userId)->first();
+        $data = $modelClass::select(DB::raw('count(*) as total_count'), DB::raw('SUM(CASE WHEN answer = \'true\' THEN 1 WHEN answer = \'partial\' THEN 0.5 ELSE 0 END) as weighted_score'))->where('user_id', $userId)->first();
 
         if (!$data) {
-            return 0; // Handle case where no data is found
+            return 0;
+        }
+        $totalCount = $data->total_count ?? 0;
+        $weightedScore = $data->weighted_score ?? 0;
+
+        if ($totalCount === 0) {
+            $percentage = 0;
+        } else {
+            $percentage = round(($weightedScore / $totalCount) * 100) ?? 0;
         }
 
-        $totalCount = $data->total_count;
-        $trueCount = $data->true_count;
+        return $percentage;
+    }
+    public function calculateProcessingActivityTypePercentage($riskProfileCategory)
+    {
+        $data = DB::table('risk_analysis_responses AS rar')->select(DB::raw('count(*) as total_count'), DB::raw('sum(answer = true) as true_count'))->join('risk_section AS rs', 'rar.risk_sub_section_id', '=', 'rs.id')->where('rs.name', $riskSectionName)->where('rar.answer', true)->first();
 
-        $percentage = round(($trueCount / $totalCount) * 100);
+        if (!$data) {
+            return 0;
+        }
+        $totalCount = $data->total_count ?? 0;
+        $trueCount = $data->true_count ?? 0;
+
+        $percentage = round(($trueCount / $totalCount) * 100) ?? 0;
 
         return $percentage;
     }
