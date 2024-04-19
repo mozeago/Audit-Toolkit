@@ -4,45 +4,30 @@ use App\Models\UserResponse;
 use App\Models\User;
 use App\Models\RiskAnalysisResponse;
 new class extends Component {
-    public $data = [];
     public $riskScore;
+    public $userId;
     public $auditScore;
     public $riskValue;
 
     public function mount()
     {
-        // Attempt to retrieve risk score from cache
-        $this->riskScore = cache()->remember('risk_score_' . auth()->id(), 3600, function () {
-            return $this->calculateRiskScore();
-        });
+        $this->userId = auth()->user()->id;
+        $this->auditScore = $this->calculateAuditScorePercentage($this->userId);
     }
 
-    public function calculateRiskScore()
+    public function calculateAuditScorePercentage($userId)
     {
-        $userRiskAnswers = $this->getUserRiskAnswers();
-        $userAuditAnswers = $this->getUserAuditAnswers();
+        $trueCount = UserResponse::where('user_id', $userId)->where('answer', 'true')->count();
 
-        return round(($userRiskAnswers + $userAuditAnswers) / 2, 0);
-    }
+        $totalQuestions = UserResponse::where('user_id', $userId)->count();
 
-    public function getUserAuditAnswers()
-    {
-        // Attempt to retrieve audit score from cache
-        return cache()->remember('audit_score_' . auth()->id(), 3600, function () {
-            $score = UserResponse::where('user_id', auth()->id())->selectRaw('round( (sum(case when answer = \'true\' then 1 else 0 end) / count(*)) * 100) as score')->first();
+        if ($totalQuestions === 0) {
+            return 0; // Avoid division by zero
+        }
 
-            return $score->score ?? 0;
-        });
-    }
+        $percentage = round(($trueCount / $totalQuestions) * 100);
 
-    public function getUserRiskAnswers()
-    {
-        // Attempt to retrieve risk value from cache
-        return cache()->remember('risk_value_' . auth()->id(), 3600, function () {
-            $score = RiskAnalysisResponse::where('user_id', auth()->id())->selectRaw('round( (sum(case when answer = \'true\' then 1 else 0 end) / count(*)) * 100) as score')->first();
-
-            return $score->score ?? 0;
-        });
+        return $percentage;
     }
 }; ?>
 <div>
