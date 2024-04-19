@@ -77,7 +77,7 @@ new class extends Component {
 <div>
     <div class="flex justify-center gap-8">
         <div
-            class="relative flex h-80 w-1/4 flex-col rounded-lg bg-gray-100 p-4 shadow-md">
+            class="relative flex h-80 w-1/4 flex-col rounded-lg bg-gray-300 p-4 shadow-2xl">
             <h2 class="text-center text-3xl">Privacy Score
             </h2>
             <div
@@ -113,7 +113,7 @@ new class extends Component {
                     class="@if ($processorController >= 70) text-white bg-green-700
                     @elseif($processorController >= 50)text-white bg-green-500
                     @elseif($processorController >= 30) text-white bg-yellow-700
-                    @else text-white bg-red-700 @endif h-32 w-1/2 rounded-md shadow-md">
+                    @else text-white bg-red-700 @endif h-32 w-1/2 rounded-md shadow-2xl">
                     <h6
                         class="text-l mt-2 text-center font-semibold">
                         Type of processing activity
@@ -127,7 +127,7 @@ new class extends Component {
                     class="@if ($personalDataProcessedByOrganisation >= 70) text-white bg-green-700
                     @elseif($personalDataProcessedByOrganisation >= 50)text-white bg-green-500
                     @elseif($personalDataProcessedByOrganisation >= 30) text-white bg-yellow-700
-                    @else text-white bg-red-700 @endif h-32 w-1/2 rounded-md shadow-md">
+                    @else text-white bg-red-700 @endif h-32 w-1/2 rounded-md shadow-2xl">
                     <h6
                         class="text-l mt-2 text-center font-semibold">
                         Type of personal data processed by
@@ -143,7 +143,7 @@ new class extends Component {
                     class="@if ($sensitivePersonalData >= 70) text-white bg-green-700
                     @elseif($sensitivePersonalData >= 50)text-white bg-green-500
                     @elseif($sensitivePersonalData >= 30) text-white bg-yellow-700
-                    @else text-white bg-red-700 @endif h-32 w-1/2 rounded-md bg-gray-200 shadow-md">
+                    @else text-white bg-red-700 @endif h-32 w-1/2 rounded-md bg-gray-200 shadow-2xl">
                     <h6
                         class="text-l mt-2 text-center font-semibold">
                         Processing of sensitive personal
@@ -155,7 +155,7 @@ new class extends Component {
                     class="@if ($commercialUseOfData >= 70) text-white bg-green-700
                     @elseif($commercialUseOfData >= 50)text-white bg-green-500
                     @elseif($commercialUseOfData >= 30) text-white bg-yellow-700
-                    @else text-white bg-red-700 @endif h-32 w-1/2 rounded-md shadow-md">
+                    @else text-white bg-red-700 @endif h-32 w-1/2 rounded-md shadow-2xl">
                     <h6
                         class="text-l mt-2 text-center font-semibold">
                         Commercial use of data:</h6>
@@ -168,7 +168,7 @@ new class extends Component {
                     class="@if ($businessOperation >= 70) text-white bg-green-700
                     @elseif($businessOperation >= 50)text-white bg-green-500
                     @elseif($businessOperation >= 30) text-white bg-yellow-700
-                    @else text-white bg-red-700 @endif h-32 w-full rounded-md shadow-md">
+                    @else text-white bg-red-700 @endif h-32 w-full rounded-md shadow-2xl">
                     <h6
                         class="text-l mt-2 text-center font-semibold">
                         Business Operation:</h6>
@@ -210,7 +210,7 @@ new class extends Component {
     <div class="mt-4 flex justify-center">
         <div class="flex justify-center">
             <table
-                class="w-full table-auto divide-y divide-gray-200 rounded-md border border-gray-300 bg-white shadow-md">
+                class="w-full table-auto divide-y divide-gray-200 rounded-md border border-gray-300 bg-white shadow-2xl">
                 <thead class="bg-gray-100">
                     <tr>
                         <th scope="col"
