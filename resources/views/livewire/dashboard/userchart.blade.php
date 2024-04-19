@@ -12,20 +12,21 @@ new class extends Component {
     public function mount()
     {
         $this->userId = auth()->user()->id;
-        $this->auditScore = $this->calculateAuditScorePercentage($this->userId);
+        $this->auditScore = $this->calculatePercentage(UserResponse::class, $this->userId) ?? 0;
     }
 
-    public function calculateAuditScorePercentage($userId)
+    public function calculatePercentage($modelClass, $userId)
     {
-        $trueCount = UserResponse::where('user_id', $userId)->where('answer', 'true')->count();
+        $data = $modelClass::select(DB::raw('count(*) as total_count'), DB::raw('sum(answer = true) as true_count'))->where('user_id', $userId)->first();
 
-        $totalQuestions = UserResponse::where('user_id', $userId)->count();
-
-        if ($totalQuestions === 0) {
-            return 0; // Avoid division by zero
+        if (!$data) {
+            return 0; // Handle case where no data is found
         }
 
-        $percentage = round(($trueCount / $totalQuestions) * 100);
+        $totalCount = $data->total_count;
+        $trueCount = $data->true_count;
+
+        $percentage = round(($trueCount / $totalCount) * 100);
 
         return $percentage;
     }
