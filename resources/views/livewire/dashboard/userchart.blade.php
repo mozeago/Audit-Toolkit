@@ -132,13 +132,21 @@ new class extends Component {
                     <h6 class="mt-2 font-semibold text-center text-l">Processing of sensitive personal data:</h6>
                     <p class="mt-4 font-bold text-center">{{ $sensitivePersonalData }} %</p>
                 </div>
-                <div class="w-1/2 h-32 bg-orange-300 rounded-md shadow-md">
+                <div
+                    class="w-1/2 h-32  rounded-md shadow-md @if ($commercialUseOfData >= 70) text-white bg-green-700
+                    @elseif($commercialUseOfData >= 50)text-white bg-green-500
+                    @elseif($commercialUseOfData >= 30) text-white bg-yellow-700
+                    @else text-white bg-red-700 @endif">
                     <h6 class="mt-2 font-semibold text-center text-l">Commercial use of data:</h6>
                     <p class="mt-4 font-bold text-center">{{ $commercialUseOfData }} %</p>
                 </div>
             </div>
             <div class="flex gap-2">
-                <div class="w-full h-32 bg-pink-500 rounded-md shadow-md">
+                <div
+                    class="w-full h-32  rounded-md shadow-md  @if ($businessOperation >= 70) text-white bg-green-700
+                    @elseif($businessOperation >= 50)text-white bg-green-500
+                    @elseif($businessOperation >= 30) text-white bg-yellow-700
+                    @else text-white bg-red-700 @endif">
                     <h6 class="mt-2 font-semibold text-center text-l">Business Operation:</h6>
                     <p class="mt-4 font-bold text-center">{{ $businessOperation }} %</p>
                 </div>
