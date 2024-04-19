@@ -103,20 +103,32 @@ new class extends Component {
         <div class="flex flex-col w-3/4 gap-2">
 
             <div class="flex gap-2">
-                <div class="w-1/2 h-32 bg-green-200 rounded-md shadow-md">
+                <div
+                    class="w-1/2 h-32 @if ($processorController >= 70) text-white bg-green-700
+                    @elseif($processorController >= 50)text-white bg-green-500
+                    @elseif($processorController >= 30) text-white bg-yellow-700
+                    @else text-white bg-red-700 @endif rounded-md shadow-md">
                     <h6 class="mt-2 font-semibold text-center text-l">Type of processing activity conducted by
                         controller/processor:
                     </h6>
                     <p class="mt-4 font-bold text-center">{{ $processorController }} %</p>
                 </div>
-                <div class="w-1/2 h-32 bg-red-300 rounded-md shadow-md">
+                <div
+                    class="w-1/2 h-32  rounded-md shadow-md @if ($personalDataProcessedByOrganisation >= 70) text-white bg-green-700
+                    @elseif($personalDataProcessedByOrganisation >= 50)text-white bg-green-500
+                    @elseif($personalDataProcessedByOrganisation >= 30) text-white bg-yellow-700
+                    @else text-white bg-red-700 @endif">
                     <h6 class="mt-2 font-semibold text-center text-l">Type of personal data processed by the
                         organisation:</h6>
                     <p class="mt-4 font-bold text-center">{{ $personalDataProcessedByOrganisation }} %</p>
                 </div>
             </div>
             <div class="flex gap-2">
-                <div class="w-1/2 h-32 bg-gray-200 rounded-md shadow-md">
+                <div
+                    class="w-1/2 h-32 bg-gray-200 rounded-md shadow-md @if ($sensitivePersonalData >= 70) text-white bg-green-700
+                    @elseif($sensitivePersonalData >= 50)text-white bg-green-500
+                    @elseif($sensitivePersonalData >= 30) text-white bg-yellow-700
+                    @else text-white bg-red-700 @endif">
                     <h6 class="mt-2 font-semibold text-center text-l">Processing of sensitive personal data:</h6>
                     <p class="mt-4 font-bold text-center">{{ $sensitivePersonalData }} %</p>
                 </div>
