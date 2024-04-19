@@ -138,7 +138,8 @@ new class extends Component {
                     @elseif($auditScore >= 50)text-white bg-green-500
                     @elseif($auditScore >= 30) text-white bg-yellow-700
                     @else text-white bg-red-700 @endif">
-                    <h6 class="mt-2 font-semibold text-center text-l">Audit Score: {{ $auditScore }} %</h6>
+                    <h6 class="mt-2 font-semibold text-center text-l">Audit Score:</h6>
+                    <p class="mt-4 font-bold text-center">{{ $auditScore }} %</p>
                 </div>
                 <div
                     class="w-1/2 h-32
@@ -146,7 +147,8 @@ new class extends Component {
                     @elseif($riskValue >= 50)text-white bg-green-500
                     @elseif($riskValue >= 30) text-white bg-yellow-700
                     @else text-white bg-red-700 @endif">
-                    <h6 class="mt-2 font-semibold text-center text-l">Risk Score: {{ $riskValue }} %</h6>
+                    <h6 class="mt-2 font-semibold text-center text-l">Risk Score:</h6>
+                    <p class="mt-4 font-bold text-center">{{ $riskValue }} %</p>
                 </div>
             </div>
         </div>
