@@ -148,7 +148,14 @@ new class extends Component {
             if ($user) {
                 $user->risk_analysis_last_question_index = null;
                 $user->save();
-                session()->put(['questionnaire_completed' => true]);
+                $userId = auth()->user()->id;
+                $sessionId = session()->getId();
+                DB::table('sessions')
+                    ->where('id', $sessionId)
+                    ->where('user_id', $userId)
+                    ->update([
+                        'qa_analysis_complete' => true,
+                    ]);
             }
             return redirect('dashboard');
         }

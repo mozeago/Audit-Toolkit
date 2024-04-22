@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,20 @@ class GoogleLoginController extends Controller
         }
 
         Auth::login($user);
+        $riskAnalysisCompleted = $this->riskAnalysisCompleted();
+        if ($riskAnalysisCompleted === true) {
+            return redirect('dashboard');
+        } else {
+            return redirect('risk-analysis-questionnaire');
+        }
+    }
+    public function riskAnalysisCompleted()
+    {
+        $userId = auth()->user()->id;
+        $session = DB::table('sessions')->where('user_id', $userId)->first();
 
-        return redirect('risk-analysis-questionnaire');
+        if ($session) {
+            return $session->qa_analysis_complete ?? false;
+        }
     }
 }

@@ -18,10 +18,19 @@ new #[Layout('layouts.guest')] class extends Component {
         $this->form->authenticate();
 
         Session::regenerate();
-        if (!session()->has('questionnaire_completed') || session()->get('questionnaire_completed') === false) {
+        if ($this->riskAnalysisCompleted() === false) {
             $this->redirect()->route('risk-analysis-questionnaire');
         } else {
-            $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+            $this->redirect()->route('dashboard');
+        }
+    }
+    public function riskAnalysisCompleted()
+    {
+        $userId = auth()->user()->id;
+        $session = DB::table('sessions')->where('user_id', $userId)->first();
+
+        if ($session) {
+            return $session->qa_analysis_complete ?? false;
         }
     }
 }; ?>

@@ -36,6 +36,7 @@ return new class extends Migration
             $table->foreignUuid('user_id')->contrained()->nullable()->index();
             $table->string('ip_address', 45)->nullable();
             $table->text('user_agent')->nullable();
+            $table->enum('qa_analysis_complete', ['true', 'false'])->default('false');
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
