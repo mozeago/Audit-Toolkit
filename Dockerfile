@@ -1,14 +1,21 @@
-FROM php:8.1-fpm
+FROM php:8.2-fpm-alpine
 
 WORKDIR /var/www/toolkit
 
+RUN apk add --no-cache openssl zip unzip git
+
+ENV COMPOSER_ALLOW_SUPERUSER=1
+
 COPY composer.json composer.lock ./
-RUN composer install --ignore-platform-reqs
+
+COPY ./vendor ./vendor
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN composer install
 
 COPY . .
 
 EXPOSE 80
-
-RUN chmod -R 777 storage bootstrap/cache
 
 CMD ["php", "-S", "0.0.0.0:80", "-t", "public"]

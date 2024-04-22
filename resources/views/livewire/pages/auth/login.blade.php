@@ -18,8 +18,11 @@ new #[Layout('layouts.guest')] class extends Component {
         $this->form->authenticate();
 
         Session::regenerate();
-
-        $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+        if (!session()->has('questionnaire_completed')) {
+            $this->redirect()->route('risk-analysis-questionnaire');
+        } else {
+            $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+        }
     }
 }; ?>
 <div>
