@@ -141,21 +141,12 @@ new class extends Component {
             $userAnswer['risk_sub_section_id'] = $this->questions[$this->currentQuestionIndex]->id;
             $userAnswer['organization'] = $this->organization;
             $userAnswer['department'] = $this->department;
-
-            // Save user response to database
             $this->saveUserResponse($userAnswer);
             $user = User::find($userAnswer['user_id']);
             if ($user) {
                 $user->risk_analysis_last_question_index = null;
+                $user->qa_analysis_complete = true;
                 $user->save();
-                $userId = auth()->user()->id;
-                $sessionId = session()->getId();
-                DB::table('sessions')
-                    ->where('id', $sessionId)
-                    ->where('user_id', $userId)
-                    ->update([
-                        'qa_analysis_complete' => true,
-                    ]);
             }
             return redirect('dashboard');
         }

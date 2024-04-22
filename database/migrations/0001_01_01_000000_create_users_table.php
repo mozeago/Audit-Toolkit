@@ -18,6 +18,7 @@ return new class extends Migration
             $table->enum('role', ['user', 'admin'])->default('user');
             $table->integer('audit_last_question_index')->nullable();
             $table->integer('risk_analysis_last_question_index')->nullable();
+            $table->enum('qa_analysis_complete', ['true', 'false'])->default('false');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
@@ -36,7 +37,6 @@ return new class extends Migration
             $table->foreignUuid('user_id')->contrained()->nullable()->index();
             $table->string('ip_address', 45)->nullable();
             $table->text('user_agent')->nullable();
-            $table->enum('qa_analysis_complete', ['true', 'false'])->default('false');
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });

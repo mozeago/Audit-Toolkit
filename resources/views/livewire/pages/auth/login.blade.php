@@ -11,27 +11,23 @@ new #[Layout('layouts.guest')] class extends Component {
     /**
      * Handle an incoming authentication request.
      */
-    public function login(): void
+    public function login()
     {
         $this->validate();
 
         $this->form->authenticate();
 
         Session::regenerate();
-        if ($this->riskAnalysisCompleted() === false) {
-            $this->redirect()->route('risk-analysis-questionnaire');
+        if ($this->riskAnalysisCompleted() === 'true') {
+            return redirect('dashboard');
         } else {
-            $this->redirect()->route('dashboard');
+            return redirect('risk-analysis-questionnaire');
         }
     }
     public function riskAnalysisCompleted()
     {
-        $userId = auth()->user()->id;
-        $session = DB::table('sessions')->where('user_id', $userId)->first();
-
-        if ($session) {
-            return $session->qa_analysis_complete ?? false;
-        }
+        $userId = auth()->id();
+        return User::find($userId)->qa_analysis_complete ?? false;
     }
 }; ?>
 <div>

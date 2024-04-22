@@ -55,11 +55,13 @@ new class extends Component {
     }
     public function calculateProcessingActivityTypePercentage(string $riskProfileCategory)
     {
+        $user = auth()->user();
         $data = DB::table('risk_analysis_responses AS rar')
             ->select(DB::raw('count(*) as total_count'), DB::raw('sum(answer = true) as true_count'))
             ->join('risk_sub_sections AS rss', 'rar.risk_sub_section_id', '=', 'rss.id')
             ->where(strtolower(trim('rss.subtitle')), '=', strtolower(trim($riskProfileCategory)))
             ->where('rar.answer', true)
+            ->where('rar.user_id', $user)
             ->first();
         if (!$data) {
             return 0;
@@ -76,12 +78,10 @@ new class extends Component {
 }; ?>
 <div>
     <div class="flex justify-center gap-8">
-        <div
-            class="relative flex h-80 w-1/4 flex-col rounded-lg bg-gray-300 p-4 shadow-2xl">
-            <h2 class="text-center text-3xl">Privacy Score
+        <div class="relative flex flex-col w-1/4 p-4 bg-gray-300 rounded-lg shadow-2xl h-80">
+            <h2 class="text-3xl text-center">Privacy Score
             </h2>
-            <div
-                class="flex flex-grow flex-col justify-center">
+            <div class="flex flex-col justify-center flex-grow">
                 <div class="text-center">Meter Gauge</div>
             </div>
             <div
@@ -89,13 +89,11 @@ new class extends Component {
                 @elseif($riskScore >= 50)text-white bg-green-500
                 @elseif($riskScore >= 30) text-white bg-yellow-700
                 @else text-white bg-red-700 @endif absolute bottom-0 left-0 w-full">
-                <p class="text-center text-xl font-bold"
-                    id="gaugeValue">Average Score:</p>
-                <p
-                    class="text-center text-xl font-extrabold">
+                <p class="text-xl font-bold text-center" id="gaugeValue">Average Score:</p>
+                <p class="text-xl font-extrabold text-center">
                     {{ $riskScore }}%</p>
 
-                <p class="text-l text-center">
+                <p class="text-center text-l">
                     @if ($riskScore >= 75)
                         Low Risk
                     @elseif($riskScore >= 50)
@@ -106,7 +104,7 @@ new class extends Component {
                 </p>
             </div>
         </div>
-        <div class="flex w-3/4 flex-col gap-2">
+        <div class="flex flex-col w-3/4 gap-2">
 
             <div class="flex gap-2">
                 <div
@@ -114,13 +112,12 @@ new class extends Component {
                     @elseif($processorController >= 50)text-white bg-green-500
                     @elseif($processorController >= 30) text-white bg-yellow-700
                     @else text-white bg-red-700 @endif h-32 w-1/2 rounded-md shadow-2xl">
-                    <h6
-                        class="text-l mt-2 text-center font-semibold">
+                    <h6 class="mt-2 font-semibold text-center text-l">
                         Type of processing activity
                         conducted by
                         controller/processor:
                     </h6>
-                    <p class="mt-4 text-center font-bold">
+                    <p class="mt-4 font-bold text-center">
                         {{ $processorController }} %</p>
                 </div>
                 <div
@@ -128,12 +125,11 @@ new class extends Component {
                     @elseif($personalDataProcessedByOrganisation >= 50)text-white bg-green-500
                     @elseif($personalDataProcessedByOrganisation >= 30) text-white bg-yellow-700
                     @else text-white bg-red-700 @endif h-32 w-1/2 rounded-md shadow-2xl">
-                    <h6
-                        class="text-l mt-2 text-center font-semibold">
+                    <h6 class="mt-2 font-semibold text-center text-l">
                         Type of personal data processed by
                         the
                         organisation:</h6>
-                    <p class="mt-4 text-center font-bold">
+                    <p class="mt-4 font-bold text-center">
                         {{ $personalDataProcessedByOrganisation }}
                         %</p>
                 </div>
@@ -144,11 +140,10 @@ new class extends Component {
                     @elseif($sensitivePersonalData >= 50)text-white bg-green-500
                     @elseif($sensitivePersonalData >= 30) text-white bg-yellow-700
                     @else text-white bg-red-700 @endif h-32 w-1/2 rounded-md bg-gray-200 shadow-2xl">
-                    <h6
-                        class="text-l mt-2 text-center font-semibold">
+                    <h6 class="mt-2 font-semibold text-center text-l">
                         Processing of sensitive personal
                         data:</h6>
-                    <p class="mt-4 text-center font-bold">
+                    <p class="mt-4 font-bold text-center">
                         {{ $sensitivePersonalData }} %</p>
                 </div>
                 <div
@@ -156,10 +151,9 @@ new class extends Component {
                     @elseif($commercialUseOfData >= 50)text-white bg-green-500
                     @elseif($commercialUseOfData >= 30) text-white bg-yellow-700
                     @else text-white bg-red-700 @endif h-32 w-1/2 rounded-md shadow-2xl">
-                    <h6
-                        class="text-l mt-2 text-center font-semibold">
+                    <h6 class="mt-2 font-semibold text-center text-l">
                         Commercial use of data:</h6>
-                    <p class="mt-4 text-center font-bold">
+                    <p class="mt-4 font-bold text-center">
                         {{ $commercialUseOfData }} %</p>
                 </div>
             </div>
@@ -169,10 +163,9 @@ new class extends Component {
                     @elseif($businessOperation >= 50)text-white bg-green-500
                     @elseif($businessOperation >= 30) text-white bg-yellow-700
                     @else text-white bg-red-700 @endif h-32 w-full rounded-md shadow-2xl">
-                    <h6
-                        class="text-l mt-2 text-center font-semibold">
+                    <h6 class="mt-2 font-semibold text-center text-l">
                         Business Operation:</h6>
-                    <p class="mt-4 text-center font-bold">
+                    <p class="mt-4 font-bold text-center">
                         {{ $businessOperation }} %</p>
                 </div>
             </div>
@@ -182,10 +175,9 @@ new class extends Component {
                     @elseif($auditScore >= 50)text-white bg-green-500
                     @elseif($auditScore >= 30) text-white bg-yellow-700
                     @else text-white bg-red-700 @endif h-32 w-1/2">
-                    <h6
-                        class="text-l mt-2 text-center font-semibold">
+                    <h6 class="mt-2 font-semibold text-center text-l">
                         Audit Score:</h6>
-                    <p class="mt-4 text-center font-bold">
+                    <p class="mt-4 font-bold text-center">
                         {{ $auditScore }} %</p>
                 </div>
                 <div
@@ -193,254 +185,187 @@ new class extends Component {
                     @elseif($riskValue >= 50)text-white bg-green-500
                     @elseif($riskValue >= 30) text-white bg-yellow-700
                     @else text-white bg-red-700 @endif h-32 w-1/2">
-                    <h6
-                        class="text-l mt-2 text-center font-semibold">
+                    <h6 class="mt-2 font-semibold text-center text-l">
                         Risk Score:</h6>
-                    <p class="mt-4 text-center font-bold">
+                    <p class="mt-4 font-bold text-center">
                         {{ $riskValue }} %</p>
                 </div>
             </div>
         </div>
     </div>
     {{-- Table --}}
-    <div class="mt-16 w-full">
-        <h2 class="text-center text-xl font-bold">Privacy
+    <div class="w-full mt-16">
+        <h2 class="text-xl font-bold text-center">Privacy
             Violation Cases</h2>
     </div>
-    <div class="mt-4 flex justify-center">
+    <div class="flex justify-center mt-4">
         <div class="flex justify-center">
             <table
-                class="w-full table-auto divide-y divide-gray-200 rounded-md border border-gray-300 bg-white shadow-2xl">
+                class="w-full bg-white border border-gray-300 divide-y divide-gray-200 rounded-md shadow-2xl table-auto">
                 <thead class="bg-gray-100">
                     <tr>
                         <th scope="col"
-                            class="px-6 py-3 text-left text-sm font-medium uppercase tracking-wider text-gray-700">
+                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-700 uppercase">
                             Name
                         </th>
                         <th scope="col"
-                            class="px-6 py-3 text-left text-sm font-medium uppercase tracking-wider text-gray-700">
+                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-700 uppercase">
                             Case
                             No.
                         </th>
                         <th scope="col"
-                            class="px-6 py-3 text-left text-sm font-medium uppercase tracking-wider text-gray-700">
+                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-700 uppercase">
                             Video
                             Title</th>
                         <th scope="col"
-                            class="px-6 py-3 text-left text-sm font-medium uppercase tracking-wider text-gray-700">
+                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-700 uppercase">
                             Link
                         </th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                     <!-- Kenya Privacy Violation Cases -->
-                    <tr
-                        class="transition-colors duration-300 hover:bg-gray-100">
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                    <tr class="transition-colors duration-300 hover:bg-gray-100">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Jane Njeri</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Case KEN-001</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Data Breach by Banking
                             Institution</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
-                            <a href="kenya-case-001-video"
-                                class="text-blue-500 hover:text-blue-700">Watch
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <a href="kenya-case-001-video" class="text-blue-500 hover:text-blue-700">Watch
                                 Video</a>
                         </td>
                     </tr>
-                    <tr
-                        class="transition-colors duration-300 hover:bg-gray-100">
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                    <tr class="transition-colors duration-300 hover:bg-gray-100">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             James Otieno</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Case KEN-002</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Health Records Leak by Hospital
                         </td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
-                            <a href="kenya-case-002-video"
-                                class="text-blue-500 hover:text-blue-700">Watch
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <a href="kenya-case-002-video" class="text-blue-500 hover:text-blue-700">Watch
                                 Video</a>
                         </td>
                     </tr>
                     <!-- Rwanda Privacy Violation Cases -->
-                    <tr
-                        class="transition-colors duration-300 hover:bg-gray-100">
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                    <tr class="transition-colors duration-300 hover:bg-gray-100">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Emmanuel Habimana</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Case RWA-001</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Government Surveillance Program
                             Exposed</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
-                            <a href="rwanda-case-001-video"
-                                class="text-blue-500 hover:text-blue-700">Watch
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <a href="rwanda-case-001-video" class="text-blue-500 hover:text-blue-700">Watch
                                 Video</a>
                         </td>
                     </tr>
-                    <tr
-                        class="transition-colors duration-300 hover:bg-gray-100">
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                    <tr class="transition-colors duration-300 hover:bg-gray-100">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Lilian Uwamahoro</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Case RWA-002</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Employer Spying on Employees
                         </td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
-                            <a href="rwanda-case-002-video"
-                                class="text-blue-500 hover:text-blue-700">Watch
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <a href="rwanda-case-002-video" class="text-blue-500 hover:text-blue-700">Watch
                                 Video</a>
                         </td>
                     </tr>
                     <!-- Uganda Privacy Violation Cases -->
-                    <tr
-                        class="transition-colors duration-300 hover:bg-gray-100">
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                    <tr class="transition-colors duration-300 hover:bg-gray-100">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Sandra Nakato</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Case UGA-001</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Social Media Data Breach</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
-                            <a href="uganda-case-001-video"
-                                class="text-blue-500 hover:text-blue-700">Watch
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <a href="uganda-case-001-video" class="text-blue-500 hover:text-blue-700">Watch
                                 Video</a>
                         </td>
                     </tr>
-                    <tr
-                        class="transition-colors duration-300 hover:bg-gray-100">
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                    <tr class="transition-colors duration-300 hover:bg-gray-100">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Samuel Mugisha</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Case UGA-002</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Phone Tracking by Government
                         </td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
-                            <a href="uganda-case-002-video"
-                                class="text-blue-500 hover:text-blue-700">Watch
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <a href="uganda-case-002-video" class="text-blue-500 hover:text-blue-700">Watch
                                 Video</a>
                         </td>
                     </tr>
                     <!-- Nigeria Privacy Violation Cases -->
-                    <tr
-                        class="transition-colors duration-300 hover:bg-gray-100">
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                    <tr class="transition-colors duration-300 hover:bg-gray-100">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Chukwudi Okonkwo</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Case NGA-001</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Illegal Phone Tapping by
                             Government</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
-                            <a href="nigeria-case-001-video"
-                                class="text-blue-500 hover:text-blue-700">Watch
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <a href="nigeria-case-001-video" class="text-blue-500 hover:text-blue-700">Watch
                                 Video</a>
                         </td>
                     </tr>
-                    <tr
-                        class="transition-colors duration-300 hover:bg-gray-100">
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                    <tr class="transition-colors duration-300 hover:bg-gray-100">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Aisha Ibrahim</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Case NGA-002</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Medical Records Leak by Hospital
                         </td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
-                            <a href="nigeria-case-002-video"
-                                class="text-blue-500 hover:text-blue-700">Watch
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <a href="nigeria-case-002-video" class="text-blue-500 hover:text-blue-700">Watch
                                 Video</a>
                         </td>
                     </tr>
-                    <tr
-                        class="transition-colors duration-300 hover:bg-gray-100">
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                    <tr class="transition-colors duration-300 hover:bg-gray-100">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             David Adekunle</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Case NGA-003</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Financial Data Breach by Bank
                         </td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
-                            <a href="nigeria-case-003-video"
-                                class="text-blue-500 hover:text-blue-700">Watch
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <a href="nigeria-case-003-video" class="text-blue-500 hover:text-blue-700">Watch
                                 Video</a>
                         </td>
                     </tr>
-                    <tr
-                        class="transition-colors duration-300 hover:bg-gray-100">
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                    <tr class="transition-colors duration-300 hover:bg-gray-100">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Chinwe Okafor</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Case NGA-004</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Email Hacking Incident</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
-                            <a href="nigeria-case-004-video"
-                                class="text-blue-500 hover:text-blue-700">Watch
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <a href="nigeria-case-004-video" class="text-blue-500 hover:text-blue-700">Watch
                                 Video</a>
                         </td>
                     </tr>
-                    <tr
-                        class="transition-colors duration-300 hover:bg-gray-100">
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                    <tr class="transition-colors duration-300 hover:bg-gray-100">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Olumide Adeyemi</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Case NGA-005</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             Surveillance Cameras Installed
                             Illegally</td>
-                        <td
-                            class="whitespace-nowrap px-6 py-4">
-                            <a href="nigeria-case-005-video"
-                                class="text-blue-500 hover:text-blue-700">Watch
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <a href="nigeria-case-005-video" class="text-blue-500 hover:text-blue-700">Watch
                                 Video</a>
                         </td>
                     </tr>

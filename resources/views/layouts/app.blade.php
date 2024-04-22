@@ -28,7 +28,10 @@
 
 <body class="font-sans antialiased">
     <livewire:layout.navigation />
-    @if (session()->get('questionnaire_completed') === true)
+    <?php
+    use App\Models\User;
+    ?>
+    @if (User::find(auth()->id())->qa_analysis_complete === 'true')
         <aside id="logo-sidebar"
             class="fixed top-0 left-0 z-40 w-auto h-screen py-20 mb-20 overflow-y-auto transition-transform -translate-x-full bg-white border-r sm:translate-x-0"
             aria-label="Sidebar">

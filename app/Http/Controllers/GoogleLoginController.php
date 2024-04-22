@@ -27,8 +27,8 @@ class GoogleLoginController extends Controller
         }
 
         Auth::login($user);
-        $riskAnalysisCompleted = $this->riskAnalysisCompleted();
-        if ($riskAnalysisCompleted === true) {
+
+        if ($this->riskAnalysisCompleted() === 'true') {
             return redirect('dashboard');
         } else {
             return redirect('risk-analysis-questionnaire');
@@ -36,11 +36,7 @@ class GoogleLoginController extends Controller
     }
     public function riskAnalysisCompleted()
     {
-        $userId = auth()->user()->id;
-        $session = DB::table('sessions')->where('user_id', $userId)->first();
-
-        if ($session) {
-            return $session->qa_analysis_complete ?? false;
-        }
+        $userId = auth()->id();
+        return User::find($userId)->qa_analysis_complete ?? false;
     }
 }
