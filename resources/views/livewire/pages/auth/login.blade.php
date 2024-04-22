@@ -18,7 +18,7 @@ new #[Layout('layouts.guest')] class extends Component {
         $this->form->authenticate();
 
         Session::regenerate();
-        if (!session()->has('questionnaire_completed')) {
+        if (!session()->has('questionnaire_completed') || session()->get('questionnaire_completed') === false) {
             $this->redirect()->route('risk-analysis-questionnaire');
         } else {
             $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);

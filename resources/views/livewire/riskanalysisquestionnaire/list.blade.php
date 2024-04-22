@@ -5,7 +5,9 @@ use App\Models\RiskAnalysisResponse;
 use App\Models\UserResponse;
 use App\Models\RiskSubSection;
 use App\MOdels\User;
+use Illuminate\Support\Facades\Session;
 new class extends Component {
+    public $showMenu = false;
     public $currentQuestionIndex = 0;
     public $userAnswers = [];
     public $userAnswer = [];
@@ -146,6 +148,7 @@ new class extends Component {
             if ($user) {
                 $user->risk_analysis_last_question_index = null;
                 $user->save();
+                session()->put(['questionnaire_completed' => true]);
             }
             return redirect('dashboard');
         }
