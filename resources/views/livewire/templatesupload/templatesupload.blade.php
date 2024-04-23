@@ -52,9 +52,8 @@ new class extends Component {
     }
 }; ?>
 
-<div class="container px-4 py-8 mx-auto">
-
-    <div class="flex flex-col overflow-hidden bg-white rounded-lg shadow-md md:flex-row">
+<div class="container w-full px-4 py-8 mx-auto bg-white rounded-md shadow-md">
+    <div class="flex flex-col overflow-hidden bg-white md:flex-row">
         <div class="w-full p-8">
             <div class="mb-4">
                 <label for="filename" class="block text-sm font-medium text-gray-700">Filename:</label>
