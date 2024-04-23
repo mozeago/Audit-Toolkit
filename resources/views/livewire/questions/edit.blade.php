@@ -43,32 +43,34 @@ new class extends Component {
     }
 }; ?>
 
-<div>
-    <form wire:submit.prevent="update">
-        <div class="flex flex-col space-y-4">
-            <div class="flex border border-gray-300 rounded-md shadow-sm">
-                <input wire:model="text" type="text" value="{{ $question->text }}"
-                    class="flex-grow p-3 border-r border-gray-300 focus:outline-none focus:ring focus:ring-blue-500 focus:ring-opacity-50 rounded-l-md"
-                    placeholder="Question Text">
-                @error('text')
-                    <span class="mt-2 text-xs text-red-500">{{ $message }}</span>
-                @enderror
+<div class="flex w-full shadow-md">
+    <div class="w-full max-w-md min-w-full px-8 py-6 leading-normal bg-white rounded">
+        <form wire:submit.prevent="update">
+            <div class="flex flex-col space-y-4">
+                <div class="flex border border-gray-300 rounded-md shadow-sm">
+                    <input wire:model="text" type="text" value="{{ $question->text }}"
+                        class="flex-grow p-3 border-r border-gray-300 focus:outline-none focus:ring focus:ring-blue-500 focus:ring-opacity-50 rounded-l-md"
+                        placeholder="Question Text">
+                    @error('text')
+                        <span class="mt-2 text-xs text-red-500">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="border border-gray-300 rounded-md shadow-sm">
+                    <select wire:model="control_id"
+                        class="block w-full p-3 rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+                        <option value="" disabled selected>{{ __('Select ...') }}</option>
+                        @foreach ($controls as $control)
+                            <option value="{{ $control->id }}">{{ $control->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('control_id')
+                        <span class="mt-2 text-xs text-red-500">{{ $message }}</span>
+                    @enderror
+                </div>
             </div>
-            <div class="border border-gray-300 rounded-md shadow-sm">
-                <select wire:model="control_id"
-                    class="block w-full p-3 rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:ring-opacity-50">
-                    <option value="" disabled selected>{{ __('Select ...') }}</option>
-                    @foreach ($controls as $control)
-                        <option value="{{ $control->id }}">{{ $control->name }}</option>
-                    @endforeach
-                </select>
-                @error('control_id')
-                    <span class="mt-2 text-xs text-red-500">{{ $message }}</span>
-                @enderror
-            </div>
-        </div>
-        <x-primary-button type="submit"
-            class="px-4 py-2 mt-4 text-white bg-blue-500 rounded shadow hover:bg-blue-700">{{ __('Update') }}</x-primary-button>
-        <button wire:click.prevent="cancel" type="button" class="btn btn-secondary">{{ __('Cancel') }}</button>
-    </form>
+            <x-primary-button type="submit"
+                class="px-4 py-2 mt-4 text-white bg-blue-500 rounded shadow hover:bg-blue-700">{{ __('Update') }}</x-primary-button>
+            <button wire:click.prevent="cancel" type="button" class="btn btn-secondary">{{ __('Cancel') }}</button>
+        </form>
+    </div>
 </div>

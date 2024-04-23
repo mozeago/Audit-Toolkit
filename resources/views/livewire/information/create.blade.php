@@ -40,7 +40,7 @@ new class extends Component {
     }
 }; ?>
 
-<div class="flex">
+<div class="flex w-full shadow-md">
     <div class="w-full max-w-md min-w-full px-8 py-6 leading-normal bg-white rounded">
         <form wire:submit.prevent="store">
             <div class="mb-4">

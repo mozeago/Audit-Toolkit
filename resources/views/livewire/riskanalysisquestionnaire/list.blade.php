@@ -152,7 +152,7 @@ new class extends Component {
         }
     }
 }; ?>
-<div x-data="{ riskOpen: false }">
+<div x-data="{ riskOpen: false }" class="w-full rounded-md shadow-md">
     @if ($this->hasAnsweredQuestions())
         <div class ="container px-4 py-8 mx-auto">
             @if ($showOrganizationForm)

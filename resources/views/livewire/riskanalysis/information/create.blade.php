@@ -38,8 +38,8 @@ new class extends Component {
     }
 }; ?>
 
-<div class="flex">
-    <div class="w-full max-w-md min-w-full px-8 py-6 leading-normal bg-white rounded">
+<div class="flex w-full rounded-md shadow-md">
+    <div class="w-full max-w-md min-w-full px-8 py-6 leading-normal bg-white rounded-md">
         <form wire:submit.prevent="store">
             <div class="flex flex-col w-full">
                 <label for="riskInformationText"

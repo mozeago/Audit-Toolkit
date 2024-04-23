@@ -49,14 +49,14 @@ new class extends Component {
 };
 ?>
 
-<div class="flex">
+<div class="flex w-full shadow-md">
     <div class="w-full max-w-md min-w-full px-8 py-6 leading-normal bg-white rounded">
         <form wire:submit.prevent="update">
             <div class="flex flex-col space-y-4">
                 <div class="flex border border-gray-300 rounded-md shadow-sm">
-                    <input wire:model="text" type="text"
+                    <textarea wire:model="text" type="text"
                         class="flex-grow p-3 border-r border-gray-300 focus:outline-none focus:ring focus:ring-green-500 focus:ring-opacity-50 rounded-l-md"
-                        placeholder="Risk Information Text" value="{{ $text }}">
+                        placeholder="Risk Information Text" value="{{ $text }}"></textarea>
                     @error('text')
                         <div class="text-red-500 invalid-feedback error-class">{{ $message }}</div>
                     @enderror

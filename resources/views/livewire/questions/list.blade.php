@@ -36,7 +36,7 @@ new class extends Component {
     }
 }; ?>
 
-<div class="overflow-x-auto bg-white rounded-lg shadow">
+<div class="overflow-x-auto bg-white rounded-md shadow">
     {{-- @if (session()->has('message'))
         <div class="alert alert-success">
             {{ session('message') }}

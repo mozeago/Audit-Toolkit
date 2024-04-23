@@ -41,8 +41,8 @@ new class extends Component {
         $this->getRiskSections();
     }
 }; ?>
-<div class="overflow-x-auto bg-white rounded-lg shadow">
-    <div class="overflow-x-auto bg-white rounded-lg shadow">
+<div class="w-full overflow-x-auto bg-white rounded-md shadow">
+    <div class="overflow-x-auto bg-white rounded-md shadow">
         <table class="w-full min-w-full leading-normal">
             <thead>
                 <tr>

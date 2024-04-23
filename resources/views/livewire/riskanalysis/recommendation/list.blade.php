@@ -39,7 +39,7 @@ new class extends Component {
         $this->getRecommendations();
     }
 }; ?>
-<div class="overflow-x-auto bg-white rounded-lg shadow">
+<div class="w-full overflow-x-auto bg-white rounded-md shadow-md">
     <div class="overflow-x-auto bg-white rounded-lg shadow">
         <table class="w-full min-w-full leading-normal">
             <thead>
