@@ -19,7 +19,7 @@ new class extends Component {
 }; ?>
 
 <div class="w-full pl-5 mt-10 mb-10">
-    <div class="grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-3">
+    <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-2">
         @foreach ($templates as $template)
             <div class="relative max-w-sm mx-auto mb-20 ml-2 mr-2 overflow-hidden bg-white shadow-lg rounded-xl">
                 <img class="object-cover w-full h-64" src="{{ Storage::url($template->thumbnail) }}" alt="Image"

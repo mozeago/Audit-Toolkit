@@ -30,8 +30,14 @@
                     {{-- <a href="#" class="text-gray-800 hover:text-gray-900">Home</a>
                     <a href="#" class="text-gray-800 hover:text-gray-900">About</a>
                     <a href="#" class="text-gray-800 hover:text-gray-900">Services</a> --}}
-                    <a href="{{ route('register') }}"
-                        class="text-gray-800 hover:text-gray-900 hover:hover:text-[#C8000B]">Register</a>
+                    @if (Route::currentRouteName() !== 'register')
+                        <a href="{{ route('register') }}"
+                            class="text-gray-800 hover:text-gray-900 hover:hover:text-[#C8000B]">Register</a>
+                    @endif
+                    @if (Route::currentRouteName() !== 'login')
+                        <a href="{{ route('login') }}"
+                            class="text-gray-800 hover:text-gray-900 hover:hover:text-[#C8000B]">Sign in</a>
+                    @endif
                 </div>
             </div>
         </div>

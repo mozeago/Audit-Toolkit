@@ -78,8 +78,8 @@ new class extends Component {
 }; ?>
 <div>
     <div class="flex justify-center gap-8">
-        <div class="relative flex flex-col w-1/4 p-4 bg-gray-300 rounded-lg shadow-2xl h-80">
-            <h2 class="text-3xl text-center">Privacy Score
+        <div class="relative flex flex-col w-1/4 p-4 bg-gray-200 rounded-lg shadow-2xl h-80">
+            <h2 class="text-2xl font-medium text-center">Privacy Score
             </h2>
             <div class="flex flex-col justify-center flex-grow">
                 <div class="text-center">Meter Gauge</div>
@@ -108,6 +108,33 @@ new class extends Component {
 
             <div class="flex gap-2">
                 <div
+                    class="p-4 @if ($processorController >= 70) text-white bg-green-700
+                    @elseif($processorController >= 50)text-white bg-green-500
+                    @elseif($processorController >= 30) text-white bg-yellow-700
+                    @else text-white bg-red-700 @endif h-32 w-1/2 rounded-md shadow-2xl flex flex-col justify-between">
+                    <div class="flex items-center justify-center h-1/2">
+                        <!-- Icon-->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
+                            stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round"
+                                d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                            <path strokeLinecap="round" strokeLinejoin="round"
+                                d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        </svg>
+
+                        <!-- Text -->
+                        <span class="mt-2 ml-2 font-semibold text-center text-l">Type of
+                            processing activity
+                            conducted by
+                            controller/processor:</span>
+                    </div>
+                    <div class="flex items-center justify-center h-1/2">
+                        <!-- Text here -->
+                        <span class="text-lg font-extrabold">{{ $processorController }} %</span>
+                    </div>
+                </div>
+
+                {{-- <div
                     class="@if ($processorController >= 70) text-white bg-green-700
                     @elseif($processorController >= 50)text-white bg-green-500
                     @elseif($processorController >= 30) text-white bg-yellow-700
@@ -119,7 +146,7 @@ new class extends Component {
                     </h6>
                     <p class="mt-4 font-bold text-center">
                         {{ $processorController }} %</p>
-                </div>
+                </div> --}}
                 <div
                     class="@if ($personalDataProcessedByOrganisation >= 70) text-white bg-green-700
                     @elseif($personalDataProcessedByOrganisation >= 50)text-white bg-green-500
@@ -198,10 +225,9 @@ new class extends Component {
         <h2 class="text-xl font-bold text-center">Privacy
             Violation Cases</h2>
     </div>
-    <div class="flex justify-center mt-4">
+    <div class="flex justify-center mt-4 shadow-2xl">
         <div class="flex justify-center">
-            <table
-                class="w-full bg-white border border-gray-300 divide-y divide-gray-200 rounded-md shadow-2xl table-auto">
+            <table class="w-full bg-white border border-gray-300 divide-y divide-gray-200 table-auto">
                 <thead class="bg-gray-100">
                     <tr>
                         <th scope="col"

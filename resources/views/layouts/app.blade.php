@@ -26,7 +26,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body class="font-sans antialiased bg-[#000000]">
+<body class="font-sans antialiased bg-[#F5F5F5]">
     <livewire:layout.navigation />
     <?php
     use App\Models\User;
@@ -276,8 +276,8 @@
             </div>
         </aside>
     @endif
-    <div class="p-4 sm:ml-64">
-        <div class="p-4 rounded-lg dark:border-gray-700 mt-14">
+    <div class="p-4 sm:ml-72">
+        <div class="p-8 rounded-lg shadow-2xl dark:border-gray-700 mt-14">
             <!-- Page Content -->
             <main>
                 {{ $slot }}
