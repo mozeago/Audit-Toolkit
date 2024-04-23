@@ -55,7 +55,7 @@ new class extends Component {
     }
     public function calculateProcessingActivityTypePercentage(string $riskProfileCategory)
     {
-        $user = auth()->user();
+        $user = auth()->user()->id;
         $data = DB::table('risk_analysis_responses AS rar')
             ->select(DB::raw('count(*) as total_count'), DB::raw('sum(answer = true) as true_count'))
             ->join('risk_sub_sections AS rss', 'rar.risk_sub_section_id', '=', 'rss.id')
