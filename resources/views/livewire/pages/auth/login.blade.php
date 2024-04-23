@@ -4,6 +4,7 @@ use App\Livewire\Forms\LoginForm;
 use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
+use App\Models\User;
 
 new #[Layout('layouts.guest')] class extends Component {
     public LoginForm $form;
@@ -11,7 +12,7 @@ new #[Layout('layouts.guest')] class extends Component {
     /**
      * Handle an incoming authentication request.
      */
-    public function login()
+    public function login(): void
     {
         $this->validate();
 
@@ -19,9 +20,9 @@ new #[Layout('layouts.guest')] class extends Component {
 
         Session::regenerate();
         if ($this->riskAnalysisCompleted() === 'true') {
-            return redirect('dashboard');
+            redirectIntended(default: route('dashboard', absolute: false), navigate: true);
         } else {
-            return redirect('risk-analysis-questionnaire');
+            redirect('risk-analysis-questionnaire');
         }
     }
     public function riskAnalysisCompleted()
