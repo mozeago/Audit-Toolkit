@@ -23,7 +23,7 @@
             <div class="flex items-center justify-between py-4">
                 <!-- Logo -->
                 <div class="flex-shrink-0">
-                    <img src="{{ asset('images/favicon.png.PNG') }}" alt="Logo" class="h-8">
+                    <image src="{{ asset('images/logo-red.PNG') }}" class="h-8" alt="logo" />
                 </div>
                 <!-- Navigation Links -->
                 <div class="hidden space-x-4 md:flex">
@@ -46,17 +46,17 @@
     <div class="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0">
         {{ $slot }}
     </div>
-    <footer class="py-8 text-white bg-black">
-        <div class="container grid items-center grid-cols-2 gap-4 mx-auto">
+    <footer class="py-2 text-white bg-black">
+        <div class="container grid items-center grid-cols-2">
             <!-- First Column: Company Logo -->
             <div class="text-center">
                 <a href="/" wire:navigate>
-                    <x-application-logo class="w-20 h-20 text-gray-500 fill-current" />
+                    <image src="{{ asset('images/logo.webp') }}" class="h-8 ml-4" alt="logo" />
                 </a>
             </div>
 
             <!-- Second Column: About Text -->
-            <div>
+            <div class="p-4">
                 <p class="font-bold">About Toolkit</p>
                 <p>The Data Protection Toolkit 2024 offers a cutting-edge solution for organizations aiming to enhance
                     their data security practices. At its core, this toolkit includes an advanced online self-assessment

@@ -19,8 +19,7 @@ new class extends Component {
         <div class="flex items-center justify-between">
             <div class="flex items-center justify-start rtl:justify-end">
                 <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar"
-                    type="button"
-                    class="inline-flex items-center p-2 text-sm text-white rounded-lg sm:hidden bg-[#C8000B]">
+                    type="button" class="inline-flex items-center p-2 text-sm rounded-lg sm:hidden bg-[#C8000B]">
                     <span class="sr-only">Open</span>
                     <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
@@ -32,7 +31,7 @@ new class extends Component {
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
                     <a href="{{ route('dashboard') }}" wire:navigate>
-                        <x-application-logo class="block w-auto text-white fill-current h-9" />
+                        <image src="{{ asset('images/logo.webp') }}" class="h-8" alt="logo" />
                     </a>
                 </div>
             </div>
