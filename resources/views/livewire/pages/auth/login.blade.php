@@ -35,8 +35,7 @@ new #[Layout('layouts.guest')] class extends Component {
 <div class="w-3/4 p-6 mt-16 mb-16 rounded-md shadow-2xl">
     <div class="flex justify-between">
         <div class="relative flex items-center justify-center w-1/2">
-            <img src="{{ asset('images/bg-login.jpg') }}" alt="Image"
-                class="object-cover w-full h-full transform scale-x-[-1]">
+            <img src="{{ asset('images/hammer-transparent.png') }}" alt="Image" class="object-cover opacity-50">
         </div>
 
         <div class="w-1/2 p-4"><x-auth-session-status class="mb-4" :status="session('status')" />
