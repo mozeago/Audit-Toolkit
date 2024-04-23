@@ -26,7 +26,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased bg-[#000000]">
     <livewire:layout.navigation />
     <?php
     use App\Models\User;
