@@ -4,7 +4,7 @@ use App\Models\UserResponse;
 use App\Models\User;
 use App\Models\RiskAnalysisResponse;
 new class extends Component {
-    public $riskScore;
+    public $averageScore;
     public $userId;
     public $auditScore;
     public $riskValue;
@@ -16,6 +16,7 @@ new class extends Component {
 
     public function mount()
     {
+        $this->calculateAverageScore();
         $this->userId = auth()->user()->id;
         $this->auditScore = $this->calculateAuditPercentage(UserResponse::class, $this->userId) ?? 0;
         $automatedDecisionProfiling = $this->calculateProcessingActivityTypePercentage('Automated Decision and Profiling');
@@ -75,6 +76,47 @@ new class extends Component {
         }
         return $percentage;
     }
+    public function calculateAverageScore()
+    {
+        $userId = Auth::id();
+
+        $userResponses = UserResponse::where('user_id', $userId)->get();
+        $riskAnalysisResponses = RiskAnalysisResponse::where('user_id', $userId)->get();
+
+        $totalResponses = $userResponses->count() + $riskAnalysisResponses->count();
+        $totalScore = 0;
+
+        // Loop through user responses
+        foreach ($userResponses as $response) {
+            if ($response->answer === 'true') {
+                $totalScore += 1.0;
+            } elseif ($response->answer === 'false') {
+                $totalScore += 0.0;
+            } else {
+                $totalScore += 0.5;
+            }
+        }
+
+        // Loop through risk analysis responses
+        foreach ($riskAnalysisResponses as $response) {
+            if ($response->answer === 'true') {
+                $totalScore += 1.0;
+            } elseif ($response->answer === 'false') {
+                $totalScore += 0.0;
+            } else {
+                $totalScore += 0.5;
+            }
+        }
+
+        // Calculate the average score if total responses is not zero
+        if ($totalResponses > 0) {
+            $this->averageScore = round(($totalScore / $totalResponses) * 100);
+        } else {
+            $this->averageScore = 0;
+        }
+
+        return $this->averageScore;
+    }
 }; ?>
 <div>
     <div class="flex justify-center gap-8">
@@ -85,18 +127,18 @@ new class extends Component {
                 <div class="text-center">Meter Gauge</div>
             </div>
             <div
-                class="@if ($riskScore >= 70) text-white bg-green-700
-                @elseif($riskScore >= 50)text-white bg-green-500
-                @elseif($riskScore >= 30) text-white bg-yellow-700
+                class="@if ($averageScore >= 70) text-white bg-green-700
+                @elseif($averageScore >= 50)text-white bg-green-500
+                @elseif($averageScore >= 30) text-white bg-yellow-700
                 @else text-white bg-red-700 @endif absolute bottom-0 left-0 w-full">
                 <p class="text-xl font-bold text-center" id="gaugeValue">Average Score:</p>
                 <p class="text-xl font-extrabold text-center">
-                    {{ $riskScore }}%</p>
+                    {{ $averageScore }}%</p>
 
                 <p class="text-center text-l">
-                    @if ($riskScore >= 75)
+                    @if ($averageScore >= 75)
                         Low Risk
-                    @elseif($riskScore >= 50)
+                    @elseif($averageScore >= 50)
                         Moderate Risk
                     @else
                         High Risk
