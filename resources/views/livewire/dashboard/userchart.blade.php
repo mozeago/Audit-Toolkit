@@ -118,7 +118,7 @@ new class extends Component {
         return $this->averageScore;
     }
 }; ?>
-<div>
+<div class="p-8">
     <div class="flex justify-center gap-8">
         <div class="relative flex flex-col w-1/4 p-4 bg-gray-200 rounded-lg shadow-2xl h-80">
             <h2 class="text-2xl font-medium text-center">Privacy Score

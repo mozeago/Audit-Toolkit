@@ -276,12 +276,23 @@
             </div>
         </aside>
     @endif
+
     <div class="p-4 sm:ml-72">
-        <div class="p-8 rounded-lg shadow-2xl dark:border-gray-700 mt-14">
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+        <div
+            style="background-image: url({{ asset('images/bg-questionnaire.jpeg') }});
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;">
+            <div class="rounded-lg shadow-2xl dark:border-gray-700 mt-14">
+                <!-- Page Content -->
+                <main>
+                    {{ $slot }}
+                </main>
+            </div>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
