@@ -32,12 +32,22 @@ new #[Layout('layouts.guest')] class extends Component {
     }
 }; ?>
 
-<div class="w-3/4 p-6 mt-16 mb-16 bg-white rounded-md shadow-2xl">
-    <div class="flex justify-between">
-        <div class="relative flex items-center justify-center w-1/2">
-            <img src="{{ asset('images/hammer-transparent.png') }}" alt="Image" class="object-cover opacity-50">
+<div class="w-3/4 bg-white shadow-2xl rounded-xl">
+    <div class="flex justify-between rounded-xl">
+        <!-- Black Bg -->
+        <div class="relative flex items-center justify-center w-1/2 bg-black rounded-l-xl">
+            <img src="{{ asset('images/lamp-suspended.jpg') }}" alt="Your Image" class="block w-1/2 h-auto">
+            <div class="w-full">
+                <p class="mb-2 font-bold text-left text-white roboto-medium">Welcome to Data Protection Portal
+                    !</p>
+                <p class="text-gray-400 robo">Discover essential r esources and guideline to safeguard sensitive
+                    information
+                    and
+                    ensure compliance with
+                    regulations.</p>
+            </div>
         </div>
-
+        <!-- end black Bg -->
         <div class="w-1/2 p-4"><x-auth-session-status class="mb-4" :status="session('status')" />
             <h2 class="mb-4 text-lg font-semibold text-center text-gray-800">Sign in</h2>
             <form wire:submit="login">
@@ -73,7 +83,7 @@ new #[Layout('layouts.guest')] class extends Component {
                     @if (Route::has('password.request'))
                         <a class="text-sm text-blue-700 underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 "
                             href="{{ route('password.request') }}" wire:navigate>
-                            {{ __('Forgot your password?') }}
+                            {{ __('Forgot Password?') }}
                         </a>
                     @endif
                 </div>
