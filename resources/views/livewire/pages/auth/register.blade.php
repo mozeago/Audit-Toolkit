@@ -43,7 +43,7 @@ new #[Layout('layouts.guest')] class extends Component {
     }
 }; ?>
 
-<div class="w-3/4 p-6 mt-16 mb-16 rounded-md shadow-2xl">
+<div class="w-3/4 p-6 mt-16 mb-16 bg-white rounded-md shadow-2xl">
     <div class="flex justify-between">
         <div class="relative flex items-center justify-center w-1/2">
             <img src="{{ asset('images/bg-login.jpg') }}" alt="Image"

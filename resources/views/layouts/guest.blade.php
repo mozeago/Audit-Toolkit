@@ -43,7 +43,15 @@
         </div>
     </nav>
 
-    <div class="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0">
+    <div class="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0"
+        style="background-image: url({{ asset('images/bg-questionnaire.jpeg') }});
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;">
         {{ $slot }}
     </div>
     <footer class="py-2 text-white bg-black">

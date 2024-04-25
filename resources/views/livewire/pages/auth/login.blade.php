@@ -32,7 +32,7 @@ new #[Layout('layouts.guest')] class extends Component {
     }
 }; ?>
 
-<div class="w-3/4 p-6 mt-16 mb-16 rounded-md shadow-2xl">
+<div class="w-3/4 p-6 mt-16 mb-16 bg-white rounded-md shadow-2xl">
     <div class="flex justify-between">
         <div class="relative flex items-center justify-center w-1/2">
             <img src="{{ asset('images/hammer-transparent.png') }}" alt="Image" class="object-cover opacity-50">
@@ -78,8 +78,9 @@ new #[Layout('layouts.guest')] class extends Component {
                 </div>
                 <div class="flex items-center justify-end mt-4 mb-4">
                     <button type="submit"
-                        class="w-full px-4 py-2 font-bold text-white bg-red-600 rounded hover:shadow-xl hover:text-black hover:bg-red-700 focus:outline-none focus:shadow-outline"
-                        style="background-color: #BA0C2F;">
+                        class="w-full px-4 py-2 font-bold text-white transition-transform duration-300 bg-red-600 rounded hover:shadow-2xl hover:text-gray-300 hover:bg-red-700 focus:outline-none focus:shadow-outline"
+                        style="background-color: #BA0C2F;" onmouseover="this.style.transform = 'scale(1.05)'"
+                        onmouseout="this.style.transform = 'scale(1)'">
                         {{ __('Log in') }}
                     </button>
                 </div>
@@ -100,10 +101,11 @@ new #[Layout('layouts.guest')] class extends Component {
             </div>
             <!-- Session Status -->
             <x-auth-session-status class="mb-4" :status="session('status')" />
-            <a href="{{ route('google.redirect') }}"
-                class="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full shadow-md hover:shadow-lg focus:outline-none">
-                <img src="{{ asset('images/google_logo.png') }}" alt="Google Logo" class="w-8 h-8">
-            </a>
+            <button href="{{ route('google.redirect') }}"
+                class="inline-flex items-center justify-center p-2 bg-white shadow-md hover:shadow-xl hover:text-[#C8000B] hover:font-semibold focus:outline-none rounded-md">
+                <img src="{{ asset('images/google_logo.png') }}" alt="Google Logo" class="w-8 h-8 mr-2">
+                <span>Sign in With Google</span>
+            </button>
         </div>
     </div>
 </div>
