@@ -44,8 +44,9 @@ new #[Layout('layouts.guest')] class extends Component {
                 <!-- Email Address -->
                 <div>
                     <x-input-label for="email" :value="__('Email address')" />
-                    <x-text-input wire:model="form.email" id="email" class="block w-full mt-1 rounded-md"
-                        type="email" name="email" required autofocus autocomplete="username" />
+                    <x-text-input aria-placeholder="Email" wire:model="form.email" id="email"
+                        class="block w-full mt-1 rounded-md" type="email" name="email" required autofocus
+                        autocomplete="username" />
                     <x-input-error :messages="$errors->get('form.email')" class="mt-2" />
                 </div>
 
@@ -53,8 +54,9 @@ new #[Layout('layouts.guest')] class extends Component {
                 <div class="mt-4">
                     <x-input-label for="password" :value="__('Password')" />
 
-                    <x-text-input wire:model="form.password" id="password" class="block w-full mt-1 rounded-md"
-                        type="password" name="password" required autocomplete="current-password" />
+                    <x-text-input aria-placeholder="Password" wire:model="form.password" id="password"
+                        class="block w-full mt-1 rounded-md" type="password" name="password" required
+                        autocomplete="current-password" />
                     <x-input-error :messages="$errors->get('form.password')" class="mt-2" />
                 </div>
 
@@ -63,9 +65,8 @@ new #[Layout('layouts.guest')] class extends Component {
                     <!-- Remember Me -->
                     <label for="remember" class="inline-flex items-center">
                         <input wire:model="form.remember" id="remember" type="checkbox"
-                            class="text-indigo-600 border-gray-300 rounded-sm shadow-sm focus:ring-indigo-500"
-                            name="remember">
-                        <span class="text-sm text-gray-600 ms-2">{{ __('Remember me') }}</span>
+                            class="text-indigo-600 border-gray-300 rounded-sm shadow-sm focus:ring-indigo-500"> <span
+                            class="text-sm text-gray-600 ms-2">{{ __('Remember me') }}</span>
                     </label>
 
                     <!-- Forgot Password Link -->
