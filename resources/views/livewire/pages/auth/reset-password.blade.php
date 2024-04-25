@@ -101,5 +101,4 @@ new #[Layout('layouts.guest')] class extends Component {
             </x-primary-button>
         </div>
     </form>
-    <h3>here</h3>
 </div>
