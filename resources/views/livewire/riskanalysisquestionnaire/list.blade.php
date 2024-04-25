@@ -152,7 +152,15 @@ new class extends Component {
         }
     }
 }; ?>
-<div x-data="{ riskOpen: false }" class="w-full rounded-md shadow-md">
+<div x-data="{ riskOpen: false }" class="w-full bg-white rounded-md shadow-md">
+    @if ($showOrganizationForm)
+        <h3 class="m-4 text-center text-[#C8000B] font-bold pt-8">Data Protection Risk Assessment Questionnaire</h3>
+        <p class="m-4 text-wrap text-[#C8000B] p-8">The Data Protection Risk Questionnaire includes an assessment of
+            processing
+            activities
+            conducted by your organization, covering personal data handling, sensitive information
+            processing, and commercial data usage.</p>
+    @endif
     @if ($this->hasAnsweredQuestions())
         <div class ="container px-4 py-8 mx-auto">
             @if ($showOrganizationForm)
@@ -170,7 +178,7 @@ new class extends Component {
                                 </g>
                             </svg>
                         </div>
-
+                        {{-- organization data --}}
                         <div class="pt-3 sm:pt-5">
                             <h2 class="mb-4 text-xl font-semibold text-black">Organization and Department Information
                             </h2>
@@ -202,6 +210,8 @@ new class extends Component {
                                 </x-primary-button>
                             </form>
                         </div>
+                        {{-- end organization data --}}
+
                     </div>
                 @else
                     <!-- Progress Indicator -->

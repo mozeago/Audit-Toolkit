@@ -277,7 +277,7 @@
         </aside>
     @endif
 
-    <div class="p-4 sm:ml-72">
+    <div class="p-4 @if (User::find(auth()->id())->qa_analysis_complete === 'true') sm:ml-72 @endif">
         <div
             style="background-image: url({{ asset('images/bg-questionnaire.jpeg') }});
     background-size: cover;
@@ -295,6 +295,8 @@
             </div>
         </div>
     </div>
+    {{-- footer --}}
+    {{-- end footer --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 
