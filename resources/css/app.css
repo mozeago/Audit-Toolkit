@@ -105,3 +105,7 @@ input[type="radio"]:checked {
 .opacity-50 {
     opacity: 0.50;
 }
+
+.semi-circle-border {
+    border-radius: 50% 0 0 50%;
+}
