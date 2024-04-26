@@ -120,43 +120,16 @@ new class extends Component {
 }; ?>
 <div class="p-8">
     <div class="flex justify-center gap-8">
-        {{-- start privacy score --}}
-        <div class="relative flex flex-col w-1/4 p-4 bg-gray-200 rounded-lg shadow-2xl h-80">
-            <h2 class="text-2xl font-medium text-center">Privacy Score
-            </h2>
-            <div class="flex flex-col justify-center flex-grow">
-                <div class="text-center">Meter Gauge</div>
-            </div>
-            <div
-                class="@if ($averageScore >= 70) text-white bg-green-700
-                @elseif($averageScore >= 50)text-white bg-green-500
-                @elseif($averageScore >= 30) text-white bg-yellow-700
-                @else text-white bg-red-700 @endif absolute bottom-0 left-0 w-full">
-                <p class="text-xl font-bold text-center" id="gaugeValue">Average Score:</p>
-                <p class="text-xl font-extrabold text-center">
-                    {{ $averageScore }}%</p>
-
-                <p class="text-center text-l">
-                    @if ($averageScore >= 75)
-                        Low Risk
-                    @elseif($averageScore >= 50)
-                        Moderate Risk
-                    @else
-                        High Risk
-                    @endif
-                </p>
-            </div>
-        </div>
-        {{-- end privacy score --}}
         {{-- start individual score divs --}}
         <div class="flex flex-col w-3/4 gap-2">
 
             <div class="flex gap-2">
+                {{-- start processor controller --}}
                 <div
                     class="p-4 @if ($processorController >= 70) text-white bg-green-700
                     @elseif($processorController >= 50)text-white bg-green-500
                     @elseif($processorController >= 30) text-white bg-yellow-700
-                    @else text-white bg-red-700 @endif h-32 w-1/2 rounded-md shadow-2xl flex flex-col justify-between">
+                    @else text-white bg-red-700 @endif h-32 w-1/3 rounded-md shadow-2xl flex flex-col justify-between">
                     <div class="flex items-center justify-center h-1/2">
                         <!-- Icon-->
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
@@ -178,25 +151,13 @@ new class extends Component {
                         <span class="text-lg font-extrabold">{{ $processorController }} %</span>
                     </div>
                 </div>
-
-                {{-- <div
-                    class="@if ($processorController >= 70) text-white bg-green-700
-                    @elseif($processorController >= 50)text-white bg-green-500
-                    @elseif($processorController >= 30) text-white bg-yellow-700
-                    @else text-white bg-red-700 @endif h-32 w-1/2 rounded-md shadow-2xl">
-                    <h6 class="mt-2 font-semibold text-center text-l">
-                        Type of processing activity
-                        conducted by
-                        controller/processor:
-                    </h6>
-                    <p class="mt-4 font-bold text-center">
-                        {{ $processorController }} %</p>
-                </div> --}}
+                {{-- end processort controller --}}
+                {{-- start personal data --}}
                 <div
                     class="@if ($personalDataProcessedByOrganisation >= 70) text-white bg-green-700
                     @elseif($personalDataProcessedByOrganisation >= 50)text-white bg-green-500
                     @elseif($personalDataProcessedByOrganisation >= 30) text-white bg-yellow-700
-                    @else text-white bg-red-700 @endif h-32 w-1/2 rounded-md shadow-2xl">
+                    @else text-white bg-red-700 @endif h-32 w-1/3 rounded-md shadow-2xl">
                     <h6 class="mt-2 font-semibold text-center text-l">
                         Type of personal data processed by
                         the
@@ -205,62 +166,101 @@ new class extends Component {
                         {{ $personalDataProcessedByOrganisation }}
                         %</p>
                 </div>
-            </div>
-            <div class="flex gap-2">
+                {{-- end personal data --}}
+
                 <div
                     class="@if ($sensitivePersonalData >= 70) text-white bg-green-700
                     @elseif($sensitivePersonalData >= 50)text-white bg-green-500
                     @elseif($sensitivePersonalData >= 30) text-white bg-yellow-700
-                    @else text-white bg-red-700 @endif h-32 w-1/2 rounded-md bg-gray-200 shadow-2xl">
+                    @else text-white bg-red-700 @endif h-32 w-1/3 rounded-md bg-gray-200 shadow-2xl">
                     <h6 class="mt-2 font-semibold text-center text-l">
                         Processing of sensitive personal
                         data:</h6>
                     <p class="mt-4 font-bold text-center">
                         {{ $sensitivePersonalData }} %</p>
                 </div>
+            </div>
+            {{-- row for risk score --}}
+            <div class="flex gap-2">
+                {{-- start privacy score --}}
                 <div
-                    class="@if ($commercialUseOfData >= 70) text-white bg-green-700
+                    class="relative flex flex-col w-1/3 p-4 bg-gray-200 border-2 border-[#C8000B] rounded-lg shadow-2xl h-70">
+                    <h2 class="text-2xl font-medium text-center">Privacy Score
+                    </h2>
+                    <div class="flex flex-col justify-center flex-grow">
+                        <div class="text-center">Meter Gauge</div>
+                    </div>
+                    <div
+                        class="@if ($averageScore >= 70) text-white bg-green-700
+                @elseif($averageScore >= 50)text-white bg-green-500
+                @elseif($averageScore >= 30) text-white bg-yellow-700
+                @else text-white bg-red-700 @endif absolute bottom-0 left-0 w-full">
+                        <p class="text-xl font-bold text-center" id="gaugeValue">Average Score:</p>
+                        <p class="text-xl font-extrabold text-center">
+                            {{ $averageScore }}%</p>
+
+                        <p class="text-center text-l">
+                            @if ($averageScore >= 75)
+                                Low Risk
+                            @elseif($averageScore >= 50)
+                                Moderate Risk
+                            @else
+                                High Risk
+                            @endif
+                        </p>
+                    </div>
+                </div>
+                {{-- end privacy score --}}
+                <div class="flex flex-col w-2/3 gap-2">
+                    {{-- start row 1 commercial and business operations --}}
+                    <div class="flex gap-2">
+                        {{-- start comercial --}}
+                        <div
+                            class="@if ($commercialUseOfData >= 70) text-white bg-green-700
                     @elseif($commercialUseOfData >= 50)text-white bg-green-500
                     @elseif($commercialUseOfData >= 30) text-white bg-yellow-700
                     @else text-white bg-red-700 @endif h-32 w-1/2 rounded-md shadow-2xl">
-                    <h6 class="mt-2 font-semibold text-center text-l">
-                        Commercial use of data:</h6>
-                    <p class="mt-4 font-bold text-center">
-                        {{ $commercialUseOfData }} %</p>
-                </div>
-            </div>
-            <div class="flex gap-2">
-                <div
-                    class="@if ($businessOperation >= 70) text-white bg-green-700
+                            <h6 class="mt-2 font-semibold text-center text-l">
+                                Commercial use of data:</h6>
+                            <p class="mt-4 font-bold text-center">
+                                {{ $commercialUseOfData }} %</p>
+                        </div>
+                        {{-- start business operations --}}
+                        <div
+                            class="@if ($businessOperation >= 70) text-white bg-green-700
                     @elseif($businessOperation >= 50)text-white bg-green-500
                     @elseif($businessOperation >= 30) text-white bg-yellow-700
-                    @else text-white bg-red-700 @endif h-32 w-full rounded-md shadow-2xl">
-                    <h6 class="mt-2 font-semibold text-center text-l">
-                        Business Operation:</h6>
-                    <p class="mt-4 font-bold text-center">
-                        {{ $businessOperation }} %</p>
-                </div>
-            </div>
-            <div class="flex gap-2">
-                <div
-                    class="@if ($auditScore >= 70) text-white bg-green-700
+                    @else text-white bg-red-700 @endif h-32 w-1/2 rounded-md shadow-2xl">
+                            <h6 class="mt-2 font-semibold text-center text-l">
+                                Business Operation:</h6>
+                            <p class="mt-4 font-bold text-center">
+                                {{ $businessOperation }} %</p>
+                        </div>
+                    </div>
+                    {{-- start row 2 risk score --}}
+                    <div class="flex gap-2">
+                        <div
+                            class="@if ($auditScore >= 70) text-white bg-green-700
                     @elseif($auditScore >= 50)text-white bg-green-500
                     @elseif($auditScore >= 30) text-white bg-yellow-700
-                    @else text-white bg-red-700 @endif h-32 w-1/2">
-                    <h6 class="mt-2 font-semibold text-center text-l">
-                        Audit Score:</h6>
-                    <p class="mt-4 font-bold text-center">
-                        {{ $auditScore }} %</p>
-                </div>
-                <div
-                    class="@if ($riskValue >= 70) text-white bg-green-700
+                    @else text-white bg-red-700 @endif h-32 w-1/2 rounded-md">
+                            <h6 class="mt-2 font-semibold text-center text-l">
+                                Audit Score:</h6>
+                            <p class="mt-4 font-bold text-center">
+                                {{ $auditScore }} %</p>
+                        </div>
+                        <div
+                            class="@if ($riskValue >= 70) text-white bg-green-700
                     @elseif($riskValue >= 50)text-white bg-green-500
                     @elseif($riskValue >= 30) text-white bg-yellow-700
-                    @else text-white bg-red-700 @endif h-32 w-1/2">
-                    <h6 class="mt-2 font-semibold text-center text-l">
-                        Risk Score:</h6>
-                    <p class="mt-4 font-bold text-center">
-                        {{ $riskValue }} %</p>
+                    @else text-white bg-red-700 @endif h-32 w-1/2 rounded-md">
+                            <h6 class="mt-2 font-semibold text-center text-l">
+                                Risk Score:</h6>
+                            <p class="mt-4 font-bold text-center">
+                                {{ $riskValue }} %</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -277,23 +277,23 @@ new class extends Component {
     <div class="flex justify-center mt-4 shadow-2xl">
         <div class="flex justify-center">
             <table class="w-full bg-white border border-gray-300 divide-y divide-gray-200 table-auto">
-                <thead class="bg-black ">
+                <thead class="bg-[#1C4863] ">
                     <tr>
                         <th scope="col"
-                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-400 uppercase">
+                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-white uppercase">
                             Name
                         </th>
                         <th scope="col"
-                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-400 uppercase">
+                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-white uppercase">
                             Case
                             No.
                         </th>
                         <th scope="col"
-                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-400 uppercase">
+                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-white uppercase">
                             Video
                             Title</th>
                         <th scope="col"
-                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-400 uppercase">
+                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-white uppercase">
                             Link
                         </th>
                     </tr>
