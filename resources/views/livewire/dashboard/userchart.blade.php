@@ -121,11 +121,11 @@ new class extends Component {
 <div class="p-8">
     <div class="flex justify-center gap-8">
         {{-- start individual score divs --}}
-        <div class="flex flex-col w-3/4 gap-2">
+        <div class="flex flex-col w-full gap-2">
 
             <div class="flex gap-2">
                 {{-- start processor controller --}}
-                <div class="w-1/3 h-32 border-l-4 border-orange-500 rounded-md shadow-2xl">
+                <div class="w-1/3 h-32 bg-white border-l-4 border-orange-500 rounded-md shadow-2xl drop-shadow-md">
                     <!-- Icon-->
                     <!-- Text -->
                     <h6 class="mt-2 font-semibold text-center text-l">Type of
@@ -139,7 +139,7 @@ new class extends Component {
                 </div>
                 {{-- end processort controller --}}
                 {{-- start personal data --}}
-                <div class="w-1/3 h-32 border-l-2 rounded-md shadow-2xl border-cyan-400">
+                <div class="w-1/3 h-32 bg-white border-l-2 rounded-md shadow-2xl border-cyan-400">
                     <h6 class="mt-2 font-semibold text-center text-l">
                         Type of personal data processed by
                         the
@@ -150,7 +150,7 @@ new class extends Component {
                 </div>
                 {{-- end personal data --}}
 
-                <div class="w-1/3 h-32 border-l-2 border-red-500 rounded-md shadow-2xl">
+                <div class="w-1/3 h-32 bg-white border-l-2 border-red-500 rounded-md shadow-2xl drop-shadow-md">
                     <h6 class="mt-2 font-semibold text-center text-l">
                         Processing of sensitive personal
                         data:</h6>
@@ -161,7 +161,8 @@ new class extends Component {
             {{-- row for risk score --}}
             <div class="flex gap-2">
                 {{-- start privacy score --}}
-                <div class="relative flex flex-col w-1/3 p-4 border-2 border-[#C8000B] rounded-lg shadow-2xl h-70">
+                <div
+                    class="relative flex flex-col w-1/3 p-4 border-2 border-[#C8000B] rounded-lg shadow-2xl drop-shadow-md h-70">
                     <h2 class="text-2xl font-medium text-center">Privacy Score
                     </h2>
                     <div class="flex flex-col justify-center flex-grow">
@@ -188,14 +189,16 @@ new class extends Component {
                     {{-- start row 1 commercial and business operations --}}
                     <div class="flex gap-2">
                         {{-- start comercial --}}
-                        <div class="w-1/2 h-32 border-l-4 rounded-md shadow-2xl border-cyan-400">
+                        <div
+                            class="w-1/2 h-32 bg-white border-l-4 rounded-md shadow-2xl drop-shadow-md border-cyan-400">
                             <h6 class="mt-2 font-semibold text-center text-l">
                                 Commercial use of data:</h6>
                             <p class="mt-4 font-bold text-center">
                                 {{ $commercialUseOfData }} %</p>
                         </div>
                         {{-- start business operations --}}
-                        <div class="w-1/2 h-32 border-l-4 border-green-400 rounded-md shadow-2xl">
+                        <div
+                            class="w-1/2 h-32 bg-white border-l-4 border-green-400 rounded-md shadow-2xl drop-shadow-md">
                             <h6 class="mt-2 font-semibold text-center text-l">
                                 Business Operation:</h6>
                             <p class="mt-4 font-bold text-center">
@@ -204,13 +207,14 @@ new class extends Component {
                     </div>
                     {{-- start row 2 risk score --}}
                     <div class="flex gap-2">
-                        <div class="w-1/2 h-32 border-l-2 rounded-md shadow-2xl border-cyan-400">
+                        <div
+                            class="w-1/2 h-32 bg-white border-l-2 rounded-md shadow-2xl drop-shadow-md border-cyan-400">
                             <h6 class="mt-2 font-semibold text-center text-l">
                                 Audit Score:</h6>
                             <p class="mt-4 font-bold text-center">
                                 {{ $auditScore }} %</p>
                         </div>
-                        <div class="w-1/2 h-32 border-l-2 border-red-500 rounded-md shadow-2xl">
+                        <div class="w-1/2 h-32 bg-white border-l-2 border-red-500 rounded-md shadow-2xl drop-shadow-md">
                             <h6 class="mt-2 font-semibold text-center text-l">
                                 Risk Score:</h6>
                             <p class="mt-4 font-bold text-center">
@@ -320,84 +324,6 @@ new class extends Component {
                             Social Media Data Breach</td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <a href="uganda-case-001-video" class="text-blue-500 hover:text-blue-700">Watch
-                                Video</a>
-                        </td>
-                    </tr>
-                    <tr class="transition-colors duration-300 hover:bg-gray-100">
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Samuel Mugisha</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Case UGA-002</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Phone Tracking by Government
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <a href="uganda-case-002-video" class="text-blue-500 hover:text-blue-700">Watch
-                                Video</a>
-                        </td>
-                    </tr>
-                    <!-- Nigeria Privacy Violation Cases -->
-                    <tr class="transition-colors duration-300 hover:bg-gray-100">
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Chukwudi Okonkwo</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Case NGA-001</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Illegal Phone Tapping by
-                            Government</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <a href="nigeria-case-001-video" class="text-blue-500 hover:text-blue-700">Watch
-                                Video</a>
-                        </td>
-                    </tr>
-                    <tr class="transition-colors duration-300 hover:bg-gray-100">
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Aisha Ibrahim</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Case NGA-002</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Medical Records Leak by Hospital
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <a href="nigeria-case-002-video" class="text-blue-500 hover:text-blue-700">Watch
-                                Video</a>
-                        </td>
-                    </tr>
-                    <tr class="transition-colors duration-300 hover:bg-gray-100">
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            David Adekunle</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Case NGA-003</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Financial Data Breach by Bank
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <a href="nigeria-case-003-video" class="text-blue-500 hover:text-blue-700">Watch
-                                Video</a>
-                        </td>
-                    </tr>
-                    <tr class="transition-colors duration-300 hover:bg-gray-100">
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Chinwe Okafor</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Case NGA-004</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Email Hacking Incident</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <a href="nigeria-case-004-video" class="text-blue-500 hover:text-blue-700">Watch
-                                Video</a>
-                        </td>
-                    </tr>
-                    <tr class="transition-colors duration-300 hover:bg-gray-100">
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Olumide Adeyemi</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Case NGA-005</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Surveillance Cameras Installed
-                            Illegally</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <a href="nigeria-case-005-video" class="text-blue-500 hover:text-blue-700">Watch
                                 Video</a>
                         </td>
                     </tr>
