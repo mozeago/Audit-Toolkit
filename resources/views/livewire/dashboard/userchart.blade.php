@@ -120,6 +120,7 @@ new class extends Component {
 }; ?>
 <div class="p-8">
     <div class="flex justify-center gap-8">
+        {{-- start privacy score --}}
         <div class="relative flex flex-col w-1/4 p-4 bg-gray-200 rounded-lg shadow-2xl h-80">
             <h2 class="text-2xl font-medium text-center">Privacy Score
             </h2>
@@ -146,6 +147,8 @@ new class extends Component {
                 </p>
             </div>
         </div>
+        {{-- end privacy score --}}
+        {{-- start individual score divs --}}
         <div class="flex flex-col w-3/4 gap-2">
 
             <div class="flex gap-2">
@@ -261,32 +264,36 @@ new class extends Component {
                 </div>
             </div>
         </div>
+        {{-- end of individual score divs --}}
     </div>
     {{-- Table --}}
-    <div class="w-full mt-16">
-        <h2 class="text-xl font-bold text-center">Privacy
-            Violation Cases</h2>
+    <div class="flex items-center justify-center mt-24 mb-8">
+        <div class="flex-grow border-b-4 border-[#C8000B]"></div>
+        <span class="px-3 text-xl font-bold text-center">Privacy
+            Violation Cases</span>
+        <div class="flex-grow border-b-4 border-[#C8000B]"></div>
+
     </div>
     <div class="flex justify-center mt-4 shadow-2xl">
         <div class="flex justify-center">
             <table class="w-full bg-white border border-gray-300 divide-y divide-gray-200 table-auto">
-                <thead class="bg-gray-100">
+                <thead class="bg-black ">
                     <tr>
                         <th scope="col"
-                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-700 uppercase">
+                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-400 uppercase">
                             Name
                         </th>
                         <th scope="col"
-                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-700 uppercase">
+                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-400 uppercase">
                             Case
                             No.
                         </th>
                         <th scope="col"
-                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-700 uppercase">
+                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-400 uppercase">
                             Video
                             Title</th>
                         <th scope="col"
-                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-700 uppercase">
+                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-400 uppercase">
                             Link
                         </th>
                     </tr>

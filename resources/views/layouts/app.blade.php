@@ -277,7 +277,7 @@
         </aside>
     @endif
 
-    <div class="p-4 @if (User::find(auth()->id())->qa_analysis_complete === 'true') sm:ml-72 @endif">
+    <div class="p-4 @if (User::find(auth()->id())->qa_analysis_complete === 'true' || auth()->user()->role === 'admin') sm:ml-72 @endif">
         <div
             style="background-image: url({{ asset('images/bg-questionnaire.jpeg') }});
     background-size: cover;
