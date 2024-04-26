@@ -153,7 +153,7 @@ new class extends Component {
                 </div>
                 {{-- end processort controller --}}
                 {{-- start personal data --}}
-                <div class="flex w-1/3 h-32 bg-white border-l-4 border-orange-500 rounded-md shadow-2xl drop-shadow-md">
+                <div class="flex w-1/3 h-32 bg-white border-l-2 rounded-md shadow-2xl border-cyan-500 drop-shadow-md">
 
                     <div class="flex items-center w-2/3">
                         <div class="flex flex-col items-center p-2">
@@ -181,7 +181,7 @@ new class extends Component {
                 </div>
 
                 {{-- end personal data --}}
-                <div class="flex w-1/3 h-32 bg-white border-l-4 border-orange-500 rounded-md shadow-2xl drop-shadow-md">
+                <div class="flex w-1/3 h-32 bg-white border-l-2 border-red-500 rounded-md shadow-2xl drop-shadow-md">
 
                     <div class="flex items-center w-2/3">
                         <div class="flex flex-col items-center p-2">
@@ -211,11 +211,13 @@ new class extends Component {
             <div class="flex gap-2">
                 {{-- start privacy score --}}
                 <div
-                    class="relative flex flex-col w-1/3 p-4 border-2 border-[#C8000B] rounded-lg shadow-2xl drop-shadow-md h-70">
+                    class="bg-white relative flex flex-col w-1/3 p-4 border-2 drop-shadow-md border-[#C8000B] rounded-lg shadow-2xl drop-shadow-md h-70">
                     <h2 class="text-2xl font-medium text-center">Privacy Score
                     </h2>
                     <div class="flex flex-col justify-center flex-grow">
-                        <div class="text-center">Meter Gauge</div>
+                        {{-- meter gauge --}}
+
+                        {{-- end meter gauge --}}
                     </div>
                     <div class="absolute bottom-0 left-0 w-full ">
                         <p class="text-xl font-bold text-center" id="gaugeValue">Average Score:</p>
@@ -239,35 +241,108 @@ new class extends Component {
                     <div class="flex gap-2">
                         {{-- start comercial --}}
                         <div
-                            class="w-1/2 h-32 bg-white border-l-4 rounded-md shadow-2xl drop-shadow-md border-cyan-400">
-                            <h6 class="mt-2 font-semibold text-center text-l">
-                                Commercial use of data:</h6>
-                            <p class="mt-4 font-bold text-center">
-                                {{ $commercialUseOfData }} %</p>
+                            class="flex w-1/2 h-32 bg-white border-l-4 rounded-md shadow-2xl border-cyan-500 drop-shadow-md">
+
+                            <div class="flex items-center w-2/3">
+                                <div class="flex flex-col items-center p-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="#E95585" class="w-8 h-8">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                    </svg>
+                                    <p class="ml-4 font-medium text-left roboto-regular">Commercial use of Data
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex w-1/3">
+                                <div class="flex flex-col items-center justify-center w-full p-2 ">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672Zm-7.518-.267A8.25 8.25 0 1 1 20.25 10.5M8.288 14.212A5.25 5.25 0 1 1 17.25 10.5" />
+                                    </svg>
+                                    <p class="mt-auto font-medium text-cyan-300">Link</p>
+                                </div>
+                            </div>
                         </div>
                         {{-- start business operations --}}
                         <div
-                            class="w-1/2 h-32 bg-white border-l-4 border-green-400 rounded-md shadow-2xl drop-shadow-md">
-                            <h6 class="mt-2 font-semibold text-center text-l">
-                                Business Operation:</h6>
-                            <p class="mt-4 font-bold text-center">
-                                {{ $businessOperation }} %</p>
+                            class="flex w-1/2 h-32 bg-white border-l-4 border-green-500 rounded-md shadow-2xl drop-shadow-md">
+
+                            <div class="flex items-center w-2/3">
+                                <div class="flex flex-col items-center p-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="#E95585" class="w-8 h-8">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                    </svg>
+                                    <p class="ml-4 font-medium text-left roboto-regular">Business Operations
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex w-1/3">
+                                <div class="flex flex-col items-center justify-center w-full p-2 ">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672Zm-7.518-.267A8.25 8.25 0 1 1 20.25 10.5M8.288 14.212A5.25 5.25 0 1 1 17.25 10.5" />
+                                    </svg>
+                                    <p class="mt-auto font-medium text-cyan-300">Link</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     {{-- start row 2 risk score --}}
                     <div class="flex gap-2">
                         <div
-                            class="w-1/2 h-32 bg-white border-l-2 rounded-md shadow-2xl drop-shadow-md border-cyan-400">
-                            <h6 class="mt-2 font-semibold text-center text-l">
-                                Audit Score:</h6>
-                            <p class="mt-4 font-bold text-center">
-                                {{ $auditScore }} %</p>
+                            class="flex w-1/2 h-32 bg-white border-l-2 rounded-md shadow-2xl border-cyan-500 drop-shadow-md">
+
+                            <div class="flex items-center w-2/3">
+                                <div class="flex flex-col items-center p-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="#E95585" class="w-8 h-8">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                    </svg>
+                                    <p class="ml-4 font-medium text-left roboto-regular">Audit Score:
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex w-1/3">
+                                <div class="flex flex-col items-center justify-center w-full p-2 ">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672Zm-7.518-.267A8.25 8.25 0 1 1 20.25 10.5M8.288 14.212A5.25 5.25 0 1 1 17.25 10.5" />
+                                    </svg>
+                                    <p class="mt-auto font-medium text-cyan-300">Link</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="w-1/2 h-32 bg-white border-l-2 border-red-500 rounded-md shadow-2xl drop-shadow-md">
-                            <h6 class="mt-2 font-semibold text-center text-l">
-                                Risk Score:</h6>
-                            <p class="mt-4 font-bold text-center">
-                                {{ $riskValue }} %</p>
+                        <div
+                            class="flex w-1/2 h-32 bg-white border-l-2 border-red-500 rounded-md shadow-2xl drop-shadow-md">
+
+                            <div class="flex items-center w-2/3">
+                                <div class="flex flex-col items-center p-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="#E95585" class="w-8 h-8">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                    </svg>
+                                    <p class="ml-4 font-medium text-left roboto-regular">Risk Score
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex w-1/3">
+                                <div class="flex flex-col items-center justify-center w-full p-2 ">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672Zm-7.518-.267A8.25 8.25 0 1 1 20.25 10.5M8.288 14.212A5.25 5.25 0 1 1 17.25 10.5" />
+                                    </svg>
+                                    <p class="mt-auto font-medium text-cyan-300">Link</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
