@@ -286,7 +286,7 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100vh;">
+    height: 100vh;"class="rounded-lg">
             <div class="rounded-lg shadow-2xl dark:border-gray-700 mt-14">
                 <!-- Page Content -->
                 <main>
