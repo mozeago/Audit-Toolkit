@@ -19,18 +19,20 @@ new class extends Component {
     public function rules(): array
     {
         return [
-            'file' => 'required|file|mimetypes:application/pdf,application/msword',
-            'thumbnail' => 'nullable|image|max:2048|mimetypes:image/jpg,image/jpeg,image/png',
-            'filename' => 'nullable|required|string|max:255',
+            'file' => 'required|file|mimetypes:application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            'thumbnail' => 'required|image|mimes:jpg,jpeg,png',
+            'filename' => 'required|string|max:255',
             'template_category' => 'required|string|max:255',
         ];
     }
 
     public function save()
     {
-        if (!isset($this->thumbnail) || !isset($this->filename)) {
-            $this->addError('filename', 'Filename and/or thumbnail is required');
+        if (!isset($this->filename)) {
+            $this->addError('filename', 'Filename is required');
             return;
+        } elseif (!isset($this->thumbnail)) {
+            $this->addError('filename', 'Thumbnail is required');
         }
 
         $this->validate();

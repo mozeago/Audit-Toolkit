@@ -142,10 +142,15 @@ new class extends Component {
                     </div>
                     <div class="flex w-1/3">
                         <div class="flex flex-col items-center justify-center w-full p-2 ">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672Zm-7.518-.267A8.25 8.25 0 1 1 20.25 10.5M8.288 14.212A5.25 5.25 0 1 1 17.25 10.5" />
+                            <svg viewBox="0 0 36 36" class="circular-chart green">
+                                <path class="circle-bg" d="M18 2.0845
+                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                    a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path class="circle" stroke-dasharray="{{ $processorController }}, 100" d="M18 2.0845
+                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                    a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <text x="18" y="20.35" class="percentage">{{ $processorController }}
+                                    %</text>
                             </svg>
                             <p class="mt-auto font-medium text-cyan-300">Link</p>
                         </div>
@@ -170,10 +175,16 @@ new class extends Component {
                     </div>
                     <div class="flex w-1/3">
                         <div class="flex flex-col items-center justify-center w-full p-2 ">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672Zm-7.518-.267A8.25 8.25 0 1 1 20.25 10.5M8.288 14.212A5.25 5.25 0 1 1 17.25 10.5" />
+                            <svg viewBox="0 0 36 36" class="circular-chart green">
+                                <path class="circle-bg" d="M18 2.0845
+                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                    a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path class="circle" stroke-dasharray="{{ $personalDataProcessedByOrganisation }}, 100"
+                                    d="M18 2.0845
+                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                    a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <text x="18" y="20.35" class="percentage">{{ $personalDataProcessedByOrganisation }}
+                                    %</text>
                             </svg>
                             <p class="mt-auto font-medium text-cyan-300">Link</p>
                         </div>
@@ -197,10 +208,14 @@ new class extends Component {
                     </div>
                     <div class="flex w-1/3">
                         <div class="flex flex-col items-center justify-center w-full p-2 ">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672Zm-7.518-.267A8.25 8.25 0 1 1 20.25 10.5M8.288 14.212A5.25 5.25 0 1 1 17.25 10.5" />
+                            <svg viewBox="0 0 36 36" class="circular-chart green">
+                                <path class="circle-bg" d="M18 2.0845
+                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                    a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path class="circle" stroke-dasharray="{{ $sensitivePersonalData }}, 100" d="M18 2.0845
+                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                    a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <text x="18" y="20.35" class="percentage">{{ $sensitivePersonalData }} %</text>
                             </svg>
                             <p class="mt-auto font-medium text-cyan-300">Link</p>
                         </div>
@@ -212,8 +227,8 @@ new class extends Component {
                 {{-- start privacy score --}}
                 <div
                     class="bg-white relative flex flex-col w-1/3 p-4 border-2 drop-shadow-md border-[#C8000B] rounded-lg shadow-2xl drop-shadow-md h-70">
-                    <h2 class="text-2xl font-medium text-center">Privacy Score
-                    </h2>
+                    {{-- <h2 class="text-2xl font-medium text-center">Privacy Score
+                    </h2> --}}
                     <div class="flex flex-col justify-center flex-grow">
                         {{-- meter gauge --}}
                         <canvas id="chart"></canvas>
@@ -256,10 +271,14 @@ new class extends Component {
                             </div>
                             <div class="flex w-1/3">
                                 <div class="flex flex-col items-center justify-center w-full p-2 ">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672Zm-7.518-.267A8.25 8.25 0 1 1 20.25 10.5M8.288 14.212A5.25 5.25 0 1 1 17.25 10.5" />
+                                    <svg viewBox="0 0 36 36" class="circular-chart green">
+                                        <path class="circle-bg" d="M18 2.0845
+                                            a 15.9155 15.9155 0 0 1 0 31.831
+                                            a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <path class="circle" stroke-dasharray="{{ $commercialUseOfData }}, 100" d="M18 2.0845
+                                            a 15.9155 15.9155 0 0 1 0 31.831
+                                            a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <text x="18" y="20.35" class="percentage">{{ $commercialUseOfData }} %</text>
                                     </svg>
                                     <p class="mt-auto font-medium text-cyan-300">Link</p>
                                 </div>
@@ -282,10 +301,15 @@ new class extends Component {
                             </div>
                             <div class="flex w-1/3">
                                 <div class="flex flex-col items-center justify-center w-full p-2 ">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672Zm-7.518-.267A8.25 8.25 0 1 1 20.25 10.5M8.288 14.212A5.25 5.25 0 1 1 17.25 10.5" />
+
+                                    <svg viewBox="0 0 36 36" class="circular-chart green">
+                                        <path class="circle-bg" d="M18 2.0845
+                                            a 15.9155 15.9155 0 0 1 0 31.831
+                                            a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <path class="circle" stroke-dasharray="{{ $businessOperation }}, 100" d="M18 2.0845
+                                            a 15.9155 15.9155 0 0 1 0 31.831
+                                            a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <text x="18" y="20.35" class="percentage">{{ $businessOperation }} %</text>
                                     </svg>
                                     <p class="mt-auto font-medium text-cyan-300">Link</p>
                                 </div>
@@ -310,10 +334,14 @@ new class extends Component {
                             </div>
                             <div class="flex w-1/3">
                                 <div class="flex flex-col items-center justify-center w-full p-2 ">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672Zm-7.518-.267A8.25 8.25 0 1 1 20.25 10.5M8.288 14.212A5.25 5.25 0 1 1 17.25 10.5" />
+                                    <svg viewBox="0 0 36 36" class="circular-chart green">
+                                        <path class="circle-bg" d="M18 2.0845
+                                            a 15.9155 15.9155 0 0 1 0 31.831
+                                            a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <path class="circle" stroke-dasharray="{{ $auditScore }}, 100" d="M18 2.0845
+                                            a 15.9155 15.9155 0 0 1 0 31.831
+                                            a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <text x="18" y="20.35" class="percentage">{{ $auditScore }} %</text>
                                     </svg>
                                     <p class="mt-auto font-medium text-cyan-300">Link</p>
                                 </div>
@@ -335,10 +363,14 @@ new class extends Component {
                             </div>
                             <div class="flex w-1/3">
                                 <div class="flex flex-col items-center justify-center w-full p-2 ">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672Zm-7.518-.267A8.25 8.25 0 1 1 20.25 10.5M8.288 14.212A5.25 5.25 0 1 1 17.25 10.5" />
+                                    <svg viewBox="0 0 36 36" class="circular-chart green">
+                                        <path class="circle-bg" d="M18 2.0845
+                                            a 15.9155 15.9155 0 0 1 0 31.831
+                                            a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <path class="circle" stroke-dasharray="{{ $auditScore }}, 100" d="M18 2.0845
+                                            a 15.9155 15.9155 0 0 1 0 31.831
+                                            a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <text x="18" y="20.35" class="percentage">{{ $auditScore }} %</text>
                                     </svg>
                                     <p class="mt-auto font-medium text-cyan-300">Link</p>
                                 </div>
@@ -492,10 +524,6 @@ new class extends Component {
         },
         options: {
             responsive: true,
-            title: {
-                display: true,
-                text: 'Gauge chart'
-            },
             layout: {
                 padding: {
                     bottom: 30
