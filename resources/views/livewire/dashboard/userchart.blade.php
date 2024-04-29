@@ -504,12 +504,12 @@ new class extends Component {
         ];
     };
 
-    var randomValue = function() {
+    var averageValue = function() {
         return {{ $averageScore }};
     };
 
     var data = randomData();
-    var value = randomValue();
+    var value = averageValue();
 
     var config = {
         type: 'gauge',
@@ -549,13 +549,4 @@ new class extends Component {
         var ctx = document.getElementById('chart').getContext('2d');
         window.myGauge = new Chart(ctx, config);
     };
-
-    document.getElementById('randomizeData').addEventListener('click', function() {
-        config.data.datasets.forEach(function(dataset) {
-            dataset.data = randomData();
-            dataset.value = randomValue();
-        });
-
-        window.myGauge.update();
-    });
 </script>

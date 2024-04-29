@@ -38,9 +38,10 @@ new #[Layout('layouts.guest')] class extends Component {
         <div class="relative flex items-center justify-center w-1/2 bg-black rounded-l-xl">
             <img src="{{ asset('images/lamp-suspended.jpg') }}" alt="Your Image" class="block w-1/2 h-auto">
             <div class="w-full">
-                <p class="mb-2 font-bold text-left text-white roboto-medium">Welcome to Data Protection Portal
+                <p class="mb-2 font-bold text-left text-white roboto-condensed-header-900">Welcome to Data Protection
+                    Portal
                     !</p>
-                <p class="text-gray-400 robo">Discover essential r esources and guideline to safeguard sensitive
+                <p class="text-gray-400 roboto-regular">Discover essential resources and guideline to safeguard sensitive
                     information
                     and
                     ensure compliance with
