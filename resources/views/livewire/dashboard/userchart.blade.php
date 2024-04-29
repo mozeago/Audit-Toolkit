@@ -504,12 +504,12 @@ new class extends Component {
         ];
     };
 
-    var randomValue = function(data) {
-        return Math.max.apply(null, data) * Math.random();
+    var randomValue = function() {
+        return {{ $averageScore }};
     };
 
     var data = randomData();
-    var value = randomValue(data);
+    var value = randomValue();
 
     var config = {
         type: 'gauge',
@@ -519,7 +519,7 @@ new class extends Component {
                 data: data,
                 value: value,
                 backgroundColor: ['red', 'orange', 'yellow', 'green'],
-                borderWidth: 2
+                borderWidth: 0
             }]
         },
         options: {
@@ -553,7 +553,7 @@ new class extends Component {
     document.getElementById('randomizeData').addEventListener('click', function() {
         config.data.datasets.forEach(function(dataset) {
             dataset.data = randomData();
-            dataset.value = randomValue(dataset.data);
+            dataset.value = randomValue();
         });
 
         window.myGauge.update();
