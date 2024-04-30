@@ -134,7 +134,7 @@ new class extends Component {
                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                     viewBox="0 0 24 24">
                                     <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M8 17.345a4.76 4.76 0 0 0 2.558 1.618c2.274.589 4.512-.446 4.999-2.31.487-1.866-1.273-3.9-3.546-4.49-2.273-.59-4.034-2.623-3.547-4.488.486-1.865 2.724-2.899 4.998-2.31.982.236 1.87.793 2.538 1.592m-3.879 12.171V21m0-18v2.2" />
+                                        d="M12 14v3m-3-6V7a3 3 0 1 1 6 0v4m-8 0h10a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1Z" />
                                 </svg>
                             </div>
                             <p class="ml-4 font-medium text-left roboto-regular">Type of processing activity conducted
@@ -170,7 +170,7 @@ new class extends Component {
                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                     viewBox="0 0 24 24">
                                     <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M8 17.345a4.76 4.76 0 0 0 2.558 1.618c2.274.589 4.512-.446 4.999-2.31.487-1.866-1.273-3.9-3.546-4.49-2.273-.59-4.034-2.623-3.547-4.488.486-1.865 2.724-2.899 4.998-2.31.982.236 1.87.793 2.538 1.592m-3.879 12.171V21m0-18v2.2" />
+                                        d="M3.933 13.909A4.357 4.357 0 0 1 3 12c0-1 4-6 9-6m7.6 3.8A5.068 5.068 0 0 1 21 12c0 1-3 6-9 6-.314 0-.62-.014-.918-.04M5 19 19 5m-4 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                 </svg>
                             </div>
                             <p class="ml-4 font-medium text-left roboto-regular">Type of personal data processed by
@@ -207,7 +207,7 @@ new class extends Component {
                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                     viewBox="0 0 24 24">
                                     <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M8 17.345a4.76 4.76 0 0 0 2.558 1.618c2.274.589 4.512-.446 4.999-2.31.487-1.866-1.273-3.9-3.546-4.49-2.273-.59-4.034-2.623-3.547-4.488.486-1.865 2.724-2.899 4.998-2.31.982.236 1.87.793 2.538 1.592m-3.879 12.171V21m0-18v2.2" />
+                                        d="M12 20a16.405 16.405 0 0 1-5.092-5.804A16.694 16.694 0 0 1 5 6.666L12 4l7 2.667a16.695 16.695 0 0 1-1.908 7.529A16.406 16.406 0 0 1 12 20Z" />
                                 </svg>
                             </div>
                             <p class="ml-4 font-medium text-left roboto-regular">Processing of sensitive personal
@@ -244,8 +244,9 @@ new class extends Component {
                         {{-- end meter gauge --}}
                     </div>
                     <div class="absolute bottom-0 left-0 w-full mt-4">
-                        <div class="flex flex-col items-start">
-                            <p class="text-lg font-medium text-center text-cyan-500" id="gaugeValue">Average Score:</p>
+                        <div class="flex flex-col items-center">
+                            <p class="items-center text-lg font-medium text-center text-cyan-500" id="gaugeValue">
+                                Average Score:</p>
 
                             <div class="flex items-center w-full p-2">
                                 <div class="flex items-center w-1/3">
@@ -291,9 +292,8 @@ new class extends Component {
                                         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             fill="none" viewBox="0 0 24 24">
-                                            <path stroke="white" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2"
-                                                d="M8 17.345a4.76 4.76 0 0 0 2.558 1.618c2.274.589 4.512-.446 4.999-2.31.487-1.866-1.273-3.9-3.546-4.49-2.273-.59-4.034-2.623-3.547-4.488.486-1.865 2.724-2.899 4.998-2.31.982.236 1.87.793 2.538 1.592m-3.879 12.171V21m0-18v2.2" />
+                                            <path stroke="white" stroke-linecap="round" stroke-width="2"
+                                                d="M8 7V6a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1M3 18v-7a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
                                         </svg>
                                     </div>
                                     <p class="ml-4 font-medium text-left roboto-regular">Commercial use of Data
@@ -321,7 +321,7 @@ new class extends Component {
 
                             <div class="flex items-center w-2/3">
                                 <div class="flex flex-col items-start p-2">
-                                    <div class="w-8 h-8 p-1 mb-2 text-center bg-green-500 rounded-full">
+                                    <div class="w-8 h-8 p-1 mb-2 text-center bg-[#C8000B] rounded-full">
                                         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             fill="none" viewBox="0 0 24 24">
@@ -363,7 +363,7 @@ new class extends Component {
                                             fill="none" viewBox="0 0 24 24">
                                             <path stroke="white" stroke-linecap="round" stroke-linejoin="round"
                                                 stroke-width="2"
-                                                d="M8 17.345a4.76 4.76 0 0 0 2.558 1.618c2.274.589 4.512-.446 4.999-2.31.487-1.866-1.273-3.9-3.546-4.49-2.273-.59-4.034-2.623-3.547-4.488.486-1.865 2.724-2.899 4.998-2.31.982.236 1.87.793 2.538 1.592m-3.879 12.171V21m0-18v2.2" />
+                                                d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z" />
                                         </svg>
                                     </div>
                                     <p class="ml-4 font-medium text-left roboto-regular">Audit Score:
@@ -396,7 +396,7 @@ new class extends Component {
                                             fill="none" viewBox="0 0 24 24">
                                             <path stroke="white" stroke-linecap="round" stroke-linejoin="round"
                                                 stroke-width="2"
-                                                d="M8 17.345a4.76 4.76 0 0 0 2.558 1.618c2.274.589 4.512-.446 4.999-2.31.487-1.866-1.273-3.9-3.546-4.49-2.273-.59-4.034-2.623-3.547-4.488.486-1.865 2.724-2.899 4.998-2.31.982.236 1.87.793 2.538 1.592m-3.879 12.171V21m0-18v2.2" />
+                                                d="M9 9a3 3 0 0 1 3-3m-2 15h4m0-3c0-4.1 4-4.9 4-9A6 6 0 1 0 6 9c0 4 4 5 4 9h4Z" />
                                         </svg>
                                     </div>
                                     <p class="ml-4 font-medium text-left roboto-regular">Risk Score
