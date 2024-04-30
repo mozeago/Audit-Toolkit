@@ -44,50 +44,66 @@ new class extends Component {
     }
 }; ?>
 <div>
-    <h1 class="py-4 text-3xl font-bold text-center text-gray-800">
-        Risk Profile Score
-    </h1>
-
-    <!-- Add canvas element for the pie chart -->
-    <div style="display: flex;">
-        <canvas id="pieChart" width="250" height="250"></canvas>
+    <div class="flex items-center justify-center mt-24 mb-8">
+        <div class="flex-grow border-b-4 border-[#C8000B]"></div>
+        <span class="px-3 text-xl font-bold text-center">Risk Profile Score Summary</span>
+        <div class="flex-grow border-b-4 border-[#C8000B]"></div>
     </div>
-
-    <div class="mt-4">
-        <table class="table w-full overflow-hidden rounded-lg shadow-md">
-            <thead>
-                <tr class="font-medium text-left text-white bg-gray-500">
-                    <th class="px-4 py-2">Name</th>
-                    <th class="px-4 py-2">Email</th>
-                    <th class="px-4 py-2">Organization</th>
-                    <th class="px-4 py-2">Department</th>
-                    <th class="px-4 py-2">Score</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($data['tableData'] as $row)
+    <div class="flex justify-center mt-4 shadow-2xl">
+        <div class="flex justify-center">
+            <table class="w-full bg-white border border-gray-300 divide-y divide-gray-200 table-auto">
+                <thead class="bg-[#1C4863] ">
                     <tr>
-                        <td class="px-4 py-2 border-b border-gray-200">{{ $row['name'] }}</td>
-                        <td class="px-4 py-2 border-b border-gray-200">{{ $row['email'] }}</td>
-                        <td class="px-4 py-2 border-b border-gray-200">{{ $row['organization'] }}</td>
-                        <td class="px-4 py-2 border-b border-gray-200">{{ $row['department'] }}</td>
-                        <td class="px-4 py-2 border-b border-gray-200">
-                            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs">
-                                {{ $row['score'] }}
-                                @if ($row['score'] >= 70)
-                                    <span class="ml-2 bg-green-500 text-white rounded-full px-1.5 py-0.5">Good</span>
-                                @elseif ($row['score'] >= 40)
-                                    <span
-                                        class="ml-2 bg-orange-500 text-white rounded-full px-1.5 py-0.5">Average</span>
-                                @else
-                                    <span class="ml-2 bg-red-500 text-white rounded-full px-1.5 py-0.5">Poor</span>
-                                @endif
-                            </span>
-                        </td>
+                        <th scope="col"
+                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-white uppercase">
+                            Name
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-white uppercase">
+                            Email
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-white uppercase">
+                            Organization</th>
+                        <th scope="col"
+                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-white uppercase">
+                            Department</th>
+                        <th scope="col"
+                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-white uppercase">
+                            Score
+                        </th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    @foreach ($data['tableData'] as $row)
+                        <tr class="transition-colors duration-300 hover:bg-gray-100">
+                            <td class="px-6 py-4 whitespace-nowrap">{{ $row['name'] }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                {{ $row['email'] }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                {{ $row['organization'] }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                {{ $row['department'] }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs">
+                                    {{ $row['score'] }}
+                                    @if ($row['score'] >= 70)
+                                        <span
+                                            class="ml-2 bg-green-500 text-white rounded-full px-1.5 py-0.5">Good</span>
+                                    @elseif ($row['score'] >= 40)
+                                        <span
+                                            class="ml-2 bg-orange-500 text-white rounded-full px-1.5 py-0.5">Average</span>
+                                    @else
+                                        <span class="ml-2 bg-red-500 text-white rounded-full px-1.5 py-0.5">Poor</span>
+                                    @endif
+                                </span>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
