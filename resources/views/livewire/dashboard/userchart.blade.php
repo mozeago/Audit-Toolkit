@@ -539,10 +539,10 @@ new class extends Component {
 
     var randomData = function() {
         return [
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor()
+            25,
+            5,
+            10,
+            60
         ];
     };
 
