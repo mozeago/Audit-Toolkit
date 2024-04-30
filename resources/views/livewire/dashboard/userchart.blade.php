@@ -129,11 +129,14 @@ new class extends Component {
 
                     <div class="flex items-center w-2/3">
                         <div class="flex flex-col items-start p-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="orange" class="w-8 h-8">
-                                <path strokeLinecap="round" strokeLinejoin="round"
-                                    d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
-                            </svg>
+                            <div class="w-8 h-8 p-1 mb-2 text-center bg-[#C8000B] rounded-full">
+                                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                    viewBox="0 0 24 24">
+                                    <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 17.345a4.76 4.76 0 0 0 2.558 1.618c2.274.589 4.512-.446 4.999-2.31.487-1.866-1.273-3.9-3.546-4.49-2.273-.59-4.034-2.623-3.547-4.488.486-1.865 2.724-2.899 4.998-2.31.982.236 1.87.793 2.538 1.592m-3.879 12.171V21m0-18v2.2" />
+                                </svg>
+                            </div>
                             <p class="ml-4 font-medium text-left roboto-regular">Type of processing activity conducted
                                 by
                                 controller/processor
@@ -162,11 +165,14 @@ new class extends Component {
 
                     <div class="flex items-center w-2/3">
                         <div class="flex flex-col items-start p-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="#E95585" class="w-8 h-8">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                            </svg>
+                            <div class="w-8 h-8 p-1 mb-2 text-center bg-[#C8000B] rounded-full">
+                                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                    viewBox="0 0 24 24">
+                                    <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 17.345a4.76 4.76 0 0 0 2.558 1.618c2.274.589 4.512-.446 4.999-2.31.487-1.866-1.273-3.9-3.546-4.49-2.273-.59-4.034-2.623-3.547-4.488.486-1.865 2.724-2.899 4.998-2.31.982.236 1.87.793 2.538 1.592m-3.879 12.171V21m0-18v2.2" />
+                                </svg>
+                            </div>
                             <p class="ml-4 font-medium text-left roboto-regular">Type of personal data processed by
                                 the
                                 organisation:
@@ -196,11 +202,14 @@ new class extends Component {
 
                     <div class="flex items-center w-2/3">
                         <div class="flex flex-col items-start p-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="#E95585" class="w-8 h-8">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                            </svg>
+                            <div class="w-8 h-8 p-1 mb-2 text-center bg-[#C8000B] rounded-full">
+                                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                    viewBox="0 0 24 24">
+                                    <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 17.345a4.76 4.76 0 0 0 2.558 1.618c2.274.589 4.512-.446 4.999-2.31.487-1.866-1.273-3.9-3.546-4.49-2.273-.59-4.034-2.623-3.547-4.488.486-1.865 2.724-2.899 4.998-2.31.982.236 1.87.793 2.538 1.592m-3.879 12.171V21m0-18v2.2" />
+                                </svg>
+                            </div>
                             <p class="ml-4 font-medium text-left roboto-regular">Processing of sensitive personal
                                 data:
                             </p>
@@ -278,11 +287,15 @@ new class extends Component {
 
                             <div class="flex items-center w-2/3">
                                 <div class="flex flex-col items-start p-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="#E95585" class="w-8 h-8">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                    </svg>
+                                    <div class="w-8 h-8 p-1 mb-2 text-center bg-[#C8000B] rounded-full">
+                                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            fill="none" viewBox="0 0 24 24">
+                                            <path stroke="white" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M8 17.345a4.76 4.76 0 0 0 2.558 1.618c2.274.589 4.512-.446 4.999-2.31.487-1.866-1.273-3.9-3.546-4.49-2.273-.59-4.034-2.623-3.547-4.488.486-1.865 2.724-2.899 4.998-2.31.982.236 1.87.793 2.538 1.592m-3.879 12.171V21m0-18v2.2" />
+                                        </svg>
+                                    </div>
                                     <p class="ml-4 font-medium text-left roboto-regular">Commercial use of Data
                                     </p>
                                 </div>
@@ -344,11 +357,15 @@ new class extends Component {
 
                             <div class="flex items-center w-2/3">
                                 <div class="flex flex-col items-start p-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="#E95585" class="w-8 h-8">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                    </svg>
+                                    <div class="w-8 h-8 p-1 mb-2 text-center bg-[#C8000B] rounded-full">
+                                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            fill="none" viewBox="0 0 24 24">
+                                            <path stroke="white" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M8 17.345a4.76 4.76 0 0 0 2.558 1.618c2.274.589 4.512-.446 4.999-2.31.487-1.866-1.273-3.9-3.546-4.49-2.273-.59-4.034-2.623-3.547-4.488.486-1.865 2.724-2.899 4.998-2.31.982.236 1.87.793 2.538 1.592m-3.879 12.171V21m0-18v2.2" />
+                                        </svg>
+                                    </div>
                                     <p class="ml-4 font-medium text-left roboto-regular">Audit Score:
                                     </p>
                                 </div>
@@ -373,11 +390,15 @@ new class extends Component {
 
                             <div class="flex items-center w-2/3">
                                 <div class="flex flex-col items-start p-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="#E95585" class="w-8 h-8">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                    </svg>
+                                    <div class="w-8 h-8 p-1 mb-2 text-center bg-[#C8000B] rounded-full">
+                                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            fill="none" viewBox="0 0 24 24">
+                                            <path stroke="white" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M8 17.345a4.76 4.76 0 0 0 2.558 1.618c2.274.589 4.512-.446 4.999-2.31.487-1.866-1.273-3.9-3.546-4.49-2.273-.59-4.034-2.623-3.547-4.488.486-1.865 2.724-2.899 4.998-2.31.982.236 1.87.793 2.538 1.592m-3.879 12.171V21m0-18v2.2" />
+                                        </svg>
+                                    </div>
                                     <p class="ml-4 font-medium text-left roboto-regular">Risk Score
                                     </p>
                                 </div>
