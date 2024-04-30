@@ -540,18 +540,23 @@ new class extends Component {
     var randomData = function() {
         return [
             25,
-            5,
+            15,
             10,
-            60
+            50
         ];
     };
 
     var averageValue = function() {
         return {{ $averageScore }};
     };
-
+    var valueToAngle = function(value) {
+        var maxAngle = 180;
+        var angle = (value / 100) * maxAngle;
+        return angle;
+    };
     var data = randomData();
     var value = averageValue();
+    var angle = valueToAngle(value);
 
     var config = {
         type: 'gauge',
@@ -572,7 +577,7 @@ new class extends Component {
             },
             needle: {
                 // Needle circle radius as the percentage of the chart area width
-                radiusPercentage: 2,
+                radiusPercentage: 3,
                 // Needle width as the percentage of the chart area width
                 widthPercentage: 3.2,
                 // Needle length as the percentage of the interval between inner radius (0%) and outer radius (100%) of the arc
@@ -582,6 +587,13 @@ new class extends Component {
             },
             valueLabel: {
                 formatter: Math.round
+            },
+            animation: {
+                onComplete: function(animation) {
+                    var needleAngle = valueToAngle(value);
+                    window.myGauge.config.options.needle.rotation = needleAngle;
+                    window.myGauge.update();
+                }
             }
         }
     };

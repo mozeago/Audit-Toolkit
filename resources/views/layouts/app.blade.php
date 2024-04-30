@@ -141,7 +141,7 @@
                                         clip-rule="evenodd" />
                                 </svg>
                                 <span
-                                    class="text-xl roboto-medium hover:hover:text-[#C8000B]">{{ __('Templates Upload') }}</span>
+                                    class="text-xl roboto-medium text-black hover:hover:text-[#C8000B]">{{ __('Templates Upload') }}</span>
                             </x-nav-link>
                         </li>
                     @endif
