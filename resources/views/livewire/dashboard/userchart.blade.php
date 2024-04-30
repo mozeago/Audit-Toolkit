@@ -514,7 +514,6 @@ new class extends Component {
     var config = {
         type: 'gauge',
         data: {
-            //labels: ['Success', 'Warning', 'Warning', 'Error'],
             datasets: [{
                 data: data,
                 value: value,
