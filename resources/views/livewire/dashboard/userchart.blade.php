@@ -128,11 +128,11 @@ new class extends Component {
                 <div class="flex w-1/3 h-32 bg-white border-l-4 border-orange-500 rounded-md shadow-2xl drop-shadow-md">
 
                     <div class="flex items-center w-2/3">
-                        <div class="flex flex-col items-center p-2">
+                        <div class="flex flex-col items-start p-2">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="#E95585" class="w-8 h-8">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                stroke="orange" class="w-8 h-8">
+                                <path strokeLinecap="round" strokeLinejoin="round"
+                                    d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
                             </svg>
                             <p class="ml-4 font-medium text-left roboto-regular">Type of processing activity conducted
                                 by
@@ -152,7 +152,7 @@ new class extends Component {
                                 <text x="18" y="20.35" class="percentage">{{ $processorController }}
                                     %</text>
                             </svg>
-                            <p class="mt-auto font-medium text-cyan-300">Link</p>
+                            {{-- <p class="mt-auto font-medium text-cyan-300">Link</p> --}}
                         </div>
                     </div>
                 </div>
@@ -161,7 +161,7 @@ new class extends Component {
                 <div class="flex w-1/3 h-32 bg-white border-l-2 rounded-md shadow-2xl border-cyan-500 drop-shadow-md">
 
                     <div class="flex items-center w-2/3">
-                        <div class="flex flex-col items-center p-2">
+                        <div class="flex flex-col items-start p-2">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="#E95585" class="w-8 h-8">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -186,7 +186,7 @@ new class extends Component {
                                 <text x="18" y="20.35" class="percentage">{{ $personalDataProcessedByOrganisation }}
                                     %</text>
                             </svg>
-                            <p class="mt-auto font-medium text-cyan-300">Link</p>
+                            {{-- <p class="mt-auto font-medium text-cyan-300">Link</p> --}}
                         </div>
                     </div>
                 </div>
@@ -195,7 +195,7 @@ new class extends Component {
                 <div class="flex w-1/3 h-32 bg-white border-l-2 border-red-500 rounded-md shadow-2xl drop-shadow-md">
 
                     <div class="flex items-center w-2/3">
-                        <div class="flex flex-col items-center p-2">
+                        <div class="flex flex-col items-start p-2">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="#E95585" class="w-8 h-8">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -217,7 +217,7 @@ new class extends Component {
                                     a 15.9155 15.9155 0 0 1 0 -31.831" />
                                 <text x="18" y="20.35" class="percentage">{{ $sensitivePersonalData }} %</text>
                             </svg>
-                            <p class="mt-auto font-medium text-cyan-300">Link</p>
+                            {{-- <p class="mt-auto font-medium text-cyan-300">Link</p> --}}
                         </div>
                     </div>
                 </div>
@@ -227,28 +227,46 @@ new class extends Component {
                 {{-- start privacy score --}}
                 <div
                     class="bg-white relative flex flex-col w-1/3 p-4 border-2 drop-shadow-md border-[#C8000B] rounded-lg shadow-2xl drop-shadow-md h-70">
-                    {{-- <h2 class="text-2xl font-medium text-center">Privacy Score
+                    {{-- <h2 class="mb-4 text-2xl font-medium text-center">Privacy Score
                     </h2> --}}
-                    <div class="flex flex-col justify-center flex-grow">
+                    <div class="flex flex-col justify-center flex-grow mb-24">
                         {{-- meter gauge --}}
                         <canvas id="chart"></canvas>
                         {{-- end meter gauge --}}
                     </div>
-                    <div class="absolute bottom-0 left-0 w-full ">
-                        <p class="text-xl font-bold text-center" id="gaugeValue">Average Score:</p>
-                        <p class="text-xl font-extrabold text-center">
-                            {{ $averageScore }}%</p>
+                    <div class="absolute bottom-0 left-0 w-full mt-4">
+                        <div class="flex flex-col items-start">
+                            <p class="text-lg font-medium text-center text-cyan-500" id="gaugeValue">Average Score:</p>
 
-                        <p class="text-center text-l">
-                            @if ($averageScore >= 75)
-                                Low Risk
-                            @elseif($averageScore >= 50)
-                                Moderate Risk
-                            @else
-                                High Risk
-                            @endif
-                        </p>
+                            <div class="flex items-center w-full p-2">
+                                <div class="flex items-center w-1/3">
+                                    <svg viewBox="0 0 36 36" class="circular-chart green">
+                                        <path class="circle-bg" d="M18 2.0845
+                                                a 15.9155 15.9155 0 0 1 0 31.831
+                                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <path class="circle" stroke-dasharray="{{ $averageScore }}, 100" d="M18 2.0845
+                                                a 15.9155 15.9155 0 0 1 0 31.831
+                                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <text x="18" y="20.35" class="percentage">{{ $averageScore }}
+                                            %</text>
+                                    </svg>
+                                </div>
+                                <div class="flex items-end justify-end w-2/3">
+                                    <p class="items-end text-l">
+                                        @if ($averageScore >= 75)
+                                            Low Risk
+                                        @elseif($averageScore >= 50)
+                                            Moderate Risk
+                                        @else
+                                            High Risk
+                                        @endif
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+
                 </div>
                 {{-- end privacy score --}}
                 <div class="flex flex-col w-2/3 gap-2">
@@ -259,7 +277,7 @@ new class extends Component {
                             class="flex w-1/2 h-32 bg-white border-l-4 rounded-md shadow-2xl border-cyan-500 drop-shadow-md">
 
                             <div class="flex items-center w-2/3">
-                                <div class="flex flex-col items-center p-2">
+                                <div class="flex flex-col items-start p-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="#E95585" class="w-8 h-8">
                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -280,7 +298,7 @@ new class extends Component {
                                             a 15.9155 15.9155 0 0 1 0 -31.831" />
                                         <text x="18" y="20.35" class="percentage">{{ $commercialUseOfData }} %</text>
                                     </svg>
-                                    <p class="mt-auto font-medium text-cyan-300">Link</p>
+                                    {{-- <p class="mt-auto font-medium text-cyan-300">Link</p> --}}
                                 </div>
                             </div>
                         </div>
@@ -289,12 +307,15 @@ new class extends Component {
                             class="flex w-1/2 h-32 bg-white border-l-4 border-green-500 rounded-md shadow-2xl drop-shadow-md">
 
                             <div class="flex items-center w-2/3">
-                                <div class="flex flex-col items-center p-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="#E95585" class="w-8 h-8">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                    </svg>
+                                <div class="flex flex-col items-start p-2">
+                                    <div class="w-8 h-8 p-1 mb-2 text-center bg-green-500 rounded-full">
+                                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            fill="none" viewBox="0 0 24 24">
+                                            <path stroke="white" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="M3 15v4m6-6v6m6-4v4m6-6v6M3 11l6-5 6 5 5.5-5.5" />
+                                        </svg>
+                                    </div>
                                     <p class="ml-4 font-medium text-left roboto-regular">Business Operations
                                     </p>
                                 </div>
@@ -311,7 +332,7 @@ new class extends Component {
                                             a 15.9155 15.9155 0 0 1 0 -31.831" />
                                         <text x="18" y="20.35" class="percentage">{{ $businessOperation }} %</text>
                                     </svg>
-                                    <p class="mt-auto font-medium text-cyan-300">Link</p>
+                                    {{-- <p class="mt-auto font-medium text-cyan-300">Link</p> --}}
                                 </div>
                             </div>
                         </div>
@@ -322,7 +343,7 @@ new class extends Component {
                             class="flex w-1/2 h-32 bg-white border-l-2 rounded-md shadow-2xl border-cyan-500 drop-shadow-md">
 
                             <div class="flex items-center w-2/3">
-                                <div class="flex flex-col items-center p-2">
+                                <div class="flex flex-col items-start p-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="#E95585" class="w-8 h-8">
                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -343,7 +364,7 @@ new class extends Component {
                                             a 15.9155 15.9155 0 0 1 0 -31.831" />
                                         <text x="18" y="20.35" class="percentage">{{ $auditScore }} %</text>
                                     </svg>
-                                    <p class="mt-auto font-medium text-cyan-300">Link</p>
+                                    {{-- <p class="mt-auto font-medium text-cyan-300">Link</p> --}}
                                 </div>
                             </div>
                         </div>
@@ -351,7 +372,7 @@ new class extends Component {
                             class="flex w-1/2 h-32 bg-white border-l-2 border-red-500 rounded-md shadow-2xl drop-shadow-md">
 
                             <div class="flex items-center w-2/3">
-                                <div class="flex flex-col items-center p-2">
+                                <div class="flex flex-col items-start p-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="#E95585" class="w-8 h-8">
                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -372,7 +393,7 @@ new class extends Component {
                                             a 15.9155 15.9155 0 0 1 0 -31.831" />
                                         <text x="18" y="20.35" class="percentage">{{ $auditScore }} %</text>
                                     </svg>
-                                    <p class="mt-auto font-medium text-cyan-300">Link</p>
+                                    {{-- <p class="mt-auto font-medium text-cyan-300">Link</p> --}}
                                 </div>
                             </div>
                         </div>
