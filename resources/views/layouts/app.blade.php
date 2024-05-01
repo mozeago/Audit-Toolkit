@@ -41,19 +41,20 @@
         <aside id="logo-sidebar"
             class="fixed top-0 left-0 z-40 w-auto h-screen py-20 mb-20 overflow-y-auto transition-transform -translate-x-full bg-white border-r sm:translate-x-0"
             aria-label="Sidebar">
-            <div x-data="{ open: false, isOpen: false, infOpen: false }">
+            <div x-data="{ open: false, isOpen: false, infOpen: false, isOnboarding: false }">
                 <ul>
                     <li class="py-5 border-b border-gray-400">
                         <x-nav-link class="no-border-bottom hover:text-[#C8000B] w-full ml-4 mr-4 " :href="route('dashboard')"
                             :active="request()->routeIs('dashboard')" wire:navigate>
-                            <svg class="w-6 h-6 mr-2 hover:text-[#C8000B]" aria-hidden="true"
+                            <svg class="w-6 h-6 mr-2 hover:text-[#C8000B] text-black" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                 viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2"
                                     d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
                             </svg>
-                            <span class="text-xl roboto-medium hover:text-[#C8000B]">{{ __('Dashboard') }}</span>
+                            <span
+                                class="text-xl roboto-medium text-black hover:text-[#C8000B]">{{ __('Dashboard') }}</span>
                         </x-nav-link>
                     </li>
                     @if (auth()->user()->role === 'admin')
@@ -209,10 +210,10 @@
                                         width="24" height="24" fill="none" viewBox="0 0 24 24">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                             stroke-width="2"
-                                            d="M4 4.5V19a1 1 0 0 0 1 1h15M7 14l4-4 4 4 5-5m0 0h-3.207M20 9v3.207" />
+                                            d="M12 14v3m-3-6V7a3 3 0 1 1 6 0v4m-8 0h10a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1Z" />
                                     </svg>
                                     <span
-                                        class="ml-2 text-xl text-black roboto-medium hover:text-[#C8000B]">{{ __('Risk Analysis') }}</span>
+                                        class="ml-2 text-xl text-black roboto-medium hover:text-[#C8000B]">{{ __('Security Analysis') }}</span>
                                 </div>
 
                                 <svg :class="{ 'rotate-180': isOpen }" class="w-6 h-6 hover:text-[#C8000B]"
@@ -275,7 +276,107 @@
                                     d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z" />
                             </svg>
                             <span
-                                class="text-xl text-black roboto-medium hover:hover:text-[#C8000B]">{{ __('Risk Questionnaire') }}</span>
+                                class="text-xl text-black roboto-medium hover:hover:text-[#C8000B]">{{ __('Security Questionnaire') }}</span>
+                        </x-nav-link>
+                    </li>
+                    <li class="py-5 border-b border-gray-400">
+                        <button @click="isOnboarding = !isOnboarding"
+                            class="ml-4 mr-4 flex justify-between items-center w-full pl-1 pr-8 py-2 hover:text-[#C8000B] focus:outline-none">
+
+                            <div class="flex items-center flex-grow"> <!-- Added flex-grow to make it expand -->
+                                <svg class="w-6 h-6 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M6 4h12M6 4v16M6 4H5m13 0v16m0-16h1m-1 16H6m12 0h1M6 20H5M9 7h1v1H9V7Zm5 0h1v1h-1V7Zm-5 4h1v1H9v-1Zm5 0h1v1h-1v-1Zm-3 4h2a1 1 0 0 1 1 1v4h-4v-4a1 1 0 0 1 1-1Z" />
+                                </svg>
+                                <span
+                                    class="ml-2 text-xl text-black roboto-medium hover:text-[#C8000B]">{{ __('Onboarding Qs') }}</span>
+                            </div>
+
+                            <svg :class="{ 'rotate-180': isOpen }" class="w-6 h-6 hover:text-[#C8000B]"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none">
+                                <path stroke-width="2" fill-rule="evenodd" stroke="currentColor"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                        <div x-show="isOnboarding"
+                            class="block px-8 py-2 text-gray-300 hover:bg-gray-200 hover:hover:text-[#C8000B]">
+                            <ul>
+                                <li class="w-full">
+                                    <x-nav-link
+                                        class="no-border-bottom block w-full py-2 text-black hover:hover:text-[#C8000B]"
+                                        :href="route('risk-analysis-section')" :active="request()->routeIs('risk-analysis-section')" wire:navigate>
+                                        <span
+                                            class="text-xl roboto-medium hover:hover:text-[#C8000B] ml-8">{{ __('Question Section') }}</span>
+                                    </x-nav-link>
+                                </li>
+                                <li class="w-full">
+                                    <x-nav-link
+                                        class="no-border-bottom block w-full py-2 text-black hover:hover:text-[#C8000B]"
+                                        :href="route('risk-analysis-subsection')" :active="request()->routeIs('risk-analysis-subsection')" wire:navigate>
+                                        <span
+                                            class="text-xl roboto-medium hover:hover:text-[#C8000B] ml-8">{{ __('Question Sub-Section') }}</span>
+                                    </x-nav-link>
+                                </li>
+                                <li class="w-full">
+                                    <x-nav-link
+                                        class="no-border-bottom block w-full py-2 text-black hover:hover:text-[#C8000B]"
+                                        :href="route('risk-analysis-recommendation')" :active="request()->routeIs('risk-analysis-recommendation')" wire:navigate>
+                                        <span
+                                            class="text-xl roboto-medium hover:hover:text-[#C8000B] ml-8">{{ __('Question Text') }}</span>
+                                    </x-nav-link>
+                                </li>
+                                <li class="w-full">
+                                    <x-nav-link
+                                        class="no-border-bottom block w-full py-2 text-black hover:hover:text-[#C8000B]"
+                                        :href="route('risk-analysis-information')" :active="request()->routeIs('risk-analysis-information')" wire:navigate>
+                                        <span
+                                            class="text-xl roboto-medium hover:hover:text-[#C8000B] ml-8">{{ __('Question More Information') }}</span>
+                                    </x-nav-link>
+                                </li>
+
+                                <li class="w-full">
+                                    <x-nav-link
+                                        class="no-border-bottom block w-full py-2 text-black hover:hover:text-[#C8000B]"
+                                        :href="route('risk-analysis-recommendation')" :active="request()->routeIs('risk-analysis-recommendation')" wire:navigate>
+                                        <span
+                                            class="text-xl roboto-medium hover:hover:text-[#C8000B] ml-8">{{ __('Question Recommendation') }}</span>
+                                    </x-nav-link>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </li>
+                    <li class="py-5 border-b border-gray-400">
+                        <x-nav-link
+                            class="no-border-bottom  ml-4 mr-4 block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
+                            :href="route('risk-analysis-questionnaire')" :active="request()->routeIs('risk-analysis-questionnaire')" wire:navigate>
+                            <svg class="w-6 h-6 mr-2 text-gray-800 dark:hover:text-[#C8000B]" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+                                    d="M4.5 17H4a1 1 0 0 1-1-1 3 3 0 0 1 3-3h1m0-3.05A2.5 2.5 0 1 1 9 5.5M19.5 17h.5a1 1 0 0 0 1-1 3 3 0 0 0-3-3h-1m0-3.05a2.5 2.5 0 1 0-2-4.45m.5 13.5h-7a1 1 0 0 1-1-1 3 3 0 0 1 3-3h3a3 3 0 0 1 3 3 1 1 0 0 1-1 1Zm-1-9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" />
+                            </svg>
+                            <span
+                                class="text-xl text-black roboto-medium hover:hover:text-[#C8000B]">{{ __('Contributors') }}</span>
+                        </x-nav-link>
+                    </li>
+                    <li class="py-5 border-b border-gray-400">
+                        <x-nav-link
+                            class="no-border-bottom  ml-4 mr-4 block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
+                            :href="route('risk-analysis-questionnaire')" :active="request()->routeIs('risk-analysis-questionnaire')" wire:navigate>
+                            <svg class="w-6 h-6 mr-2 text-gray-800 dark:hover:text-[#C8000B]" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="square" stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M10 19H5a1 1 0 0 1-1-1v-1a3 3 0 0 1 3-3h2m10 1a3 3 0 0 1-3 3m3-3a3 3 0 0 0-3-3m3 3h1m-4 3a3 3 0 0 1-3-3m3 3v1m-3-4a3 3 0 0 1 3-3m-3 3h-1m4-3v-1m-2.121 1.879-.707-.707m5.656 5.656-.707-.707m-4.242 0-.707.707m5.656-5.656-.707.707M12 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            </svg>
+                            <span
+                                class="text-xl text-black roboto-medium hover:hover:text-[#C8000B]">{{ __('Users') }}</span>
                         </x-nav-link>
                     </li>
                 </ul>
