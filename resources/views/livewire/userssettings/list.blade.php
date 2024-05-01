@@ -2,15 +2,29 @@
 
 use Livewire\Volt\Component;
 use App\Models\User;
+use Livewire\Attributes\On;
+use Illuminate\Database\Eloquent\Collection;
 new class extends Component {
     public $users;
+    public User $user;
+    public ?User $editing = null;
     public function mount()
     {
         $this->users = $this->getUsers();
     }
+    public function edit(User $user): void
+    {
+        $this->editing = $user;
+    }
+    #[On('roleUpdated')]
+    public function disableEditing()
+    {
+        $this->editing = null;
+        $this->getUsers();
+    }
     public function getUsers()
     {
-        $groupedAnswers = User::select('users.name', 'users.email', 'users.role', 'user_responses.organization', 'user_responses.department')->leftJoin('user_responses', 'users.id', '=', 'user_responses.user_id')->groupBy('users.id', 'users.name', 'users.role', 'users.email', 'user_responses.organization', 'user_responses.department')->get();
+        $groupedAnswers = User::select('users.id', 'users.name', 'users.email', 'users.role', 'user_responses.organization', 'user_responses.department')->leftJoin('user_responses', 'users.id', '=', 'user_responses.user_id')->groupBy('users.id', 'users.name', 'users.role', 'users.email', 'user_responses.organization', 'user_responses.department')->get();
 
         return $groupedAnswers;
     }
@@ -57,7 +71,7 @@ new class extends Component {
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                     @foreach ($users as $user)
-                        <tr class="transition-colors duration-300 hover:bg-gray-100">
+                        <tr class="text-center transition-colors duration-300 hover:bg-gray-100">
                             <td class="px-6 py-4 whitespace-nowrap">
                                 {{ $user->name }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">
@@ -66,17 +80,22 @@ new class extends Component {
                                 {{ $user->organization }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 {{ $user->department }}</td>
-                            <td class="flex gap-2 px-6 py-4 whitespace-nowrap">
-                                {{ $user->role }}
-                                <a href="">
-                                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                                        viewBox="0 0 24 24">
-                                        <path stroke="green" stroke-linecap="round" stroke-linejoin="round"
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                @if ($user->is($editing))
+                                    <livewire:userssettings.edit :user="$user" :key="$user->id" />
+                                @else
+                                    {{ $user->role }}
+                                @endif
+                            </td>
+                            <td class="px-6 py-4 text-center whitespace-nowrap">
+                                <a @click="showDropdown ='true'" wire:click.prevent="edit('{{ $user->id }}')">
+                                    <svg class="w-6 h-6 text-green-500 text-end dark:text-white hover:text-[#C8000B]"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                             stroke-width="2"
                                             d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z" />
                                     </svg>
-
                                 </a>
                             </td>
                         </tr>
