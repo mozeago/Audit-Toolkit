@@ -187,7 +187,8 @@ new class extends Component {
                                 <div class="mb-4">
                                     <label for="organization" class="block mb-1 text-gray-700">Organization</label>
                                     <input id="organization" type="text" wire:model.defer="organization"
-                                        class="w-full px-4 py-2 border rounded-md" value="{{ $this->organization }}">
+                                        class="w-full px-4 py-2 text-black border rounded-md"
+                                        value="{{ $this->organization }}">
                                     @error('organization')
                                         <span class="text-red-500">{{ $message }}</span>
                                     @enderror
@@ -195,7 +196,8 @@ new class extends Component {
                                 <div class="mb-4">
                                     <label for="department" class="block mb-1 text-gray-700">Department</label>
                                     <input id="department" type="text" wire:model.defer="department"
-                                        class="w-full px-4 py-2 border rounded-md" value="{{ $this->department }}">
+                                        class="w-full px-4 py-2 text-black border rounded-md"
+                                        value="{{ $this->department }}">
                                     @error('department')
                                         <span class="text-red-500">{{ $message }}</span>
                                     @enderror
