@@ -239,7 +239,7 @@
                                             class="no-border-bottom block w-full py-2 text-black hover:hover:text-[#C8000B]"
                                             :href="route('risk-analysis-subsection')" :active="request()->routeIs('risk-analysis-subsection')" wire:navigate>
                                             <span
-                                                class="text-xl roboto-medium hover:hover:text-[#C8000B] ml-8">{{ __('Risk Analysis Questions') }}</span>
+                                                class="text-xl roboto-medium hover:hover:text-[#C8000B] ml-8">{{ __('Onboarding Risk Questions') }}</span>
                                         </x-nav-link>
                                     </li>
                                     <li class="w-full">
