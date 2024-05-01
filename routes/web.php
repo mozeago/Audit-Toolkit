@@ -13,6 +13,7 @@ use App\Http\Controllers\RiskInformationController;
 use App\Http\Controllers\RiskRecommendationController;
 use App\Http\Controllers\RiskAnalysisResponseController;
 use App\Http\Controllers\GoogleLoginController;
+use App\Http\Controllers\ResearchContributors;
 use App\Http\Controllers\UsersSettings;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
@@ -50,6 +51,9 @@ Route::get('/risk-analysis-questionnaire', [RiskAnalysisResponseController::clas
     ->middleware(['auth'])->name('risk-analysis-questionnaire');
 Route::get('user-settings', [UsersSettings::class, 'index'])
     ->middleware(['auth'])->name('user-settings');
+Route::get('research-contributors', [ResearchContributors::class, 'index'])
+    ->middleware(['auth'])->name('research-contributors');
+
 // google login routes
 Route::get('/google/redirect', [GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/google/callback', [GoogleLoginController::class, 'handleGoogleCallback'])->name('google.callback');
