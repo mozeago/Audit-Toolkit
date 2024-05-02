@@ -3,7 +3,9 @@
         <div class="flex items-center justify-between py-4">
             <!-- Logo -->
             <div class="flex-shrink-0">
-                <image src="{{ asset('images/logo-red.PNG') }}" class="h-8" alt="logo" />
+                <a href="/" wire:navigate>
+                    <image src="{{ asset('images/logo-red.PNG') }}" class="h-8" alt="logo" />
+                </a>
             </div>
             <!-- Navigation Links -->
             <div class="hidden space-x-4 md:flex">

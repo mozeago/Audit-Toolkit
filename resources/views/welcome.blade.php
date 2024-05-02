@@ -37,8 +37,8 @@
         }
 
         .hero {
-            background-color: #C8000B;
-            color: #fff;
+            background-color: #F7F6F2;
+            color: #000000;
         }
 
         .feature {
@@ -62,7 +62,8 @@
     <section class="px-8 py-20 hero">
         <div class="container mx-auto text-center">
             <h1 class="text-4xl font-bold">Data Protection Toolkit 2024</h1>
-            <p class="mt-4 text-lg">The Data Protection Toolkit 2024 offers a cutting-edge solution for organizations
+            <p class="mt-4 text-lg roboto-regular ">The Data Protection Toolkit 2024 offers a cutting-edge solution for
+                organizations
                 aiming to enhance their data security practices. At its core, this toolkit includes an advanced online
                 self-assessment tool. Through this tool, organizations can seamlessly evaluate their adherence to data
                 protection laws, receiving detailed compliance reports and insightful scorecards. With the Data
@@ -76,7 +77,9 @@
                 Scratch and Script Limited is proud to collaborate with partners and young professionals across Africa,
                 including:
             </p>
-            <a href="{{ route('questionnaire') }}" class="mt-8 btn">Get Started</a>
+            <a href="{{ route('questionnaire') }}"
+                class="mt-8 btn bg-[#F7F6F2] text-black font-bold border-2 border-[#C8000B] hover:bg-[#C8000B] hover:text-white">Get
+                Started</a>
         </div>
     </section>
 
@@ -120,36 +123,42 @@
             </div>
         </div>
     </section>
+    {{-- researchers --}}
 
     <section class="px-8 py-16 bg-white researchers">
         <div class="container mx-auto">
-            <h2 class="mb-8 text-3xl font-bold text-center">Researchers</h2>
-            <p class="px-4 mb-8 text-lg leading-relaxed text-gray-800">
-                In addition to our partners, we're supported by young professionals across Africa. They're researching
-                and analyzing data protection laws, providing valuable insights. They're also actively learning about
-                data protection, improving their understanding of regulations and best practices. Their dedication is
-                vital in our mission to make data protection accessible to all and create a safer online world.
-            </p>
-            <p class="px-4 mb-8 text-lg leading-relaxed text-gray-800">
-                <strong>Program Researchers</strong>
-            </p>
-            <ol class="px-4 mb-8 text-lg leading-relaxed text-gray-800 list-decimal list-inside">
-                <!-- Dummy list of 20 members -->
-                <li class="mb-4">
-                    <span class="font-semibold text-purple-600">Beatrice Mwangi</span>
-                    {{-- <span class="text-gray-600"> - Data Privacy Analyst</span> --}}
-                </li>
-                <li class="mb-4">
-                    <span class="font-semibold text-purple-600">Yianto Letoya</span>
-                    {{-- <span class="text-gray-600"> - Cybersecurity Researcher</span> --}}
-                </li>
-                <!-- Repeat similar structure for other list items -->
-                <!-- Add more researchers if needed -->
-            </ol>
-            <p class="px-4 text-lg leading-relaxed text-gray-800">
-                Together, let's work towards a safer online environment where data privacy
-                rights are respected and upheld. Thank you for joining us on this journey.
-            </p>
+            @auth
+                <h2 class="mb-8 text-3xl font-bold text-center">Researchers</h2>
+                <p class="px-4 mb-8 text-lg leading-relaxed text-gray-800">
+                    In addition to our partners, we're supported by young professionals across Africa. They're researching
+                    and analyzing data protection laws, providing valuable insights. They're also actively learning about
+                    data protection, improving their understanding of regulations and best practices. Their dedication is
+                    vital in our mission to make data protection accessible to all and create a safer online world.
+                </p>
+                <p class="px-4 mb-8 text-lg leading-relaxed text-gray-800">
+                    <strong>Program Researchers</strong>
+                </p>
+                <ol class="px-4 mb-8 text-lg leading-relaxed text-gray-800 list-decimal list-inside">
+                    <!-- Dummy list of 20 members -->
+                    <li class="mb-4">
+                        <span class="font-semibold text-purple-600">Beatrice Mwangi</span>
+                        {{-- <span class="text-gray-600"> - Data Privacy Analyst</span> --}}
+                    </li>
+                    <li class="mb-4">
+                        <span class="font-semibold text-purple-600">Yianto Letoya</span>
+                        {{-- <span class="text-gray-600"> - Cybersecurity Researcher</span> --}}
+                    </li>
+                    <!-- Repeat similar structure for other list items -->
+                    <!-- Add more researchers if needed -->
+                </ol>
+            @endauth
+            <blockquote class="p-4 my-4 bg-gray-100 border-l-4 border-gray-400 shadow-md">
+                <p class="text-lg italic leading-relaxed text-gray-800">
+                    Together, let's work towards a safer online environment where data privacy
+                    rights are respected and upheld. Thank you for joining us on this journey.
+                </p>
+            </blockquote>
+
         </div>
     </section>
 

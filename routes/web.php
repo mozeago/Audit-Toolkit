@@ -20,7 +20,7 @@ use Illuminate\View\View;
 
 Route::get('/', function () {
     return View('welcome');
-});
+})->name('guest');
 Route::get('/sections', [SectionController::class, 'index'])
     ->middleware(['auth'])->name('sections');
 Route::get('/controls', [ControlController::class, 'index'])
