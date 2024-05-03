@@ -1,6 +1,7 @@
 <?php
 use Livewire\Volt\Component;
 use App\Models\UserResponse;
+use App\Models\PrivacyCasesModel;
 use App\Models\User;
 use App\Models\RiskAnalysisResponse;
 new class extends Component {
@@ -13,9 +14,11 @@ new class extends Component {
     public $sensitivePersonalData;
     public $commercialUseOfData;
     public $businessOperation;
+    public $privacyCases;
 
     public function mount()
     {
+        $this->privacyCases = $this->getPrivacyViolationCases();
         $this->calculateAverageScore();
         $this->userId = auth()->user()->id;
         $this->auditScore = $this->calculateAuditPercentage(UserResponse::class, $this->userId) ?? 0;
@@ -116,6 +119,10 @@ new class extends Component {
         }
 
         return $this->averageScore;
+    }
+    public function getPrivacyViolationCases()
+    {
+        return PrivacyCasesModel::orderBy('created_at', 'desc')->get();
     }
 }; ?>
 <div class="p-8">
@@ -455,76 +462,40 @@ new class extends Component {
                             class="px-6 py-3 text-sm font-medium tracking-wider text-left text-white uppercase">
                             Link
                         </th>
+                        {{-- @if (auth()->user()->role === 'admin')
+                            <th scope="col"
+                                class="px-6 py-3 text-sm font-medium tracking-wider text-left text-white uppercase">
+                                Action
+                            </th>
+                        @endif --}}
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                     <!-- Kenya Privacy Violation Cases -->
-                    <tr class="transition-colors duration-300 hover:bg-gray-100">
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Jane Njeri</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Case KEN-001</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Data Breach by Banking
-                            Institution</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <a href="kenya-case-001-video" class="text-blue-500 hover:text-blue-700">Watch
-                                Video</a>
-                        </td>
-                    </tr>
-                    <tr class="transition-colors duration-300 hover:bg-gray-100">
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            James Otieno</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Case KEN-002</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Health Records Leak by Hospital
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <a href="kenya-case-002-video" class="text-blue-500 hover:text-blue-700">Watch
-                                Video</a>
-                        </td>
-                    </tr>
-                    <!-- Rwanda Privacy Violation Cases -->
-                    <tr class="transition-colors duration-300 hover:bg-gray-100">
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Emmanuel Habimana</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Case RWA-001</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Government Surveillance Program
-                            Exposed</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <a href="rwanda-case-001-video" class="text-blue-500 hover:text-blue-700">Watch
-                                Video</a>
-                        </td>
-                    </tr>
-                    <tr class="transition-colors duration-300 hover:bg-gray-100">
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Lilian Uwamahoro</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Case RWA-002</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Employer Spying on Employees
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <a href="rwanda-case-002-video" class="text-blue-500 hover:text-blue-700">Watch
-                                Video</a>
-                        </td>
-                    </tr>
-                    <!-- Uganda Privacy Violation Cases -->
-                    <tr class="transition-colors duration-300 hover:bg-gray-100">
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Sandra Nakato</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Case UGA-001</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            Social Media Data Breach</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <a href="uganda-case-001-video" class="text-blue-500 hover:text-blue-700">Watch
-                                Video</a>
-                        </td>
-                    </tr>
+                    @foreach ($privacyCases as $privacyCase)
+                        <tr class="transition-colors duration-300 hover:bg-gray-100">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                {{ $privacyCase->casename }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                {{ $privacyCase->casetitle }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                {{ $privacyCase->casenumber }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="{{ $privacyCase->caselink }}"
+                                    class="text-blue-500 hover:text-blue-700">Watch
+                                </a>
+                            </td>
+                            {{-- <td class="px-6 py-4 whitespace-nowrap">
+                                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                    viewBox="0 0 24 24">
+                                    <path stroke="green" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z" />
+                                </svg>
+                            </td> --}}
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
