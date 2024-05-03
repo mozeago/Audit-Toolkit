@@ -294,7 +294,7 @@
                                     class="ml-2 text-xl text-black roboto-medium hover:text-[#C8000B]">{{ __('Onboarding Qs') }}</span>
                             </div>
 
-                            <svg :class="{ 'rotate-180': isOpen }" class="w-6 h-6 hover:text-[#C8000B]"
+                            <svg :class="{ 'rotate-180': isOnboarding }" class="w-6 h-6 hover:text-[#C8000B]"
                                 viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none">
                                 <path stroke-width="2" fill-rule="evenodd" stroke="currentColor"
                                     stroke-linecap="round" stroke-linejoin="round"
