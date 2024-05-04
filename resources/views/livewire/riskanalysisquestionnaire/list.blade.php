@@ -408,7 +408,7 @@ new class extends Component {
             </div>
         @else
     </div>
-    <div class="flex items-center justify-center h-full max-w-2xl p-4 mx-auto sm:p-6 lg:p-8">
+    <div x-show="!onBoardingText" class="flex items-center justify-center h-full max-w-2xl p-4 mx-auto sm:p-6 lg:p-8">
         <div class="relative flex items-center px-4 py-3 text-blue-700 bg-blue-100 border border-blue-400 rounded"
             role="alert">
             <div class="mr-2">
