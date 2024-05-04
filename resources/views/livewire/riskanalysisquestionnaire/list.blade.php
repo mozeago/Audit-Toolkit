@@ -154,45 +154,56 @@ new class extends Component {
 }; ?>
 <div>
     <div x-data="{ riskOpen: false, onBoardingText: true }" class="w-full rounded-md shadow-md">
-        <div x-show="onBoardingText" class="p-8">
-            <h2 class="font-extrabold text-center roboto-bold-6">
-                Data Protection Assessment </h2>
-            <h4 class="mb-4 font-bold roboto-medium ">Welcome onboard!</h4>
-            <p class="roboto-regular text-wrap">We're excited to welcome you onboard! This data protection toolkit is
-                designed to help
-                organizations of all
-                sizes
-                enhance their data protection practices and comply with relevant laws.
+        @if ($this->hasAnsweredQuestions())
+            @if ($showOrganizationForm)
+                <div x-show="onBoardingText" class="p-8">
+                    <h2 class="font-extrabold text-center roboto-bold-6">
+                        Data Protection Assessment </h2>
+                    <h4 class="mb-4 font-bold roboto-medium ">Welcome onboard!</h4>
+                    <p class="roboto-regular text-wrap">We're excited to welcome you onboard! This data protection
+                        toolkit is
+                        designed to help
+                        organizations of all
+                        sizes
+                        enhance their data protection practices and comply with relevant laws.
 
-                Use this assessment to evaluate your adherence to data protection laws and determine the necessary
-                steps
-                to
-                maintain the security of individuals' personal data. Upon completing each self-assessment, a report
-                will
-                be
-                generated, offering actionable recommendations and guidance to enhance your data protection
-                compliance.
+                        Use this assessment to evaluate your adherence to data protection laws and determine the
+                        necessary
+                        steps
+                        to
+                        maintain the security of individuals' personal data. Upon completing each self-assessment, a
+                        report
+                        will
+                        be
+                        generated, offering actionable recommendations and guidance to enhance your data protection
+                        compliance.
 
-                Before you access your dashboard, we ask you to complete the risk questionnaire. This questionnaire
-                is
-                designed
-                to assess and mitigate potential risks associated with handling and protecting sensitive data. By
-                completing
-                this questionnaire, you are taking proactive steps to safeguard data and protect the privacy rights
-                of
-                individuals.</p>
-            <h4 class="mt-4 mb-4 roboto-medium">Confidentiality and Privacy</h4>
-            <p class="roboto-regular">Please note that all information provided in this questionnaire is treated as
-                confidential and will only be
-                used
-                for the purposes of assessing data protection risks and providing recommendations.
-            </p>
-            <h4 class="mt-4 font-bold">Let's begin!</h4>
-            <span class="text-center"><button @click="onBoardingText = !onBoardingText"
-                    class="px-6 py-4 mt-4 font-bold text-white bg-green-500 rounded-full shadow-lg shadow-green-500/50 hover:shadow-green-500/70">
-                    Start
-                </button>
-        </div>
+                        Before you access your dashboard, we ask you to complete the risk questionnaire. This
+                        questionnaire
+                        is
+                        designed
+                        to assess and mitigate potential risks associated with handling and protecting sensitive data.
+                        By
+                        completing
+                        this questionnaire, you are taking proactive steps to safeguard data and protect the privacy
+                        rights
+                        of
+                        individuals.</p>
+                    <h4 class="mt-4 mb-4 roboto-medium">Confidentiality and Privacy</h4>
+                    <p class="roboto-regular">Please note that all information provided in this questionnaire is treated
+                        as
+                        confidential and will only be
+                        used
+                        for the purposes of assessing data protection risks and providing recommendations.
+                    </p>
+                    <h4 class="mt-4 font-bold">Let's begin!</h4>
+                    <span class="text-center"><button @click="onBoardingText = !onBoardingText"
+                            class="px-6 py-4 mt-4 font-bold text-white bg-green-500 rounded-full shadow-lg shadow-green-500/50 hover:shadow-green-500/70">
+                            Start
+                        </button>
+                </div>
+            @endif
+        @endif
         <div x-show="!onBoardingText">
             @if ($this->hasAnsweredQuestions())
                 @if ($showOrganizationForm)
@@ -408,7 +419,7 @@ new class extends Component {
             </div>
         @else
     </div>
-    <div x-show="!onBoardingText" class="flex items-center justify-center h-full max-w-2xl p-4 mx-auto sm:p-6 lg:p-8">
+    <div class="flex items-center justify-center h-full max-w-2xl p-4 mx-auto sm:p-6 lg:p-8">
         <div class="relative flex items-center px-4 py-3 text-blue-700 bg-blue-100 border border-blue-400 rounded"
             role="alert">
             <div class="mr-2">
