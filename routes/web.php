@@ -52,8 +52,8 @@ Route::get('/risk-analysis-questionnaire', [RiskAnalysisResponseController::clas
     ->middleware(['auth'])->name('risk-analysis-questionnaire');
 Route::get('/user-settings', [UsersSettings::class, 'index'])
     ->middleware(['auth'])->name('user-settings');
-Route::get('/research-contributors', [ResearchContributors::class, 'index'])
-    ->middleware(['auth'])->name('research-contributors');
+Route::get('/project-contributors', [ResearchContributors::class, 'index'])
+    ->middleware(['auth'])->name('project-contributors');
 Route::get('/privacy-cases', [PrivacyCasesController::class, 'index'])
     ->middleware('auth')->name('privacy-cases');
 // google login routes

@@ -353,7 +353,7 @@
                     <li class="py-5 border-b border-gray-400">
                         <x-nav-link
                             class="no-border-bottom  ml-4 mr-4 block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
-                            :href="route('research-contributors')" :active="request()->routeIs('research-contributors')" wire:navigate>
+                            :href="route('project-contributors')" :active="request()->routeIs('project-contributors')" wire:navigate>
                             <svg class="w-6 h-6 mr-2 text-gray-800 dark:hover:text-[#C8000B]" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                 viewBox="0 0 24 24">
