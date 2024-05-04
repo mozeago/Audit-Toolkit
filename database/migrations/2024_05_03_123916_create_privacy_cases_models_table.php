@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->text('casename');
             $table->text('casenumber');
-            $table->text('casetitle')->unique();
+            $table->text('casetitle');
             $table->text('caselink')->nullable();
             $table->timestamps();
         });
