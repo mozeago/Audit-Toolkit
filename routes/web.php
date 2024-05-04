@@ -50,11 +50,11 @@ Route::get('/risk-analysis-recommendation', [RiskRecommendationController::class
     ->middleware(['auth'])->name('risk-analysis-recommendation');
 Route::get('/risk-analysis-questionnaire', [RiskAnalysisResponseController::class, 'index'])
     ->middleware(['auth'])->name('risk-analysis-questionnaire');
-Route::get('user-settings', [UsersSettings::class, 'index'])
+Route::get('/user-settings', [UsersSettings::class, 'index'])
     ->middleware(['auth'])->name('user-settings');
-Route::get('research-contributors', [ResearchContributors::class, 'index'])
+Route::get('/research-contributors', [ResearchContributors::class, 'index'])
     ->middleware(['auth'])->name('research-contributors');
-Route::get('privacy-cases', [PrivacyCasesController::class, 'index'])
+Route::get('/privacy-cases', [PrivacyCasesController::class, 'index'])
     ->middleware('auth')->name('privacy-cases');
 // google login routes
 Route::get('/google/redirect', [GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');
