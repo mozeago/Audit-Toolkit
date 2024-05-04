@@ -61,22 +61,39 @@
 
     <section class="px-8 py-20 hero">
         <div class="container mx-auto text-center">
-            <h1 class="text-4xl font-bold">Data Protection Toolkit 2024</h1>
-            <p class="mt-4 text-lg roboto-regular ">The Data Protection Toolkit 2024 offers a cutting-edge solution for
-                organizations
-                aiming to enhance their data security practices. At its core, this toolkit includes an advanced online
-                self-assessment tool. Through this tool, organizations can seamlessly evaluate their adherence to data
-                protection laws, receiving detailed compliance reports and insightful scorecards. With the Data
-                Protection Toolkit, organizations gain access to comprehensive insights into Africa's data protection
-                laws. The toolkit provides clarity on complex legal requirements, helping organizations navigate the
-                intricacies of compliance effectively.</p>
-            <p class="mt-4 text-lg"> Moreover, the toolkit facilitates collaboration with partners, leveraging their
-                support to promote a
-                culture of data protection awareness and compliance. With the support of our partners and the dedication
-                of learners, we are committed to fostering a culture of data protection awareness and compliance.
-                Scratch and Script Limited is proud to collaborate with partners and young professionals across Africa,
-                including:
+            <h1 class="text-3xl font-bold">Our Impact</h1>
+            <p class="mt-4 text-left roboto-regular">The IGNITE Youth Training Program is a dynamic initiative designed
+                to train and empower 1million young professionals in Africa. The program operates a quarterly cohort
+                system, where each cohort comprises Youth who are recruited, trained, graduated, and linked to the
+                industry. This approach ensures a steady and timely flow of skilled Cybersecurity and data protection
+                professionals into the job market.</p>
+            <h1 class="mt-4 text-xl font-bold">We want to partner with you</h1>
+            <p class="mt-4 text-lg text-left"> To drive forward our mission within the IGNITE program, we are actively
+                seeking
+                partnerships with knowledge institutions, private enterprises, and professional organizations. As we aim
+                to expand our training initiatives in the MEA (Middle East, and Africa) region, we recognize the
+                invaluable role that collaborative efforts play in achieving our objectives.
+                We welcome engagement from:
             </p>
+            <ul class="text-left">
+                <li>• Knowledge partners: Institutions, universities, and research centers willing to share expertise
+                    and resources.</li>
+                <li>• Private companies: Businesses eager to contribute their capabilities and resources to support our
+                    training programs.</li>
+                <li>• Professional bodies: Organizations dedicated to advancing professional standards and practices in
+                    relevant fields.</li>
+            </ul>
+            <p class="mt-4 text-left roboto-regular">
+                By uniting with us, you'll play a pivotal role in empowering individuals and communities across the MEA
+                region through education and skill development.
+            </p>
+            <p class="text-left roboto-regular">
+                If you're interested in becoming a partner and shaping the future of training in the MEA region, please
+                reach out to us on
+
+            </p>
+            <p class="mt-4 text-left roboto-regular">info[at]scratchandscript[dot]com</p>
+            <p class="mt-4 text-left roboto-regular">Let’s IGNITE opportunities together!</p>
             <a href="{{ route('questionnaire') }}"
                 class="mt-8 btn bg-[#F7F6F2] text-black font-bold border-2 border-[#C8000B] hover:bg-[#C8000B] hover:text-white">Get
                 Started</a>
