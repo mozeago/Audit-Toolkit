@@ -135,7 +135,8 @@ new class extends Component {
 
             <div class="flex gap-2">
                 {{-- start processor controller --}}
-                <div class="flex w-1/3 h-32 bg-white border-l-4 border-orange-500 rounded-md shadow-2xl drop-shadow-md">
+                <div
+                    class="flex w-1/3 h-32 bg-white border-l-4 border-orange-500 rounded-md shadow-2xl hover:bg-slate-200 drop-shadow-md">
 
                     <div class="flex items-center w-2/3">
                         <div class="flex flex-col items-start p-2">
@@ -171,11 +172,12 @@ new class extends Component {
                 </div>
                 {{-- end processort controller --}}
                 {{-- start personal data --}}
-                <div class="flex w-1/3 h-32 bg-white border-l-2 rounded-md shadow-2xl border-cyan-500 drop-shadow-md">
+                <div
+                    class="flex w-1/3 h-32 bg-white border-l-2 rounded-md shadow-2xl hover:bg-slate-200 border-cyan-500 drop-shadow-md">
 
                     <div class="flex items-center w-2/3">
                         <div class="flex flex-col items-start p-2">
-                            <div class="w-8 h-8 p-1 mb-2 text-center bg-[#C8000B] rounded-full">
+                            <div class="w-8 h-8 p-1 mb-2 text-center bg-green-700 rounded-full">
                                 <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                     viewBox="0 0 24 24">
@@ -208,11 +210,12 @@ new class extends Component {
                 </div>
 
                 {{-- end personal data --}}
-                <div class="flex w-1/3 h-32 bg-white border-l-2 border-red-500 rounded-md shadow-2xl drop-shadow-md">
+                <div
+                    class="flex w-1/3 h-32 bg-white border-l-2 border-red-500 rounded-md shadow-2xl hover:bg-slate-200 drop-shadow-md">
 
                     <div class="flex items-center w-2/3">
                         <div class="flex flex-col items-start p-2">
-                            <div class="w-8 h-8 p-1 mb-2 text-center bg-[#C8000B] rounded-full">
+                            <div class="w-8 h-8 p-1 mb-2 text-center bg-blue-600 rounded-full">
                                 <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                     viewBox="0 0 24 24">
@@ -245,7 +248,7 @@ new class extends Component {
             <div class="flex gap-2">
                 {{-- start privacy score --}}
                 <div
-                    class="bg-white relative flex flex-col w-1/3 p-4 border-2 drop-shadow-md border-[#C8000B] rounded-lg shadow-2xl drop-shadow-md h-70">
+                    class="hover:bg-slate-200 bg-white relative flex flex-col w-1/3 p-4 border-2 drop-shadow-md border-[#C8000B] rounded-lg shadow-2xl drop-shadow-md h-70">
                     {{-- <h2 class="mb-4 text-2xl font-medium text-center">Privacy Score
                     </h2> --}}
                     <div class="flex flex-col justify-center flex-grow mb-24">
@@ -253,14 +256,14 @@ new class extends Component {
                         <canvas id="chart"></canvas>
                         {{-- end meter gauge --}}
                     </div>
-                    <div class="absolute bottom-0 left-0 w-full mt-4">
+                    <div class="absolute bottom-0 left-0 w-full p-1 mt-4">
                         <div class="flex flex-col items-center">
                             <p class="items-center text-lg font-medium text-center text-cyan-500" id="gaugeValue">
                                 Average Score:</p>
 
-                            <div class="flex items-center w-full p-2">
-                                <div class="flex items-center w-1/3">
-                                    <svg viewBox="0 0 36 36" class="circular-chart green">
+                            <div class="flex items-center w-full">
+                                <div class="flex items-center w-1/2">
+                                    <svg viewBox="0 0 36 36" class="w-24 h-24 circular-chart green">
                                         <path class="circle-bg" d="M18 2.0845
                                                 a 15.9155 15.9155 0 0 1 0 31.831
                                                 a 15.9155 15.9155 0 0 1 0 -31.831" />
@@ -271,8 +274,8 @@ new class extends Component {
                                             %</text>
                                     </svg>
                                 </div>
-                                <div class="flex items-end justify-end w-2/3">
-                                    <p class="items-end text-l">
+                                <div class="flex items-end justify-end w-1/2">
+                                    <p class="items-end text-xl font-bold">
                                         @if ($averageScore >= 75)
                                             Low Risk
                                         @elseif($averageScore >= 50)
@@ -285,8 +288,6 @@ new class extends Component {
                             </div>
                         </div>
                     </div>
-
-
                 </div>
                 {{-- end privacy score --}}
                 <div class="flex flex-col w-2/3 gap-2">
@@ -294,11 +295,11 @@ new class extends Component {
                     <div class="flex gap-2">
                         {{-- start comercial --}}
                         <div
-                            class="flex w-1/2 h-32 bg-white border-l-4 rounded-md shadow-2xl border-cyan-500 drop-shadow-md">
+                            class="flex w-1/2 h-32 bg-white border-l-4 rounded-md shadow-2xl hover:bg-slate-200 border-cyan-500 drop-shadow-md">
 
                             <div class="flex items-center w-2/3">
                                 <div class="flex flex-col items-start p-2">
-                                    <div class="w-8 h-8 p-1 mb-2 text-center bg-[#C8000B] rounded-full">
+                                    <div class="w-8 h-8 p-1 mb-2 text-center bg-orange-500 rounded-full">
                                         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             fill="none" viewBox="0 0 24 24">
@@ -327,11 +328,11 @@ new class extends Component {
                         </div>
                         {{-- start business operations --}}
                         <div
-                            class="flex w-1/2 h-32 bg-white border-l-4 border-green-500 rounded-md shadow-2xl drop-shadow-md">
+                            class="flex w-1/2 h-32 bg-white border-l-4 border-green-500 rounded-md shadow-2xl hover:bg-slate-200 drop-shadow-md">
 
                             <div class="flex items-center w-2/3">
                                 <div class="flex flex-col items-start p-2">
-                                    <div class="w-8 h-8 p-1 mb-2 text-center bg-[#C8000B] rounded-full">
+                                    <div class="w-8 h-8 p-1 mb-2 text-center bg-yellow-300 rounded-full">
                                         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             fill="none" viewBox="0 0 24 24">
@@ -363,7 +364,7 @@ new class extends Component {
                     {{-- start row 2 risk score --}}
                     <div class="flex gap-2">
                         <div
-                            class="flex w-1/2 h-32 bg-white border-l-2 rounded-md shadow-2xl border-cyan-500 drop-shadow-md">
+                            class="flex w-1/2 h-32 bg-white border-l-2 rounded-md shadow-2xl hover:bg-slate-200 border-cyan-500 drop-shadow-md">
 
                             <div class="flex items-center w-2/3">
                                 <div class="flex flex-col items-start p-2">
@@ -396,7 +397,7 @@ new class extends Component {
                             </div>
                         </div>
                         <div
-                            class="flex w-1/2 h-32 bg-white border-l-2 border-red-500 rounded-md shadow-2xl drop-shadow-md">
+                            class="flex w-1/2 h-32 bg-white border-l-2 border-red-500 rounded-md shadow-2xl hover:bg-slate-200 drop-shadow-md">
 
                             <div class="flex items-center w-2/3">
                                 <div class="flex flex-col items-start p-2">
