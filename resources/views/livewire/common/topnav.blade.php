@@ -14,7 +14,7 @@
                 <a href="#" class="text-gray-800 hover:text-gray-900">Services</a> --}}
                 @guest
                     <button type="button"
-                        class="px-4 py-2 border-2 rounded-md border-gray-500 text-gray-900 hover:text-[#C8000B] hover:border-[#C8000B]">
+                        class="hover:text-[#C8000B] px-4 py-2 border-2 rounded-md border-gray-500 text-gray-900 font-bold hover:border-[#C8000B]">
                         <a href="{{ route('register') }}" class="text-gray-800 no-underline">Register</a>
                     </button>
                 @endguest

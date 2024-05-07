@@ -113,11 +113,13 @@ new #[Layout('layouts.guest')] class extends Component {
             </div>
             <!-- Session Status -->
             <x-auth-session-status class="mb-4" :status="session('status')" />
-            <a href="{{ route('google.redirect') }}"
-                class="inline-flex items-center justify-center p-2 bg-white shadow-md hover:shadow-xl hover:text-[#C8000B] hover:font-semibold focus:outline-none rounded-md">
-                <img src="{{ asset('images/google_logo.png') }}" alt="Google Logo" class="w-8 h-8 mr-2">
-                <span>Sign in With Google</span>
-            </a>
+            <div class="flex items-center justify-center">
+                <a href="{{ route('google.redirect') }}"
+                    class="w-full inline-flex items-center justify-center p-2 bg-white shadow-md hover:shadow-xl hover:text-[#C8000B] hover:font-semibold focus:outline-none rounded-md">
+                    <img src="{{ asset('images/google_logo.png') }}" alt="Google Logo" class="w-8 h-8 mr-2">
+                    <span>Sign in With Google</span>
+                </a>
+            </div>
         </div>
     </div>
 </div>
