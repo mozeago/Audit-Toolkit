@@ -12,14 +12,18 @@
                 {{-- <a href="#" class="text-gray-800 hover:text-gray-900">Home</a>
                 <a href="#" class="text-gray-800 hover:text-gray-900">About</a>
                 <a href="#" class="text-gray-800 hover:text-gray-900">Services</a> --}}
-                @if (Route::currentRouteName() !== 'register')
-                    <a href="{{ route('register') }}"
-                        class="text-gray-800 border-2 border-gray-500 hover:text-gray-900 hover:hover:text-[#C8000B]">Register</a>
-                @endif
-                @if (Route::currentRouteName() !== 'login')
-                    <a href="{{ route('login') }}"
-                        class="text-gray-800 hover:text-gray-900 hover:hover:text-[#C8000B]">Sign in</a>
-                @endif
+                @guest
+                    <button type="button"
+                        class="px-4 py-2 border-2 rounded-md border-gray-500 text-gray-900 hover:text-[#C8000B] hover:border-[#C8000B]">
+                        <a href="{{ route('register') }}" class="text-gray-800 no-underline">Register</a>
+                    </button>
+                @endguest
+                @guest
+                    <button type="button"
+                        class="px-4 py-2 border-2 bg-[#C8000B] rounded-md border-[#C8000B] text-gray-900 hover:text-[#C8000B] hover:border-[#C8000B]">
+                        <a href="{{ route('login') }}" class="text-white hover:text-black">Sign in</a>
+                    </button>
+                @endguest
             </div>
         </div>
     </div>
