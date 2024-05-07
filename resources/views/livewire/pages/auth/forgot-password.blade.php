@@ -32,22 +32,18 @@ new #[Layout('layouts.guest')] class extends Component {
         session()->flash('status', __($status));
     }
 }; ?>
-<div class="w-3/4 p-6 mt-16 mb-16 rounded-md shadow-2xl">
-    <div class="flex justify-between">
-        <div class="relative flex items-center justify-center w-1/2">
-            <img src="{{ asset('images/bg-login.jpg') }}" alt="Image"
-                class="object-cover w-full h-full transform scale-x-[-1]">
+
+<div class="w-3/4 bg-white shadow-2xl rounded-xl">
+    <div class="flex justify-between rounded-xl">
+        <!-- Black Bg -->
+        <div class="relative flex items-center justify-center w-1/2 bg-black rounded-l-xl">
+            <img src="{{ asset('images/lamp-suspended.jpg') }}" alt="Your Image" class="block w-1/2 h-auto">
         </div>
-
+        <!-- end black Bg -->
         <div class="w-1/2 p-4"><x-auth-session-status class="mb-4" :status="session('status')" />
-
             <div class="mb-4 text-sm text-gray-600">
                 {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
             </div>
-
-            <!-- Session Status -->
-            <x-auth-session-status class="mb-4" :status="session('status')" />
-
             <form wire:submit="sendPasswordResetLink">
                 <!-- Email Address -->
                 <div>
