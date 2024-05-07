@@ -450,7 +450,7 @@ new class extends Component {
         </button>
     </div>
     {{-- Table --}}
-    <div class="flex items-center justify-center mt-24 mb-8">
+    <div class="flex items-center justify-center mb-8">
         <div class="flex-grow border-b-4 border-[#C8000B]"></div>
         <span class="px-3 text-xl font-bold text-center">Privacy
             Violation Cases</span>
