@@ -156,11 +156,12 @@ new class extends Component {
     <div x-data="{ riskOpen: false, onBoardingText: true }" class="w-full rounded-md shadow-md">
         @if ($this->hasAnsweredQuestions())
             @if ($showOrganizationForm)
-                <div x-show="onBoardingText" class="p-8">
+                <div x-show="onBoardingText" class="p-8 bg-white bg-opacity-90">
                     <h2 class="font-extrabold text-center roboto-bold-6">
                         Data Protection Assessment </h2>
                     <h4 class="mb-4 font-bold roboto-medium ">Welcome onboard!</h4>
-                    <p class="roboto-regular text-wrap">We're excited to welcome you onboard! This data protection
+                    <p class="text-black roboto-regular text-wrap">We're excited to welcome you onboard! This data
+                        protection
                         toolkit is
                         designed to help
                         organizations of all
@@ -189,13 +190,17 @@ new class extends Component {
                         rights
                         of
                         individuals.</p>
-                    <h4 class="mt-4 mb-4 roboto-medium">Confidentiality and Privacy</h4>
-                    <p class="roboto-regular">Please note that all information provided in this questionnaire is treated
-                        as
-                        confidential and will only be
-                        used
-                        for the purposes of assessing data protection risks and providing recommendations.
-                    </p>
+                    <div class="p-6 mt-8 bg-blue-100 border border-blue-200 rounded-sm shadow-lg">
+                        <h4 class="mt-4 mb-4 roboto-medium">Confidentiality and Privacy</h4>
+                        <p class="text-black roboto-regular">Please note that all information provided in this
+                            questionnaire is
+                            treated
+                            as
+                            confidential and will only be
+                            used
+                            for the purposes of assessing data protection risks and providing recommendations.
+                        </p>
+                    </div>
                     <h4 class="mt-4 font-bold">Let's begin!</h4>
                     <span class="text-center"><button @click="onBoardingText = !onBoardingText"
                             class="px-6 py-4 mt-4 font-bold text-white bg-green-500 rounded-full shadow-lg shadow-green-500/50 hover:shadow-green-500/70">
