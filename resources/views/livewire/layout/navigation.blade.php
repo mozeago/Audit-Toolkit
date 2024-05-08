@@ -38,7 +38,7 @@ new class extends Component {
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <div class="mr-8 font-bold text-center text-white">
-                    <p>About IGNITE Program</p>
+                    <p><a href="/" class="no-underline">About IGNITE Program</a></p>
                 </div>
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
