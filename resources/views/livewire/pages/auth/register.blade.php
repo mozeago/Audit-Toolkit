@@ -13,6 +13,7 @@ new #[Layout('layouts.guest')] class extends Component {
     public string $email = '';
     public string $password = '';
     public string $password_confirmation = '';
+    public bool $agree = false;
 
     /**
      * Handle an incoming registration request.
@@ -43,7 +44,7 @@ new #[Layout('layouts.guest')] class extends Component {
     }
 }; ?>
 
-<div class="w-3/4 bg-white rounded-md shadow-2xl">
+<div x-data="agree: false" class="w-3/4 bg-white rounded-md shadow-2xl">
     <div class="flex justify-between rounded-xl">
         <div class="relative flex items-center justify-center w-1/2 bg-black rounded-l-xl">
             <img src="{{ asset('images/lamp-suspended.jpg') }}" alt="Your Image" class="block w-1/2 h-auto">
@@ -88,7 +89,20 @@ new #[Layout('layouts.guest')] class extends Component {
 
                     <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                 </div>
-
+                <div class="mt-4">
+                    <label for="agree" class="flex items-center">
+                        <input required type="checkbox" id="agree" wire:model="agree"
+                            class="focus:ring-[#C8000B] w-4 h-4 text-[#C8000B] transition duration-150 ease-in-out rounded-sm shadow-sm form-checkbox">
+                        <span class="ml-2 text-sm text-black">I agree to <a target="_blank"
+                                href="https://www.scratchandscript.com/terms_condition"
+                                class="font-bold no-underline text-cyan-700 hover:text-cyan-900">Terms &
+                                Conditions</a> and
+                            <a target="_blank" href="https://www.scratchandscript.com/privacy_policy"
+                                class="font-bold no-underline text-cyan-700 hover:text-cyan-900">Privacy
+                                Policy.</a></span>
+                    </label>
+                    <x-input-error :messages="$errors->get('agree')" class="mt-2" />
+                </div>
                 <div class="flex items-center justify-end mt-4">
                     <a class="text-sm text-gray-600 underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         href="{{ route('login') }}" wire:navigate>
