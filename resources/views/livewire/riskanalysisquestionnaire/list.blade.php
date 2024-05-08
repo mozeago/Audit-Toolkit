@@ -209,7 +209,7 @@ new class extends Component {
                 @if ($showOrganizationForm)
                     <h3 class="mt-8 font-bold text-center roboto-medium">Data Protection Risk Assessment Questionnaire
                     </h3>
-                    <p class="p-8 m-4 text-wrap roboto-regular">The Data Protection Risk Questionnaire includes an
+                    <p class="p-4 m-4 text-wrap roboto-regular">The Data Protection Risk Questionnaire includes an
                         assessment of
                         processing
                         activities
@@ -219,7 +219,7 @@ new class extends Component {
             @endif
         </div>
         @if ($this->hasAnsweredQuestions())
-            <div class ="container px-4 py-8 mx-auto">
+            <div class ="container px-4 py-2 mx-auto">
                 @if ($showOrganizationForm)
                     <div x-show="!onBoardingText" class="max-w-2xl p-4 mx-auto sm:p-6 lg:p-8">
                         <div
@@ -236,7 +236,7 @@ new class extends Component {
                                 </svg>
                             </div>
                             {{-- organization data --}}
-                            <div class="pt-3 sm:pt-5">
+                            <div class=" sm:pt-5">
                                 <h2 class="mb-4 text-xl font-semibold text-black">Organization and Department
                                     Information
                                 </h2>
