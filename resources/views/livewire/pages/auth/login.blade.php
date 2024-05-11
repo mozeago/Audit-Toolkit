@@ -41,7 +41,7 @@ new #[Layout('layouts.guest')] class extends Component {
                 <p class="mb-2 font-bold text-left text-white roboto-condensed-header-900">Welcome to Data Protection
                     Portal
                     !</p>
-                <p class="text-gray-400 roboto-regular">Discover essential resources and guideline to safeguard sensitive
+                <p class="text-gray-300 roboto-regular">Discover essential resources and guideline to safeguard sensitive
                     information
                     and
                     ensure compliance with
