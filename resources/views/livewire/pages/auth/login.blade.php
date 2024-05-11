@@ -20,7 +20,7 @@ new #[Layout('layouts.guest')] class extends Component {
 
         Session::regenerate();
         if ($this->riskAnalysisCompleted() === 'true') {
-            redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+            redirect()->intended(route('dashboard'));
         } else {
             redirect('risk-analysis-questionnaire');
         }
