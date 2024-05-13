@@ -25,9 +25,9 @@
         <p class="text-white">&copy; Copyright © 2024 Scratch & Script</p>
         <div class="inline-flex ml-8">
             <p class="ml-8 mr-2 text-white"><a href="https://www.scratchandscript.com/terms_condition"
-                    class="no-underline">Terms & Conditions</a></p>
+                    class="no-underline hover:text-[#C8000B]">Terms & Conditions</a></p>
             <p class="ml-2 text-white"><a href="https://www.scratchandscript.com/privacy_policy"
-                    class="no-underline">Privacy Policy</a></p>
+                    class="no-underline hover:text-[#C8000B]">Privacy Policy</a></p>
         </div>
     </div>
 </footer>

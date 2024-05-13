@@ -15,6 +15,7 @@ use App\Http\Controllers\RiskAnalysisResponseController;
 use App\Http\Controllers\GoogleLoginController;
 use App\Http\Controllers\PrivacyCasesController;
 use App\Http\Controllers\ResearchContributors;
+use App\Http\Controllers\ResearchersController;
 use App\Http\Controllers\UsersSettings;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
@@ -67,5 +68,8 @@ Route::view('dashboard', 'dashboard')
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
+Route::get('/researchers', [ResearchersController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('researchers');
 
 require __DIR__ . '/auth.php';
