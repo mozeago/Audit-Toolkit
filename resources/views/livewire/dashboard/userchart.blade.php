@@ -208,7 +208,6 @@ new class extends Component {
                         </div>
                     </div>
                 </div>
-
                 {{-- end personal data --}}
                 <div
                     class="flex w-1/3 h-32 bg-white border-l-2 border-red-500 rounded-md shadow-2xl hover:bg-slate-200 drop-shadow-md">
@@ -433,6 +432,7 @@ new class extends Component {
 
                 </div>
             </div>
+            {{-- end row for risk score --}}
         </div>
         {{-- end of individual score divs --}}
     </div>
