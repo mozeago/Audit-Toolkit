@@ -5,7 +5,7 @@
         <!-- First Column: Company Logo -->
         <div class="col-span-2 p-16 text-center">
             <a href="/" wire:navigate>
-                <img src="{{ asset('images/logo.webp') }}" class="h-8 mx-auto" alt="logo" />
+                <img src="{{ asset('images/logo.webp') }}" class="mx-auto" alt="logo" />
             </a>
         </div>
 
