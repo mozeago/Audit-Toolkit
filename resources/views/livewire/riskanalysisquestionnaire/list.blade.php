@@ -212,22 +212,6 @@ new class extends Component {
         <div x-show="!onBoardingText">
             @if ($this->hasAnsweredQuestions())
                 @if ($showOrganizationForm)
-                    <h3 class="mt-8 mb-2 font-bold text-center roboto-medium">Data Protection Risk Assessment
-                        Questionnaire
-                    </h3>
-                    <div class="flex col-span-8 mx-auto text-center separator">
-                        <div class="col-span-2 separator-block red"></div>
-                        <div class="col-span-2 separator-block yellow"></div>
-                        <div class="col-span-2 separator-block blue"></div>
-                        <div class="col-span-2 separator-block green"></div>
-                    </div>
-                    <p class="p-4 m-4 text-black text-wrap roboto-regular">The Data Protection Risk Questionnaire
-                        includes an
-                        assessment of
-                        processing
-                        activities
-                        conducted by your organization, covering personal data handling, sensitive information
-                        processing, and commercial data usage.</p>
                 @endif
             @endif
         </div>
@@ -235,6 +219,24 @@ new class extends Component {
             <div class ="container px-4 py-2 mx-auto">
                 @if ($showOrganizationForm)
                     <div x-show="!onBoardingText" class="max-w-2xl p-4 mx-auto sm:p-6 lg:p-8">
+                        <div class="col-span-8 mx-auto text-center">
+                            <h3 class="mt-8 mb-2 font-bold text-center roboto-medium">Data Protection Risk Assessment
+                                Questionnaire
+                            </h3>
+                        </div>
+                        <div class="flex col-span-8 mx-auto text-center separator">
+                            <div class="col-span-2 separator-block red"></div>
+                            <div class="col-span-2 separator-block yellow"></div>
+                            <div class="col-span-2 separator-block blue"></div>
+                            <div class="col-span-2 separator-block green"></div>
+                        </div>
+                        <p class="p-2 m-4 text-left text-black roboto-regular">The Data Protection Risk Questionnaire
+                            includes an
+                            assessment of
+                            processing
+                            activities
+                            conducted by your organization, covering personal data handling, sensitive information
+                            processing, and commercial data usage.</p>
                         <div
                             class="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.9] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#C8000B] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#C8000B]">
 
