@@ -212,9 +212,17 @@ new class extends Component {
         <div x-show="!onBoardingText">
             @if ($this->hasAnsweredQuestions())
                 @if ($showOrganizationForm)
-                    <h3 class="mt-8 font-bold text-center roboto-medium">Data Protection Risk Assessment Questionnaire
+                    <h3 class="mt-8 mb-2 font-bold text-center roboto-medium">Data Protection Risk Assessment
+                        Questionnaire
                     </h3>
-                    <p class="p-4 m-4 text-wrap roboto-regular">The Data Protection Risk Questionnaire includes an
+                    <div class="flex col-span-8 mx-auto text-center separator">
+                        <div class="col-span-2 separator-block red"></div>
+                        <div class="col-span-2 separator-block yellow"></div>
+                        <div class="col-span-2 separator-block blue"></div>
+                        <div class="col-span-2 separator-block green"></div>
+                    </div>
+                    <p class="p-4 m-4 text-black text-wrap roboto-regular">The Data Protection Risk Questionnaire
+                        includes an
                         assessment of
                         processing
                         activities
@@ -228,7 +236,7 @@ new class extends Component {
                 @if ($showOrganizationForm)
                     <div x-show="!onBoardingText" class="max-w-2xl p-4 mx-auto sm:p-6 lg:p-8">
                         <div
-                            class="mb-4 flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.9] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#C8000B] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#C8000B]">
+                            class="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.9] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#C8000B] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#C8000B]">
 
                             <div
                                 class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#C8000B]/10 sm:size-16">
@@ -314,7 +322,7 @@ new class extends Component {
                                 </button>
 
                                 {{-- end Previous --}}
-                                <div class="w-full pt-3 sm:pt-5">
+                                <div class="w-full pt-3 overflow-auto sm:pt-5">
                                     <p class="w-full mt-4 font-semibold text-sm/relaxed">
                                         {{ $questions[$currentQuestionIndex]->subtitle }}
                                     </p>
