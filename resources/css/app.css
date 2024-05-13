@@ -178,3 +178,36 @@ canvas {
     font-size: 0.5em;
     text-anchor: middle;
 }
+
+.separator {
+    border-radius: 10px;
+    display: inline-block;
+    width: 100%;
+    height: 5px;
+    border-radius: 5px;
+    position: relative;
+    bottom: 0;
+    padding: 0;
+
+    .separator-block {
+        height: 100%;
+        width: calc((100% - 1px) / 4);
+
+        &.red {
+            background-color: #fe6d4b;
+        }
+
+        &.yellow {
+            background-color: #ffcf47;
+        }
+
+        &.blue {
+            background-color: #2f4167;
+        }
+
+        &.green {
+            background-color: #52cfba;
+        }
+
+    }
+}

@@ -190,13 +190,17 @@ new class extends Component {
                         rights
                         of
                         individuals.</p>
-                    <div class="p-6 mt-8 bg-[#F8E7E7] border-l-4 border-[#C8000B] rounded-sm shadow-xl">
+                    <div class="p-6 mt-8 bg-[#F8E7E7] border-l-8 border-[#C3B7B7] rounded-sm shadow-lg">
                         <h4 class="mt-4 mb-4 roboto-medium">Confidentiality and Privacy</h4>
                         <p class="text-black roboto-regular">Please note that all information provided in this
-                            questionnaire is treated as confidential and will only be used for the purposes of assessing
-                            data protection risks and providing recommendations.</p>
+                            questionnaire is
+                            treated
+                            as
+                            confidential and will only be
+                            used
+                            for the purposes of assessing data protection risks and providing recommendations.
+                        </p>
                     </div>
-
                     <h4 class="mt-4 font-bold">Let's begin!</h4>
                     <span class="text-center"><button @click="onBoardingText = !onBoardingText"
                             class="px-6 py-4 mt-4 font-bold text-white bg-green-500 rounded-full shadow-lg shadow-green-500/50 hover:shadow-green-500/70">
