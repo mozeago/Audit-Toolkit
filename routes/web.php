@@ -69,7 +69,5 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 Route::get('/researchers', [ResearchersController::class, 'index'])
-    ->middleware(['auth'])
-    ->name('researchers');
-
+    ->middleware(['auth'])->name('researchers');
 require __DIR__ . '/auth.php';

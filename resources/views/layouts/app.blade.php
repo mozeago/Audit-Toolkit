@@ -395,8 +395,9 @@
                         </li>
                     @endif
                     <li class="py-5 border-b border-gray-400">
-                        <a href="{{ route('researchers') }}"
-                            class="flex items-center no-border-bottom  ml-4 mr-4 block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]">
+                        <x-nav-link
+                            class="no-border-bottom  ml-4 mr-4 block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
+                            :href="route('researchers')" :active="request()->routeIs('researchers')" wire:navigate>
                             <svg class="w-6 h-6 mr-2 text-gray-800 dark:hover:text-[#C8000B]" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                 viewBox="0 0 24 24">
@@ -406,7 +407,7 @@
                             </svg>
                             <span
                                 class="text-xl text-black roboto-medium hover:hover:text-[#C8000B]">{{ __('Ignite Program Researchers') }}</span>
-                        </a>
+                        </x-nav-link>
                     </li>
                 </ul>
             </div>
