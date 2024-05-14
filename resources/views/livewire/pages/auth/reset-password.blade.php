@@ -66,39 +66,48 @@ new #[Layout('layouts.guest')] class extends Component {
         $this->redirectRoute('login', navigate: true);
     }
 }; ?>
-
-<div>
-    <form wire:submit="resetPassword">
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input wire:model="email" id="email" class="block w-full mt-1" type="email" name="email" required
-                autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+<div class="w-2/3 bg-white rounded-md shadow-2xl">
+    <div class="flex justify-between rounded-xl">
+        <!-- Black Bg -->
+        <div class="relative flex items-center justify-center w-1/2 bg-black rounded-l-xl">
+            <img src="{{ asset('images/lamp-suspended.jpg') }}" alt="lamp suspended" class="block w-1/2 h-auto">
         </div>
+        <div class="w-1/2 p-4"><x-auth-session-status class="mb-4" :status="session('status')" />
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-            <x-text-input wire:model="password" id="password" class="block w-full mt-1" type="password" name="password"
-                required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            <form wire:submit="resetPassword">
+                <!-- Email Address -->
+                <div>
+                    <x-input-label for="email" :value="__('Email')" />
+                    <x-text-input wire:model="email" id="email" class="block w-full mt-1" type="email"
+                        name="email" required autofocus autocomplete="username" />
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                </div>
+
+                <!-- Password -->
+                <div class="mt-4">
+                    <x-input-label for="password" :value="__('Password')" />
+                    <x-text-input wire:model="password" id="password" class="block w-full mt-1" type="password"
+                        name="password" required autocomplete="new-password" />
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="mt-4">
+                    <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+
+                    <x-text-input wire:model="password_confirmation" id="password_confirmation"
+                        class="block w-full mt-1" type="password" name="password_confirmation" required
+                        autocomplete="new-password" />
+
+                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                </div>
+
+                <div class="flex items-center justify-end mt-4">
+                    <x-primary-button>
+                        {{ __('Reset Password') }}
+                    </x-primary-button>
+                </div>
+            </form>
         </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input wire:model="password_confirmation" id="password_confirmation" class="block w-full mt-1"
-                type="password" name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Reset Password') }}
-            </x-primary-button>
-        </div>
-    </form>
+    </div>
 </div>
