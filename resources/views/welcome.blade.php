@@ -139,20 +139,30 @@
                 objectives.
 
             </p>
-            <ul class="pl-8 list-disc roboto-regular">
-                <li>Knowledge partners: Institutions,
+            <ol class="my-4 space-y-2 list-none">
+                <li class="flex items-start roboto-regular">
+                    <span
+                        class="flex items-center justify-center flex-shrink-0 w-8 h-8 mr-4 text-white bg-black rounded-full">1</span>
+                    Knowledge partners:Institutions,
                     universities, and research centers
                     willing to share
-                    expertise and resources.</li>
-                <li>Knowledge partners: Institutions,
-                    universities, and research centers
-                    willing to share
-                    expertise and resources.</li>
-                <li>Professional bodies: Organizations
+                    expertise and resources.
+                </li>
+                <li class="flex items-start roboto-regular">
+                    <span
+                        class="flex items-center justify-center flex-shrink-0 w-8 h-8 mr-4 text-white bg-black rounded-full">2</span>
+                    Private companies: Businesses eager to contribute their capabilities and resources to support our
+                    training programs.
+                </li>
+                <li class="flex items-start roboto-regular">
+                    <span
+                        class="flex items-center justify-center flex-shrink-0 w-8 h-8 mr-4 text-white bg-black rounded-full">3</span>
+                    Professional bodies: Organizations
                     dedicated to advancing professional
                     standards and
-                    practices in relevant fields.</li>
-            </ul>
+                    practices in relevant fields.
+                </li>
+            </ol>
             <p class="roboto-regular">
                 By uniting with us, you'll play a pivotal
                 role in empowering individuals and
