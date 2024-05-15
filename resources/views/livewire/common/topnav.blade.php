@@ -27,7 +27,7 @@
                 @endguest
                 @auth
                     <button type="button"
-                        class="hover:text-[#C8000B] px-1 py-1 border-2 rounded-md border-gray-500 text-black font-bold hover:border-[#C8000B]">
+                        class="text-center hover:text-[#C8000B] px-3 py-1 border-2 rounded-md border-gray-300 text-black font-bold hover:border-[#C8000B]">
                         <a href="{{ route('dashboard') }}" class="text-gray-800 no-underline">Dashboard</a>
                     </button>
                 @endauth
