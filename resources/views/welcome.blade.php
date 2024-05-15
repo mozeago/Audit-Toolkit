@@ -81,8 +81,10 @@
         </div>
     </div>
     {{-- end partners --}}
-    <div class="flex flex-col items-center justify-center mt-32">
-        <h1 class="items-start mb-2 text-2xl font-semibold">Our SDG Focus</h1>
+    <div class="flex flex-col justify-center px-8 py-8 my-16">
+        <h1 class="mb-8 text-xl font-bold text-start roboto-bold">Our SDG <span
+                class="text-[#C8000B] nline-block border-b-2 border-[#C8000B] pb-1">Focus</span>
+        </h1>
         <div class="flex justify-between w-full max-w-screen-lg gap-4">
             <div class="w-32 h-32">
                 <a href="https://en.wikipedia.org/wiki/Sustainable_Development_Goal_4" class="w-1/5">
