@@ -276,11 +276,11 @@ new class extends Component {
                                 <div class="flex items-end justify-end w-1/2">
                                     <p class="items-end text-xl font-bold">
                                         @if ($averageScore >= 75)
-                                            Low Risk
+                                            <span style="color: green;">Low Risk</span>
                                         @elseif($averageScore >= 50)
-                                            Moderate Risk
+                                            <span style="color: orange;">Moderate Risk</span>
                                         @else
-                                            High Risk
+                                            <span style="color: red;">High Risk</span>
                                         @endif
                                     </p>
                                 </div>
@@ -363,9 +363,9 @@ new class extends Component {
                     {{-- start row 2 risk score --}}
                     <div class="flex gap-2">
                         <div
-                            class="flex w-1/2 h-32 bg-white border-l-4 rounded-md shadow-2xl hover:bg-slate-200 border-cyan-500 drop-shadow-md">
+                            class="flex w-1/2 bg-white border-l-4 rounded-md shadow-2xl h-44 hover:bg-slate-200 border-cyan-500 drop-shadow-md">
 
-                            <div class="flex items-center w-2/3">
+                            <div class="flex items-center w-2/3 ">
                                 <div class="flex flex-col items-start p-2">
                                     <div class="w-8 h-8 p-1 mb-2 text-center bg-[#C8000B] rounded-full">
                                         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
@@ -396,7 +396,7 @@ new class extends Component {
                             </div>
                         </div>
                         <div
-                            class="flex w-1/2 h-32 bg-white border-l-4 border-red-500 rounded-md shadow-2xl hover:bg-slate-200 drop-shadow-md">
+                            class="flex w-1/2 bg-white border-l-4 border-red-500 rounded-md shadow-2xl h-44 hover:bg-slate-200 drop-shadow-md">
 
                             <div class="flex items-center w-2/3">
                                 <div class="flex flex-col items-start p-2">

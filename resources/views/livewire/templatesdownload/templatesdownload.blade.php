@@ -22,7 +22,7 @@ new class extends Component {
     <div class="grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-3">
         @foreach ($templates as $template)
             <div class="relative max-w-sm mx-auto mb-20 ml-2 mr-2 overflow-hidden bg-white shadow-lg rounded-xl">
-                <img class="object-cover w-full h-64" src="{{ Storage::url($template->thumbnail) }}" alt="Image"
+                <img class="object-cover w-full h-32" src="{{ Storage::url($template->thumbnail) }}" alt="Image"
                     style="opacity: 0.5;">
                 <button class="absolute top-0 right-0 px-2 py-1 mt-2 mr-2 text-white bg-gray-800 rounded">
                     {{ $template->category }}

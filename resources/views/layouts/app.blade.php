@@ -182,7 +182,7 @@
                         </x-nav-link>
                     </li>
                     @if (auth()->user()->role === 'admin')
-                        <li class="py-5 border-b border-gray-400">
+                        {{-- <li class="py-5 border-b border-gray-400">
                             <x-nav-link
                                 class="no-border-bottom  ml-4 mr-4 block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
                                 :href="route('risk-profile-dashboard')" :active="request()->routeIs('risk-profile-dashboard')" wire:navigate>
@@ -199,7 +199,7 @@
                                 <span
                                     class="text-xl text-black roboto-medium hover:hover:text-[#C8000B]">{{ __('Risk Profile Dashboard') }}</span>
                             </x-nav-link>
-                        </li>
+                        </li> --}}
 
                         <li class="py-5 border-b border-gray-400">
                             <button @click="isOpen = !isOpen"
@@ -406,7 +406,7 @@
                                     d="M10 19H5a1 1 0 0 1-1-1v-1a3 3 0 0 1 3-3h2m10 1a3 3 0 0 1-3 3m3-3a3 3 0 0 0-3-3m3 3h1m-4 3a3 3 0 0 1-3-3m3 3v1m-3-4a3 3 0 0 1 3-3m-3 3h-1m4-3v-1m-2.121 1.879-.707-.707m5.656 5.656-.707-.707m-4.242 0-.707.707m5.656-5.656-.707.707M12 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                             </svg>
                             <span
-                                class="text-xl text-black roboto-medium hover:hover:text-[#C8000B]">{{ __('Ignite Program Researchers') }}</span>
+                                class="text-xl text-black roboto-medium hover:hover:text-[#C8000B]">{{ __('Program Researchers') }}</span>
                         </x-nav-link>
                     </li>
                 </ul>

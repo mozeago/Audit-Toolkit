@@ -68,36 +68,41 @@
             flow of skilled Cybersecurity and data protection professionals into the job market.</p>
     </div>
     <div class="flex flex-col items-center justify-center">
-        <h1 class="mb-8 text-xl font-semibold">iGnite Partners Worlwide</h1>
+        <h1 class="mb-8 text-xl font-semibold">IGNITE Partners Worlwide</h1>
         <div class="flex justify-between w-full max-w-screen-lg gap-2">
             <div class="w-1/5">
                 <a href="https://engage.isaca.org/kenyachapter/home">
-                    <img src="{{ asset('images/isacakenya.jpeg') }}" alt="Image 1" class="w-full h-24">
+                    <img src="{{ asset('images/isacakenya.jpeg') }}" alt="Image 1"
+                        class="w-auto h-12 mx-4 sm:h-16 sm:mx-6">
                 </a>
             </div>
             <div class="w-1/5">
                 <a href="https://engage.isaca.org/southafricachapter/home">
-                    <img src="{{ asset('images/ISACA_South_Africa.jpeg') }}" alt="Image 1" class="w-full h-24">
+                    <img src="{{ asset('images/ISACA_South_Africa.jpeg') }}" alt="Image 1"
+                        class="w-auto h-12 mx-4 sm:h-16 sm:mx-6">
                 </a>
             </div>
             <div class="w-1/5">
                 <a href="https://engage.isaca.org/kampalachapter/home">
-                    <img src="{{ asset('images/kampala.jpg') }}" alt="Image 1" class="w-full h-24">
+                    <img src="{{ asset('images/kampala.jpg') }}" alt="Image 1"
+                        class="w-auto h-12 mx-4 sm:h-16 sm:mx-6">
                 </a>
             </div>
             <div class="w-1/5">
                 <a href="https://twitter.com/DataGovProsKe?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
-                    <img src="{{ asset('images/kenya data privacy.jpeg') }}" alt="Image 1" class="w-full h-24">
+                    <img src="{{ asset('images/kenya data privacy.jpeg') }}" alt="Image 1"
+                        class="w-auto h-12 mx-4 sm:h-16 sm:mx-6">
                 </a>
             </div>
             <div class="w-1/5">
                 <a href="https://engage.isaca.org/rwandachapter/home">
-                    <img src="{{ asset('images/rwanda.jpg') }}" alt="Image 1" class="w-full h-24">
+                    <img src="{{ asset('images/rwanda.jpg') }}" alt="Image 1" class="w-auto h-12 mx-4 sm:h-16 sm:mx-6">
                 </a>
             </div>
             <div class="w-1/5 text-center">
                 <a href="https://www.scratchandscript.com/">
-                    <img src="{{ asset('images/scratchandscript_logo_red.png') }}" alt="Image 1" class="w-full">
+                    <img src="{{ asset('images/scratchandscript_logo_red.png') }}" alt="Image 1"
+                        class="w-auto h-12 mx-4 sm:h-16 sm:mx-6">
                 </a>
             </div>
             <div class="w-1/5 text-center">
@@ -113,7 +118,7 @@
             </div>
         </div>
     </div>
-    <div class="flex flex-col items-center justify-center mt-8">
+    <div class="flex flex-col items-center justify-center mt-32">
         <h1 class="items-start mb-2 text-2xl font-semibold">Our SDG Focus</h1>
         <div class="flex justify-between w-full max-w-screen-lg gap-4">
             <div class="w-32 h-32">
@@ -175,8 +180,6 @@
             </div>
         </div>
     </div>
-
-
     <livewire:common.footer />
 </body>
 

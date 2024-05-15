@@ -51,7 +51,7 @@ new class extends Component {
     </div>
     <div class="flex justify-center mt-4 shadow-2xl">
         <div class="flex justify-center">
-            <table class="w-full bg-white border border-gray-300 divide-y divide-gray-200 table-auto">
+            <table class="w-full bg-white border border-gray-300 divide-y divide-gray-200 table-fixed">
                 <thead class="bg-[#1C4863] ">
                     <tr>
                         <th scope="col"
