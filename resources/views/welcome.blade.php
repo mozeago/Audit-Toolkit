@@ -134,27 +134,27 @@
         <div
             class="flex w-full justify-items-stretch gap-2">
             <div
-                class="flex flex-1 items-center justify-center border-2 border-red-500">
+                class="flex flex-1 items-center justify-center">
                 <a href="https://en.wikipedia.org/wiki/Sustainable_Development_Goal_4"
                     class="flex items-center justify-center">
-                    <img src="{{ asset('images/Sustainable_Development_Goal_04QualityEducation.svg') }}"
+                    <img src="{{ asset('images/SDG_Goal_04QualityEducation.svg.png') }}"
                         alt="Sustainable_Development_Goal_4"
                         class="rounded-md shadow-2xl">
                 </a>
             </div>
             <div
-                class="flex flex-1 items-center justify-center border-2 border-red-500">
+                class="flex flex-1 items-center justify-center">
                 <a
                     href="https://en.wikipedia.org/wiki/Sustainable_Development_Goal_5">
-                    <img src="{{ asset('images/Sustainable_Development_Goal_05GenderEquality.svg') }}"
+                    <img src="{{ asset('images/SDG_Goal_05GenderEquality.svg.png') }}"
                         alt="Sustainable_Development_Goal_5"
                         class="rounded-md shadow-2xl">
             </div>
             <div
-                class="flex flex-1 items-center justify-center border-2 border-red-500">
+                class="flex flex-1 items-center justify-center">
                 <a
                     href="https://en.wikipedia.org/wiki/Sustainable_Development_Goal_8">
-                    <img src="{{ asset('images/Sustainable_Development_Goal_08DecentWork.svg') }}"
+                    <img src="{{ asset('images/SDG_Goal_08DecentWork.svg.png') }}"
                         alt="Sustainable_Development_Goal_8"
                         class="rounded-md shadow-2xl">
                 </a>

@@ -1,47 +1,44 @@
-<footer class="bg-black py-2 text-white">
+<footer class="bg-black text-white">
     <div
-        class="container mx-auto grid grid-cols-8 items-center px-4">
-
+        class="container mx-auto grid grid-cols-9 items-center py-4">
         <div class="col-span-1"></div>
-        <!-- First Column: Company Logo -->
-        <div class="col-span-2 p-16 text-center">
-            <a href="/" wire:navigate>
-                <img src="{{ asset('images/Scartch and Script Logo white.svg') }}"
-                    class="mx-auto" alt="logo" />
+        <div class="col-span-3 text-center">
+            <a class="mr-8" href="/" wire:navigate>
+                <img src="{{ asset('images/logo.webp') }}"
+                    alt="Scartch and Script Logo">
             </a>
         </div>
-
-        <!-- Second Column: About Text -->
-        <div class="col-span-4 p-8">
-            <p class="mb-2 font-bold text-white">About
-                Toolkit</p>
-            <p class="text-white">The Data Protection
-                Toolkit 2024 offers a cutting-edge solution
-                for
-                organizations aiming to enhance
-                their data security practices. At its core,
-                this toolkit includes an advanced online
-                self-assessment
-                tool. Through this tool, organizations can
+        <div class="col-span-4 ml-8 text-center">
+            <h4
+                class="roboto-bold-16 mb-2 text-start font-bold text-white">
+                About Data Toolkit</h4>
+            <p class="roboto-regular text- text-left">The
+                Data
+                Protection Toolkit 2024 offers a
+                cutting-edge solution for organizations
+                aiming to enhance their data security
+                practices. At its core,this toolkit includes
+                an advanced online self-assessment tool.
+                Through this tool, organizations can
                 seamlessly evaluate their adherence to data
-                protection
-                laws, receiving detailed compliance reports
-                and insightful scorecards.</p>
+                protection laws, receiving detailed
+                compliance reports and insightful
+                scorecards.</p>
         </div>
         <div class="col-span-1"></div>
     </div>
     <div class="border-b border-gray-400"></div>
-    <div class="mb-4 mt-4 flex w-full justify-center">
-        <p class="text-white">&copy; Copyright © 2024
+    <div class="flex w-full justify-center py-4">
+        <p class="text-white">Copyright © 2024
             Scratch & Script</p>
         <div class="ml-8 inline-flex">
             <p class="ml-8 mr-2 text-white"><a
                     href="https://www.scratchandscript.com/terms_condition"
-                    class="no-underline hover:text-[#C8000B]">Terms
+                    class="no-underline hover:border-b-2 hover:border-white hover:text-[#C8000B]">Terms
                     & Conditions</a></p>
             <p class="ml-2 text-white"><a
                     href="https://www.scratchandscript.com/privacy_policy"
-                    class="no-underline hover:text-[#C8000B]">Privacy
+                    class="no-underline hover:border-b-2 hover:border-white hover:text-[#C8000B]">Privacy
                     Policy</a></p>
         </div>
     </div>

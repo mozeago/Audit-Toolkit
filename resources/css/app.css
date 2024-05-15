@@ -25,6 +25,13 @@
     font-size: 32px;
 }
 
+.roboto-bold-16 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 24px;
+}
+
 .roboto-bold-6 {
     font-family: "Roboto", sans-serif;
     font-weight: 600;
@@ -483,10 +490,11 @@ canvas {
 
 .zoom-image img {
     transition: transform 0.3s ease-in-out;
+    filter: grayscale(100%)
 }
 
 .zoom-image:hover img {
     transform: scale(1.2);
-    filter: grayscale(100%) brightness(150%);
+    filter: brightness(150%);
 
 }
