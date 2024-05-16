@@ -128,7 +128,22 @@ new class extends Component {
     {
     }
 }; ?>
-<div class="p-8">
+<div class="px-8 py-4">
+    <div class="flex justify-between">
+        <div>
+            <h3 class="mb-4 roboto-bold">Dashboard</h3>
+        </div> <!-- Placeholder for other content if needed -->
+        <button @click=""
+            class="mb-4 flex items-center justify-center px-4 py-2 font-semibold text-white hover:text-white bg-black rounded-full shadow-md hover:bg-[#C8000B]">
+            <svg class="w-6 h-6 mr-2 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="white" stroke-linecap="round" stroke-width="2"
+                    d="m3.5 5.5 7.893 6.036a1 1 0 0 0 1.214 0L20.5 5.5M4 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z" />
+            </svg>
+
+            Email me a copy
+        </button>
+    </div>
     <div class="flex justify-center gap-8">
         {{-- start individual score divs --}}
         <div class="flex flex-col w-full gap-2">
@@ -436,22 +451,8 @@ new class extends Component {
         </div>
         {{-- end of individual score divs --}}
     </div>
-    <div class="flex justify-between">
-        <div></div> <!-- Placeholder for other content if needed -->
-        <button @click=""
-            class="mt-4 mb-4 flex items-center justify-center px-4 py-2 font-semibold text-white hover:text-white bg-black rounded-full shadow-md hover:bg-[#C8000B]">
-            <svg class="w-6 h-6 mr-2 text-gray-800 dark:text-white" aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                viewBox="0 0 24 24">
-                <path stroke="white" stroke-linecap="round" stroke-width="2"
-                    d="m3.5 5.5 7.893 6.036a1 1 0 0 0 1.214 0L20.5 5.5M4 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z" />
-            </svg>
-
-            Email me a copy
-        </button>
-    </div>
     {{-- Table --}}
-    <div class="flex items-center justify-center mb-8">
+    <div class="flex items-center justify-center mt-12 mb-8">
         <div class="flex-grow border-b-4 border-[#C8000B]"></div>
         <span class="px-3 text-xl font-bold text-center">Privacy
             Violation Cases</span>
