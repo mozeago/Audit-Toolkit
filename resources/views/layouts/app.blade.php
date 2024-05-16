@@ -416,7 +416,7 @@
 
     <div class="p-4 @if (User::find(auth()->id())->qa_analysis_complete === 'true' || auth()->user()->role === 'admin') sm:ml-72 @endif">
         <div
-            style="background-image: url({{ asset('images/bg-questionnaire.jpeg') }});
+            style="background-image: url({{ asset('images/bg-questionnaire.webp') }});
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

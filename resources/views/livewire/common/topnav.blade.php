@@ -4,7 +4,7 @@
             <!-- Logo -->
             <div class="flex-shrink-0">
                 <a href="/" wire:navigate>
-                    <image src="{{ asset('images/scratchandscript_logo_red.png') }}" class="h-8" alt="logo" />
+                    <image src="{{ asset('images/scratchandscript_logo_red.webp') }}" class="h-8" alt="logo" />
                 </a>
             </div>
             <!-- Navigation Links -->

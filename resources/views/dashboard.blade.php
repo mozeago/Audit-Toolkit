@@ -4,7 +4,7 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot> --}}
-    <div style="background-image: url({{ asset('images/bg-questionnaire.jpeg') }});
+    <div style="background-image: url({{ asset('images/bg-questionnaire.webp') }});
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

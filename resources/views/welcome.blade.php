@@ -13,7 +13,7 @@
 
 <body class="antialiased">
     <livewire:common.topnav />
-    <div class="bg-center bg-cover h-28" style="background-image: url({{ asset('images/people-impact.jpg') }}););">
+    <div class="bg-center bg-cover h-28" style="background-image: url({{ asset('images/people-impact.webp') }}););">
         <h1 class="p-8 text-4xl font-bold text-left text-white roboto-bold">
             Our Impact</h1>
     </div>
@@ -44,35 +44,35 @@
         <div class="flex flex-wrap items-center justify-center">
             <div class="flex items-center justify-center">
                 <a class="zoom-image" href="https://engage.isaca.org/kenyachapter/home">
-                    <img src="{{ asset('images/isacakenya.jpeg') }}" alt="Image 1" class="w-auto h-8 sm:mx-2 sm:h-12">
+                    <img src="{{ asset('images/isacakenya.webp') }}" alt="Image 1" class="w-auto h-8 sm:mx-2 sm:h-12">
                 </a>
             </div>
             <div class="flex items-center justify-center">
                 <a class="zoom-image" href="https://engage.isaca.org/southafricachapter/home">
-                    <img src="{{ asset('images/ISACA_South_Africa.jpeg') }}" alt="Image 1"
+                    <img src="{{ asset('images/ISACA_South_Africa.webp') }}" alt="Image 1"
                         class="w-auto h-8 sm:mx-2 sm:h-12">
                 </a>
             </div>
             <div class="flex items-center justify-center">
                 <a class="zoom-image" href="https://engage.isaca.org/kampalachapter/home">
-                    <img src="{{ asset('images/kampala.jpg') }}" alt="Image 1" class="w-auto h-8 sm:mx-2 sm:h-12">
+                    <img src="{{ asset('images/kampala.webp') }}" alt="Image 1" class="w-auto h-8 sm:mx-2 sm:h-12">
                 </a>
             </div>
             <div class="flex items-center justify-center">
                 <a class="zoom-image"
                     href="https://twitter.com/DataGovProsKe?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
-                    <img src="{{ asset('images/kenya data privacy.jpeg') }}" alt="Image 1"
+                    <img src="{{ asset('images/kenya data privacy.webp') }}" alt="kenya data privacy"
                         class="w-auto h-8 sm:mx-2 sm:h-12">
                 </a>
             </div>
             <div class="flex items-center justify-center">
                 <a class="zoom-image" href="https://engage.isaca.org/rwandachapter/home">
-                    <img src="{{ asset('images/rwanda.jpg') }}" alt="Image 1" class="w-auto h-8 sm:mx-2 sm:h-12">
+                    <img src="{{ asset('images/rwanda.webp') }}" alt="Image 1" class="w-auto h-8 sm:mx-2 sm:h-12">
                 </a>
             </div>
             <div class="flex items-center justify-center">
                 <a class="zoom-image" href="https://www.scratchandscript.com/">
-                    <img src="{{ asset('images/scratchandscript_logo_red.png') }}" alt="Image 1"
+                    <img src="{{ asset('images/scratchandscript_logo_red.webp') }}" alt="Image 1"
                         class="w-auto h-8 sm:mx-2 sm:h-12">
                 </a>
             </div>
@@ -102,19 +102,19 @@
             <div class="flex items-center justify-center flex-1">
                 <a href="https://en.wikipedia.org/wiki/Sustainable_Development_Goal_4"
                     class="flex items-center justify-center">
-                    <img src="{{ asset('images/SDG_Goal_04QualityEducation.svg.png') }}"
-                        alt="Sustainable_Development_Goal_4" class="rounded-md shadow-2xl">
+                    <img src="{{ asset('images/Sustainable_Development_Goal_04QualityEducation.webp') }}"
+                        alt="Sustainable_Development_Goal_4_Quality_Education" class="rounded-md shadow-2xl">
                 </a>
             </div>
             <div class="flex items-center justify-center flex-1">
                 <a href="https://en.wikipedia.org/wiki/Sustainable_Development_Goal_5">
-                    <img src="{{ asset('images/SDG_Goal_05GenderEquality.svg.png') }}"
-                        alt="Sustainable_Development_Goal_5" class="rounded-md shadow-2xl">
+                    <img src="{{ asset('images/Sustainable_Development_Goal_05GenderEquality.webp') }}"
+                        alt="Sustainable_Development_Goal_5_Gender_Equality" class="rounded-md shadow-2xl">
             </div>
             <div class="flex items-center justify-center flex-1">
                 <a href="https://en.wikipedia.org/wiki/Sustainable_Development_Goal_8">
-                    <img src="{{ asset('images/SDG_Goal_08DecentWork.svg.png') }}" alt="Sustainable_Development_Goal_8"
-                        class="rounded-md shadow-2xl">
+                    <img src="{{ asset('images/Sustainable_Development_Goal_08DecentWork.webp') }}"
+                        alt="Sustainable_Development_Goal_8_DecentWork" class="rounded-md shadow-2xl">
                 </a>
             </div>
         </div>
