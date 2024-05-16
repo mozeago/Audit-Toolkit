@@ -154,61 +154,57 @@ new class extends Component {
 }; ?>
 <div>
     <div x-data="{ riskOpen: false, onBoardingText: true }" class="w-full rounded-md shadow-md">
-        @if ($this->hasAnsweredQuestions())
-            @if ($showOrganizationForm)
-                <div x-show="onBoardingText" class="p-8 bg-white bg-opacity-90">
-                    <h2 class="font-extrabold text-center roboto-bold-6">
-                        Data Protection Assessment </h2>
-                    <h4 class="mb-4 font-bold roboto-medium ">Welcome onboard!</h4>
-                    <p class="text-black roboto-regular text-wrap">We're excited to welcome you onboard! This data
-                        protection
-                        toolkit is
-                        designed to help
-                        organizations of all
-                        sizes
-                        enhance their data protection practices and comply with relevant laws.
+        <div x-show="onBoardingText" class="p-8 bg-white bg-opacity-90">
+            <h2 class="font-extrabold text-center roboto-bold-6">
+                Data Protection Assessment </h2>
+            <h4 class="mb-4 font-bold roboto-medium ">Welcome onboard!</h4>
+            <p class="text-black roboto-regular text-wrap">We're excited to welcome you onboard! This data
+                protection
+                toolkit is
+                designed to help
+                organizations of all
+                sizes
+                enhance their data protection practices and comply with relevant laws.
 
-                        Use this assessment to evaluate your adherence to data protection laws and determine the
-                        necessary
-                        steps
-                        to
-                        maintain the security of individuals' personal data. Upon completing each self-assessment, a
-                        report
-                        will
-                        be
-                        generated, offering actionable recommendations and guidance to enhance your data protection
-                        compliance.
+                Use this assessment to evaluate your adherence to data protection laws and determine the
+                necessary
+                steps
+                to
+                maintain the security of individuals' personal data. Upon completing each self-assessment, a
+                report
+                will
+                be
+                generated, offering actionable recommendations and guidance to enhance your data protection
+                compliance.
 
-                        Before you access your dashboard, we ask you to complete the risk questionnaire. This
-                        questionnaire
-                        is
-                        designed
-                        to assess and mitigate potential risks associated with handling and protecting sensitive data.
-                        By
-                        completing
-                        this questionnaire, you are taking proactive steps to safeguard data and protect the privacy
-                        rights
-                        of
-                        individuals.</p>
-                    <div class="p-6 mt-8 bg-[#F8E7E7] border-l-8 border-[#C3B7B7] rounded-sm shadow-lg">
-                        <h4 class="mt-4 mb-4 roboto-medium">Confidentiality and Privacy</h4>
-                        <p class="text-black roboto-regular">Please note that all information provided in this
-                            questionnaire is
-                            treated
-                            as
-                            confidential and will only be
-                            used
-                            for the purposes of assessing data protection risks and providing recommendations.
-                        </p>
-                    </div>
-                    <h4 class="mt-4 font-bold">Let's begin!</h4>
-                    <span class="text-center"><button @click="onBoardingText = !onBoardingText"
-                            class="px-6 py-4 mt-4 font-bold text-white bg-green-500 rounded-full shadow-lg shadow-green-500/50 hover:shadow-green-500/70">
-                            Start
-                        </button>
-                </div>
-            @endif
-        @endif
+                Before you access your dashboard, we ask you to complete the risk questionnaire. This
+                questionnaire
+                is
+                designed
+                to assess and mitigate potential risks associated with handling and protecting sensitive data.
+                By
+                completing
+                this questionnaire, you are taking proactive steps to safeguard data and protect the privacy
+                rights
+                of
+                individuals.</p>
+            <div class="p-6 mt-8 bg-[#F8E7E7] border-l-8 border-[#C3B7B7] rounded-sm shadow-lg">
+                <h4 class="mt-4 mb-4 roboto-medium">Confidentiality and Privacy</h4>
+                <p class="text-black roboto-regular">Please note that all information provided in this
+                    questionnaire is
+                    treated
+                    as
+                    confidential and will only be
+                    used
+                    for the purposes of assessing data protection risks and providing recommendations.
+                </p>
+            </div>
+            <h4 class="mt-4 font-bold">Let's begin!</h4>
+            <span class="text-center"><button @click="onBoardingText = !onBoardingText"
+                    class="px-6 py-4 mt-4 font-bold text-white bg-green-500 rounded-full shadow-lg shadow-green-500/50 hover:shadow-green-500/70">
+                    Start
+                </button>
+        </div>
         <div x-show="!onBoardingText">
             @if ($this->hasAnsweredQuestions())
                 @if ($showOrganizationForm)
@@ -291,7 +287,7 @@ new class extends Component {
                     </div>
                 @else
                     <!-- Progress Indicator -->
-                    <div class="mb-4">
+                    <div class="mb-4" x-show="!onBoardingText">
                         <div class="h-4 bg-gray-200 rounded-lg">
                             <div class="h-full bg-[#C8000B]/40 rounded-lg"
                                 style="width: {{ (($currentQuestionIndex + 1) / count($questions)) * 100 }}%"></div>
@@ -301,7 +297,7 @@ new class extends Component {
                             questions
                             answered</div>
                     </div>
-                    <div class="flex flex-col w-full md:flex-row md:space-x-4">
+                    <div class="flex flex-col w-full md:flex-row md:space-x-4" x-show="!onBoardingText">
 
                         @if (count($questions) > 0)
                             {{-- questions --}}
