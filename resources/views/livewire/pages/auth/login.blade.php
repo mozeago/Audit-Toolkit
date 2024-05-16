@@ -36,7 +36,7 @@ new #[Layout('layouts.guest')] class extends Component {
     <div class="flex justify-between rounded-xl">
         <!-- Black Bg -->
         <div class="relative flex items-center justify-center w-1/2 bg-black rounded-l-xl">
-            <img src="{{ asset('images/lamp-suspended.jpg') }}" alt="Your Image" class="block w-1/2 h-auto">
+            <img src="{{ asset('images/lamp-suspended.webp') }}" alt="Your Image" class="block w-1/2 h-auto">
             <div class="w-full">
                 <p class="mb-2 font-bold text-left text-white roboto-condensed-header-900">Welcome to Data Protection
                     Portal

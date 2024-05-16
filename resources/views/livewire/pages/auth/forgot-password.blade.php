@@ -37,7 +37,7 @@ new #[Layout('layouts.guest')] class extends Component {
     <div class="flex justify-between rounded-xl">
         <!-- Black Bg -->
         <div class="relative flex items-center justify-center w-1/2 bg-black rounded-l-xl">
-            <img src="{{ asset('images/lamp-suspended.jpg') }}" alt="lamp suspended" class="block w-1/2 h-auto">
+            <img src="{{ asset('images/lamp-suspended.webp') }}" alt="lamp suspended" class="block w-1/2 h-auto">
         </div>
         <!-- end black Bg -->
         <div class="w-1/2 p-4"><x-auth-session-status class="mb-4" :status="session('status')" />
