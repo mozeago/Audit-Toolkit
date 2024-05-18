@@ -94,39 +94,85 @@
         </div>
     </div>
     {{-- end partners --}}
-    <div class="flex flex-col justify-center px-8 py-8 mt-4 mb-16 border-gray-100 border-y-2">
+    {{-- start report --}}
+    <div class="flex flex-col px-8 mt-16 mb-8 border-b-2 border-gray-100">
+        {{-- <div class="flex items-center justify-center w-full p-4 ">
+            <h1 class="px-4 mb-8 text-xl font-bold text-center roboto-bold">
+                Skills Report
+            </h1>
+        </div> --}}
+        <div class="flex w-full p-4 mt-4 ">
+            <div class="flex flex-col flex-grow w-1/2 ">
+                <img src="{{ asset('images/IGNITE-2024-Sub-Sahara-Learning-_-Skills-Trends-Report.webp') }}"
+                    alt="Image" class="h-300 w-250">
+            </div>
+            <div class="flex flex-col flex-grow w-1/2 px-8 py-0">
+                <h2 class="mb-8 text-xl font-bold leading-snug roboto-bold">
+                    <span class="inline-block pb-1 text-[#8F1838]">2024 SUB-SAHARA
+                    </span>
+                    <span class="inline-block pb-1">CYBERSECURITY AND DATA PROTECTION
+                        SKILLS REPORT
+                </h2>
+                <p class="mt-2 roboto-regular-24">
+                    In the IGNITE 2024 Sub-Sahara Learning & Skills Trends Report, we delve into these three key areas
+                    for
+                    leaders to focus on so that they can embrace them as part of their current and future workplace
+                    strategy.
+                </p>
+                <div class="mt-4">
+                    <a href="{{ asset('report/IGNITE-Cohort-II-Program.pdf') }}" download>
+                        <button
+                            class="flex items-center justify-center px-2 py-1 text-white bg-black min-h-8 sm:min-h-12 hover:bg-[#C8000B] hover:shadow-2xl sm:px-4 sm:py-2">
+                            <span class="ml-1 font-bold uppercase roboto-regular sm:ml-2">read report</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+                            </svg>
+
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {{-- end report --}}
+    {{-- Start SDG focus --}}
+    <div class="flex flex-col justify-center px-8 py-8 mt-4 mb-16 border-b-2 border-gray-100">
         <h1 class="mb-8 text-xl font-bold roboto-bold text-start">
             Our <span class="inline-block border-b-2 border-[#8F1838] pb-1 text-[#8F1838]">SDG</span> Focus
         </h1>
         <div class="flex w-full gap-2 justify-items-stretch">
             <div class="flex items-center justify-center flex-1">
-                <a href="https://en.wikipedia.org/wiki/Sustainable_Development_Goal_4"
-                    class="flex items-center justify-center">
+                <a href="https://tinyurl.com/39975atx" class="flex items-center justify-center">
                     <img src="{{ asset('images/Sustainable_Development_Goal_04QualityEducation.webp') }}"
                         alt="Sustainable_Development_Goal_4_Quality_Education" class="rounded-md shadow-2xl">
                 </a>
             </div>
             <div class="flex items-center justify-center flex-1">
-                <a href="https://en.wikipedia.org/wiki/Sustainable_Development_Goal_5">
+                <a href="https://tinyurl.com/33x8dmst">
                     <img src="{{ asset('images/Sustainable_Development_Goal_05GenderEquality.webp') }}"
                         alt="Sustainable_Development_Goal_5_Gender_Equality" class="rounded-md shadow-2xl">
             </div>
             <div class="flex items-center justify-center flex-1">
-                <a href="https://en.wikipedia.org/wiki/Sustainable_Development_Goal_8">
+                <a href="https://tinyurl.com/ycy9s5kn">
                     <img src="{{ asset('images/Sustainable_Development_Goal_08DecentWork.webp') }}"
                         alt="Sustainable_Development_Goal_8_DecentWork" class="rounded-md shadow-2xl">
                 </a>
             </div>
         </div>
     </div>
+    {{-- end SDG focus --}}
+    {{-- start partnership --}}
     <div class="flex p-8">
         <div class="flex-col flex-grow w-1/2">
-            <h2 class="mb-8 text-xl font-bold roboto-bold">
-                <span class="inline-block pb-1 text-[#8F1838]">We want to Partner
+            <h2 class="mb-2 text-xl font-bold roboto-bold">
+                <span class="inline-block pb-1 text-[#8F1838] uppercase ">We want to Partner
                 </span>
             </h2>
             <h2 class="mb-8 text-xl font-bold roboto-bold">
-                <span class="inline-block pb-1 border-b-2 border-black">With You
+                <span class="inline-block pb-1 uppercase border-b-2 border-black">With You
             </h2>
             <p class="mt-2 roboto-regular">To drive forward
                 our mission within the IGNITE program, we
@@ -202,6 +248,7 @@
                 class="object-cover w-full h-full">
         </div>
     </div>
+    {{-- end partnership --}}
     <livewire:common.footer />
 </body>
 
