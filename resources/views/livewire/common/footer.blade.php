@@ -9,7 +9,7 @@
         <div class="col-span-5 ml-8 text-center">
             <h4 class="mb-2 font-bold text-white roboto-bold-16 text-start">
                 About Data Toolkit</h4>
-            <p class="text-left roboto-regular text-">The
+            <p class="text-left roboto-regular-16 text-">The
                 Data
                 Protection Toolkit 2024 offers a
                 cutting-edge solution for organizations
