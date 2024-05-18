@@ -7,9 +7,9 @@
             </a>
         </div>
         <div class="col-span-5 ml-8 text-center">
-            <h4 class="mb-2 font-bold text-white roboto-bold-16 text-start">
+            <h4 class="mb-2 font-extrabold text-white roboto-bold-16 text-start">
                 About Data Toolkit</h4>
-            <p class="text-left roboto-regular-16 text-">The
+            <p class="text-left roboto-regular-15">The
                 Data
                 Protection Toolkit 2024 offers a
                 cutting-edge solution for organizations
@@ -26,14 +26,14 @@
     </div>
     <div class="border-b border-gray-400"></div>
     <div class="flex justify-center w-full py-4">
-        <p class="text-white">Copyright © 2024
+        <p class="text-white roboto-regular-15">Copyright © 2024
             Scratch & Script</p>
         <div class="inline-flex ml-8">
             <p class="ml-8 mr-2 text-white"><a href="https://www.scratchandscript.com/terms_condition"
-                    class="no-underline hover:border-b-2 hover:border-white hover:text-[#C8000B]">Terms
+                    class="roboto-regular-15 no-underline hover:border-b-2 hover:border-white hover:text-[#C8000B]">Terms
                     & Conditions</a></p>
             <p class="ml-2 text-white"><a href="https://www.scratchandscript.com/privacy_policy"
-                    class="no-underline hover:border-b-2 hover:border-white hover:text-[#C8000B]">Privacy
+                    class="roboto-regular-15 no-underline hover:border-b-2 hover:border-white hover:text-[#C8000B]">Privacy
                     Policy</a></p>
         </div>
     </div>

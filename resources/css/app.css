@@ -32,6 +32,30 @@
     font-size: 18px;
 }
 
+.roboto-regular-14 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 14px;
+}
+
+.roboto-regular-15 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+}
+
+.fade-left {
+    -webkit-mask-image: linear-gradient(to right, transparent 0px, black 3px);
+    mask-image: linear-gradient(to right, transparent 0px, black 3px);
+}
+
+.fade-left-5 {
+    -webkit-mask-image: linear-gradient(to right, transparent 0px, black 5px);
+    mask-image: linear-gradient(to right, transparent 0px, black 5px);
+}
+
 .roboto-bold-6 {
     font-family: "Roboto", sans-serif;
     font-weight: 600;
