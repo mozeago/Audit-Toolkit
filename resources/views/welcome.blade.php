@@ -17,7 +17,7 @@
         <h1 class="p-8 text-4xl font-bold text-left text-white roboto-bold">
             Our Impact</h1>
     </div>
-    <div class="px-4 py-8 mb-8 text-black bg-gray-100">
+    <div class="px-6 mb-8 text-black bg-gray-100 py-9">
         <p class="text-black roboto-regular">The IGNITE
             Youth Training Program is a dynamic initiative
             designed to
@@ -42,7 +42,7 @@
             IGNITE
             <span class="inline-block border-b-2 border-[#C8000B] pb-4">Partners</span> Worldwide
         </h1>
-        <div class="flex flex-wrap items-center justify-center">
+        <div class="flex flex-wrap items-center justify-center pb-8">
             <div class="flex items-center justify-center">
                 <a class="zoom-image" href="https://engage.isaca.org/kenyachapter/home">
                     <img src="{{ asset('images/isacakenya.webp') }}" alt="Image 1" class="w-auto h-8 sm:mx-2 sm:h-12">
