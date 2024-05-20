@@ -17,7 +17,7 @@
         <h1 class="p-8 text-4xl font-bold text-left text-white roboto-bold">
             Our Impact</h1>
     </div>
-    <div class="px-4 py-8 mb-4 text-black bg-gray-100">
+    <div class="px-4 py-8 mb-8 text-black bg-gray-100">
         <p class="text-black roboto-regular">The IGNITE
             Youth Training Program is a dynamic initiative
             designed to
@@ -36,7 +36,7 @@
         </p>
     </div>
     {{-- start partners --}}
-    <div class="flex flex-col items-center justify-center w-full pt-2 pb-8 bg-white border-b-2 border-gray-100">
+    <div class="flex flex-col items-center justify-center w-full pt-4 pb-8 bg-white border-b-2 border-gray-100">
         <h1 class="mb-8 text-xl font-bold text-center roboto-bold">
             IGNITE
             <span class="inline-block border-b-2 border-[#C8000B] pb-4">Partners</span> Worldwide
