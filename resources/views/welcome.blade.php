@@ -18,7 +18,7 @@
             Our Impact</h1>
     </div>
     <div class="px-4 py-8 mb-4 text-black bg-gray-100">
-        <p class="text-black roboto-regular-24">The IGNITE
+        <p class="text-black roboto-regular">The IGNITE
             Youth Training Program is a dynamic initiative
             designed to
             train
@@ -96,11 +96,11 @@
     {{-- end partners --}}
     {{-- start report --}}
     <div class="flex flex-col px-8 mt-16 mb-8 border-b-2 border-gray-100">
-        {{-- <div class="flex items-center justify-center w-full p-4 ">
+        <div class="flex items-center justify-center w-full p-4 ">
             <h1 class="px-4 mb-8 text-xl font-bold text-center roboto-bold">
                 Skills Report
             </h1>
-        </div> --}}
+        </div>
         <div class="flex w-full pb-8">
             <div class="flex flex-col flex-grow w-1/2">
                 <img src="{{ asset('images/Annual-report-ignite.webp') }}" alt="Skills Report"
