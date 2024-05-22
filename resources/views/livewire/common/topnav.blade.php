@@ -8,10 +8,7 @@
                 </a>
             </div>
             <!-- Navigation Links -->
-            <div class="hidden space-x-4 md:flex">
-                {{-- <a href="#" class="text-gray-800 hover:text-gray-900">Home</a>
-                <a href="#" class="text-gray-800 hover:text-gray-900">About</a>
-                <a href="#" class="text-gray-800 hover:text-gray-900">Services</a> --}}
+            <div class="md:flex">
                 @guest
                     <button type="button"
                         class="hover:text-[#C8000B] px-4 py-1 border-2 rounded-md border-gray-500 text-black font-bold hover:border-[#C8000B]">
