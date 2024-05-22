@@ -13,7 +13,7 @@
 
 <body class="antialiased">
     <livewire:common.topnav />
-    <div class="bg-center bg-cover h-28" style="background-image: url({{ asset('images/people-impact.webp') }}););">
+    <div class="h-32 bg-center bg-cover" style="background-image: url({{ asset('images/people-impact.webp') }}););">
         <h1 class="p-8 text-4xl font-bold text-left text-white roboto-bold">
             Our Impact</h1>
     </div>
@@ -96,11 +96,15 @@
     </div>
     {{-- end partners --}}
     {{-- start report --}}
-    <div class="flex flex-col px-8 mt-16 mb-8 border-b-2 border-gray-100">
-        <div class="flex items-center justify-center w-full p-4 ">
-            <h1 class="px-4 mb-8 text-xl font-bold text-center roboto-bold">
-                Skills Report
-            </h1>
+    <div class="flex flex-col px-8 mt-8 mb-8 border-b-2 border-gray-100 shadow-sm">
+        <div class="container grid items-center justify-center grid-cols-12 p-4 mx-auto mb-4">
+            <div class="col-span-3 sm:col-span-4"></div>
+            <div class="col-span-1 border-2 border-black"></div>
+            <div class="col-span-6 text-xl font-bold text-center sm:col-span-2 roboto-bold">
+                <span>Skills Report</span>
+            </div>
+            <div class="col-span-1 border-2 border-black"></div>
+            <div class="col-span-3 sm:col-span-4"></div>
         </div>
         <div class="flex w-full pb-8">
             <div class="flex flex-col flex-grow w-1/2">
