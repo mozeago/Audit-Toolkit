@@ -37,10 +37,10 @@
     </div>
     {{-- start partners --}}
     <div
-        class="flex flex-col items-center justify-center w-full pt-8 pb-8 bg-white border-b-2 border-gray-100 min-h-52">
-        <h1 class="mb-8 text-xl font-bold text-center roboto-bold">
+        class="flex flex-col items-center justify-center w-full pt-8 pb-8 bg-white border-b-2 border-gray-100 sm:pt-2 sm:pb-2 min-h-52 sm:min-h-16">
+        <h1 class="mb-8 text-xl font-bold text-center sm:mb-1 roboto-bold">
             IGNITE
-            <span class="inline-block border-b-2 border-[#C8000B] pb-4">Partners</span> Worldwide
+            <span class="inline-block border-b-2 border-[#C8000B] pb-4 sm:pb-1">Partners</span> Worldwide
         </h1>
         <div class="flex flex-wrap items-center justify-center pb-8">
             <div class="flex items-center justify-center">

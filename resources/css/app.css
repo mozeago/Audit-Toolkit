@@ -46,14 +46,14 @@
     font-size: 15px;
 }
 
-.fade-left {
-    -webkit-mask-image: linear-gradient(to right, transparent 0px, black 3px);
-    mask-image: linear-gradient(to right, transparent 0px, black 3px);
-}
-
-.fade-left-5 {
-    -webkit-mask-image: linear-gradient(to right, transparent 0px, black 5px);
-    mask-image: linear-gradient(to right, transparent 0px, black 5px);
+@media (max-width: 768px) {
+    .roboto-bold {
+        font-family: "Roboto", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 24px;
+        line-height: 20px;
+    }
 }
 
 .roboto-bold-6 {
@@ -94,6 +94,16 @@
     font-style: normal;
     font-size: 24px;
     line-height: 36px;
+}
+
+.fade-left {
+    -webkit-mask-image: linear-gradient(to right, transparent 0px, black 3px);
+    mask-image: linear-gradient(to right, transparent 0px, black 3px);
+}
+
+.fade-left-5 {
+    -webkit-mask-image: linear-gradient(to right, transparent 0px, black 5px);
+    mask-image: linear-gradient(to right, transparent 0px, black 5px);
 }
 
 .gauge-container {
