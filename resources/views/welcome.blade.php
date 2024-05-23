@@ -42,12 +42,12 @@
     </div>
     {{-- start partners --}}
     <div
-        class="min-h-52 sm:min-h-16 flex w-full flex-col items-center justify-center border-b-2 border-gray-100 bg-white pb-8 pt-8 sm:pb-2 sm:pt-2">
+        class="min-h-52 flex w-full flex-col items-center justify-center border-b-2 border-gray-100 bg-white pb-8 pt-8">
         <h1
-            class="roboto-bold mb-8 text-center text-xl font-bold sm:mb-1">
+            class="roboto-bold mb-8 text-center text-xl font-bold">
             IGNITE
             <span
-                class="inline-block border-b-2 border-[#C8000B] pb-4 sm:pb-1">Partners</span>
+                class="inline-block border-b-2 border-[#C8000B] pb-4">Partners</span>
             Worldwide
         </h1>
         <div
@@ -55,7 +55,7 @@
             <div class="flex items-center justify-center">
                 <a class="zoom-image"
                     href="https://engage.isaca.org/kenyachapter/home">
-                    <img src="{{ asset('images/isacakenya.webp') }}"
+                    <img src="http://137.184.46.59/images/isacakenya.webp"
                         alt="Image 1"
                         class="h-8 w-auto sm:mx-2 sm:h-12">
                 </a>
@@ -63,7 +63,7 @@
             <div class="flex items-center justify-center">
                 <a class="zoom-image"
                     href="https://engage.isaca.org/southafricachapter/home">
-                    <img src="{{ asset('images/ISACA_South_Africa.webp') }}"
+                    <img src="http://137.184.46.59/images/ISACA_South_Africa.webp"
                         alt="Image 1"
                         class="h-8 w-auto sm:mx-2 sm:h-12">
                 </a>
@@ -71,7 +71,7 @@
             <div class="flex items-center justify-center">
                 <a class="zoom-image"
                     href="https://engage.isaca.org/kampalachapter/home">
-                    <img src="{{ asset('images/kampala.webp') }}"
+                    <img src="http://137.184.46.59/images/kampala.webp"
                         alt="Image 1"
                         class="h-8 w-auto sm:mx-2 sm:h-12">
                 </a>
@@ -79,7 +79,7 @@
             <div class="flex items-center justify-center">
                 <a class="zoom-image"
                     href="https://twitter.com/DataGovProsKe?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
-                    <img src="{{ asset('images/kenya data privacy.webp') }}"
+                    <img src="http://137.184.46.59/images/kenya data privacy.webp"
                         alt="kenya data privacy"
                         class="h-8 w-auto sm:mx-2 sm:h-12">
                 </a>
@@ -87,7 +87,7 @@
             <div class="flex items-center justify-center">
                 <a class="zoom-image"
                     href="https://engage.isaca.org/rwandachapter/home">
-                    <img src="{{ asset('images/rwanda.webp') }}"
+                    <img src="http://137.184.46.59/images/rwanda.webp"
                         alt="Image 1"
                         class="h-8 w-auto sm:mx-2 sm:h-12">
                 </a>
@@ -95,7 +95,7 @@
             <div class="flex items-center justify-center">
                 <a class="zoom-image"
                     href="https://www.scratchandscript.com/">
-                    <img src="{{ asset('images/scratchandscript_logo_red.webp') }}"
+                    <img src="http://137.184.46.59/images/scratchandscript_logo_red.webp"
                         alt="Image 1"
                         class="h-8 w-auto sm:mx-2 sm:h-12">
                 </a>
