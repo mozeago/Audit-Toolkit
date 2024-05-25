@@ -82,7 +82,7 @@
                         class="w-auto h-8 sm:mx-2 sm:h-12">
                 </a>
             </div>
-            <div class="flex items-center justify-center w-full sm:w-1/2 lg:w-auto lg:flex-grow">
+            <div class="flex items-center justify-center w-full sm:w-full sm:mt-2 lg:w-auto lg:flex-grow">
                 <a href="https://www.scratchandscript.com/user_contact">
                     <button
                         class="min-h-8 sm:min-h-12 flex items-center justify-center rounded bg-[#C8000B] px-2 py-1 text-white hover:bg-black hover:shadow-2xl sm:px-4 sm:py-2">
