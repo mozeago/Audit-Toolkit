@@ -13,7 +13,7 @@
 
 <body class="antialiased">
     <livewire:common.topnav />
-    <div class="bg-center bg-cover sm:max-h-10 md:max-h-32"
+    <div class="bg-center bg-cover sm:max-h-16 md:max-h-32"
         style="background-image: url({{ asset('images/people-impact.webp') }}););">
         <h1 class="p-8 text-4xl font-bold text-left text-white roboto-bold">
             Our Impact</h1>
@@ -38,7 +38,7 @@
     </div>
     {{-- start partners --}}
     <div
-        class="flex flex-col items-center justify-center w-full pt-8 pb-8 bg-white border-b-2 border-gray-100 min-h-52">
+        class="flex flex-col items-center justify-center w-full pt-8 pb-8 bg-white border-b-2 border-gray-100 sm:pt-2 min-h-52">
         <h1 class="mb-8 text-xl font-bold text-center roboto-bold">
             IGNITE
             <span class="inline-block border-b-2 border-[#C8000B] pb-4">Partners</span>
