@@ -5,4 +5,5 @@
         </br>
         <livewire:recommendations.list />
     </div>
+    <livewire:common.footer />
 </x-app-layout>

@@ -12,4 +12,5 @@
         class="mx-auto overflow-hidden bg-gray-100 shadow-sm sm:rounded-lg">
         <livewire:dashboard.userchart />
     </div>
+    <livewire:common.footer />
 </x-app-layout>

@@ -5,4 +5,5 @@
         <br />
         <livewire:sections.list />
     </div>
+    <livewire:common.footer />
 </x-app-layout>

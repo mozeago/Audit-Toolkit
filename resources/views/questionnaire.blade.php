@@ -10,4 +10,5 @@
     height: 100vh;">
         <livewire:questionnaire.list />
     </div>
+    <livewire:common.footer />
 </x-app-layout>

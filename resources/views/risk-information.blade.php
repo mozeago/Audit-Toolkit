@@ -4,4 +4,5 @@
         <br />
         <livewire:riskanalysis.information.list />
     </div>
+    <livewire:common.footer />
 </x-app-layout>
