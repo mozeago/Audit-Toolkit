@@ -11,7 +11,7 @@ new class extends Component {
     {
         return [
             'name' => 'required|string|max:255',
-            'email' => 'required|string',
+            'email' => 'email|string|nullable',
             'role' => 'required|string',
         ];
     }

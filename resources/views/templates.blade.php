@@ -12,4 +12,5 @@
         </br>
         <livewire:templatesupload.templatesupload />
     </div>
+    <livewire:common.footer />
 </x-app-layout>

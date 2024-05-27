@@ -12,4 +12,5 @@
         </br>
         <livewire:templatesdownload.templatesdownload />
     </div>
+    <livewire:common.footer />
 </x-app-layout>
