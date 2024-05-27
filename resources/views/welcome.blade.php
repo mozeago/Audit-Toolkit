@@ -45,47 +45,47 @@
             Worldwide
         </h1>
         <div class="flex flex-wrap items-center justify-center pb-8">
-            <div class="flex items-center justify-center w-full sm:w-1/2 lg:w-auto lg:flex-grow">
+            <div class="flex items-center justify-center w-full sm:mb-2 sm:w-1/2 lg:w-auto lg:flex-grow">
                 <a class="zoom-image" href="https://engage.isaca.org/kenyachapter/home">
                     <img src="http://137.184.46.59/images/isacakenya.webp" alt="Image 1"
-                        class="w-auto h-8 sm:mx-2 sm:h-12">
+                        class="w-auto h-8 sm:w-full sm:mx-2 sm:h-12">
                 </a>
             </div>
-            <div class="flex items-center justify-center w-full sm:w-1/2 lg:w-auto lg:flex-grow">
+            <div class="flex items-center justify-center w-full sm:mb-2 sm:w-1/2 lg:w-auto lg:flex-grow">
                 <a class="zoom-image" href="https://engage.isaca.org/southafricachapter/home">
                     <img src="http://137.184.46.59/images/ISACA_South_Africa.webp" alt="Image 1"
-                        class="w-auto h-8 sm:mx-2 sm:h-12">
+                        class="w-auto h-8 sm:w-full sm:mx-2 sm:h-12">
                 </a>
             </div>
-            <div class="flex items-center justify-center w-full sm:w-1/2 lg:w-auto lg:flex-grow">
+            <div class="flex items-center justify-center w-full sm:mb-2 sm:w-1/2 lg:w-auto lg:flex-grow">
                 <a class="zoom-image" href="https://engage.isaca.org/kampalachapter/home">
                     <img src="http://137.184.46.59/images/kampala.webp" alt="Image 1"
-                        class="w-auto h-8 sm:mx-2 sm:h-12">
+                        class="w-auto h-8 sm:w-full sm:mx-2 sm:h-12">
                 </a>
             </div>
-            <div class="flex items-center justify-center w-full sm:w-1/2 lg:w-auto lg:flex-grow">
+            <div class="flex items-center justify-center w-full sm:mb-2 sm:w-1/2 lg:w-auto lg:flex-grow">
                 <a class="zoom-image"
                     href="https://twitter.com/DataGovProsKe?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
                     <img src="http://137.184.46.59/images/kenya data privacy.webp" alt="kenya data privacy"
                         class="w-auto h-8 sm:mx-2 sm:h-12">
                 </a>
             </div>
-            <div class="flex items-center justify-center w-full sm:w-1/2 lg:w-auto lg:flex-grow">
+            <div class="flex items-center justify-center w-full sm:mb-2 sm:w-1/3 lg:w-auto lg:flex-grow">
                 <a class="zoom-image" href="https://engage.isaca.org/rwandachapter/home">
                     <img src="http://137.184.46.59/images/rwanda.webp" alt="Image 1"
-                        class="w-auto h-8 sm:mx-2 sm:h-12">
+                        class="w-auto h-8 sm:mx-2 sm:h-12 sm:w-full">
                 </a>
             </div>
-            <div class="flex items-center justify-center w-full sm:w-1/2 lg:w-auto lg:flex-grow">
+            <div class="flex items-center justify-center w-full sm:w-2/3 lg:w-auto lg:flex-grow">
                 <a class="zoom-image" href="https://www.scratchandscript.com/">
                     <img src="http://137.184.46.59/images/scratchandscript_logo_red.webp" alt="Image 1"
                         class="w-auto h-8 sm:mx-2 sm:h-12">
                 </a>
             </div>
-            <div class="flex items-center justify-center w-full sm:w-full sm:mt-2 lg:w-auto lg:flex-grow">
-                <a href="https://www.scratchandscript.com/user_contact">
+            <div class="flex items-center justify-center w-full sm:w-full sm:mt-2 lg:w-auto lg:flex-grow sm:p-4">
+                <a href="https://www.scratchandscript.com/user_contact" class="w-full">
                     <button
-                        class="min-h-8 sm:min-h-12 flex items-center justify-center rounded bg-[#C8000B] px-2 py-1 text-white hover:bg-black hover:shadow-2xl sm:px-4 sm:py-2">
+                        class="sm:w-full min-h-8 sm:min-h-12 flex items-center justify-center rounded bg-[#C8000B] px-2 py-1 text-white hover:bg-black hover:shadow-2xl sm:px-4 sm:py-2">
                         <svg class="w-10 h-4 sm:h-6 sm:w-16" fill="none" stroke="currentColor" viewBox="0 0 52 52"
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
@@ -102,21 +102,21 @@
     {{-- end partners --}}
     {{-- start report --}}
     <div class="flex flex-col px-8 mt-8 mb-8 border-b-2 border-gray-100 shadow-sm">
-        <div class="container grid items-center justify-center grid-cols-12 p-4 mx-auto mb-4">
-            <div class="col-span-3 sm:col-span-4"></div>
-            <div class="col-span-1 border-2 border-black">
-            </div>
+        <div class="container grid items-center justify-center grid-cols-12 p-4 mx-auto mb-4 sm:w-full">
+            <div class="col-span-3 sm:col-span-4 md:block lg:block"></div>
+            <span class="col-span-1 border-2 border-black">
+            </span>
             <div class="col-span-6 text-xl font-bold text-center roboto-bold sm:col-span-2">
                 <span>Skills Report</span>
             </div>
-            <div class="col-span-1 border-2 border-black">
-            </div>
-            <div class="col-span-3 sm:col-span-4"></div>
+            <span class="col-span-1 border-2 border-black">
+            </span>
+            <div class="col-span-3 sm:col-span-4 md:block lg:block"></div>
         </div>
         <div class="flex w-full pb-8">
-            <div class="flex flex-col flex-grow w-1/2">
+            <div class="flex flex-col flex-grow w-full sm:w-1/2">
                 <img src="{{ asset('images/Annual-report-ignite.webp') }}" alt="Skills Report"
-                    class="fade-left-5 rounded-bl-xl rounded-tl-xl">
+                    class="w-full fade-left-5 rounded-bl-xl rounded-tl-xl">
             </div>
             <div class="flex flex-col flex-grow w-1/2 py-0 pl-8">
                 <h2 class="mb-8 text-xl font-bold leading-snug roboto-bold">
@@ -154,7 +154,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     {{-- end report --}}
     {{-- Start SDG focus --}}
