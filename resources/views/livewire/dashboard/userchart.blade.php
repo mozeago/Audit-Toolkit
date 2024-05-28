@@ -151,7 +151,7 @@ new class extends Component {
             <div class="flex gap-2">
                 {{-- start processor controller --}}
                 <div
-                    class="flex w-1/3 h-32 bg-white border-l-4 border-orange-500 rounded-md shadow-2xl hover:bg-slate-200 drop-shadow-md">
+                    class="flex w-1/3 bg-white border-l-4 border-orange-500 rounded-md shadow-2xl min-h-36 hover:bg-slate-200 drop-shadow-md">
 
                     <div class="flex items-center w-2/3">
                         <div class="flex flex-col items-start p-2">
@@ -188,7 +188,7 @@ new class extends Component {
                 {{-- end processort controller --}}
                 {{-- start personal data --}}
                 <div
-                    class="flex w-1/3 h-32 bg-white border-l-4 rounded-md shadow-2xl hover:bg-slate-200 border-cyan-500 drop-shadow-md">
+                    class="flex w-1/3 bg-white border-l-4 rounded-md shadow-2xl min-h-36 hover:bg-slate-200 border-cyan-500 drop-shadow-md">
 
                     <div class="flex items-center w-2/3">
                         <div class="flex flex-col items-start p-2">
@@ -225,7 +225,7 @@ new class extends Component {
                 </div>
                 {{-- end personal data --}}
                 <div
-                    class="flex w-1/3 h-32 bg-white border-l-4 border-red-500 rounded-md shadow-2xl hover:bg-slate-200 drop-shadow-md">
+                    class="flex w-1/3 bg-white border-l-4 border-red-500 rounded-md shadow-2xl min-h-36 hover:bg-slate-200 drop-shadow-md">
 
                     <div class="flex items-center w-2/3">
                         <div class="flex flex-col items-start p-2">
@@ -309,7 +309,7 @@ new class extends Component {
                     <div class="flex flex-grow flex-shrink-0 gap-2">
                         {{-- start comercial --}}
                         <div
-                            class="flex w-1/2 h-32 bg-white border-l-4 rounded-md shadow-2xl hover:bg-slate-200 border-cyan-500 drop-shadow-md">
+                            class="flex w-1/2 bg-white border-l-4 rounded-md shadow-2xl min-h-36 hover:bg-slate-200 border-cyan-500 drop-shadow-md">
 
                             <div class="flex items-center w-2/3">
                                 <div class="flex flex-col items-start p-2">
@@ -342,7 +342,7 @@ new class extends Component {
                         </div>
                         {{-- start business operations --}}
                         <div
-                            class="flex w-1/2 h-32 bg-white border-l-4 border-green-500 rounded-md shadow-2xl hover:bg-slate-200 drop-shadow-md">
+                            class="flex w-1/2 bg-white border-l-4 border-green-500 rounded-md shadow-2xl min-h-36 hover:bg-slate-200 drop-shadow-md">
 
                             <div class="flex items-center w-2/3">
                                 <div class="flex flex-col items-start p-2">
