@@ -68,7 +68,8 @@ new class extends Component {
                     @enderror
                 </div>
                 <div class="flex flex-col w-full mt-4">
-                    <label for="questionTitle" class="mb-2 text-sm font-semibold">{{ __('Question Subtitle') }}:</label>
+                    <label for="questionTitle"
+                        class="mb-2 text-sm font-semibold">{{ __('Question Subtitle/Subcategory') }}:</label>
                     <textarea placeholder="{{ __('Question Subtitle') }}" wire:model="questionTitle" id="questionTitle" type="text"
                         class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-[#C8000B]"></textarea>
                     @error('questionTitle')

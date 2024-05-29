@@ -14,7 +14,7 @@ new class extends Component {
     public function rules(): array
     {
         return [
-            'text' => 'required|string|max:255',
+            'text' => 'required|string',
             'riskSectionId' => 'required|max:36',
             'questionTitle' => 'required|string',
         ];
@@ -59,9 +59,9 @@ new class extends Component {
         <form wire:submit.prevent="update">
             <div class="flex flex-col space-y-4">
                 <div class="flex border border-gray-300 rounded-md shadow-sm">
-                    <input wire:model="text" type="text"
+                    <textarea wire:model="text" type="text"
                         class="flex-grow p-3 border-r border-gray-300 focus:outline-none focus:ring focus:ring-green-500 focus:ring-opacity-50 rounded-l-md"
-                        placeholder="Risk Sub-Section Text" value="{{ $riskSubSection->text }}">
+                        placeholder="Risk Sub-Section Text" value="{{ $riskSubSection->text }}"></textarea>
                     @error('text')
                         <div class="text-red-500 invalid-feedback error-class">{{ $message }}</div>
                     @enderror
