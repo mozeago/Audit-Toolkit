@@ -21,7 +21,6 @@ new class extends Component {
     public function mount()
     {
         $this->currentQuestionIndex = auth()->user()->risk_analysis_last_question_index ?? 0;
-        $this->answeredQuestionsCount = RiskAnalysisResponse::where('user_id', auth()->id())->count();
         if ($this->answeredQuestionsCount <= 0) {
             $this->answeredQuestionsCount = UserResponse::where('user_id', auth()->id())->count();
         }
@@ -32,7 +31,7 @@ new class extends Component {
     public function hasAnsweredQuestions()
     {
         if ($this->totalQuestionsCount > 0) {
-            if ($this->answeredQuestionsCount >= 0 && $this->answeredQuestionsCount !== $this->totalQuestionsCount) {
+            if ($this->answeredQuestionsCount >= 0) {
                 $companyDetails = null;
                 if ($this->answeredQuestionsCount > 0) {
                     $companyDetails = RiskAnalysisResponse::where('user_id', auth()->id())->first();
@@ -205,12 +204,12 @@ new class extends Component {
                     Start
                 </button>
         </div>
-        <div x-show="!onBoardingText">
+        {{-- <div x-show="!onBoardingText">
             @if ($this->hasAnsweredQuestions())
                 @if ($showOrganizationForm)
                 @endif
             @endif
-        </div>
+        </div> --}}
         @if ($this->hasAnsweredQuestions())
             <div class ="container px-4 py-2 mx-auto">
                 @if ($showOrganizationForm)

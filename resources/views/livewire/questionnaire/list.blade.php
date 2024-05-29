@@ -31,7 +31,7 @@ new class extends Component {
     public function hasAnsweredQuestions()
     {
         if ($this->totalQuestionsCount > 0) {
-            if ($this->answeredQuestionsCount >= 0 && $this->answeredQuestionsCount !== $this->totalQuestionsCount) {
+            if ($this->answeredQuestionsCount >= 0) {
                 $companyDetails = null;
                 if ($this->answeredQuestionsCount > 0) {
                     $companyDetails = RiskAnalysisResponse::where('user_id', auth()->id())->first();

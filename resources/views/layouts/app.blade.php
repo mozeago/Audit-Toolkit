@@ -206,7 +206,7 @@
                             <button @click="isOpen = !isOpen"
                                 class="ml-4 mr-4 flex justify-between items-center w-full pl-1 pr-8 py-2 hover:text-[#C8000B] focus:outline-none">
 
-                                <div class="flex items-center flex-grow"> <!-- Added flex-grow to make it expand -->
+                                <div class="flex items-center flex-grow">
                                     <svg class="w-6 h-6 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                         width="24" height="24" fill="none" viewBox="0 0 24 24">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
