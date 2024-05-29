@@ -100,29 +100,24 @@ new class extends Component {
 
     private function saveUserResponse($userAnswer)
     {
-        // Check if a response already exists for the current question
-        $existingResponse = RiskAnalysisResponse::where('user_id', $userAnswer['user_id'])
-            ->where('risk_sub_section_id', $userAnswer['risk_sub_section_id'])
-            ->first();
+        $attemptNumber =
+            RiskAnalysisResponse::where('user_id', $userAnswer['user_id'])
+                ->where('risk_sub_section_id', $userAnswer['risk_sub_section_id'])
+                ->max('attempt_number') + 1;
 
-        if ($existingResponse) {
-            // Update the existing response
-            $existingResponse->answer = $userAnswer['answer'];
-            $existingResponse->save();
-        } else {
-            // Create a new response
-            $userResponse = new RiskAnalysisResponse();
-            $userResponse->user_id = $userAnswer['user_id'];
-            $userResponse->risk_sub_section_id = $userAnswer['risk_sub_section_id'];
-            $userResponse->answer = $userAnswer['answer'];
-            $userResponse->organization = $userAnswer['organization'];
-            $userResponse->department = $userAnswer['department'];
-            $userResponse->save();
-            $user = User::find($userAnswer['user_id']);
-            if ($user) {
-                $user->risk_analysis_last_question_index = $this->currentQuestionIndex + 1;
-                $user->save();
-            }
+        $userResponse = new RiskAnalysisResponse();
+        $userResponse->user_id = $userAnswer['user_id'];
+        $userResponse->risk_sub_section_id = $userAnswer['risk_sub_section_id'];
+        $userResponse->answer = $userAnswer['answer'];
+        $userResponse->organization = $userAnswer['organization'];
+        $userResponse->department = $userAnswer['department'];
+        $userResponse->attempt_number = $attemptNumber;
+        $userResponse->save();
+
+        $user = User::find($userAnswer['user_id']);
+        if ($user) {
+            $user->risk_analysis_last_question_index = $this->currentQuestionIndex + 1;
+            $user->save();
         }
     }
 

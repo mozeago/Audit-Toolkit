@@ -16,6 +16,7 @@ return new class extends Migration
             $table->enum('answer', ['true', 'false']);
             $table->text('organization');
             $table->text('department');
+            $table->text('attempt_number');
             $table->foreignUuid('user_id')->constrained();
             $table->foreignUuid('risk_sub_section_id')->constrained();
             $table->timestamps();
