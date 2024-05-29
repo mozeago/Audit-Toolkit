@@ -100,29 +100,24 @@ new class extends Component {
 
     private function saveUserResponse($userAnswer)
     {
-        // Check if a response already exists for the current question
-        $existingResponse = UserResponse::where('user_id', $userAnswer['user_id'])
-            ->where('question_id', $userAnswer['question_id'])
-            ->first();
+        $attemptNumber =
+            UserResponse::where('user_id', $userAnswer['user_id'])
+                ->where('question_id', $userAnswer['question_id'])
+                ->max('attempt_number') + 1;
 
-        if ($existingResponse) {
-            // Update the existing response
-            $existingResponse->answer = $userAnswer['answer'];
-            $existingResponse->save();
-        } else {
-            // Create a new response
-            $userResponse = new UserResponse();
-            $userResponse->user_id = $userAnswer['user_id'];
-            $userResponse->question_id = $userAnswer['question_id'];
-            $userResponse->answer = $userAnswer['answer'];
-            $userResponse->organization = $userAnswer['organization'];
-            $userResponse->department = $userAnswer['department'];
-            $userResponse->save();
-            $user = User::find($userAnswer['user_id']);
-            if ($user) {
-                $user->audit_last_question_index = $this->currentQuestionIndex + 1;
-                $user->save();
-            }
+        $userResponse = new UserResponse();
+        $userResponse->user_id = $userAnswer['user_id'];
+        $userResponse->question_id = $userAnswer['question_id'];
+        $userResponse->answer = $userAnswer['answer'];
+        $userResponse->organization = $userAnswer['organization'];
+        $userResponse->department = $userAnswer['department'];
+        $userResponse->attempt_number = $attemptNumber;
+        $userResponse->save();
+
+        $user = User::find($userAnswer['user_id']);
+        if ($user) {
+            $user->audit_last_question_index = $this->currentQuestionIndex + 1;
+            $user->save();
         }
     }
 

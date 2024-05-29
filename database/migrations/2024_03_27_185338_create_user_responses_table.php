@@ -16,6 +16,7 @@ return new class extends Migration
             $table->enum('answer', ['true', 'false', 'partial']);
             $table->text('organization');
             $table->text('department');
+            $table->text('attempt_number');
             $table->foreignUuid('user_id')->constrained();
             $table->foreignUuid('question_id')->constrained();
             $table->timestamps();
