@@ -4,6 +4,7 @@ use App\Models\UserResponse;
 use App\Models\PrivacyCasesModel;
 use App\Models\User;
 use App\Models\RiskAnalysisResponse;
+
 new class extends Component {
     public $averageScore;
     public $userId;
@@ -18,22 +19,17 @@ new class extends Component {
 
     public function mount()
     {
+        $this->userId = auth()->user()->id;
         $this->privacyCases = $this->getPrivacyViolationCases();
         $this->calculateAverageScore();
-        $this->userId = auth()->user()->id;
         $this->auditScore = $this->calculateAuditPercentage(UserResponse::class, $this->userId) ?? 0;
-        $automatedDecisionProfiling = $this->calculateProcessingActivityTypePercentage('Automated Decision and Profiling');
-        $largeScaleProcessing = $this->calculateProcessingActivityTypePercentage('Large Scale Processing');
-        $systematicMonitoring = $this->calculateProcessingActivityTypePercentage('Systematic monitoring');
-        $sensitiveDataProcessing = $this->calculateProcessingActivityTypePercentage('Sensitive data processing');
-        $businessInnovationTechnology = $this->calculateProcessingActivityTypePercentage('Business innovation, expansion, and use of technology');
-        $this->processorController = round(($automatedDecisionProfiling + $largeScaleProcessing + $systematicMonitoring + $sensitiveDataProcessing + $businessInnovationTechnology) / 5);
-        $pinPasswordSecretKeys = $this->calculateProcessingActivityTypePercentage('PIN/Password/Secret keys');
-        $incomeRemuneration = $this->calculateProcessingActivityTypePercentage('Income, remuneration, and net worth');
-        $cardData = $this->calculateProcessingActivityTypePercentage('Card Data');
-        $healthData = $this->calculateProcessingActivityTypePercentage('Health Data');
-        $dataRelatingToVulnerableGroup = $this->calculateProcessingActivityTypePercentage('Data relating to the vulnerable group');
-        $this->personalDataProcessedByOrganisation = round(($pinPasswordSecretKeys + $incomeRemuneration + $cardData + $healthData + $dataRelatingToVulnerableGroup) / 5);
+
+        $processingCategories = $this->getRiskSectionNames();
+        $this->processorController = $this->calculateAverageProcessingPercentage($processingCategories);
+
+        $personalDataCategories = ['PIN/Password/Secret keys', 'Income, remuneration, and net worth', 'Card Data', 'Health Data', 'Data relating to the vulnerable group'];
+        $this->personalDataProcessedByOrganisation = $this->calculateAverageProcessingPercentage($personalDataCategories);
+
         $this->sensitivePersonalData = $this->calculateProcessingActivityTypePercentage('Processing of sensitive personal data');
         $this->commercialUseOfData = $this->calculateProcessingActivityTypePercentage('Commercial use of data');
         $this->businessOperation = $this->calculateProcessingActivityTypePercentage('Business Operation');
@@ -41,93 +37,86 @@ new class extends Component {
 
     public function calculateAuditPercentage($modelClass, $userId)
     {
-        $data = $modelClass::select(DB::raw('count(*) as total_count'), DB::raw('SUM(CASE WHEN answer = \'true\' THEN 1 WHEN answer = \'partial\' THEN 0.5 ELSE 0 END) as weighted_score'))->where('user_id', $userId)->first();
+        $data = $modelClass::select(DB::raw('count(*) as total_count'), DB::raw("SUM(CASE WHEN answer = 'true' THEN 1 WHEN answer = 'partial' THEN 0.5 ELSE 0 END) as weighted_score"))->where('user_id', $userId)->first();
 
-        if (!$data) {
+        if (!$data || $data->total_count == 0) {
             return 0;
         }
-        $totalCount = $data->total_count ?? 0;
-        $weightedScore = $data->weighted_score ?? 0;
 
-        if ($totalCount === 0) {
-            $percentage = 0;
-        } else {
-            $percentage = round(($weightedScore / $totalCount) * 100) ?? 0;
-        }
-
-        return $percentage;
+        return round(($data->weighted_score / $data->total_count) * 100);
     }
+
     public function calculateProcessingActivityTypePercentage(string $riskProfileCategory)
     {
-        $user = auth()->user()->id;
+        $userId = $this->userId;
         $data = DB::table('risk_analysis_responses AS rar')
             ->select(DB::raw('count(*) as total_count'), DB::raw('sum(answer = true) as true_count'))
             ->join('risk_sub_sections AS rss', 'rar.risk_sub_section_id', '=', 'rss.id')
-            ->where(strtolower(trim('rss.subtitle')), '=', strtolower(trim($riskProfileCategory)))
+            ->where(DB::raw('LOWER(TRIM(rss.subtitle))'), '=', strtolower(trim($riskProfileCategory)))
             ->where('rar.answer', true)
-            ->where('rar.user_id', $user)
+            ->where('rar.user_id', $userId)
             ->first();
-        if (!$data) {
+
+        if (!$data || $data->total_count == 0) {
             return 0;
         }
-        $totalCount = $data->total_count ?? 0;
-        $trueCount = $data->true_count ?? 0;
-        if ($totalCount === 0) {
-            $percentage = 0;
-        } else {
-            $percentage = round(($trueCount / $totalCount) * 100) ?? 0;
-        }
-        return $percentage;
+
+        return round(($data->true_count / $data->total_count) * 100);
     }
+
+    public function calculateAverageProcessingPercentage(array $categories)
+    {
+        $totalPercentage = array_sum(array_map([$this, 'calculateProcessingActivityTypePercentage'], $categories));
+        return round($totalPercentage / count($categories));
+    }
+
     public function calculateAverageScore()
     {
-        $userId = Auth::id();
+        $userId = $this->userId;
 
         $userResponses = UserResponse::where('user_id', $userId)->get();
         $riskAnalysisResponses = RiskAnalysisResponse::where('user_id', $userId)->get();
 
         $totalResponses = $userResponses->count() + $riskAnalysisResponses->count();
-        $totalScore = 0;
-
-        // Loop through user responses
-        foreach ($userResponses as $response) {
-            if ($response->answer === 'true') {
-                $totalScore += 1.0;
-            } elseif ($response->answer === 'false') {
-                $totalScore += 0.0;
-            } else {
-                $totalScore += 0.5;
-            }
-        }
-
-        // Loop through risk analysis responses
-        foreach ($riskAnalysisResponses as $response) {
-            if ($response->answer === 'true') {
-                $totalScore += 1.0;
-            } elseif ($response->answer === 'false') {
-                $totalScore += 0.0;
-            } else {
-                $totalScore += 0.5;
-            }
-        }
-
-        // Calculate the average score if total responses is not zero
-        if ($totalResponses > 0) {
-            $this->averageScore = round(($totalScore / $totalResponses) * 100);
-        } else {
+        if ($totalResponses == 0) {
             $this->averageScore = 0;
+            return $this->averageScore;
         }
+
+        $totalScore = $this->calculateTotalScore($userResponses) + $this->calculateTotalScore($riskAnalysisResponses);
+        $this->averageScore = round(($totalScore / $totalResponses) * 100);
 
         return $this->averageScore;
     }
+
+    private function calculateTotalScore($responses)
+    {
+        $totalScore = 0;
+        foreach ($responses as $response) {
+            if ($response->answer === 'true') {
+                $totalScore += 1.0;
+            } elseif ($response->answer === 'partial') {
+                $totalScore += 0.5;
+            }
+        }
+        return $totalScore;
+    }
+
     public function getPrivacyViolationCases()
     {
         return PrivacyCasesModel::orderBy('created_at', 'desc')->get();
     }
+    public function getRiskSectionNames()
+    {
+        return DB::table('risk_sections')->pluck('name')->toArray();
+    }
+
     public function emailCopy()
     {
+        // Implement email copy functionality if needed
     }
-}; ?>
+};
+?>
 <div class="px-8 py-4">
     <div class="flex justify-between">
         <div>
