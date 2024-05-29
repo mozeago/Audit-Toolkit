@@ -202,7 +202,7 @@
                             </x-nav-link>
                         </li> --}}
 
-                        <li class="py-5 border-b border-gray-400">
+                        {{-- <li class="py-5 border-b border-gray-400">
                             <button @click="isOpen = !isOpen"
                                 class="ml-4 mr-4 flex justify-between items-center w-full pl-1 pr-8 py-2 hover:text-[#C8000B] focus:outline-none">
 
@@ -263,7 +263,7 @@
                                 </ul>
 
                             </div>
-                        </li>
+                        </li> --}}
                         <li class="py-5 border-b border-gray-400">
                             <x-nav-link
                                 class="no-border-bottom  ml-4 mr-4 block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
@@ -317,14 +317,6 @@
                                         <x-nav-link
                                             class="no-border-bottom block w-full py-2 text-black hover:hover:text-[#C8000B]"
                                             :href="route('risk-analysis-subsection')" :active="request()->routeIs('risk-analysis-subsection')" wire:navigate>
-                                            <span
-                                                class="text-xl roboto-medium hover:hover:text-[#C8000B] ml-8">{{ __('Question Sub-Section') }}</span>
-                                        </x-nav-link>
-                                    </li>
-                                    <li class="w-full">
-                                        <x-nav-link
-                                            class="no-border-bottom block w-full py-2 text-black hover:hover:text-[#C8000B]"
-                                            :href="route('risk-analysis-recommendation')" :active="request()->routeIs('risk-analysis-recommendation')" wire:navigate>
                                             <span
                                                 class="text-xl roboto-medium hover:hover:text-[#C8000B] ml-8">{{ __('Question Text') }}</span>
                                         </x-nav-link>

@@ -52,7 +52,7 @@ new class extends Component {
                 <tbody class="divide-y divide-gray-200">
                     @foreach ($contributors as $contributor)
                         <tr class="text-center transition-colors duration-300 hover:bg-gray-100">
-                            <td class="px-6 py-4 whitespace-nowrap">
+                            <td class="px-6 py-4 text-left whitespace-nowrap">
                                 {{ $contributor->name }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
