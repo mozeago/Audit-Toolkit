@@ -41,18 +41,23 @@ new class extends Component {
 
     public function calculateAuditPercentage($modelClass, $userId)
     {
-        $data = $modelClass::select(DB::raw('count(*) as total_count'), DB::raw('SUM(CASE WHEN answer = \'true\' THEN 1 WHEN answer = \'partial\' THEN 0.5 ELSE 0 END) as weighted_score'))->where('user_id', $userId)->first();
+        // Subquery to get the maximum attempt number for the given user
+        $subQuery = $modelClass::select(DB::raw('MAX(attempt_number) AS max_attempt'))->where('user_id', $userId)->groupBy('user_id')->limit(1);
+
+        // Main query to get the total count and weighted score for the highest attempt number
+        $data = $modelClass::select(DB::raw('count(*) as total_count'), DB::raw('SUM(CASE WHEN answer = \'true\' THEN 1 WHEN answer = \'partial\' THEN 0.5 ELSE 0 END) as weighted_score'))->where('user_id', $userId)->where('attempt_number', $subQuery)->first();
 
         if (!$data) {
             return 0;
         }
+
         $totalCount = $data->total_count ?? 0;
         $weightedScore = $data->weighted_score ?? 0;
 
         if ($totalCount === 0) {
             $percentage = 0;
         } else {
-            $percentage = round(($weightedScore / $totalCount) * 100) ?? 0;
+            $percentage = round(($weightedScore / $totalCount) * 100);
         }
 
         return $percentage;
