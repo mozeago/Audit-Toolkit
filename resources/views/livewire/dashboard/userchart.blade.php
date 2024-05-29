@@ -1,5 +1,7 @@
 <?php
 use Livewire\Volt\Component;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\UserResponseMail;
 use App\Models\UserResponse;
 use App\Models\PrivacyCasesModel;
 use App\Models\User;
@@ -142,6 +144,28 @@ new class extends Component {
     }
     public function emailCopy()
     {
+        $user = auth()->user();
+        $userId = $user->id;
+
+        // Gather user responses
+        $userResponses = UserResponse::where('user_id', $userId)->get();
+        $riskAnalysisResponses = RiskAnalysisResponse::where('user_id', $userId)->get();
+
+        // Formatting data for emailing
+        $responseData = [
+            'userResponses' => $userResponses,
+            'riskAnalysisResponses' => $riskAnalysisResponses,
+            'averageScore' => $this->calculateAverageScore(),
+            'auditScore' => $this->calculateAuditPercentage(UserResponse::class, $userId),
+            'processorController' => $this->processorController,
+            'personalDataProcessedByOrganisation' => $this->personalDataProcessedByOrganisation,
+            'sensitivePersonalData' => $this->sensitivePersonalData,
+            'commercialUseOfData' => $this->commercialUseOfData,
+            'businessOperation' => $this->businessOperation,
+        ];
+
+        // Send the email
+        Mail::to($user->email)->send(new UserResponseMail($responseData));
     }
 }; ?>
 <div class="px-8 py-4">
@@ -149,7 +173,7 @@ new class extends Component {
         <div>
             <h3 class="mb-4 roboto-bold">Dashboard</h3>
         </div> <!-- Placeholder for other content if needed -->
-        <button @click=""
+        <button wire:click="emailCopy"
             class="mb-4 flex items-center justify-center px-4 py-2 font-semibold text-white hover:text-white bg-black rounded-full shadow-md hover:bg-[#C8000B]">
             <svg class="w-6 h-6 mr-2 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                 width="24" height="24" fill="none" viewBox="0 0 24 24">

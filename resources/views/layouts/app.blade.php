@@ -182,8 +182,8 @@
                                 class="text-xl text-black roboto-medium hover:hover:text-[#C8000B]">{{ __('Audit Questionnaire') }}</span>
                         </x-nav-link>
                     </li>
-                    @if (auth()->user()->role === 'admin')
-                        {{-- <li class="py-5 border-b border-gray-400">
+
+                    {{-- <li class="py-5 border-b border-gray-400">
                             <x-nav-link
                                 class="no-border-bottom  ml-4 mr-4 block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
                                 :href="route('risk-profile-dashboard')" :active="request()->routeIs('risk-profile-dashboard')" wire:navigate>
@@ -202,7 +202,7 @@
                             </x-nav-link>
                         </li> --}}
 
-                        {{-- <li class="py-5 border-b border-gray-400">
+                    {{-- <li class="py-5 border-b border-gray-400">
                             <button @click="isOpen = !isOpen"
                                 class="ml-4 mr-4 flex justify-between items-center w-full pl-1 pr-8 py-2 hover:text-[#C8000B] focus:outline-none">
 
@@ -264,21 +264,22 @@
 
                             </div>
                         </li> --}}
-                        <li class="py-5 border-b border-gray-400">
-                            <x-nav-link
-                                class="no-border-bottom  ml-4 mr-4 block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
-                                :href="route('risk-analysis-questionnaire')" :active="request()->routeIs('risk-analysis-questionnaire')" wire:navigate>
-                                <svg class="w-6 h-6 mr-2 text-gray-800 dark:hover:text-[#C8000B]" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                                    viewBox="0 0 24 24">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z" />
-                                </svg>
-                                <span
-                                    class="text-xl text-black roboto-medium hover:hover:text-[#C8000B]">{{ __('Security Questionnaire') }}</span>
-                            </x-nav-link>
-                        </li>
+                    <li class="py-5 border-b border-gray-400">
+                        <x-nav-link
+                            class="no-border-bottom  ml-4 mr-4 block w-full py-2 text-gray-300  hover:hover:text-[#C8000B]"
+                            :href="route('risk-analysis-questionnaire')" :active="request()->routeIs('risk-analysis-questionnaire')" wire:navigate>
+                            <svg class="w-6 h-6 mr-2 text-gray-800 dark:hover:text-[#C8000B]" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z" />
+                            </svg>
+                            <span
+                                class="text-xl text-black roboto-medium hover:hover:text-[#C8000B]">{{ __('Security Questionnaire') }}</span>
+                        </x-nav-link>
+                    </li>
+                    @if (auth()->user()->role === 'admin')
                         <li class="py-5 border-b border-gray-400">
                             <button @click="isOnboarding = !isOnboarding"
                                 class="ml-4 mr-4 flex justify-between items-center w-full pl-1 pr-8 py-2 hover:text-[#C8000B] focus:outline-none">
