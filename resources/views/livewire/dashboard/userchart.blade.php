@@ -585,7 +585,7 @@ new class extends Component {
     };
     var data = randomData();
     var value = averageValue();
-    var angle = valueToAngle(value);
+    var angle = valueToAngle({{ $averageScore }});
 
     var config = {
         type: 'gauge',
@@ -619,7 +619,7 @@ new class extends Component {
             },
             animation: {
                 onComplete: function(animation) {
-                    var needleAngle = valueToAngle(value);
+                    var needleAngle = valueToAngle({{ $averageScore }});
                     window.myGauge.config.options.needle.rotation = needleAngle;
                     window.myGauge.update();
                 }
