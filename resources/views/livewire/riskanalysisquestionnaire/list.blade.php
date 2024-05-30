@@ -148,10 +148,16 @@ new class extends Component {
 }; ?>
 <div>
     <div x-data="{ riskOpen: false, onBoardingText: true }" class="w-full rounded-md shadow-md">
-        <div x-show="onBoardingText" class="p-8 bg-white bg-opacity-90">
+        <div x-show="onBoardingText" class="p-8 bg-white bg-opacity-90 ">
             <h2 class="font-extrabold text-center roboto-bold-6">
                 Data Protection Assessment </h2>
-            <h4 class="mb-4 font-bold roboto-medium ">Welcome onboard!</h4>
+            <div class="flex w-full col-span-12 mb-4 text-center mx-2-auto separator">
+                <div class="col-span-3 separator-block red"></div>
+                <div class="col-span-3 separator-block yellow"></div>
+                <div class="col-span-3 separator-block blue"></div>
+                <div class="col-span-3 separator-block green"></div>
+            </div>
+            <h4 class="mb-4 font-bold roboto-medium ">Welcome Onboard!</h4>
             <p class="text-black roboto-regular text-wrap">We're excited to welcome you onboard! This data
                 protection
                 toolkit is
