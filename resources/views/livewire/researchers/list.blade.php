@@ -30,7 +30,7 @@ new class extends Component {
         <div class="flex-auto max-w-xs mx-2 bg-gray-200 rounded-sm md:max-w-md">
             <!-- Content for first column -->
             <div class="px-4 py-2 mb-4 text-white bg-[#EEA726] rounded-t-sm">
-                <h3 class="text-lg font-bold">Ignite Cohort 1 Graduates</h3>
+                <h3 class="text-lg font-bold">Ignite Cohort 1</h3>
             </div>
             <div class="flex-auto bg-gray-200">
                 <ul class="p-4 shadow-md">
@@ -53,13 +53,13 @@ new class extends Component {
 
             </div>
             <div class="px-4 py-2 mt-auto text-white bg-[#EEA726] rounded-b-lg">
-                <h3 class="text-lg font-bold">Get Started</h3>
+                <h3 class="text-lg font-bold">Graduates</h3>
             </div>
         </div>
         <div class="flex-auto max-w-xs mx-2 bg-gray-200 rounded-sm md:max-w-md">
             <!-- Content for second column -->
             <div class="px-4 py-2 mb-4 text-white bg-[#459BBA] rounded-t-sm">
-                <h3 class="text-lg font-bold">Ignite Cohort 1 Graduates</h3>
+                <h3 class="text-lg font-bold">Ignite Cohort 1</h3>
             </div>
             <div class="flex-auto bg-gray-200">
                 <ul class="p-4 shadow-md">
@@ -81,13 +81,13 @@ new class extends Component {
                 </ul>
             </div>
             <div class="px-4 py-2 mt-auto text-white bg-[#459BBA] rounded-b-lg">
-                <h3 class="text-lg font-bold">Get Started</h3>
+                <h3 class="text-lg font-bold">Graduates</h3>
             </div>
         </div>
         <div class="flex-auto max-w-xs mx-2 bg-gray-200 rounded-sm md:max-w-md">
             <!-- Content for Third column -->
             <div class="px-4 py-2 mb-4 text-white bg-[#78A87F] rounded-t-sm">
-                <h3 class="text-lg font-bold">Ignite Cohort 1 Graduates</h3>
+                <h3 class="text-lg font-bold">Ignite Cohort 1</h3>
             </div>
             <div class="flex-auto bg-gray-200">
                 <ul class="p-4 shadow-md">
@@ -110,7 +110,7 @@ new class extends Component {
 
             </div>
             <div class="px-4 py-2 mt-auto text-white bg-[#78A87F] rounded-b-lg">
-                <h3 class="text-lg font-bold">Get Started</h3>
+                <h3 class="text-lg font-bold">Graduates</h3>
             </div>
         </div>
     </div>
