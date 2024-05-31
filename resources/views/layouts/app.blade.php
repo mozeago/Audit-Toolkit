@@ -18,13 +18,15 @@
 </head>
 
 <body>
+    <?php
+    use App\Models\User;
+    ?>
     <livewire:common.topnav />
     <div class="container">
         <!-- Sidebar Section -->
         <aside class="pl-2">
             <div class="toggle">
                 <div class="logo">
-                    {{-- <img src="{{asset('images/logo.webp')}}" /> --}}
                     <h2>
                         Audit<span
                             class="danger">Toolkit</span>
@@ -111,7 +113,7 @@
         <!-- End of Main Content -->
 
         <!-- Right Section -->
-        <div class="right-section">
+        <div class="right-section mr-5">
             <div class="nav">
                 <button id="menu-btn">
                     <span class="material-icons-sharp"> menu
@@ -129,44 +131,32 @@
 
                 <div class="profile">
                     <div class="info">
-                        <p>Hey, <b>Reza</b></p>
-                        <small
-                            class="text-muted">Admin</small>
+                        <p>Hi!,
+                            <b>{{ auth()->user()->name }}</b>
+                        </p>
                     </div>
                     <div class="profile-photo">
-                        <img src="images/profile-1.jpg" />
+                        {{-- <img src="images/profile-1.jpg" /> --}}
                     </div>
                 </div>
             </div>
             <!-- End of Nav -->
-
-            <div class="user-profile">
-                <div class="logo">
-                    <img src="images/logo.png" />
-                    <h2>AsmrProg</h2>
-                    <p>Fullstack Web Developer</p>
-                </div>
-            </div>
-
             <div class="reminders">
                 <div class="header">
-                    <h2>Reminders</h2>
-                    <span class="material-icons-sharp">
+                    <h2>Previous Attempts</h2>
+                    {{-- <span class="material-icons-sharp">
                         notifications_none
-                    </span>
+                    </span> --}}
                 </div>
 
                 <div class="notification">
-                    <div class="icon">
-                        <span class="material-icons-sharp">
-                            volume_up
-                        </span>
-                    </div>
+                    <span
+                        class="mr-4 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#C8000B] p-2 text-white">67%</span>
                     <div class="content">
                         <div class="info">
-                            <h3>Workshop</h3>
+                            <h3>Average</h3>
                             <small class="text_muted">
-                                08:00 AM - 12:00 PM
+                                31 April 2024
                             </small>
                         </div>
                         <span class="material-icons-sharp">
@@ -176,30 +166,18 @@
                 </div>
 
                 <div class="notification deactive">
-                    <div class="icon">
-                        <span class="material-icons-sharp">
-                            edit
-                        </span>
-                    </div>
+                    <span
+                        class="mr-4 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-black p-2 text-white">56%</span>
                     <div class="content">
                         <div class="info">
-                            <h3>Workshop</h3>
+                            <h3>Average</h3>
                             <small class="text_muted">
-                                08:00 AM - 12:00 PM
+                                15 May 2024
                             </small>
                         </div>
                         <span class="material-icons-sharp">
                             more_vert
                         </span>
-                    </div>
-                </div>
-
-                <div class="notification add-reminder">
-                    <div>
-                        <span class="material-icons-sharp">
-                            add
-                        </span>
-                        <h3>Add Reminder</h3>
                     </div>
                 </div>
             </div>

@@ -168,15 +168,15 @@ new class extends Component {
         Mail::to($user->email)->send(new UserResponseMail($responseData));
     }
 }; ?>
-<div class="pr-2 border-2 border-red-500">
+<div>
     <h1>Analytics</h1>
     <!-- Analyses -->
     <div class="analyse">
         <div class="sales">
             <div class="status">
                 <div class="info">
-                    <h3>Total Sales</h3>
-                    <h1>$65,024</h1>
+                    <h3>Total</h3>
+                    <h1>$65,000</h1>
                 </div>
                 <div class="progresss">
                     <svg>

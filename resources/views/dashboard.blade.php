@@ -5,15 +5,19 @@
         <div class="sales">
             <div class="status">
                 <div class="info">
-                    <h3>Total Sales</h3>
-                    <h1>$65,024</h1>
+                    <h3 class="font-medium">Type of
+                        processing activity
+                        conducted
+                        by
+                        controller/processor</h3>
                 </div>
                 <div class="progresss">
                     <svg>
-                        <circle cx="38" cy="38" r="36"></circle>
+                        <circle cx="38" cy="38"
+                            r="36"></circle>
                     </svg>
                     <div class="percentage">
-                        <p>+81%</p>
+                        <p class="font-medium">+81%</p>
                     </div>
                 </div>
             </div>
@@ -26,7 +30,8 @@
                 </div>
                 <div class="progresss">
                     <svg>
-                        <circle cx="38" cy="38" r="36"></circle>
+                        <circle cx="38"
+                            cy="38" r="36"></circle>
                     </svg>
                     <div class="percentage">
                         <p>-48%</p>
@@ -42,7 +47,8 @@
                 </div>
                 <div class="progresss">
                     <svg>
-                        <circle cx="38" cy="38" r="36"></circle>
+                        <circle cx="38"
+                            cy="38" r="36"></circle>
                     </svg>
                     <div class="percentage">
                         <p>+21%</p>
