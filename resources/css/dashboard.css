@@ -257,8 +257,6 @@ main .analyse h3 {
 
 main .analyse .progresss {
     position: relative;
-    width: 92px;
-    height: 92px;
     border-radius: 50%;
 }
 

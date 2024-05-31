@@ -1,85 +1,423 @@
 <x-app-layout>
-    <h1>Analytics</h1>
+    <h1 class="font-bold">Dashboard</h1>
     <!-- First 3 Categories -->
     <div class="w-full p-4 mt-2">
-        <div class="grid w-full gap-4 transition-all duration-300 ease sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
+        <div
+            class="grid w-full gap-4 transition-all duration-300 ease sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
             <div
-                class="relative grid grid-cols-12 gap-0 p-4 bg-white border-l-4 border-orange-500 shadow-xl rounded-3xl hover:shadow-none min-h-50">
-                <span class="absolute top-0 left-0 mt-2 ml-2 material-icons-sharp">account_tree</span>
-                <div class="col-span-1"></div>
-                <div class="col-span-7">
-                    <h3 class="text-lg">Type of processing activity conducted by controller/processor.</h3>
-                </div>
-                <div class="flex items-center justify-center col-span-4 p-0 m-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px"
-                        fill="#C8000B">
-                        <path d="M0 0h24v24H0V0z" fill="none" />
-                        <path
-                            d="M12 4C7 4 2.73 7.11 1 11.5 2.73 15.89 7 19 12 19s9.27-3.11 11-7.5C21.27 7.11 17 4 12 4zm0 12.5c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
-                    </svg>
+                class="relative p-4 bg-white border-l-4 border-orange-500 shadow-xl rounded-3xl hover:shadow-none">
+                <div class="flex flex-col">
+                    <!-- Heading -->
+                    <div class="flex items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            enable-background="new 0 0 24 24"
+                            height="40px" viewBox="0 0 24 24"
+                            width="40px" fill="#C8000B">
+                            <g>
+                                <rect fill="none"
+                                    height="24"
+                                    width="24" />
+                            </g>
+                            <polygon
+                                points="22,11 22,3 15,3 15,6 9,6 9,3 2,3 2,11 9,11 9,8 11,8 11,18 15,18 15,21 22,21 22,13 15,13 15,16 13,16 13,8 15,8 15,11" />
+                        </svg>
+                        <h3
+                            class="ml-3 text-sm text-left text-wrap">
+                            Activity
+                            conducted by
+                            controller/processor.</h3>
+                    </div>
+                    <!-- Score Percentage -->
+                    <div
+                        class="flex items-center justify-end p-0 m-0">
+                        <svg viewBox="0 0 36 36"
+                            class="circular-chart green h-16 max-h-[92px] w-16 max-w-[92px]"
+                            width="24" height="24">
+                            <path class="circle-bg"
+                                d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle"
+                                stroke-dasharray="0, 100"
+                                d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <text x="18" y="20.35"
+                                class="font-bold percentage">50
+                                %</text>
+                        </svg>
+                    </div>
                 </div>
             </div>
-
-            <div class="p-4 bg-gray-300 min-h-36">
-                Column 2
+            <div
+                class="relative p-4 bg-white border-l-4 shadow-xl rounded-3xl border-cyan-500 hover:shadow-none">
+                <div class="flex flex-col">
+                    <!-- Heading -->
+                    <div class="flex items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            height="48px"
+                            viewBox="0 0 24 24"
+                            width="48px" fill="#C8000B">
+                            <path d="M0 0h24v24H0V0z"
+                                fill="none" />
+                            <path
+                                d="M17.81 4.47c-.08 0-.16-.02-.23-.06C15.66 3.42 14 3 12.01 3c-1.98 0-3.86.47-5.57 1.41-.24.13-.54.04-.68-.2-.13-.24-.04-.55.2-.68C7.82 2.52 9.86 2 12.01 2c2.13 0 3.99.47 6.03 1.52.25.13.34.43.21.67-.09.18-.26.28-.44.28zM3.5 9.72c-.1 0-.2-.03-.29-.09-.23-.16-.28-.47-.12-.7.99-1.4 2.25-2.5 3.75-3.27C9.98 4.04 14 4.03 17.15 5.65c1.5.77 2.76 1.86 3.75 3.25.16.22.11.54-.12.7-.23.16-.54.11-.7-.12-.9-1.26-2.04-2.25-3.39-2.94-2.87-1.47-6.54-1.47-9.4.01-1.36.7-2.5 1.7-3.4 2.96-.08.14-.23.21-.39.21zm6.25 12.07c-.13 0-.26-.05-.35-.15-.87-.87-1.34-1.43-2.01-2.64-.69-1.23-1.05-2.73-1.05-4.34 0-2.97 2.54-5.39 5.66-5.39s5.66 2.42 5.66 5.39c0 .28-.22.5-.5.5s-.5-.22-.5-.5c0-2.42-2.09-4.39-4.66-4.39s-4.66 1.97-4.66 4.39c0 1.44.32 2.77.93 3.85.64 1.15 1.08 1.64 1.85 2.42.19.2.19.51 0 .71-.11.1-.24.15-.37.15zm7.17-1.85c-1.19 0-2.24-.3-3.1-.89-1.49-1.01-2.38-2.65-2.38-4.39 0-.28.22-.5.5-.5s.5.22.5.5c0 1.41.72 2.74 1.94 3.56.71.48 1.54.71 2.54.71.24 0 .64-.03 1.04-.1.27-.05.53.13.58.41.05.27-.13.53-.41.58-.57.11-1.07.12-1.21.12zM14.91 22c-.04 0-.09-.01-.13-.02-1.59-.44-2.63-1.03-3.72-2.1-1.4-1.39-2.17-3.24-2.17-5.22 0-1.62 1.38-2.94 3.08-2.94s3.08 1.32 3.08 2.94c0 1.07.93 1.94 2.08 1.94s2.08-.87 2.08-1.94c0-3.77-3.25-6.83-7.25-6.83-2.84 0-5.44 1.58-6.61 4.03-.39.81-.59 1.76-.59 2.8 0 .78.07 2.01.67 3.61.1.26-.03.55-.29.64-.26.1-.55-.04-.64-.29-.49-1.31-.73-2.61-.73-3.96 0-1.2.23-2.29.68-3.24 1.33-2.79 4.28-4.6 7.51-4.6 4.55 0 8.25 3.51 8.25 7.83 0 1.62-1.38 2.94-3.08 2.94s-3.08-1.32-3.08-2.94c0-1.07-.93-1.94-2.08-1.94s-2.08.87-2.08 1.94c0 1.71.66 3.31 1.87 4.51.95.94 1.86 1.46 3.27 1.85.27.07.42.35.35.61-.05.23-.26.38-.47.38z" />
+                        </svg>
+                        <h3
+                            class="ml-3 text-sm text-left text-wrap">
+                            Personal data processed
+                            by the organisation.</h3>
+                    </div>
+                    <!-- Score Percentage -->
+                    <div
+                        class="flex items-center justify-end p-0 m-0">
+                        <svg viewBox="0 0 36 36"
+                            class="circular-chart green h-16 max-h-[92px] w-16 max-w-[92px]"
+                            width="24" height="24">
+                            <path class="circle-bg"
+                                d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle"
+                                stroke-dasharray="0, 100"
+                                d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <text x="18" y="20.35"
+                                class="font-bold percentage">50
+                                %</text>
+                        </svg>
+                    </div>
+                </div>
             </div>
-            <div class="p-4 bg-gray-400 min-h-36">
-                Column 3
+            <div
+                class="relative p-4 bg-white border-l-4 border-red-500 shadow-xl rounded-3xl hover:shadow-none">
+                <div class="flex flex-col">
+                    <!-- Heading -->
+                    <div class="flex items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            enable-background="new 0 0 20 20"
+                            height="48px"
+                            viewBox="0 0 20 20"
+                            width="48px" fill="#C8000B">
+                            <g>
+                                <rect fill="none"
+                                    height="20"
+                                    width="20" />
+                            </g>
+                            <g>
+                                <g>
+                                    <path
+                                        d="M13,9c0.35,0,0.68,0.06,1,0.14V6.18L9,4L4,6.18v3.27c0,3.03,2.13,5.86,5,6.55c0.35-0.08,0.7-0.2,1.02-0.35 C9.39,14.94,9,14.02,9,13C9,10.79,10.79,9,13,9z" />
+                                    <path
+                                        d="M13,10c-1.66,0-3,1.34-3,3c0,1.66,1.34,3,3,3s3-1.34,3-3C16,11.34,14.66,10,13,10z M13,11.03c0.47,0,0.84,0.38,0.84,0.84 c0,0.46-0.38,0.84-0.84,0.84s-0.84-0.38-0.84-0.84C12.16,11.41,12.53,11.03,13,11.03z M13,15.06c-0.7,0-1.31-0.35-1.68-0.87 c0.04-0.54,1.13-0.81,1.68-0.81s1.64,0.27,1.68,0.81C14.31,14.72,13.7,15.06,13,15.06z" />
+                                </g>
+                            </g>
+                        </svg>
+                        <h3
+                            class="ml-3 text-sm text-left text-wrap">
+                            Processing of sensitive personal
+                            data.</h3>
+                    </div>
+                    <!-- Score Percentage -->
+                    <div
+                        class="flex items-center justify-end p-0 m-0">
+                        <svg viewBox="0 0 36 36"
+                            class="circular-chart green h-16 max-h-[92px] w-16 max-w-[92px]"
+                            width="24" height="24">
+                            <path class="circle-bg"
+                                d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle"
+                                stroke-dasharray="0, 100"
+                                d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <text x="18" y="20.35"
+                                class="font-bold percentage">50
+                                %</text>
+                        </svg>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <!-- End of First 3 categories -->
-    <div class="analyse">
-        <div class="sales">
-            <div class="status">
-                <div class="info">
-                    <h3>Type of
-                        processing activity
-                        conducted
-                        by
-                        controller/processor.</h3>
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+        <div
+            class="flex flex-col bg-gray-200 md:col-span-1">
+            <!-- First column, 1/3 width -->
+            <div class="flex-grow">
+                <!-- Tailwind CSS Card -->
+                <!-- Tailwind CSS Card -->
+                <div
+                    class="max-w-sm overflow-hidden bg-white rounded shadow-xl">
+                    <div class="px-6 py-4">
+                        <div
+                            class="mb-2 text-xl font-bold text-center">
+                            Privacy Score</div>
+                    </div>
+                    <div
+                        class="flex items-center w-full px-8">
+                        <div
+                            class="flex items-center w-1/2">
+                            <svg viewBox="0 0 36 36"
+                                class="w-24 h-24 circular-chart green">
+                                <path class="circle-bg"
+                                    d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path class="circle"
+                                    stroke-dasharray="{{ $averageScore }}, 100"
+                                    d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <text x="18" y="20.35"
+                                    class="percentage">0
+                                    %</text>
+                            </svg>
+                        </div>
+                        <div
+                            class="flex items-end justify-end w-1/2">
+                            <p
+                                class="items-end text-xl font-bold">
+                                <span
+                                    style="color: red;">High
+                                    Risk</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="progresss">
-                    <svg>
-                        <circle cx="38" cy="38" r="36"></circle>
-                    </svg>
-                    <div class="percentage">
-                        <p class="font-medium">+81%</p>
+                <!-- End Tailwind CSS Card -->
+            </div>
+        </div>
+        <div class="flex flex-col md:col-span-2">
+            <!-- Second column, 2/3 width -->
+            <!-- First Row -->
+            <div
+                class="grid flex-grow grid-cols-1 gap-4 md:grid-cols-2">
+                <div
+                    class="flex flex-col h-full md:col-span-1">
+                    <div
+                        class="relative p-4 bg-white border-l-4 shadow-xl rounded-3xl border-cyan-500 hover:shadow-none">
+                        <div class="flex flex-col">
+                            <!-- Heading -->
+                            <div class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    height="24px"
+                                    viewBox="0 0 24 24"
+                                    width="24px"
+                                    fill="#C8000B">
+                                    <path
+                                        d="M0 0h24v24H0V0z"
+                                        fill="none" />
+                                    <path
+                                        d="M21 18v3H3V3h18v3H10v12h11zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
+                                </svg>
+                                <h3
+                                    class="ml-3 text-sm text-left text-wrap">
+                                    Commercial use of Data.
+                                </h3>
+                            </div>
+                            <!-- Score Percentage -->
+                            <div
+                                class="flex items-center justify-end p-0 m-0">
+                                <svg viewBox="0 0 36 36"
+                                    class="circular-chart green h-16 max-h-[92px] w-16 max-w-[92px]"
+                                    width="24"
+                                    height="24">
+                                    <path class="circle-bg"
+                                        d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <path class="circle"
+                                        stroke-dasharray="0, 100"
+                                        d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <text x="18" y="20.35"
+                                        class="font-bold percentage">50
+                                        %</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="flex flex-col h-full md:col-span-1">
+                    <div
+                        class="relative p-4 bg-white border-l-4 shadow-xl rounded-3xl border-cyan-500 hover:shadow-none">
+                        <div class="flex flex-col">
+                            <!-- Heading -->
+                            <div class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    height="24px"
+                                    viewBox="0 0 24 24"
+                                    width="24px"
+                                    fill="#C8000B">
+                                    <path
+                                        d="M0 0h24v24H0V0z"
+                                        fill="none" />
+                                    <path
+                                        d="M21 18v3H3V3h18v3H10v12h11zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
+                                </svg>
+                                <h3
+                                    class="ml-3 text-sm text-left text-wrap">
+                                    Commercial use of Data.
+                                </h3>
+                            </div>
+                            <!-- Score Percentage -->
+                            <div
+                                class="flex items-center justify-end p-0 m-0">
+                                <svg viewBox="0 0 36 36"
+                                    class="circular-chart green h-16 max-h-[92px] w-16 max-w-[92px]"
+                                    width="24"
+                                    height="24">
+                                    <path class="circle-bg"
+                                        d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <path class="circle"
+                                        stroke-dasharray="0, 100"
+                                        d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <text x="18" y="20.35"
+                                        class="font-bold percentage">50
+                                        %</text>
+                                </svg>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="visits">
-            <div class="status">
-                <div class="info">
-                    <h3>Type of personal data processed by the organisation.</h3>
-                </div>
-                <div class="progresss">
-                    <svg>
-                        <circle cx="38" cy="38" r="36"></circle>
-                    </svg>
-                    <div class="percentage">
-                        <p>-48%</p>
+            <!-- Second Row -->
+            <div
+                class="grid flex-grow grid-cols-1 gap-4 mt-4 md:grid-cols-2">
+                <div
+                    class="flex flex-col h-full md:col-span-1">
+                    <div
+                        class="relative p-4 bg-white border-l-4 border-green-500 shadow-xl rounded-3xl hover:shadow-none">
+                        <div class="flex flex-col">
+                            <!-- Heading -->
+                            <div class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    enable-background="new 0 0 24 24"
+                                    height="24px"
+                                    viewBox="0 0 24 24"
+                                    width="24px"
+                                    fill="#C8000B">
+                                    <g>
+                                        <rect
+                                            fill="none"
+                                            height="24"
+                                            width="24" />
+                                        <path
+                                            d="M20 6h-4c0-2.21-1.79-4-4-4S8 3.79 8 6H4v16h16V6zm-10 5H8V8h2v3zm2-7c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2zm4 7h-2V8h2v3z" />
+                                    </g>
+                                </svg>
+
+                                <h3
+                                    class="ml-3 text-sm text-left text-wrap">
+                                    Business Operations</h3>
+                            </div>
+                            <!-- Score Percentage -->
+                            <div
+                                class="flex items-center justify-end p-0 m-0">
+                                <svg viewBox="0 0 36 36"
+                                    class="circular-chart green h-16 max-h-[92px] w-16 max-w-[92px]"
+                                    width="24"
+                                    height="24">
+                                    <path class="circle-bg"
+                                        d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <path class="circle"
+                                        stroke-dasharray="0, 100"
+                                        d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <text x="18" y="20.35"
+                                        class="font-bold percentage">50
+                                        %</text>
+                                </svg>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="searches">
-            <div class="status">
-                <div class="info">
-                    <h3>Processing of sensitive personal data.</h3>
-                </div>
-                <div class="progresss">
-                    <svg>
-                        <circle cx="38" cy="38" r="36"></circle>
-                    </svg>
-                    <div class="percentage">
-                        <p>+21%</p>
+                <div
+                    class="flex flex-col h-full md:col-span-1">
+                    <div
+                        class="relative p-4 bg-white border-l-4 shadow-xl rounded-3xl border-cyan-500 hover:shadow-none">
+                        <div class="flex flex-col">
+                            <!-- Heading -->
+                            <div class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    enable-background="new 0 0 20 20"
+                                    height="24px"
+                                    viewBox="0 0 20 20"
+                                    width="24px"
+                                    fill="#C8000B">
+                                    <g>
+                                        <g>
+                                            <rect
+                                                fill="none"
+                                                height="20"
+                                                width="20" />
+                                        </g>
+                                    </g>
+                                    <g>
+                                        <g>
+                                            <path
+                                                d="M12.52,9.7c1.25-0.34,2.44-0.23,3.48,0.18V7h-2l0-1.83c0-2.09-1.53-3.95-3.61-4.15C8.01,0.79,6,2.66,6,5v2H4v11h5.4 c-0.77-1.18-1.1-2.66-0.76-4.22C9.06,11.82,10.59,10.23,12.52,9.7z M7.5,5c0-1.38,1.12-2.5,2.5-2.5s2.5,1.12,2.5,2.5v2h-5V5z" />
+                                            <path
+                                                d="M14,11c-2.21,0-4,1.79-4,4c0,2.21,1.79,4,4,4s4-1.79,4-4C18,12.79,16.21,11,14,11z M13.5,13h1v1.79l1.35,1.35l-0.71,0.71 l-1.65-1.65V13z" />
+                                        </g>
+                                    </g>
+                                </svg>
+                                <h3
+                                    class="ml-3 text-sm text-left text-wrap">
+                                    Audit Score.</h3>
+                            </div>
+                            <!-- Score Percentage -->
+                            <div
+                                class="flex items-center justify-end p-0 m-0">
+                                <svg viewBox="0 0 36 36"
+                                    class="circular-chart green h-16 max-h-[92px] w-16 max-w-[92px]"
+                                    width="24"
+                                    height="24">
+                                    <path class="circle-bg"
+                                        d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <path class="circle"
+                                        stroke-dasharray="0, 100"
+                                        d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <text x="18" y="20.35"
+                                        class="font-bold percentage">50
+                                        %</text>
+                                </svg>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    {{-- start second row cards --}}
+    <div class="w-full p-4 mt-2">
+        <div
+            class="grid w-full gap-4 transition-all duration-300 ease sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
+
+
+
+        </div>
+    </div>
+    {{-- end second row cards --}}
     <!-- New Users Section -->
     <div class="new-users">
         <h2>New Users</h2>
