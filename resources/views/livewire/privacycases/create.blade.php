@@ -31,7 +31,7 @@ new class extends Component {
     }
 }; ?>
 
-<div class="max-w-md mx-auto">
+<div class="w-full transition-all duration-300 shadow-xl  ease x-auto hover:shadow-none">
     <form wire:submit.prevent="saveFormData" class="px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md">
         <div class="mb-4">
             <label class="block mb-2 text-sm font-bold text-gray-700" for="caseName">

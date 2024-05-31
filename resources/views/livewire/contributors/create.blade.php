@@ -12,7 +12,7 @@ new class extends Component {
         return [
             'name' => 'required|string|max:255',
             'email' => 'email|string|nullable',
-            'role' => 'required|string',
+            'role' => 'required|string|nullable',
         ];
     }
     public function resetFields()

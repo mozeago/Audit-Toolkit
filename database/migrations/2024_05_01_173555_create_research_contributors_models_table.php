@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('research_contributors', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->text('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->text('email')->nullable();
             $table->text('photo')->nullable();
             $table->timestamps();

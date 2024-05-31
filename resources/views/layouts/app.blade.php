@@ -12,6 +12,49 @@
     @vite(['resources/css/dashboard.css'])
     @vite(['resources/css/app.css'])
     <title>Audit Tookit</title>
+    <script src="https://unpkg.com/chart.js@2.8.0/dist/Chart.bundle.js"></script>
+    <script src="https://unpkg.com/chartjs-gauge@0.3.0/dist/chartjs-gauge.js"></script>
+    <!-- Livewire Styles -->
+    <style>
+        [wire\:loading][wire\:loading],
+        [wire\:loading\.delay][wire\:loading\.delay],
+        [wire\:loading\.inline-block][wire\:loading\.inline-block],
+        [wire\:loading\.inline][wire\:loading\.inline],
+        [wire\:loading\.block][wire\:loading\.block],
+        [wire\:loading\.flex][wire\:loading\.flex],
+        [wire\:loading\.table][wire\:loading\.table],
+        [wire\:loading\.grid][wire\:loading\.grid],
+        [wire\:loading\.inline-flex][wire\:loading\.inline-flex] {
+            display: none;
+        }
+
+        [wire\:loading\.delay\.none][wire\:loading\.delay\.none],
+        [wire\:loading\.delay\.shortest][wire\:loading\.delay\.shortest],
+        [wire\:loading\.delay\.shorter][wire\:loading\.delay\.shorter],
+        [wire\:loading\.delay\.short][wire\:loading\.delay\.short],
+        [wire\:loading\.delay\.default][wire\:loading\.delay\.default],
+        [wire\:loading\.delay\.long][wire\:loading\.delay\.long],
+        [wire\:loading\.delay\.longer][wire\:loading\.delay\.longer],
+        [wire\:loading\.delay\.longest][wire\:loading\.delay\.longest] {
+            display: none;
+        }
+
+        [wire\:offline][wire\:offline] {
+            display: none;
+        }
+
+        [wire\:dirty]:not(textarea):not(input):not(select) {
+            display: none;
+        }
+
+        :root {
+            --livewire-progress-bar-color: #2299dd;
+        }
+
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,11 +64,11 @@
     <livewire:common.topnav />
     <div class="container">
         <!-- Sidebar Section -->
-        <aside class="pl-2">
+        <aside class="pl-2 mb-2">
             <div class="toggle">
                 <div class="logo">
-                    <h2>
-                        Audit<span class="danger">Toolkit</span>
+                    <h2 class="text-lg font-bold">
+                        Audit <span class="text-[#C8000B]">Toolkit</span>
                     </h2>
                 </div>
                 <div class="close" id="close-btn">
@@ -35,62 +78,69 @@
                 </div>
             </div>
 
-            <div class="sidebar">
-                <a href="#" class="inline-flex items-center">
+            <div class="overflow-visible sidebar">
+                <a href="{{ route('dashboard') }}" class="inline-flex items-center">
                     <span class="mr-2 text-xl material-icons-sharp">
                         dashboard
                     </span>
                     <h3 class="m-0">Dashboard</h3>
                 </a>
-                <a href="#">
+                <a href="{{ route('dashboard') }}">
                     <span class="material-icons-sharp">
-                        person_outline
+                        handyman
                     </span>
-                    <h3>Users</h3>
+                    <h3>Audit Toolkit</h3>
                 </a>
-                <a href="#">
+                <a href="{{ route('templates-upload') }}">
                     <span class="material-icons-sharp">
-                        receipt_long
+                        upload_file
                     </span>
-                    <h3>History</h3>
+                    <h3>Templates Upload</h3>
                 </a>
-                <a href="#" class="active">
+                <a href="{{ route('templates-download') }}">
                     <span class="material-icons-sharp">
-                        insights
+                        file_download
                     </span>
-                    <h3>Analytics</h3>
+                    <h3>Templates Download</h3>
+                    {{-- <span class="message-count">5 files</span> --}}
                 </a>
-                <a href="#">
+                <a href="{{ route('questionnaire') }}">
                     <span class="material-icons-sharp">
-                        mail_outline
+                        quiz
                     </span>
-                    <h3>Tickets</h3>
-                    <span class="message-count">27</span>
+                    <h3>Audit Quiz</h3>
+                    {{-- <span class="message-count">questions count</span> --}}
                 </a>
-                <a href="#">
+                <a href="{{ route('risk-analysis-questionnaire') }}">
                     <span class="material-icons-sharp">
-                        inventory
+                        security
                     </span>
-                    <h3>Sale List</h3>
+                    <h3>Security Quiz</h3>
                 </a>
-                <a href="#">
+                <a href="{{ route('project-contributors') }}">
                     <span class="material-icons-sharp">
-                        report_gmailerrorred
+                        diversity_3
                     </span>
-                    <h3>Reports</h3>
+                    <h3>Research Members</h3>
                 </a>
-                <a href="#">
+                <a href="{{ route('user-settings') }}">
                     <span class="material-icons-sharp">
-                        settings
+                        manage_accounts
                     </span>
-                    <h3>Settings</h3>
+                    <h3>System Users</h3>
                 </a>
-                <a href="#">
+                <a href="{{ route('privacy-cases') }}">
+                    <span class="material-icons-sharp">
+                        phonelink_lock
+                    </span>
+                    <h3>Privacy Cases</h3>
+                </a>
+                <a href="{{ route('researchers') }}">
                     <span class="material-icons-sharp"> add
                     </span>
-                    <h3>New Login</h3>
+                    <h3>Reasearch Team</h3>
                 </a>
-                <a href="#">
+                <a href="#" class="mt-2">
                     <span class="material-icons-sharp">
                         logout
                     </span>
