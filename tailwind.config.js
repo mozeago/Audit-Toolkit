@@ -14,6 +14,9 @@ export default {
             fontFamily: {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
             },
+            boxShadow: {
+                custom: "0 2rem 3rem rgba(132, 139, 200, 0.18)",
+            },
         },
         screens: {
             sm: "320px",

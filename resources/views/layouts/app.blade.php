@@ -3,15 +3,12 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description"
         content="The Data Protection Toolkit 2024 offers a cutting-edge solution for organizations aiming to enhance their data security practices. At its core,this toolkit includes an advanced online self-assessment tool. Through this tool, organizations can seamlessly evaluate their adherence to data protection laws, receiving detailed compliance reports and insightful scorecards." />
     <title>{{ config('app.name', 'Toolkit') }}</title>
-    <link
-        href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" />
     @vite(['resources/css/dashboard.css'])
     @vite(['resources/css/app.css'])
     <title>Audit Tookit</title>
@@ -28,8 +25,7 @@
             <div class="toggle">
                 <div class="logo">
                     <h2>
-                        Audit<span
-                            class="danger">Toolkit</span>
+                        Audit<span class="danger">Toolkit</span>
                     </h2>
                 </div>
                 <div class="close" id="close-btn">
@@ -40,10 +36,8 @@
             </div>
 
             <div class="sidebar">
-                <a href="#"
-                    class="inline-flex items-center">
-                    <span
-                        class="material-icons-sharp mr-2 text-xl">
+                <a href="#" class="inline-flex items-center">
+                    <span class="mr-2 text-xl material-icons-sharp">
                         dashboard
                     </span>
                     <h3 class="m-0">Dashboard</h3>
@@ -113,15 +107,14 @@
         <!-- End of Main Content -->
 
         <!-- Right Section -->
-        <div class="right-section mr-5">
+        <div class="mr-5 right-section">
             <div class="nav">
                 <button id="menu-btn">
                     <span class="material-icons-sharp"> menu
                     </span>
                 </button>
                 <div class="dark-mode">
-                    <span
-                        class="material-icons-sharp active">
+                    <span class="material-icons-sharp active">
                         light_mode
                     </span>
                     <span class="material-icons-sharp">
@@ -167,7 +160,7 @@
 
                 <div class="notification deactive">
                     <span
-                        class="mr-4 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-black p-2 text-white">56%</span>
+                        class="flex items-center justify-center flex-shrink-0 w-12 h-12 p-2 mr-4 text-white bg-black rounded-full">56%</span>
                     <div class="content">
                         <div class="info">
                             <h3>Average</h3>
