@@ -1,24 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="description"
+        content="The Data Protection Toolkit 2024 offers a cutting-edge solution for organizations aiming to enhance their data security practices. At its core,this toolkit includes an advanced online self-assessment tool. Through this tool, organizations can seamlessly evaluate their adherence to data protection laws, receiving detailed compliance reports and insightful scorecards." />
+    <title>{{ config('app.name', 'Toolkit') }}</title>
+    <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
+        rel="stylesheet" />
     @vite(['resources/css/dashboard.css'])
     @vite(['resources/css/app.css'])
     <title>Audit Tookit</title>
 </head>
 
 <body>
-    <div class="container border-2 border-red-500">
+    <livewire:common.topnav />
+    <div class="container">
         <!-- Sidebar Section -->
-        <aside>
+        <aside class="pl-2">
             <div class="toggle">
                 <div class="logo">
                     {{-- <img src="{{asset('images/logo.webp')}}" /> --}}
                     <h2>
-                        Audit<span class="danger">Toolkit</span>
+                        Audit<span
+                            class="danger">Toolkit</span>
                     </h2>
                 </div>
                 <div class="close" id="close-btn">
@@ -29,11 +38,13 @@
             </div>
 
             <div class="sidebar">
-                <a href="#">
-                    <span class="material-icons-sharp">
+                <a href="#"
+                    class="inline-flex items-center">
+                    <span
+                        class="material-icons-sharp mr-2 text-xl">
                         dashboard
                     </span>
-                    <h3>Dashboard</h3>
+                    <h3 class="m-0">Dashboard</h3>
                 </a>
                 <a href="#">
                     <span class="material-icons-sharp">
@@ -79,7 +90,8 @@
                     <h3>Settings</h3>
                 </a>
                 <a href="#">
-                    <span class="material-icons-sharp"> add </span>
+                    <span class="material-icons-sharp"> add
+                    </span>
                     <h3>New Login</h3>
                 </a>
                 <a href="#">
@@ -94,106 +106,7 @@
 
         <!-- Main Content -->
         <main>
-            <h1>Analytics</h1>
-            <!-- Analyses -->
-            <div class="analyse">
-                <div class="sales">
-                    <div class="status">
-                        <div class="info">
-                            <h3>Total Sales</h3>
-                            <h1>$65,024</h1>
-                        </div>
-                        <div class="progresss">
-                            <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
-                            </svg>
-                            <div class="percentage">
-                                <p>+81%</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="visits">
-                    <div class="status">
-                        <div class="info">
-                            <h3>Site Visit</h3>
-                            <h1>24,981</h1>
-                        </div>
-                        <div class="progresss">
-                            <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
-                            </svg>
-                            <div class="percentage">
-                                <p>-48%</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="searches">
-                    <div class="status">
-                        <div class="info">
-                            <h3>Searches</h3>
-                            <h1>14,147</h1>
-                        </div>
-                        <div class="progresss">
-                            <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
-                            </svg>
-                            <div class="percentage">
-                                <p>+21%</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End of Analyses -->
-
-            <!-- New Users Section -->
-            <div class="new-users">
-                <h2>New Users</h2>
-                <div class="user-list">
-                    <div class="user">
-                        <img src="images/profile-2.jpg" />
-                        <h2>Jack</h2>
-                        <p>54 Min Ago</p>
-                    </div>
-                    <div class="user">
-                        <img src="images/profile-3.jpg" />
-                        <h2>Amir</h2>
-                        <p>3 Hours Ago</p>
-                    </div>
-                    <div class="user">
-                        <img src="images/profile-4.jpg" />
-                        <h2>Ember</h2>
-                        <p>6 Hours Ago</p>
-                    </div>
-                    <div class="user">
-                        <img src="images/plus.png" />
-                        <h2>More</h2>
-                        <p>New User</p>
-                    </div>
-                </div>
-            </div>
-            <!-- End of New Users Section -->
-
-            <!-- Recent Orders Table -->
-            <div class="recent-orders">
-                <h2>Recent Orders</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Course Name</th>
-                            <th>Course Number</th>
-                            <th>Payment</th>
-                            <th>Status</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-                <a href="#">Show All</a>
-            </div>
-            <!-- End of Recent Orders -->
+            {{ $slot }}
         </main>
         <!-- End of Main Content -->
 
@@ -201,10 +114,12 @@
         <div class="right-section">
             <div class="nav">
                 <button id="menu-btn">
-                    <span class="material-icons-sharp"> menu </span>
+                    <span class="material-icons-sharp"> menu
+                    </span>
                 </button>
                 <div class="dark-mode">
-                    <span class="material-icons-sharp active">
+                    <span
+                        class="material-icons-sharp active">
                         light_mode
                     </span>
                     <span class="material-icons-sharp">
@@ -215,7 +130,8 @@
                 <div class="profile">
                     <div class="info">
                         <p>Hey, <b>Reza</b></p>
-                        <small class="text-muted">Admin</small>
+                        <small
+                            class="text-muted">Admin</small>
                     </div>
                     <div class="profile-photo">
                         <img src="images/profile-1.jpg" />

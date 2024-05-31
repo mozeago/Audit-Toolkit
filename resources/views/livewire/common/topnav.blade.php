@@ -1,8 +1,8 @@
 <nav class="sticky top-0 z-50 bg-white shadow-lg">
     <div
-        class="flex items-center justify-between px-4 py-2 mx-auto max-w-7xl">
+        class="mx-auto flex max-w-7xl items-center justify-between px-4 py-2">
         <!-- Logo -->
-        <div class="flex-shrink-0 w-1/3 mr-2 sm:w-auto">
+        <div class="mr-2 w-1/3 flex-shrink-0 sm:w-auto">
             <a href="/" wire:navigate>
                 <img src="{{ asset('images/scratchandscript_logo_red.webp') }}"
                     class="h-8"
@@ -11,7 +11,7 @@
         </div>
         <!-- Navigation Links -->
         <div
-            class="flex items-center justify-end w-2/3 space-x-2 sm:ml-auto sm:w-auto">
+            class="flex w-2/3 items-center justify-end space-x-2 sm:ml-auto sm:w-auto">
             @guest
                 <button type="button"
                     class="md:min-w-28 flex-grow rounded-md border-2 border-gray-500 px-4 py-1 font-bold text-black hover:border-[#C8000B] hover:text-[#C8000B] sm:flex-grow-0 sm:px-1 sm:font-normal">
@@ -28,11 +28,14 @@
                 </button>
             @endguest
             @auth
-                <button type="button"
-                    class="md:min-w-28 lg:min-w-28 xl:min-w-28 2xl:min-w-28 flex-grow rounded-md border-2 border-gray-300 px-4 py-1 font-bold font-bold text-black hover:border-[#C8000B] hover:text-[#C8000B] sm:flex-grow-0">
-                    <a href="{{ route('dashboard') }}"
-                        class="text-gray-800 no-underline">Dashboard</a>
-                </button>
+                <a href="#"
+                    class="inline-flex items-center">
+                    <span
+                        class="material-icons-sharp mr-2 text-xl">
+                        dashboard
+                    </span>
+                    <h3 class="m-0">Dashboard</h3>
+                </a>
             @endauth
         </div>
     </div>
