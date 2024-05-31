@@ -163,7 +163,7 @@
                         class="flex items-center justify-center flex-shrink-0 w-12 h-12 p-2 mr-4 text-white bg-black rounded-full">56%</span>
                     <div class="content">
                         <div class="info">
-                            <h3>Average</h3>
+                            <h3>Moderate</h3>
                             <small class="text_muted">
                                 15 May 2024
                             </small>

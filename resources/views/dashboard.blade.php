@@ -145,52 +145,45 @@
     </div>
     <!-- End of First 3 categories -->
     <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
-        <div
-            class="flex flex-col bg-gray-200 md:col-span-1">
+        <div class="flex flex-col md:col-span-1">
             <!-- First column, 1/3 width -->
-            <div class="flex-grow">
-                <!-- Tailwind CSS Card -->
-                <!-- Tailwind CSS Card -->
-                <div
-                    class="max-w-sm overflow-hidden bg-white rounded shadow-xl">
-                    <div class="px-6 py-4">
-                        <div
-                            class="mb-2 text-xl font-bold text-center">
-                            Privacy Score</div>
+            <!-- Card -->
+            <div
+                class="flex-grow max-w-sm overflow-hidden bg-white shadow-xl rounded-3xl hover:shadow-none">
+                <div class="px-6 py-4">
+                    <div
+                        class="mb-2 text-xl font-bold text-center">
+                        Privacy Score</div>
+                </div>
+                <div class="flex items-center w-full px-8">
+                    <div class="flex items-center w-1/2">
+                        <svg viewBox="0 0 36 36"
+                            class="w-24 h-24 circular-chart green">
+                            <path class="circle-bg"
+                                d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle"
+                                stroke-dasharray=", 100"
+                                d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <text x="18" y="20.35"
+                                class="percentage">0
+                                %</text>
+                        </svg>
                     </div>
                     <div
-                        class="flex items-center w-full px-8">
-                        <div
-                            class="flex items-center w-1/2">
-                            <svg viewBox="0 0 36 36"
-                                class="w-24 h-24 circular-chart green">
-                                <path class="circle-bg"
-                                    d="M18 2.0845
-                                        a 15.9155 15.9155 0 0 1 0 31.831
-                                        a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                <path class="circle"
-                                    stroke-dasharray="{{ $averageScore }}, 100"
-                                    d="M18 2.0845
-                                        a 15.9155 15.9155 0 0 1 0 31.831
-                                        a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                <text x="18" y="20.35"
-                                    class="percentage">0
-                                    %</text>
-                            </svg>
-                        </div>
-                        <div
-                            class="flex items-end justify-end w-1/2">
-                            <p
-                                class="items-end text-xl font-bold">
-                                <span
-                                    style="color: red;">High
-                                    Risk</span>
-                            </p>
-                        </div>
+                        class="flex items-end justify-end w-1/2">
+                        <p
+                            class="items-end text-xl font-bold">
+                            <span style="color: red;">High
+                                Risk</span>
+                        </p>
                     </div>
                 </div>
-                <!-- End Tailwind CSS Card -->
             </div>
+            <!-- End  Card -->
         </div>
         <div class="flex flex-col md:col-span-2">
             <!-- Second column, 2/3 width -->
@@ -407,61 +400,4 @@
             </div>
         </div>
     </div>
-
-    {{-- start second row cards --}}
-    <div class="w-full p-4 mt-2">
-        <div
-            class="grid w-full gap-4 transition-all duration-300 ease sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
-
-
-
-        </div>
-    </div>
-    {{-- end second row cards --}}
-    <!-- New Users Section -->
-    <div class="new-users">
-        <h2>New Users</h2>
-        <div class="user-list">
-            <div class="user">
-                <img src="images/profile-2.jpg" />
-                <h2>Jack</h2>
-                <p>54 Min Ago</p>
-            </div>
-            <div class="user">
-                <img src="images/profile-3.jpg" />
-                <h2>Amir</h2>
-                <p>3 Hours Ago</p>
-            </div>
-            <div class="user">
-                <img src="images/profile-4.jpg" />
-                <h2>Ember</h2>
-                <p>6 Hours Ago</p>
-            </div>
-            <div class="user">
-                <img src="images/plus.png" />
-                <h2>More</h2>
-                <p>New User</p>
-            </div>
-        </div>
-    </div>
-    <!-- End of New Users Section -->
-
-    <!-- Recent Orders Table -->
-    <div class="recent-orders">
-        <h2>Recent Orders</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Course Name</th>
-                    <th>Course Number</th>
-                    <th>Payment</th>
-                    <th>Status</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-        <a href="#">Show All</a>
-    </div>
-    <!-- End of Recent Orders -->
 </x-app-layout>
