@@ -62,7 +62,7 @@
     use App\Models\User;
     ?>
     <livewire:common.topnav />
-    <div class="container">
+    <div class="container bg-[#F6F6F9]">
         <!-- Sidebar Section -->
         <aside class="pl-2 mb-2">
             <div class="toggle">
