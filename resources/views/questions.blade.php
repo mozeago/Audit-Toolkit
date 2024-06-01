@@ -5,5 +5,4 @@
         <br />
         <livewire:questions.list />
     </div>
-    <livewire:common.footer />
 </x-app-layout>

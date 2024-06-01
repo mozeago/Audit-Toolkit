@@ -1,14 +1,6 @@
 <x-app-layout>
-    <div
-        style="background-image: url({{ asset('images/bg-questionnaire.webp') }});
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100vh;">
+    <div class="w-full h-auto bg-center bg-no-repeat bg-cover lg:h-screen"
+        style="background-image: url({{ asset('images/bg-questionnaire.webp') }})">
         <livewire:questionnaire.list />
     </div>
-    <livewire:common.footer />
 </x-app-layout>
