@@ -148,47 +148,90 @@ new class extends Component {
     }
 }; ?>
 <div x-data="{ infOpen: false }">
-    @if ($showOrganizationForm)
-        <div class="flex items-start justify-center px-2 m-0 md:items-center">
+    {{-- @if (count($questions) > 0)
+        <!-- Progress Indicator -->
+        <div class="m-4" x-show=!$showOrganizationForm>
+            <div class="h-4 bg-gray-200 rounded-lg">
+                <div class="h-full bg-[#C8000B]/40 rounded-lg"
+                    style="width: {{ (($currentQuestionIndex + 1) / count($questions)) * 100 }}%"></div>
+            </div>
+            <div class="mt-1 text-xs text-gray-600">{{ $currentQuestionIndex + 1 }} of
+                {{ count($questions) }}
+                questions
+                answered</div>
+        </div>
+        <!-- End Progress Indicator -->
+        @if ($showOrganizationForm)
+            <div class="flex items-start justify-center px-2 m-0 md:items-center lg:min-h-screen">
+                <div
+                    class="w-full p-8 space-y-4 bg-white border border-gray-200 rounded-lg shadow-md md:w-1/2 lg:w-1/2 xl:w-1/2">
+                    <h2 class="font-bold text-gray-800 md:text-center lg:text-center md:text-2xl">Organization Form</h2>
+                    <form wire:submit.prevent="openQuestionnaire">
+                        <div class="mb-4">
+                            <label for="organization-name" class="block text-sm font-medium text-gray-700">Organization
+                                Name</label>
+                            <input type="text" id="organization-name" wire:model.defer="organization"
+                                value="{{ $this->organization }}"
+                                class="block w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500"
+                                placeholder="Enter organization name">
+                            @error('organization')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="mb-4">
+                            <label for="department" class="block text-sm font-medium text-gray-700">Department</label>
+                            <input type="text" id="department" wire:model.defer="department"
+                                class="block w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500"
+                                placeholder="Enter department" value="{{ $this->department }}">
+                            @error('department')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="flex justify-end">
+                            <x-primary-button type="submit"
+                                class="flex items-center px-4 py-2 font-semibold text-white bg-black rounded-md hover:bg-[#C8000B] focus:outline-none">
+                                Next
+                                <span class="ml-2">
+                                    <svg class="w-6 h-6 stroke-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 24 24" stroke-width="1.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                                    </svg>
+                                </span>
+                            </x-primary-button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        @endif
+    @else
+        <div class="flex items-start justify-center px-2 m-0 md:items-center lg:min-h-screen">
             <div
                 class="w-full p-8 space-y-4 bg-white border border-gray-200 rounded-lg shadow-md md:w-1/2 lg:w-1/2 xl:w-1/2">
-                <h2 class="font-bold text-center text-gray-800 md:text-2xl">Organization Form</h2>
-                <form wire:submit.prevent="openQuestionnaire">
-                    <div class="mb-4">
-                        <label for="organization-name" class="block text-sm font-medium text-gray-700">Organization
-                            Name</label>
-                        <input type="text" id="organization-name" wire:model.defer="organization"
-                            value="{{ $this->organization }}"
-                            class="block w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500"
-                            placeholder="Enter organization name">
-                        @error('organization')
-                            <span class="text-red-500">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="mb-4">
-                        <label for="department" class="block text-sm font-medium text-gray-700">Department</label>
-                        <input type="text" id="department" wire:model.defer="department"
-                            class="block w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500"
-                            placeholder="Enter department" value="{{ $this->department }}">
-                        @error('department')
-                            <span class="text-red-500">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="flex justify-end">
-                        <x-primary-button type="submit"
-                            class="flex items-center px-4 py-2 font-semibold text-white bg-black rounded-md hover:bg-[#C8000B] focus:outline-none">
-                            Next
-                            <span class="ml-2">
-                                <svg class="w-6 h-6 stroke-white" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 24 24" stroke-width="1.5">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                                </svg>
-                            </span>
-                        </x-primary-button>
-                    </div>
-                </form>
+                <div class="flex items-center p-2">
+                    <svg class="mr-4" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                        width="24px" fill="yellow-600">
+                        <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
+                    </svg>
+                    <h1 class="font-semibold text-yellow-600">No questionnaire to attempt yet</p>
+                </div>
             </div>
         </div>
-    @endif
+    @endif --}}
+    <div class="relative overflow-hidden bg-white rounded-lg shadow-md">
+        <svg class="absolute z-10 top-2 left-2" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24"
+            width="48px" fill="#C8000B">
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path d="M22 6h-3v9H6v3h12l4 4V6zm-5 7V2H2v15l4-4h11z" />
+        </svg>
+        <div class="ml-20">
+            <div class="flex flex-col items-start p-2">
+                <h3 class="mb-2 text-lg font-semibold">Questionnaire Title</h3>
+                <p class="text-base gray-600 text-">Text about the questionnaire goes here. This can be a brief
+                    description
+                    or instructions for the user.</p>
+            </div>
+        </div>
+    </div>
+
 </div>
