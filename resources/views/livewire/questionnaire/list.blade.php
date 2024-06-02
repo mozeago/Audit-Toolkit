@@ -218,20 +218,37 @@ new class extends Component {
             </div>
         </div>
     @endif --}}
-    <div class="relative overflow-hidden bg-white rounded-lg shadow-md">
+    <div class="relative p-2 overflow-hidden bg-white border-2 border-red-500 rounded-lg shadow-md">
         <svg class="absolute z-10 top-2 left-2" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24"
             width="48px" fill="#C8000B">
             <path d="M0 0h24v24H0V0z" fill="none" />
             <path d="M22 6h-3v9H6v3h12l4 4V6zm-5 7V2H2v15l4-4h11z" />
         </svg>
-        <div class="ml-20">
+        <div class="ml-20 border-2 border-red-500">
             <div class="flex flex-col items-start p-2">
-                <h3 class="mb-2 text-lg font-semibold">Questionnaire Title</h3>
-                <p class="text-base gray-600 text-">Text about the questionnaire goes here. This can be a brief
-                    description
-                    or instructions for the user.</p>
+                <h3 class="mb-2 text-lg font-semibold">Audit Questionnaire</h3>
+                <p class="text-base gray-600 text-">{{ $questions[$currentQuestionIndex]->text }}</p>
+            </div>
+            <div class="flex mt-4 space-x-4">
+                <label for="answer-yes" class="flex items-center w-full space-x-2 ">
+                    <input id="answer-yes" type="radio" name="answer"
+                        wire:model.defer="userAnswers.{{ $currentQuestionIndex }}.answer" value="true"
+                        class="w-6 h-6 ">
+                    <span class="text-sm font-medium text-gray-700">Yes</span>
+                </label>
+                <label for="answer-no" class="flex items-center w-full space-x-2">
+                    <input id="answer-no" type="radio" name="answer"
+                        wire:model.defer="userAnswers.{{ $currentQuestionIndex }}.answer" value="false"
+                        class="w-6 h-6 ">
+                    <span class="text-sm font-medium text-gray-700">No</span>
+                </label>
+                <label for="answer-partial" class="flex items-center w-full space-x-2">
+                    <input id="answer-partial" type="radio" name="answer"
+                        wire:model.defer="userAnswers.{{ $currentQuestionIndex }}.answer" value="partial"
+                        class="w-6 h-6 ">
+                    <span class="text-sm font-medium text-gray-700">Partial</span>
+                </label>
             </div>
         </div>
     </div>
-
 </div>
