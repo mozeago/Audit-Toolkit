@@ -46,6 +46,14 @@
     font-size: 15px;
 }
 
+.custom-shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.custom-shadow:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
 @media (max-width: 768px) {
     .roboto-bold {
         font-family: "Roboto", sans-serif;
