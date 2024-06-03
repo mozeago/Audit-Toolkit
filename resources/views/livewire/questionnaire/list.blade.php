@@ -148,19 +148,7 @@ new class extends Component {
     }
 }; ?>
 <div x-data="{ infOpen: false }">
-    {{-- @if (count($questions) > 0)
-        <!-- Progress Indicator -->
-        <div class="m-4" x-show=!$showOrganizationForm>
-            <div class="h-4 bg-gray-200 rounded-lg">
-                <div class="h-full bg-[#C8000B]/40 rounded-lg"
-                    style="width: {{ (($currentQuestionIndex + 1) / count($questions)) * 100 }}%"></div>
-            </div>
-            <div class="mt-1 text-xs text-gray-600">{{ $currentQuestionIndex + 1 }} of
-                {{ count($questions) }}
-                questions
-                answered</div>
-        </div>
-        <!-- End Progress Indicator -->
+    @if (count($questions) > 0)
         @if ($showOrganizationForm)
             <div class="flex items-start justify-center px-2 m-0 md:items-center lg:min-h-screen">
                 <div
@@ -203,6 +191,95 @@ new class extends Component {
                     </form>
                 </div>
             </div>
+        @else
+            <!-- Progress Indicator -->
+            <div class="m-4">
+                <div class="h-4 bg-gray-200 rounded-lg">
+                    <div class="h-full bg-[#C8000B]/40 rounded-lg"
+                        style="width: {{ (($currentQuestionIndex + 1) / count($questions)) * 100 }}%"></div>
+                </div>
+                <div class="mt-1 text-xs text-gray-600">{{ $currentQuestionIndex + 1 }} of
+                    {{ count($questions) }}
+                    questions
+                    answered</div>
+            </div>
+            <div class="flex items-start justify-center md:items-center">
+                <div class="relative p-2 overflow-hidden bg-white rounded-lg shadow-xl">
+                    <svg class="absolute z-10 top-2 left-2" xmlns="http://www.w3.org/2000/svg" height="48px"
+                        viewBox="0 0 24 24" width="48px" fill="#C8000B">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path d="M22 6h-3v9H6v3h12l4 4V6zm-5 7V2H2v15l4-4h11z" />
+                    </svg>
+                    <div class="p-2 ml-20">
+                        <div class="flex flex-col items-start p-2">
+                            <h3 class="mb-2 text-lg font-semibold">Audit Questionnaire</h3>
+                            <p class="text-base gray-600 text-">{{ $questions[$currentQuestionIndex]->text }}</p>
+                        </div>
+                        <div class="flex mt-4 space-x-4">
+                            <label for="answer-yes" class="flex items-center w-full space-x-2 ">
+                                <input id="answer-yes" type="radio" name="answer"
+                                    wire:model.defer="userAnswers.{{ $currentQuestionIndex }}.answer" value="true"
+                                    class="w-6 h-6 ">
+                                <span class="text-sm font-medium text-gray-700">Yes</span>
+                            </label>
+                            <label for="answer-no" class="flex items-center w-full space-x-2">
+                                <input id="answer-no" type="radio" name="answer"
+                                    wire:model.defer="userAnswers.{{ $currentQuestionIndex }}.answer" value="false"
+                                    class="w-6 h-6 ">
+                                <span class="text-sm font-medium text-gray-700">No</span>
+                            </label>
+                            <label for="answer-partial" class="flex items-center w-full space-x-2">
+                                <input id="answer-partial" type="radio" name="answer"
+                                    wire:model.defer="userAnswers.{{ $currentQuestionIndex }}.answer" value="partial"
+                                    class="w-6 h-6 ">
+                                <span class="text-sm font-medium text-gray-700">Partial</span>
+                            </label>
+                        </div>
+                        <!--Error messages ye/no/partial --->
+                        <div class="flex mt-4 space-x-4">
+                            @error('answer')
+                                <p class="text-base gray-600 text-"><span
+                                        class="mt-2 text-red-500 text-l">{{ $message }}</span></p>
+                            @enderror
+                        </div>
+                        <!-- Buttons row -->
+                        <div class="flex justify-between mt-8 ">
+                            <button type="button" wire:click="previousQuestion"
+                                class="flex items-center px-4 py-2 text-white bg-black rounded-md sm:font-thin md:font-semibold hover:bg-[#C8000B] focus:outline-none">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    class="mr-2 md:w-6 md:h-6 sm:w-4 sm:h-4" fill="#FFFFFF">
+                                    <path d="M0 0h24v24H0V0z" fill="none" />
+                                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+                                </svg>
+                                Back
+                            </button>
+                            <button type="button" wire:click="nextQuestion"
+                                x-show="$wire.currentQuestionIndex < $wire.totalQuestionsCount-1"
+                                class="flex items-center px-4 py-2 text-white bg-black rounded-md sm:font-thin md:font-semibold hover:bg-[#C8000B] focus:outline-none">
+                                Next
+                                <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 md:w-6 md:h-6 sm:w-4 sm:h-4"
+                                    viewBox="0 0 24 24" fill="#FFFFFF">
+                                    <path d="M0 0h24v24H0V0z" fill="none" />
+                                    <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z" />
+                                </svg>
+                            </button>
+                            <button type="button" wire:click="submitAnswers"
+                                x-show="$wire.currentQuestionIndex === $wire.totalQuestionsCount - 1"
+                                class="flex items-center px-4 py-2 text-white bg-black rounded-md sm:font-thin md:font-semibold hover:bg-[#C8000B] focus:outline-none">
+                                Submit
+                                <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 md:w-6 md:h-6 sm:w-4 sm:h-4"
+                                    viewBox="0 0 24 24" fill="#FFFFFF">
+
+                                    <path d="M0 0h24v24H0V0z" fill="none" />
+                                    <path
+                                        d="M17 3H3v18h18V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Questionnaire -->
         @endif
     @else
         <div class="flex items-start justify-center px-2 m-0 md:items-center lg:min-h-screen">
@@ -217,38 +294,6 @@ new class extends Component {
                 </div>
             </div>
         </div>
-    @endif --}}
-    <div class="relative p-2 overflow-hidden bg-white border-2 border-red-500 rounded-lg shadow-md">
-        <svg class="absolute z-10 top-2 left-2" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24"
-            width="48px" fill="#C8000B">
-            <path d="M0 0h24v24H0V0z" fill="none" />
-            <path d="M22 6h-3v9H6v3h12l4 4V6zm-5 7V2H2v15l4-4h11z" />
-        </svg>
-        <div class="ml-20 border-2 border-red-500">
-            <div class="flex flex-col items-start p-2">
-                <h3 class="mb-2 text-lg font-semibold">Audit Questionnaire</h3>
-                <p class="text-base gray-600 text-">{{ $questions[$currentQuestionIndex]->text }}</p>
-            </div>
-            <div class="flex mt-4 space-x-4">
-                <label for="answer-yes" class="flex items-center w-full space-x-2 ">
-                    <input id="answer-yes" type="radio" name="answer"
-                        wire:model.defer="userAnswers.{{ $currentQuestionIndex }}.answer" value="true"
-                        class="w-6 h-6 ">
-                    <span class="text-sm font-medium text-gray-700">Yes</span>
-                </label>
-                <label for="answer-no" class="flex items-center w-full space-x-2">
-                    <input id="answer-no" type="radio" name="answer"
-                        wire:model.defer="userAnswers.{{ $currentQuestionIndex }}.answer" value="false"
-                        class="w-6 h-6 ">
-                    <span class="text-sm font-medium text-gray-700">No</span>
-                </label>
-                <label for="answer-partial" class="flex items-center w-full space-x-2">
-                    <input id="answer-partial" type="radio" name="answer"
-                        wire:model.defer="userAnswers.{{ $currentQuestionIndex }}.answer" value="partial"
-                        class="w-6 h-6 ">
-                    <span class="text-sm font-medium text-gray-700">Partial</span>
-                </label>
-            </div>
-        </div>
-    </div>
+    @endif
+
 </div>
