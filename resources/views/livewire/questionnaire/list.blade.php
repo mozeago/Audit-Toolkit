@@ -147,7 +147,7 @@ new class extends Component {
         }
     }
 }; ?>
-<div x-data="{ infOpen: false }">
+<div x-data="{ riskOpen: false, infOpen: false, }">
     @if (count($questions) > 0)
         @if ($showOrganizationForm)
             <div class="flex items-start justify-center px-2 m-0 md:items-center lg:min-h-screen">
@@ -242,6 +242,32 @@ new class extends Component {
                                         class="mt-2 text-red-500 text-l">{{ $message }}</span></p>
                             @enderror
                         </div>
+                        <div class="w-full p-4 mt-12 border border-t border-gray-200 rounded-lg shadow-md bg-gray-50">
+                            <div class="flex items-center justify-between">
+                                <h2 class="text-base font-medium">More information about the question
+                                </h2>
+                                <button @click="riskOpen = !riskOpen" class="ml-4 focus:outline-none">
+                                    <svg :class="{ 'rotate-180': riskOpen }"
+                                        class="w-6 h-6 text-gray-500 transition-transform transform" viewBox="0 0 20 20"
+                                        fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div x-show="riskOpen" class="mt-4 prose max-w-none">
+                                <p>
+                                    @if ($questions[$currentQuestionIndex]->hasOneInformation)
+                                        {{ $questions[$currentQuestionIndex]->hasOneInformation->content }}
+                                    @else
+                                        No related information available for this question.
+                                    @endif
+                                </p>
+                                <!-- Add more content here -->
+                            </div>
+                        </div>
+                        {{-- end more info --}}
                         <!-- Buttons row -->
                         <div class="flex justify-between mt-8 ">
                             <button type="button" wire:click="previousQuestion"
