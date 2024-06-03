@@ -21,7 +21,8 @@ new class extends Component {
 <div class="w-full pl-5 mt-10 mb-10">
     <div class="grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-3">
         @foreach ($templates as $template)
-            <div class="relative max-w-sm mx-auto mb-20 ml-2 mr-2 overflow-hidden bg-white shadow-lg rounded-xl">
+            <div
+                class="relative max-w-sm mx-auto mb-20 overflow-hidden bg-white border-2 shadow-lg border-bottom-red rounded-xl">
                 <img class="object-cover w-full h-32" src="{{ Storage::url($template->thumbnail) }}" alt="Image"
                     style="opacity: 0.5;">
                 <button class="absolute top-0 right-0 px-2 py-1 mt-2 mr-2 text-white bg-gray-800 rounded">
@@ -32,7 +33,7 @@ new class extends Component {
                     <p class="mb-4 text-base text-gray-700">{{ $template->category }}</p>
                     <div class="flex justify-between">
                         <a href="{{ Storage::url($template->url) }}" target="_blank"
-                            class="inline-flex items-center px-2 py-2 font-bold text-gray-800 bg-gray-200 rounded hover:bg-gray-300">
+                            class="inline-flex items-center px-2 py-2 font-bold text-gray-800 bg-gray-200 rounded hover:bg-black hover:text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
