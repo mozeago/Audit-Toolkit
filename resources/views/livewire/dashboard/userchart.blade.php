@@ -169,7 +169,7 @@ new class extends Component {
     }
 }; ?>
 <div class="mb-4">
-    <div class="w-full max-w-4xl mt-0 mb-4">
+    <div class="w-full mt-0 mb-4 ">
         <div class="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm min-h-8 hover:shadow-none">
             <!-- Fixed column at the start -->
             <div class="flex-shrink-0">
@@ -197,12 +197,12 @@ new class extends Component {
             </div>
         </div>
     </div>
-    <div class="w-full max-w-4xl mb-8">
+    <div class="w-full mb-8">
         <div
             class="flex flex-col items-center justify-between p-4 bg-white rounded-lg shadow-sm hover:shadow-none min-h-8 sm:flex-row">
             <!-- Fixed column at the start -->
             <div class="flex-shrink-0 mb-4 sm:mb-0">
-                <p class="text-base font-medium sm:text-base">A quick glance at your performance</h1>
+                <p class="md:font-bold md:text-xl sm:text-base">A quick glance at your performance</h1>
             </div>
         </div>
     </div>
