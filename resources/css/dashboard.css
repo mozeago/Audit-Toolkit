@@ -124,6 +124,7 @@ b {
 aside {
     display: flex;
     flex-direction: column;
+    padding-top: 16px;
 }
 
 aside .toggle {
@@ -157,7 +158,9 @@ aside .sidebar {
     height: auto;
     position: relative;
     top: 1.5rem;
+    margin: 1rem 0;
     transition: all 0.3s ease;
+    padding-top: 1rem;
 }
 
 aside .sidebar:hover {
@@ -181,14 +184,14 @@ aside .sidebar a span {
     transition: all 0.3s ease;
 }
 
-aside .sidebar a:last-child {
+/* aside .sidebar a:last-child {
     bottom: 2rem;
     width: 100%;
-}
+} */
 
 aside .sidebar a.active {
     width: 100%;
-    color: var(--color-primary);
+    color: #C8000B;
     background-color: var(--color-light);
     margin-left: 0;
 }
@@ -201,12 +204,12 @@ aside .sidebar a.active::before {
 }
 
 aside .sidebar a.active span {
-    color: var(--color-primary);
+    color: #C8000B;
     margin-left: calc(1rem - 3px);
 }
 
 aside .sidebar a:hover {
-    color: var(--color-primary);
+    color: #C8000B;
 }
 
 aside .sidebar a:hover span {

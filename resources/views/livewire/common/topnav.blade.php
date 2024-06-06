@@ -39,15 +39,14 @@ new class extends Component {
                 </button>
             @endguest
             @auth
-                <a href="{{ route('dashboard') }}" class="inline-flex items-center">
+                <a href="{{ route('dashboard') }}" class="inline-flex items-center mr-4">
                     <span class="mr-2 text-xl material-icons-sharp">
                         dashboard
                     </span>
                     <h3 class="m-0">Dashboard</h3>
                 </a>
-                <button wire:click="logout"
-                    class="flex items-center mt-2 mb-4 ml-10 hover:text-[#C8000B] hover:font-semibold">
-                    <span class="material-icons-sharp ">
+                <button wire:click="logout" class="flex items-center hover:text-[#C8000B] hover:font-semibold">
+                    <span class="material-icons-sharp">
                         logout
                     </span>
                     <h3>Logout</h3>
