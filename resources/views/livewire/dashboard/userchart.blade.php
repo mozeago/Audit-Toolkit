@@ -210,7 +210,7 @@ new class extends Component {
             class="flex flex-col items-center justify-between p-4 bg-white rounded-lg shadow-sm hover:shadow-none min-h-8 sm:flex-row">
             <!-- Fixed column at the start -->
             <div class="flex-shrink-0 mb-4 sm:mb-0">
-                <p class="md:font-bold md:text-xl sm:text-base">A quick glance at your performance</h1>
+                <p class="md:font-medium md:text-base sm:text-base">A quick glance at your performance</h1>
             </div>
         </div>
     </div>

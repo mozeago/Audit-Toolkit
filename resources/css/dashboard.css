@@ -115,21 +115,22 @@ b {
 
 .container {
     display: grid;
-    width: 96%;
+    width: 100%;
     margin: 0 auto;
     gap: 1.8rem;
-    grid-template-columns: 12rem auto 23rem;
+    grid-template-columns: 16rem auto 24rem;
 }
 
 aside {
-    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 aside .toggle {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 1.4rem;
+    padding: 1rem;
 }
 
 aside .toggle .logo {
@@ -153,7 +154,7 @@ aside .sidebar {
     background-color: var(--color-white);
     box-shadow: var(--box-shadow);
     border-radius: 15px;
-    height: 88vh;
+    height: auto;
     position: relative;
     top: 1.5rem;
     transition: all 0.3s ease;
@@ -165,10 +166,11 @@ aside .sidebar:hover {
 
 aside .sidebar a {
     display: flex;
-    align-items: center;
+    align-items: start;
     color: var(--color-info-dark);
     height: 3.7rem;
     gap: 1rem;
+    font-size: 13px;
     position: relative;
     margin-left: 2rem;
     transition: all 0.3s ease;
@@ -180,7 +182,6 @@ aside .sidebar a span {
 }
 
 aside .sidebar a:last-child {
-    position: absolute;
     bottom: 2rem;
     width: 100%;
 }

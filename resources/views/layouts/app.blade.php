@@ -120,9 +120,10 @@
                     <h3>Security Quiz</h3>
                 </a>
                 <a href="{{ route('researchers') }}">
-                    <span class="material-icons-sharp"> add
+                    <span class="material-icons-sharp">
+                        diversity_3
                     </span>
-                    <h3>Reasearch Team</h3>
+                    <h3>Res Team</h3>
                 </a>
                 @if (auth()->user()->role === 'admin')
                     <a href="{{ route('project-contributors') }}">
@@ -155,7 +156,7 @@
         <!-- End of Sidebar Section -->
 
         <!-- Main Content -->
-        <main>
+        <main class="pb-6">
             {{ $slot }}
         </main>
         <!-- End of Main Content -->
