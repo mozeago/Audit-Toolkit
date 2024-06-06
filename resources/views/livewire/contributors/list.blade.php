@@ -17,15 +17,15 @@ new class extends Component {
 }; ?>
 
 <div>
-    <div class="flex items-center justify-center mt-24 mb-8">
+    <div class="flex items-center justify-center mt-8 mb-8">
         <div class="flex-grow border-b-4 border-[#1C4863] "></div>
         <span class="px-3 text-xl font-bold text-center">Research Contributors</span>
         <div class="flex-grow border-b-4 border-[#1C4863] "></div>
 
     </div>
-    <div class="flex justify-center mt-4 shadow-2xl">
+    <div class="flex justify-center mt-2 shadow-2xl">
         <div class="flex justify-center">
-            <table class="w-full mb-8 bg-white border border-gray-300 divide-y divide-gray-200 table-auto">
+            <table class="w-full mb-8 bg-white border border-gray-300 divide-y divide-gray-200 table-fixed">
                 <thead class="bg-[#1C4863] ">
                     <tr>
                         <th scope="col"

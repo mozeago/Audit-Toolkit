@@ -6,6 +6,8 @@ use App\Models\UserResponse;
 use App\Models\PrivacyCasesModel;
 use App\Models\User;
 use App\Models\RiskAnalysisResponse;
+use Livewire\Attributes\On;
+use App\Models\ResearchContributorsModel;
 new class extends Component {
     public $averageScore;
     public $userId;
@@ -17,9 +19,11 @@ new class extends Component {
     public $commercialUseOfData;
     public $businessOperation;
     public $privacyCases;
+    public $contributors;
 
     public function mount()
     {
+        $this->getContributors();
         $this->privacyCases = $this->getPrivacyViolationCases();
         $this->calculateAverageScore();
         $this->userId = auth()->user()->id;
@@ -40,7 +44,11 @@ new class extends Component {
         $this->commercialUseOfData = $this->calculateProcessingActivityTypePercentage('Commercial use of data');
         $this->businessOperation = $this->calculateProcessingActivityTypePercentage('Business Operation');
     }
-
+    #[On('contributor-created')]
+    public function getContributors()
+    {
+        return $this->contributors = ResearchContributorsModel::orderBy('created_at', 'desc')->get();
+    }
     public function calculateAuditPercentage($modelClass, $userId)
     {
         // Subquery to get the maximum attempt number for the given user
@@ -518,7 +526,42 @@ new class extends Component {
             </div>
         </div>
     </div>
+    <div class="flex items-center justify-center mt-8 mb-8">
+        <div class="flex-grow border-b-4 border-[#1C4863] "></div>
+        <span class="px-3 text-xl font-bold text-center">Research Contributors</span>
+        <div class="flex-grow border-b-4 border-[#1C4863] "></div>
+
+    </div>
+    <div class="overflow-x-auto">
+        <table class="w-full mb-8 bg-white border border-gray-300 divide-y divide-gray-200 table-fixed">
+            <thead class="bg-[#1C4863]">
+                <tr>
+                    <th scope="col"
+                        class="px-4 py-2 text-xs font-medium tracking-wider text-left text-white uppercase sm:px-6 sm:py-3 sm:text-sm">
+                        Name
+                    </th>
+                    <th scope="col"
+                        class="px-4 py-2 text-xs font-medium tracking-wider text-left text-white uppercase sm:px-6 sm:py-3 sm:text-sm">
+                        Role
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+                @foreach ($contributors as $contributor)
+                    <tr class="text-center transition-colors duration-300 hover:bg-gray-100">
+                        <td class="px-4 py-2 text-left whitespace-nowrap sm:px-6 sm:py-4">
+                            {{ $contributor->name }}
+                        </td>
+                        <td class="px-4 py-2 text-left whitespace-nowrap sm:px-6 sm:py-4">
+                            {{ $contributor->description }}
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>
+
 <script type="text/javascript">
     var randomScalingFactor = function() {
         return Math.round(Math.random() * 100);
