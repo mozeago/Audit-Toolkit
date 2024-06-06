@@ -17,3 +17,10 @@ darkMode.addEventListener("click", () => {
     darkMode.querySelector("span:nth-child(1)").classList.toggle("active");
     darkMode.querySelector("span:nth-child(2)").classList.toggle("active");
 });
+document
+    .querySelectorAll('a[href="{{ route("privacy-cases") }}"]')
+    .forEach((link) => {
+        link.addEventListener("click", () => {
+            link.querySelector(".expand-icon").classList.toggle("rotate");
+        });
+    });

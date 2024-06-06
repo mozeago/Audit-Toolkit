@@ -167,55 +167,6 @@ aside .sidebar:hover {
     box-shadow: none;
 }
 
-aside .sidebar a {
-    display: flex;
-    align-items: start;
-    color: var(--color-info-dark);
-    height: 3.7rem;
-    gap: 1rem;
-    font-size: 13px;
-    position: relative;
-    margin-left: 2rem;
-    transition: all 0.3s ease;
-}
-
-aside .sidebar a span {
-    font-size: 1.6rem;
-    transition: all 0.3s ease;
-}
-
-/* aside .sidebar a:last-child {
-    bottom: 2rem;
-    width: 100%;
-} */
-
-aside .sidebar a.active {
-    width: 100%;
-    color: #C8000B;
-    background-color: var(--color-light);
-    margin-left: 0;
-}
-
-aside .sidebar a.active::before {
-    content: '';
-    width: 6px;
-    height: 18px;
-    background-color: var(--color-primary);
-}
-
-aside .sidebar a.active span {
-    color: #C8000B;
-    margin-left: calc(1rem - 3px);
-}
-
-aside .sidebar a:hover {
-    color: #C8000B;
-}
-
-aside .sidebar a:hover span {
-    margin-left: 0.6rem;
-}
-
 aside .sidebar .message-count {
     background-color: var(--color-danger);
     padding: 2px 6px;
@@ -607,7 +558,7 @@ main .recent-orders a {
         width: 15rem;
         z-index: 3;
         box-shadow: 1rem 3rem 4rem var(--color-light);
-        height: 100vh;
+        height: auto;
         left: -100%;
         display: none;
         animation: showMenu 0.4s ease forwards;
@@ -708,4 +659,61 @@ main .recent-orders a {
         font-size: 2rem;
     }
 
+}
+
+aside .sidebar a {
+    display: flex;
+    align-items: start;
+    color: var(--color-info-dark);
+    height: 3.7rem;
+    gap: 1rem;
+    font-size: 13px;
+    position: relative;
+    margin-left: 2rem;
+    transition: all 0.3s ease;
+}
+
+aside .sidebar a span {
+    font-size: 1.6rem;
+    transition: all 0.3s ease;
+}
+
+/* aside .sidebar a:last-child {
+    bottom: 2rem;
+    width: 100%;
+} */
+
+aside .sidebar a.active {
+    width: 100%;
+    color: #C8000B;
+    background-color: var(--color-light);
+    margin-left: 0;
+}
+
+aside .sidebar a.active::before {
+    content: '';
+    width: 6px;
+    height: 18px;
+    background-color: var(--color-primary);
+}
+
+aside .sidebar a.active span {
+    color: #C8000B;
+    margin-left: calc(1rem - 3px);
+}
+
+aside .sidebar a:hover {
+    color: #C8000B;
+}
+
+aside .sidebar a:hover span {
+    margin-left: 0.6rem;
+}
+
+.expand-icon-onboarding {
+    transition: transform 0.3s ease;
+}
+
+.expand-icon-onboarding.rotate {
+    transform: rotate(180deg);
 }

@@ -79,76 +79,84 @@
             </div>
 
             <div class="overflow-visible sidebar">
-                <a href="{{ route('dashboard') }}" class="inline-flex items-center hover:font-semibold">
+                <a href="{{ route('dashboard') }}"
+                    class="inline-flex items-center active:text-[#C8000B] hover:font-semibold">
                     <span class="mr-2 text-xl material-icons-sharp">
                         dashboard
                     </span>
                     <h3 class="m-0">Dashboard</h3>
                 </a>
                 @if (auth()->user()->role === 'admin')
-                    <a href="{{ route('dashboard') }}" class="hover:font-semibold">
+                    <a href="{{ route('dashboard') }}" class="active:text-[#C8000B] hover:font-semibold hover:ml-0">
                         <span class="material-icons-sharp">
                             handyman
                         </span>
                         <h3>Audit Toolkit</h3>
+                        <span class="material-icons-sharp">
+                            expand_more
+                        </span>
                     </a>
-                    <a href="{{ route('templates-upload') }}" class="hover:font-semibold">
+                    <a href="{{ route('templates-upload') }}" class="active:text-[#C8000B] hover:font-semibold">
                         <span class="material-icons-sharp">
                             upload_file
                         </span>
                         <h3>Templates Upload</h3>
                     </a>
                 @endif
-                <a href="{{ route('templates-download') }}" class="hover:font-semibold">
+                <a href="{{ route('templates-download') }}" class="active:text-[#C8000B] hover:font-semibold">
                     <span class="material-icons-sharp">
                         file_download
                     </span>
                     <h3>Templates Download</h3>
                     {{-- <span class="message-count">5 files</span> --}}
                 </a>
-                <a href="{{ route('questionnaire') }}" class="hover:font-semibold">
+                <a href="{{ route('questionnaire') }}" class="active:text-[#C8000B] hover:font-semibold">
                     <span class="material-icons-sharp">
                         quiz
                     </span>
                     <h3>Audit Quiz</h3>
                     {{-- <span class="message-count">questions count</span> --}}
                 </a>
-                <a href="{{ route('risk-analysis-questionnaire') }}" class="hover:font-semibold">
+                <a href="{{ route('risk-analysis-questionnaire') }}" class="active:text-[#C8000B] hover:font-semibold">
                     <span class="material-icons-sharp">
                         security
                     </span>
                     <h3>Security Quiz</h3>
                 </a>
-                <a href="{{ route('researchers') }}" class="hover:font-semibold">
+                <a href="{{ route('researchers') }}" class="active:text-[#C8000B] hover:font-semibold">
                     <span class="material-icons-sharp">
-                        diversity_3
+                        diversity_2
                     </span>
-                    <h3>Res Team</h3>
+                    <h3>Research Team</h3>
                 </a>
                 @if (auth()->user()->role === 'admin')
-                    <a href="{{ route('project-contributors') }}" class="hover:font-semibold">
+                    <a href="{{ route('project-contributors') }}" class="active:text-[#C8000B] hover:font-semibold">
                         <span class="material-icons-sharp">
                             diversity_3
                         </span>
                         <h3>Research Members</h3>
                     </a>
-                    <a href="{{ route('user-settings') }}" class="hover:font-semibold">
+                    <a href="{{ route('user-settings') }}" class="active:text-[#C8000B] hover:font-semibold">
                         <span class="material-icons-sharp">
                             manage_accounts
                         </span>
                         <h3>System Users</h3>
                     </a>
-                    <a href="{{ route('privacy-cases') }}" class="hover:font-semibold">
+                    <a href="{{ route('privacy-cases') }}" class="active:text-[#C8000B] hover:font-semibold">
                         <span class="material-icons-sharp">
                             phonelink_lock
                         </span>
                         <h3>Privacy Cases</h3>
                     </a>
-                    <a href="{{ route('privacy-cases') }}" class="hover:font-semibold">
+                    <a href="{{ route('privacy-cases') }}"
+                        class="active:text-[#C8000B] hover:font-semibold hover:ml-0">
                         <span class="material-icons-sharp">
                             question_mark
                         </span>
                         <h3>OnBoarding Qtns</h3>
+                        <span class="material-icons-sharp">
+                            expand_more
+                        </span>
                     </a>
                 @endif
             </div>
