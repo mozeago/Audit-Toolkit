@@ -1,19 +1,3 @@
-<?php
-
-use App\Livewire\Actions\Logout;
-use Livewire\Volt\Component;
-
-new class extends Component {
-    /**
-     * Log the current user out of the application.
-     */
-    public function logout(Logout $logout): void
-    {
-        $logout();
-
-        $this->redirect('/', navigate: true);
-    }
-}; ?>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -156,12 +140,11 @@ new class extends Component {
                     </span>
                     <h3>Reasearch Team</h3>
                 </a>
-                <button wire:click="logout"
-                    class="flex items-center mt-2 mb-4 ml-10 hover:text-[#C8000B] hover:font-semibold">
+                <button wire:click="logout" class="flex items-center mt-2 mb-4 ml-10 hover:font-semibold">
                     <span class="material-icons-sharp ">
-                        logout
+                        question_mark
                     </span>
-                    <h3>Logout</h3>
+                    <h3 class="ml-2">OnBoarding</h3>
                 </button>
             </div>
         </aside>

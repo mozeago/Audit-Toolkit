@@ -29,6 +29,13 @@
                     </span>
                     <h3 class="m-0">Dashboard</h3>
                 </a>
+                <button wire:click="logout"
+                    class="flex items-center mt-2 mb-4 ml-10 hover:text-[#C8000B] hover:font-semibold">
+                    <span class="material-icons-sharp ">
+                        logout
+                    </span>
+                    <h3>Logout</h3>
+                </button>
             @endauth
         </div>
     </div>
