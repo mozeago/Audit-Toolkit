@@ -85,18 +85,20 @@
                     </span>
                     <h3 class="m-0">Dashboard</h3>
                 </a>
-                <a href="{{ route('dashboard') }}">
-                    <span class="material-icons-sharp">
-                        handyman
-                    </span>
-                    <h3>Audit Toolkit</h3>
-                </a>
-                <a href="{{ route('templates-upload') }}">
-                    <span class="material-icons-sharp">
-                        upload_file
-                    </span>
-                    <h3>Templates Upload</h3>
-                </a>
+                @if (auth()->user()->role === 'admin')
+                    <a href="{{ route('dashboard') }}">
+                        <span class="material-icons-sharp">
+                            handyman
+                        </span>
+                        <h3>Audit Toolkit</h3>
+                    </a>
+                    <a href="{{ route('templates-upload') }}">
+                        <span class="material-icons-sharp">
+                            upload_file
+                        </span>
+                        <h3>Templates Upload</h3>
+                    </a>
+                @endif
                 <a href="{{ route('templates-download') }}">
                     <span class="material-icons-sharp">
                         file_download
@@ -117,35 +119,37 @@
                     </span>
                     <h3>Security Quiz</h3>
                 </a>
-                <a href="{{ route('project-contributors') }}">
-                    <span class="material-icons-sharp">
-                        diversity_3
-                    </span>
-                    <h3>Research Members</h3>
-                </a>
-                <a href="{{ route('user-settings') }}">
-                    <span class="material-icons-sharp">
-                        manage_accounts
-                    </span>
-                    <h3>System Users</h3>
-                </a>
-                <a href="{{ route('privacy-cases') }}">
-                    <span class="material-icons-sharp">
-                        phonelink_lock
-                    </span>
-                    <h3>Privacy Cases</h3>
-                </a>
                 <a href="{{ route('researchers') }}">
                     <span class="material-icons-sharp"> add
                     </span>
                     <h3>Reasearch Team</h3>
                 </a>
-                <button wire:click="logout" class="flex items-center mt-2 mb-4 ml-10 hover:font-semibold">
-                    <span class="material-icons-sharp ">
-                        question_mark
-                    </span>
-                    <h3 class="ml-2">OnBoarding</h3>
-                </button>
+                @if (auth()->user()->role === 'admin')
+                    <a href="{{ route('project-contributors') }}">
+                        <span class="material-icons-sharp">
+                            diversity_3
+                        </span>
+                        <h3>Research Members</h3>
+                    </a>
+                    <a href="{{ route('user-settings') }}">
+                        <span class="material-icons-sharp">
+                            manage_accounts
+                        </span>
+                        <h3>System Users</h3>
+                    </a>
+                    <a href="{{ route('privacy-cases') }}">
+                        <span class="material-icons-sharp">
+                            phonelink_lock
+                        </span>
+                        <h3>Privacy Cases</h3>
+                    </a>
+                    <button wire:click="logout" class="flex items-center mt-2 mb-4 ml-10 hover:font-semibold">
+                        <span class="material-icons-sharp ">
+                            question_mark
+                        </span>
+                        <h3 class="ml-2">OnBoarding</h3>
+                    </button>
+                @endif
             </div>
         </aside>
         <!-- End of Sidebar Section -->
