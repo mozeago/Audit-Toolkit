@@ -54,7 +54,7 @@ new class extends Component {
     }
 }; ?>
 
-<div class="container w-full px-4 py-8 mx-auto bg-white rounded-md shadow-md">
+<div class="w-full px-4 py-8 mx-auto bg-white rounded-md shadow-md">
     <div class="flex flex-col overflow-hidden bg-white md:flex-row">
         <div class="w-full p-8">
             <div class="mb-4">
