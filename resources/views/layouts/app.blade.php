@@ -57,7 +57,7 @@
     </style>
 </head>
 
-<body>
+<body x-data="{ auditOpened: false, onBoardingOpened: false }">
     <?php
     use App\Models\User;
     ?>
@@ -77,7 +77,6 @@
                     </span>
                 </div>
             </div>
-
             <div class="overflow-visible sidebar">
                 <a href="{{ route('dashboard') }}"
                     class="inline-flex items-center active:text-[#C8000B] hover:font-semibold">
@@ -87,12 +86,13 @@
                     <h3 class="m-0">Dashboard</h3>
                 </a>
                 @if (auth()->user()->role === 'admin')
-                    <a href="{{ route('dashboard') }}" class="active:text-[#C8000B] hover:font-semibold hover:ml-0">
+                    <a onclick="return false;" @click="auditOpened = !auditOpened" href="#"
+                        class="active:text-[#C8000B] hover:font-semibold hover:ml-0">
                         <span class="material-icons-sharp">
                             handyman
                         </span>
                         <h3>Audit Toolkit</h3>
-                        <span class="material-icons-sharp">
+                        <span :class="{ 'rotate-180': auditOpened }" class="material-icons-sharp">
                             expand_more
                         </span>
                     </a>
@@ -148,13 +148,13 @@
                         </span>
                         <h3>Privacy Cases</h3>
                     </a>
-                    <a href="{{ route('privacy-cases') }}"
+                    <a onclick="return false;" @click="onBoardingOpened = !onBoardingOpened" href="#"
                         class="active:text-[#C8000B] hover:font-semibold hover:ml-0">
                         <span class="material-icons-sharp">
                             question_mark
                         </span>
                         <h3>OnBoarding Qtns</h3>
-                        <span class="material-icons-sharp">
+                        <span :class="{ 'rotate-180': onBoardingOpened }" class="material-icons-sharp">
                             expand_more
                         </span>
                     </a>

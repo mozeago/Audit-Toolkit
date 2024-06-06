@@ -19,7 +19,7 @@ new class extends Component {
 }; ?>
 
 <div class="w-full mt-10 mb-10">
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-3">
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-3">
         @foreach ($templates as $template)
             <div
                 class="relative max-w-sm mx-auto mb-20 overflow-hidden bg-white border-2 shadow-lg border-bottom-red rounded-xl">

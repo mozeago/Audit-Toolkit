@@ -32,12 +32,12 @@ new class extends Component {
             <div class="px-4 py-2 mb-4 text-white bg-[#EEA726] rounded-t-sm">
                 <h3 class="text-lg font-bold">Ignite Cohort 1</h3>
             </div>
-            <div class="flex-auto bg-gray-200">
-                <ul class="p-4 shadow-md">
+            <div class="items-start flex-auto bg-gray-200">
+                <ul class="items-start p-4 shadow-md">
                     @foreach ($yellowColumContributors as $contributor)
-                        <li class="flex items-center py-2">
+                        <li class="flex items-start py-2">
                             <span
-                                class="flex items-center justify-center flex-shrink-0 w-8 h-8 mr-4 text-white rounded-full">
+                                class="flex items-start justify-center flex-shrink-0 w-8 h-8 mr-4 text-white rounded-full">
                                 <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                     width="24" height="24" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -63,7 +63,7 @@ new class extends Component {
             <div class="flex-auto bg-gray-200">
                 <ul class="p-4 shadow-md">
                     @foreach ($blueColumContributors as $contributor)
-                        <li class="flex items-center py-2">
+                        <li class="flex items-start py-2">
                             <span
                                 class="flex items-center justify-center flex-shrink-0 w-8 h-8 mr-4 text-white rounded-full">
                                 <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +90,7 @@ new class extends Component {
             <div class="flex-auto bg-gray-200">
                 <ul class="p-4 shadow-md">
                     @foreach ($greenColumContributors as $contributor)
-                        <li class="flex items-center py-2">
+                        <li class="flex items-start py-2">
                             <span
                                 class="flex items-center justify-center flex-shrink-0 w-8 h-8 mr-4 text-white rounded-full">
                                 <svg class="w-6 h-6 text-gray-800 " aria-hidden="true"
