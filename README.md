@@ -1,6 +1,6 @@
 ﻿# Audit Toolkit
 This project delivers a user-friendly platform to empower organizations with self-assessment tools and reporting functionalities for managing risk and data privacy.  
-
+![Audit Toolkit](project.PNG)
 ### Key Features:
 1. **Secure Login:** Ensures authorized access to the platform.  
 2. **Centralized Dashboard:** Provides a clear overview of risk assessments and data privacy compliance efforts.  
