@@ -1,11 +1,11 @@
 <footer class="mt-8 text-white bg-black">
-    <div class="flex flex-col px-8 border-2 border-red-500 md:flex-row">
+    <div class="flex flex-col px-8 md:flex-row">
         <div class="sm:w-full md:px-16 sm:p-4 md:w-2/5">
             <a class="mr-8" href="/" wire:navigate>
                 <img class="md:py-16 md:px-8" src="{{ asset('images/logo.webp') }}" alt="Scartch and Script Logo">
             </a>
         </div>
-        <div class="border-2 border-red-500  sm:w-full md:w-3/5">
+        <div class="py-8 sm:w-full md:w-3/5">
             <h4 class="mb-2 font-extrabold text-white roboto-bold-16 text-start">
                 About Data Toolkit</h4>
             <p class="font-sans text-lg text-left text-gray-200 roboto-regular-15">The
