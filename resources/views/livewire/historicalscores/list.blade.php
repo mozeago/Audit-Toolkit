@@ -16,8 +16,12 @@ new class extends Component {
     public function getPreviousScores()
     {
         $userId = auth()->id();
-        // Get the highest attempt number
-        $maxAttemptNumber = max(UserResponse::where('user_id', $userId)->max('attempt_number'), RiskAnalysisResponse::where('user_id', $userId)->max('attempt_number'));
+
+        // Get the highest attempt number, ensure it is a valid number
+        $maxUserResponseAttempt = UserResponse::where('user_id', $userId)->max('attempt_number');
+        $maxRiskAnalysisAttempt = RiskAnalysisResponse::where('user_id', $userId)->max('attempt_number');
+
+        $maxAttemptNumber = max(is_null($maxUserResponseAttempt) ? 0 : $maxUserResponseAttempt, is_null($maxRiskAnalysisAttempt) ? 0 : $maxRiskAnalysisAttempt);
 
         // Get unique attempt numbers from both tables excluding the highest attempt number
         $userAttemptNumbers = UserResponse::where('user_id', $userId)->where('attempt_number', '<', $maxAttemptNumber)->select('attempt_number')->distinct()->pluck('attempt_number')->toArray();
@@ -75,30 +79,39 @@ new class extends Component {
 }; ?>
 
 <div>
-    @foreach ($previousScores as $previousScore)
-        <div class="notification">
-            <span
-                class="mr-4 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full
+    @if (!empty($previousScores))
+        @foreach ($previousScores as $previousScore)
+            <div class="notification">
+                <span
+                    class="mr-4 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full
                 @if ($previousScore['average_score'] >= 75) bg-green-500
                 @elseif ($previousScore['average_score'] >= 50)
                     bg-black
                 @else
                     bg-[#C8000B] @endif
                 p-2 text-white">{{ $previousScore['average_score'] }}%</span>
-            <div class="content">
-                <div class="info">
-                    <h3>Average</h3>
-                    <small class="text_muted">
-                        31 April 2024
-                    </small>
+                <div class="content">
+                    <div class="info">
+                        <h3>
+                            @if ($previousScore['average_score'] >= 75)
+                                Low Risk
+                            @elseif ($previousScore['average_score'] >= 50)
+                                Moderate Risk
+                            @else
+                                High Risk
+                            @endif
+                        </h3>
+                        <small class="text_muted">
+                            31 April 2024
+                        </small>
+                    </div>
+                    <span class="material-icons-sharp">
+                        more_vert
+                    </span>
                 </div>
-                <span class="material-icons-sharp">
-                    more_vert
-                </span>
             </div>
-        </div>
-    @endforeach
-    {{-- <div class="notification deactive">
+        @endforeach
+        {{-- <div class="notification deactive">
         <span
             class="flex items-center justify-center flex-shrink-0 w-12 h-12 p-2 mr-4 text-white bg-black rounded-full">56%</span>
         <div class="content">
@@ -113,4 +126,12 @@ new class extends Component {
             </span>
         </div>
     </div> --}}
+    @else
+        <div class="items-center">
+            <span class="material-icons-sharp">
+                warning
+            </span>
+            <p class="font-mono">You don't have previous attempts yet.</p>
+        </div>
+    @endif
 </div>

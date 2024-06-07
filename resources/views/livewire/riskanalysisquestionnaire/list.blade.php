@@ -219,7 +219,7 @@ new class extends Component {
                             </div>
                             <div class="flex justify-end">
                                 <x-primary-button type="submit"
-                                    class="flex items-center px-4 py-2 font-semibold text-white bg-black rounded-md hover:bg-[#C8000B] focus:outline-none">
+                                    class="flex items-center px-4 py-2 font-semibold text-white bg-gray-900 rounded-md hover:bg-[#C8000B] focus:outline-none">
                                     Next
                                     <span class="ml-2">
                                         <svg class="w-6 h-6 stroke-white" xmlns="http://www.w3.org/2000/svg"
@@ -309,7 +309,7 @@ new class extends Component {
                             <!-- Buttons row -->
                             <div class="flex justify-between mt-8 ">
                                 <button type="button" wire:click="previousQuestion"
-                                    class="flex items-center px-4 py-2 text-white bg-black rounded-md sm:font-thin md:font-semibold hover:bg-[#C8000B] focus:outline-none">
+                                    class="flex items-center px-4 py-2 text-white bg-gray-900 rounded-md sm:font-thin md:font-semibold hover:bg-[#C8000B] focus:outline-none">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                         class="mr-2 md:w-6 md:h-6 sm:w-4 sm:h-4" fill="#FFFFFF">
                                         <path d="M0 0h24v24H0V0z" fill="none" />
@@ -319,7 +319,7 @@ new class extends Component {
                                 </button>
                                 <button type="button" wire:click="nextQuestion"
                                     x-show="$wire.currentQuestionIndex < $wire.totalQuestionsCount-1"
-                                    class="flex items-center px-4 py-2 text-white bg-black rounded-md sm:font-thin md:font-semibold hover:bg-[#C8000B] focus:outline-none">
+                                    class="flex items-center px-4 py-2 text-white bg-gray-900 rounded-md sm:font-thin md:font-semibold hover:bg-[#C8000B] focus:outline-none">
                                     Next
                                     <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 md:w-6 md:h-6 sm:w-4 sm:h-4"
                                         viewBox="0 0 24 24" fill="#FFFFFF">
@@ -329,7 +329,7 @@ new class extends Component {
                                 </button>
                                 <button type="button" wire:click="submitAnswers"
                                     x-show="$wire.currentQuestionIndex === $wire.totalQuestionsCount - 1"
-                                    class="flex items-center px-4 py-2 text-white bg-black rounded-md sm:font-thin md:font-semibold hover:bg-[#C8000B] focus:outline-none">
+                                    class="flex items-center px-4 py-2 text-white bg-gray-900 rounded-md sm:font-thin md:font-semibold hover:bg-[#C8000B] focus:outline-none">
                                     Submit
                                     <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 md:w-6 md:h-6 sm:w-4 sm:h-4"
                                         viewBox="0 0 24 24" fill="#FFFFFF">

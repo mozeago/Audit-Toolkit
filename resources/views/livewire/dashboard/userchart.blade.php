@@ -186,7 +186,7 @@ new class extends Component {
             <!-- Fixed column at the end -->
             <div class="flex-shrink-0">
                 <button wire:click="emailCopy"
-                    class="hover:bg-[#C8000B] flex items-center px-1 py-2 font-semibold text-white bg-black rounded-full md:rounded md:px-4 md:py-2">
+                    class="hover:bg-[#C8000B] flex items-center px-2 py-2 font-semibold text-white bg-black rounded-full md:rounded md:px-4 md:py-2">
                     <i class="mr-1 fas fa-envelope sm:mr-2"></i>
                     <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
                         viewBox="0 0 24 24" width="24px" fill="#FFFFFF" class="mr-1 sm:mr-2">
@@ -337,7 +337,6 @@ new class extends Component {
                     <canvas id="chart"></canvas>
                     <p class="items-center text-base font-medium text-center text-cyan-500" id="gaugeValue">
                         Average Score:</p>
-
                     <div class="flex items-center w-full px-4">
                         <div class="flex items-center w-1/2">
                             <svg viewBox="0 0 36 36" class="w-20 h-20 circular-chart green">
@@ -528,12 +527,12 @@ new class extends Component {
     </div>
     <div class="flex items-center justify-center mt-8 mb-8">
         <div class="flex-grow border-b-4 border-[#1C4863] "></div>
-        <span class="px-3 text-xl font-bold text-center">Research Contributors</span>
+        <span class="px-3 text-xl font-bold text-center">Privacy Cases</span>
         <div class="flex-grow border-b-4 border-[#1C4863] "></div>
 
     </div>
     <div class="overflow-x-auto">
-        <table class="w-full mb-8 bg-white border border-gray-300 divide-y divide-gray-200 table-fixed">
+        <table class="w-full mb-8 bg-white border border-gray-300 divide-y divide-gray-200 md:table-fixed">
             <thead class="bg-[#1C4863]">
                 <tr>
                     <th scope="col"
@@ -542,18 +541,35 @@ new class extends Component {
                     </th>
                     <th scope="col"
                         class="px-4 py-2 text-xs font-medium tracking-wider text-left text-white uppercase sm:px-6 sm:py-3 sm:text-sm">
-                        Role
+                        Case No.
+                    </th>
+                    <th scope="col"
+                        class="px-4 py-2 text-xs font-medium tracking-wider text-left text-white uppercase sm:px-6 sm:py-3 sm:text-sm">
+                        Title
+                    </th>
+                    <th scope="col"
+                        class="px-4 py-2 text-xs font-medium tracking-wider text-center text-white uppercase sm:px-6 sm:py-3 sm:text-sm">
+                        Link
                     </th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
-                @foreach ($contributors as $contributor)
+                @foreach ($privacyCases as $privacyCase)
                     <tr class="text-center transition-colors duration-300 hover:bg-gray-100">
                         <td class="px-4 py-2 text-left whitespace-nowrap sm:px-6 sm:py-4">
-                            {{ $contributor->name }}
+                            {{ $privacyCase->casename }}
+                        </td>
+                        <td class="px-4 py-2 text-left break-all whitespace-normal sm:px-6 sm:py-4">
+                            {{ $privacyCase->casetitle }}
                         </td>
                         <td class="px-4 py-2 text-left whitespace-nowrap sm:px-6 sm:py-4">
-                            {{ $contributor->description }}
+                            {{ $privacyCase->casenumber }}
+                        </td>
+                        <td class="px-4 py-2 text-end whitespace-nowrap sm:px-6 sm:py-4">
+                            <a target="_blank" target="_" href="{{ $privacyCase->caselink }}"
+                                class="inline-block px-6 py-2 text-white bg-gray-900 rounded-full shadow-lg hover:bg-[#C8000B] focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75">
+                                Watch
+                            </a>
                         </td>
                     </tr>
                 @endforeach
