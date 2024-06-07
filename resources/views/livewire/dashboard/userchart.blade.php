@@ -581,8 +581,7 @@ new class extends Component {
     };
     var valueToAngle = function(value) {
         var maxAngle = 180;
-        var angle = (value / 100) * maxAngle;
-        return angle;
+        return {{ $averageScore }};
     };
     var data = randomData();
     var value = averageValue();
@@ -593,7 +592,7 @@ new class extends Component {
         data: {
             datasets: [{
                 data: data,
-                value: value,
+                value: {{ $averageScore }},
                 backgroundColor: ['red', 'orange', 'yellow', 'green'],
                 borderWidth: 0
             }]
