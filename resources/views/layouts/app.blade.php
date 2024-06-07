@@ -349,38 +349,7 @@
                         notifications_none
                     </span> --}}
                 </div>
-
-                <div class="notification">
-                    <span
-                        class="mr-4 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#C8000B] p-2 text-white">67%</span>
-                    <div class="content">
-                        <div class="info">
-                            <h3>Average</h3>
-                            <small class="text_muted">
-                                31 April 2024
-                            </small>
-                        </div>
-                        <span class="material-icons-sharp">
-                            more_vert
-                        </span>
-                    </div>
-                </div>
-
-                <div class="notification deactive">
-                    <span
-                        class="flex items-center justify-center flex-shrink-0 w-12 h-12 p-2 mr-4 text-white bg-black rounded-full">56%</span>
-                    <div class="content">
-                        <div class="info">
-                            <h3>Moderate</h3>
-                            <small class="text_muted">
-                                15 May 2024
-                            </small>
-                        </div>
-                        <span class="material-icons-sharp">
-                            more_vert
-                        </span>
-                    </div>
-                </div>
+                <livewire:historicalscores.list />
             </div>
         </div>
     </div>
