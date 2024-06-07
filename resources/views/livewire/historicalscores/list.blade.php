@@ -7,10 +7,11 @@ use App\Models\User;
 use App\Models\RiskAnalysisResponse;
 new class extends Component {
     public $userId;
+    public $previousScores;
     public function mount()
     {
         $this->userId = auth()->user()->id;
-        $this->getPreviousScores();
+        $this->previousScores = $this->getPreviousScores();
     }
     public function getPreviousScores()
     {
@@ -74,23 +75,30 @@ new class extends Component {
 }; ?>
 
 <div>
-    <div class="notification">
-        <span
-            class="mr-4 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#C8000B] p-2 text-white">67%</span>
-        <div class="content">
-            <div class="info">
-                <h3>Average</h3>
-                <small class="text_muted">
-                    31 April 2024
-                </small>
+    @foreach ($previousScores as $previousScore)
+        <div class="notification">
+            <span
+                class="mr-4 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full
+                @if ($previousScore['average_score'] >= 75) bg-green-500
+                @elseif ($previousScore['average_score'] >= 50)
+                    bg-black
+                @else
+                    bg-[#C8000B] @endif
+                p-2 text-white">{{ $previousScore['average_score'] }}%</span>
+            <div class="content">
+                <div class="info">
+                    <h3>Average</h3>
+                    <small class="text_muted">
+                        31 April 2024
+                    </small>
+                </div>
+                <span class="material-icons-sharp">
+                    more_vert
+                </span>
             </div>
-            <span class="material-icons-sharp">
-                more_vert
-            </span>
         </div>
-    </div>
-
-    <div class="notification deactive">
+    @endforeach
+    {{-- <div class="notification deactive">
         <span
             class="flex items-center justify-center flex-shrink-0 w-12 h-12 p-2 mr-4 text-white bg-black rounded-full">56%</span>
         <div class="content">
@@ -104,5 +112,5 @@ new class extends Component {
                 more_vert
             </span>
         </div>
-    </div>
+    </div> --}}
 </div>
