@@ -531,53 +531,35 @@ new class extends Component {
         <div class="flex-grow border-b-4 border-[#1C4863] "></div>
 
     </div>
-    <div class="overflow-x-auto">
-        <table class="w-full mb-8 bg-white border border-gray-300 divide-y divide-gray-200 md:table-fixed">
-            <thead class="bg-[#1C4863]">
-                <tr>
-                    <th scope="col"
-                        class="px-4 py-2 text-xs font-medium tracking-wider text-left text-white uppercase sm:px-6 sm:py-3 sm:text-sm">
-                        Name
-                    </th>
-                    <th scope="col"
-                        class="px-4 py-2 text-xs font-medium tracking-wider text-left text-white uppercase sm:px-6 sm:py-3 sm:text-sm">
-                        Case No.
-                    </th>
-                    <th scope="col"
-                        class="px-4 py-2 text-xs font-medium tracking-wider text-left text-white uppercase sm:px-6 sm:py-3 sm:text-sm">
-                        Title
-                    </th>
-                    <th scope="col"
-                        class="px-4 py-2 text-xs font-medium tracking-wider text-center text-white uppercase sm:px-6 sm:py-3 sm:text-sm">
-                        Link
-                    </th>
-                </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-200">
-                @foreach ($privacyCases as $privacyCase)
-                    <tr class="text-center transition-colors duration-300 hover:bg-gray-100">
-                        <td class="px-4 py-2 text-left whitespace-nowrap sm:px-6 sm:py-4">
-                            {{ $privacyCase->casename }}
-                        </td>
-                        <td class="px-4 py-2 text-left break-all whitespace-normal sm:px-6 sm:py-4">
-                            {{ $privacyCase->casetitle }}
-                        </td>
-                        <td class="px-4 py-2 text-left whitespace-nowrap sm:px-6 sm:py-4">
-                            {{ $privacyCase->casenumber }}
-                        </td>
-                        <td class="px-4 py-2 text-end whitespace-nowrap sm:px-6 sm:py-4">
-                            <a target="_blank" target="_" href="{{ $privacyCase->caselink }}"
-                                class="inline-block px-6 py-2 text-white bg-gray-900 rounded-full shadow-lg hover:bg-[#C8000B] focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75">
-                                Watch
-                            </a>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+    <div class="bg-white shadow-2xl hover:shadow-none">
+        <div class="flex flex-row text-white bg-[#1C4863] rounded-t-lg">
+            <!-- Header Row -->
+            <div class="flex items-center justify-center w-1/4 uppercase sm:p-2 md:p-4">Name</div>
+            <div class="flex items-center justify-center w-1/4 uppercase sm:p-2 md:p-4">Case No.</div>
+            <div class="flex items-center justify-center w-1/4 uppercase sm:p-2 md:p-4">Title</div>
+            <div class="flex items-center justify-center w-1/4 uppercase sm:p-2 md:p-4">Link</div>
+        </div>
+        @foreach ($privacyCases as $privacyCase)
+            <div class="flex flex-row bg-white rounded-b-lg">
+                <!-- Data Row -->
+                <div class="flex items-start justify-start w-1/4 border-r border-gray-300 sm:p-1 md:p-4">
+                    {{ $privacyCase->casename }}</div>
+                <div class="flex items-start justify-start w-1/4 border-r border-gray-300 sm:p-1 md:p-4">
+                    {{ $privacyCase->casenumber }}</div>
+                <div class="flex items-start justify-start w-1/4 border-r border-gray-300 sm:p-1 md:p-4">
+                    {{ $privacyCase->casetitle }}</div>
+                <div class="flex items-center justify-center w-1/4 sm:p-1 md:p-4">
+                    <a target="_blank" href="{{ $privacyCase->caselink }}"
+                        class="sm:px-2 sm:py-2 sm:text-xs inline-block md:px-6 md:py-2 text-white bg-gray-900 rounded-full shadow-lg hover:bg-[#C8000B] focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75">
+                        Watch
+                    </a>
+                </div>
+
+            </div>
+            <div class="flex-grow border-b border-gray-300 "></div>
+        @endforeach
     </div>
 </div>
-
 <script type="text/javascript">
     var randomScalingFactor = function() {
         return Math.round(Math.random() * 100);
