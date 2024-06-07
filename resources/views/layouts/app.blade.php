@@ -62,6 +62,7 @@
             display: none !important;
         }
     </style>
+<<<<<<< HEAD
     <link
         href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
         rel="stylesheet" />
@@ -69,9 +70,13 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js">
     </script>
 
+=======
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+>>>>>>> db-design
 </head>
 
-<body x-data="{ auditOpened: false, onBoardingOpened: false }">
+<body x-data="{ auditOpened: false, onBoardingOpened: false, securityQuestionsOpened: false }">
     <?php
     use App\Models\User;
     ?>
@@ -102,11 +107,16 @@
                     <h3 class="m-0">Dashboard</h3>
                 </a>
                 @if (auth()->user()->role === 'admin')
+<<<<<<< HEAD
                     <a onclick="return false;"
                         data-dropdown-toggle="auditOpened"
                         @click="auditOpened = !auditOpened"
                         href="#"
                         class="hover:ml-0 hover:font-semibold active:text-[#C8000B]">
+=======
+                    <a data-dropdown-toggle="auditDropdown" onclick="return false;" @click="auditOpened = !auditOpened"
+                        href="#" class="active:text-[#C8000B] hover:font-semibold hover:ml-0">
+>>>>>>> db-design
                         <span class="material-icons-sharp">
                             handyman
                         </span>
@@ -117,6 +127,7 @@
                             expand_more
                         </span>
                     </a>
+<<<<<<< HEAD
                     {{-- <div id="auditOpened"
                         class="hidden bg-white divide-y divide-gray-100 rounded-lg shadow">
                         <a href="#"
@@ -130,6 +141,56 @@
                     </div> --}}
                     <a href="{{ route('templates-upload') }}"
                         class="hover:font-semibold active:text-[#C8000B]">
+=======
+                    <div id="auditDropdown"
+                        class="z-30 hidden w-auto pr-4 font-normal bg-white border-2 border-gray-200 rounded-lg shadow-md">
+                        <ul class="items-start py-2 pt-8 text-sm text-gray-700">
+                            <li>
+                                <a href="{{ route('controls') }}"
+                                    class="flex items-start px-4 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <span class="material-icons-sharp">
+                                        roundabout_left
+                                    </span>Controls
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('sections') }}"
+                                    class="flex items-start px-2 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <span class="mr-2 material-icons-sharp">
+                                        repartition
+                                    </span>
+                                    Sections
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('recommendations') }}"
+                                    class="flex items-start px-4 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <span class="material-icons-sharp">
+                                        recommend
+                                    </span>Recommendations
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('information') }}"
+                                    class="flex items-start px-4 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <span class="material-icons-sharp">
+                                        tips_and_updates
+                                    </span>Information
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('questions') }}"
+                                    class="flex items-start px-4 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <span class="material-icons-sharp">
+                                        quiz
+                                    </span>Questions
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="{{ route('templates-upload') }}" class="active:text-[#C8000B] hover:font-semibold">
+>>>>>>> db-design
                         <span class="material-icons-sharp">
                             upload_file
                         </span>
@@ -181,17 +242,84 @@
                         </span>
                         <h3>System Users</h3>
                     </a>
+<<<<<<< HEAD
                     <a href="{{ route('privacy-cases') }}"
                         class="hover:font-semibold active:text-[#C8000B]">
+=======
+                    {{-- <a data-dropdown-toggle="securityQuestionsDropdown" onclick="return false;"
+                        @click="securityQuestionsOpened = !securityQuestionsOpened" href="#"
+                        class="active:text-[#C8000B] hover:font-semibold hover:ml-0">
+                        <span class="material-icons-sharp">
+                            question_mark
+                        </span>
+                        <h3>Security Qtns</h3>
+                        <span :class="{ 'rotate-180': securityQuestionsOpened }" class="material-icons-sharp">
+                            expand_more
+                        </span>
+                    </a>
+                    <div id="securityQuestionsDropdown"
+                        class="z-30 hidden w-auto pr-4 font-normal bg-white border-2 border-[#F97316]/5 rounded-lg shadow-md">
+                        <ul class="items-start py-2 pt-8 text-sm text-gray-700">
+                            <li>
+                                <a href="#"
+                                    class="flex items-start px-2 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <span class="mr-2 material-icons-sharp">
+                                        repartition
+                                    </span>
+                                    Sections
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-start px-4 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <span class="material-icons-sharp">
+                                        domain
+                                    </span>Sub sections
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-start px-4 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <span class="material-icons-sharp">
+                                        recommend
+                                    </span>Recommendations
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-start px-4 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <span class="material-icons-sharp">
+                                        tips_and_updates
+                                    </span>Information
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-start px-4 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <span class="material-icons-sharp">
+                                        quiz
+                                    </span>Questions
+                                </a>
+                            </li>
+                        </ul>
+                    </div> --}}
+                    <a href="{{ route('privacy-cases') }}" class="active:text-[#C8000B] hover:font-semibold">
+>>>>>>> db-design
                         <span class="material-icons-sharp">
                             phonelink_lock
                         </span>
                         <h3>Privacy Cases</h3>
                     </a>
+<<<<<<< HEAD
                     <a onclick="return false;"
                         @click="onBoardingOpened = !onBoardingOpened"
                         href="#"
                         class="hover:ml-0 hover:font-semibold active:text-[#C8000B]">
+=======
+                    <a data-dropdown-toggle="onBoardingDropdown" onclick="return false;"
+                        @click="onBoardingOpened = !onBoardingOpened" href="#"
+                        class="active:text-[#C8000B] hover:font-semibold hover:ml-0">
+>>>>>>> db-design
                         <span class="material-icons-sharp">
                             question_mark
                         </span>
@@ -202,6 +330,44 @@
                             expand_more
                         </span>
                     </a>
+                    <div id="onBoardingDropdown"
+                        class="z-30 hidden w-auto pr-4 font-normal bg-white border-2 border-[#F97316]/50 rounded-lg shadow-md">
+                        <ul class="items-start py-2 pt-8 text-sm text-gray-700">
+                            <li>
+                                <a href="{{ route('risk-analysis-section') }}"
+                                    class="flex items-start px-2 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <span class="mr-2 material-icons-sharp">
+                                        repartition
+                                    </span>
+                                    Sections
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('risk-analysis-recommendation') }}"
+                                    class="flex items-start px-4 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <span class="material-icons-sharp">
+                                        recommend
+                                    </span>Recommendations
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('risk-analysis-information') }}"
+                                    class="flex items-start px-4 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <span class="material-icons-sharp">
+                                        tips_and_updates
+                                    </span>Information
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('risk-analysis-subsection') }}"
+                                    class="flex items-start px-4 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <span class="material-icons-sharp">
+                                        quiz
+                                    </span>Questions
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 @endif
             </div>
         </aside>
@@ -248,6 +414,7 @@
                         notifications_none
                     </span> --}}
                 </div>
+<<<<<<< HEAD
 
                 <div class="notification">
                     <span
@@ -280,6 +447,9 @@
                         </span>
                     </div>
                 </div>
+=======
+                <livewire:historicalscores.list />
+>>>>>>> db-design
             </div>
         </div>
     </div>
