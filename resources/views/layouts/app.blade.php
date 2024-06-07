@@ -3,24 +3,17 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description"
         content="The Data Protection Toolkit 2024 offers a cutting-edge solution for organizations aiming to enhance their data security practices. At its core,this toolkit includes an advanced online self-assessment tool. Through this tool, organizations can seamlessly evaluate their adherence to data protection laws, receiving detailed compliance reports and insightful scorecards." />
     <title>{{ config('app.name', 'Toolkit') }}</title>
-    <link
-        href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" />
     @vite(['resources/css/dashboard.css'])
     @vite(['resources/css/app.css'])
     <title>Audit Tookit</title>
-    <script
-        src="https://unpkg.com/chart.js@2.8.0/dist/Chart.bundle.js">
-    </script>
-    <script
-        src="https://unpkg.com/chartjs-gauge@0.3.0/dist/chartjs-gauge.js">
-    </script>
+    <script src="https://unpkg.com/chart.js@2.8.0/dist/Chart.bundle.js"></script>
+    <script src="https://unpkg.com/chartjs-gauge@0.3.0/dist/chartjs-gauge.js"></script>
     <!-- Livewire Styles -->
     <style>
         [wire\:loading][wire\:loading],
@@ -62,18 +55,8 @@
             display: none !important;
         }
     </style>
-<<<<<<< HEAD
-    <link
-        href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
-        rel="stylesheet" />
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js">
-    </script>
-
-=======
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
->>>>>>> db-design
 </head>
 
 <body x-data="{ auditOpened: false, onBoardingOpened: false, securityQuestionsOpened: false }">
@@ -83,12 +66,11 @@
     <livewire:common.topnav />
     <div class="container bg-[#F6F6F9]">
         <!-- Sidebar Section -->
-        <aside class="mb-2 pl-2">
+        <aside class="pl-2 mb-2">
             <div class="toggle">
                 <div class="logo">
                     <h2 class="text-lg font-bold">
-                        Audit <span
-                            class="text-[#C8000B]">Toolkit</span>
+                        Audit <span class="text-[#C8000B]">Toolkit</span>
                     </h2>
                 </div>
                 <div class="close" id="close-btn">
@@ -97,51 +79,25 @@
                     </span>
                 </div>
             </div>
-            <div class="sidebar overflow-visible">
+            <div class="overflow-visible sidebar">
                 <a href="{{ route('dashboard') }}"
-                    class="inline-flex items-center hover:font-semibold active:text-[#C8000B]">
-                    <span
-                        class="material-icons-sharp mr-2 text-xl">
+                    class="inline-flex items-center active:text-[#C8000B] hover:font-semibold">
+                    <span class="mr-2 text-xl material-icons-sharp">
                         dashboard
                     </span>
                     <h3 class="m-0">Dashboard</h3>
                 </a>
                 @if (auth()->user()->role === 'admin')
-<<<<<<< HEAD
-                    <a onclick="return false;"
-                        data-dropdown-toggle="auditOpened"
-                        @click="auditOpened = !auditOpened"
-                        href="#"
-                        class="hover:ml-0 hover:font-semibold active:text-[#C8000B]">
-=======
                     <a data-dropdown-toggle="auditDropdown" onclick="return false;" @click="auditOpened = !auditOpened"
                         href="#" class="active:text-[#C8000B] hover:font-semibold hover:ml-0">
->>>>>>> db-design
                         <span class="material-icons-sharp">
                             handyman
                         </span>
                         <h3>Audit Toolkit</h3>
-                        <span
-                            :class="{ 'rotate-180': auditOpened }"
-                            class="material-icons-sharp">
+                        <span :class="{ 'rotate-180': auditOpened }" class="material-icons-sharp">
                             expand_more
                         </span>
                     </a>
-<<<<<<< HEAD
-                    {{-- <div id="auditOpened"
-                        class="hidden bg-white divide-y divide-gray-100 rounded-lg shadow">
-                        <a href="#"
-                            class="block hover:font-semibold active:text-[#C8000B]">
-                            <span
-                                class="material-icons-sharp">
-                                upload_file
-                            </span>
-                            <h3>Sections</h3>
-                        </a>
-                    </div> --}}
-                    <a href="{{ route('templates-upload') }}"
-                        class="hover:font-semibold active:text-[#C8000B]">
-=======
                     <div id="auditDropdown"
                         class="z-30 hidden w-auto pr-4 font-normal bg-white border-2 border-gray-200 rounded-lg shadow-md">
                         <ul class="items-start py-2 pt-8 text-sm text-gray-700">
@@ -190,62 +146,51 @@
                     </div>
 
                     <a href="{{ route('templates-upload') }}" class="active:text-[#C8000B] hover:font-semibold">
->>>>>>> db-design
                         <span class="material-icons-sharp">
                             upload_file
                         </span>
                         <h3>Templates Upload</h3>
                     </a>
                 @endif
-                <a href="{{ route('templates-download') }}"
-                    class="hover:font-semibold active:text-[#C8000B]">
+                <a href="{{ route('templates-download') }}" class="active:text-[#C8000B] hover:font-semibold">
                     <span class="material-icons-sharp">
                         file_download
                     </span>
                     <h3>Templates Download</h3>
                     {{-- <span class="message-count">5 files</span> --}}
                 </a>
-                <a href="{{ route('questionnaire') }}"
-                    class="hover:font-semibold active:text-[#C8000B]">
+                <a href="{{ route('questionnaire') }}" class="active:text-[#C8000B] hover:font-semibold">
                     <span class="material-icons-sharp">
                         quiz
                     </span>
                     <h3>Audit Quiz</h3>
                     {{-- <span class="message-count">questions count</span> --}}
                 </a>
-                <a href="{{ route('risk-analysis-questionnaire') }}"
-                    class="hover:font-semibold active:text-[#C8000B]">
+                <a href="{{ route('risk-analysis-questionnaire') }}" class="active:text-[#C8000B] hover:font-semibold">
                     <span class="material-icons-sharp">
                         security
                     </span>
                     <h3>Security Quiz</h3>
                 </a>
-                <a href="{{ route('researchers') }}"
-                    class="hover:font-semibold active:text-[#C8000B]">
+                <a href="{{ route('researchers') }}" class="active:text-[#C8000B] hover:font-semibold">
                     <span class="material-icons-sharp">
                         diversity_2
                     </span>
                     <h3>Research Team</h3>
                 </a>
                 @if (auth()->user()->role === 'admin')
-                    <a href="{{ route('project-contributors') }}"
-                        class="hover:font-semibold active:text-[#C8000B]">
+                    <a href="{{ route('project-contributors') }}" class="active:text-[#C8000B] hover:font-semibold">
                         <span class="material-icons-sharp">
                             diversity_3
                         </span>
                         <h3>Research Members</h3>
                     </a>
-                    <a href="{{ route('user-settings') }}"
-                        class="hover:font-semibold active:text-[#C8000B]">
+                    <a href="{{ route('user-settings') }}" class="active:text-[#C8000B] hover:font-semibold">
                         <span class="material-icons-sharp">
                             manage_accounts
                         </span>
                         <h3>System Users</h3>
                     </a>
-<<<<<<< HEAD
-                    <a href="{{ route('privacy-cases') }}"
-                        class="hover:font-semibold active:text-[#C8000B]">
-=======
                     {{-- <a data-dropdown-toggle="securityQuestionsDropdown" onclick="return false;"
                         @click="securityQuestionsOpened = !securityQuestionsOpened" href="#"
                         class="active:text-[#C8000B] hover:font-semibold hover:ml-0">
@@ -304,29 +249,19 @@
                         </ul>
                     </div> --}}
                     <a href="{{ route('privacy-cases') }}" class="active:text-[#C8000B] hover:font-semibold">
->>>>>>> db-design
                         <span class="material-icons-sharp">
                             phonelink_lock
                         </span>
                         <h3>Privacy Cases</h3>
                     </a>
-<<<<<<< HEAD
-                    <a onclick="return false;"
-                        @click="onBoardingOpened = !onBoardingOpened"
-                        href="#"
-                        class="hover:ml-0 hover:font-semibold active:text-[#C8000B]">
-=======
                     <a data-dropdown-toggle="onBoardingDropdown" onclick="return false;"
                         @click="onBoardingOpened = !onBoardingOpened" href="#"
                         class="active:text-[#C8000B] hover:font-semibold hover:ml-0">
->>>>>>> db-design
                         <span class="material-icons-sharp">
                             question_mark
                         </span>
                         <h3>OnBoarding Qtns</h3>
-                        <span
-                            :class="{ 'rotate-180': onBoardingOpened }"
-                            class="material-icons-sharp">
+                        <span :class="{ 'rotate-180': onBoardingOpened }" class="material-icons-sharp">
                             expand_more
                         </span>
                     </a>
@@ -380,7 +315,7 @@
         <!-- End of Main Content -->
 
         <!-- Right Section -->
-        <div class="right-section mr-5">
+        <div class="mr-5 right-section">
             <div class="nav">
                 <button id="menu-btn">
                     <span class="material-icons-sharp"> menu
@@ -414,42 +349,7 @@
                         notifications_none
                     </span> --}}
                 </div>
-<<<<<<< HEAD
-
-                <div class="notification">
-                    <span
-                        class="mr-4 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#C8000B] p-2 text-white">67%</span>
-                    <div class="content">
-                        <div class="info">
-                            <h3>Average</h3>
-                            <small class="text_muted">
-                                31 April 2024
-                            </small>
-                        </div>
-                        <span class="material-icons-sharp">
-                            more_vert
-                        </span>
-                    </div>
-                </div>
-
-                <div class="notification deactive">
-                    <span
-                        class="mr-4 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-black p-2 text-white">56%</span>
-                    <div class="content">
-                        <div class="info">
-                            <h3>Moderate</h3>
-                            <small class="text_muted">
-                                15 May 2024
-                            </small>
-                        </div>
-                        <span class="material-icons-sharp">
-                            more_vert
-                        </span>
-                    </div>
-                </div>
-=======
                 <livewire:historicalscores.list />
->>>>>>> db-design
             </div>
         </div>
     </div>
