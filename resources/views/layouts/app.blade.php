@@ -3,17 +3,24 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description"
         content="The Data Protection Toolkit 2024 offers a cutting-edge solution for organizations aiming to enhance their data security practices. At its core,this toolkit includes an advanced online self-assessment tool. Through this tool, organizations can seamlessly evaluate their adherence to data protection laws, receiving detailed compliance reports and insightful scorecards." />
     <title>{{ config('app.name', 'Toolkit') }}</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
+        rel="stylesheet" />
     @vite(['resources/css/dashboard.css'])
     @vite(['resources/css/app.css'])
     <title>Audit Tookit</title>
-    <script src="https://unpkg.com/chart.js@2.8.0/dist/Chart.bundle.js"></script>
-    <script src="https://unpkg.com/chartjs-gauge@0.3.0/dist/chartjs-gauge.js"></script>
+    <script
+        src="https://unpkg.com/chart.js@2.8.0/dist/Chart.bundle.js">
+    </script>
+    <script
+        src="https://unpkg.com/chartjs-gauge@0.3.0/dist/chartjs-gauge.js">
+    </script>
     <!-- Livewire Styles -->
     <style>
         [wire\:loading][wire\:loading],
@@ -55,6 +62,13 @@
             display: none !important;
         }
     </style>
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+        rel="stylesheet" />
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js">
+    </script>
+
 </head>
 
 <body x-data="{ auditOpened: false, onBoardingOpened: false }">
@@ -64,11 +78,12 @@
     <livewire:common.topnav />
     <div class="container bg-[#F6F6F9]">
         <!-- Sidebar Section -->
-        <aside class="pl-2 mb-2">
+        <aside class="mb-2 pl-2">
             <div class="toggle">
                 <div class="logo">
                     <h2 class="text-lg font-bold">
-                        Audit <span class="text-[#C8000B]">Toolkit</span>
+                        Audit <span
+                            class="text-[#C8000B]">Toolkit</span>
                     </h2>
                 </div>
                 <div class="close" id="close-btn">
@@ -77,84 +92,113 @@
                     </span>
                 </div>
             </div>
-            <div class="overflow-visible sidebar">
+            <div class="sidebar overflow-visible">
                 <a href="{{ route('dashboard') }}"
-                    class="inline-flex items-center active:text-[#C8000B] hover:font-semibold">
-                    <span class="mr-2 text-xl material-icons-sharp">
+                    class="inline-flex items-center hover:font-semibold active:text-[#C8000B]">
+                    <span
+                        class="material-icons-sharp mr-2 text-xl">
                         dashboard
                     </span>
                     <h3 class="m-0">Dashboard</h3>
                 </a>
                 @if (auth()->user()->role === 'admin')
-                    <a onclick="return false;" @click="auditOpened = !auditOpened" href="#"
-                        class="active:text-[#C8000B] hover:font-semibold hover:ml-0">
+                    <a onclick="return false;"
+                        data-dropdown-toggle="auditOpened"
+                        @click="auditOpened = !auditOpened"
+                        href="#"
+                        class="hover:ml-0 hover:font-semibold active:text-[#C8000B]">
                         <span class="material-icons-sharp">
                             handyman
                         </span>
                         <h3>Audit Toolkit</h3>
-                        <span :class="{ 'rotate-180': auditOpened }" class="material-icons-sharp">
+                        <span
+                            :class="{ 'rotate-180': auditOpened }"
+                            class="material-icons-sharp">
                             expand_more
                         </span>
                     </a>
-                    <a href="{{ route('templates-upload') }}" class="active:text-[#C8000B] hover:font-semibold">
+                    {{-- <div id="auditOpened"
+                        class="hidden bg-white divide-y divide-gray-100 rounded-lg shadow">
+                        <a href="#"
+                            class="block hover:font-semibold active:text-[#C8000B]">
+                            <span
+                                class="material-icons-sharp">
+                                upload_file
+                            </span>
+                            <h3>Sections</h3>
+                        </a>
+                    </div> --}}
+                    <a href="{{ route('templates-upload') }}"
+                        class="hover:font-semibold active:text-[#C8000B]">
                         <span class="material-icons-sharp">
                             upload_file
                         </span>
                         <h3>Templates Upload</h3>
                     </a>
                 @endif
-                <a href="{{ route('templates-download') }}" class="active:text-[#C8000B] hover:font-semibold">
+                <a href="{{ route('templates-download') }}"
+                    class="hover:font-semibold active:text-[#C8000B]">
                     <span class="material-icons-sharp">
                         file_download
                     </span>
                     <h3>Templates Download</h3>
                     {{-- <span class="message-count">5 files</span> --}}
                 </a>
-                <a href="{{ route('questionnaire') }}" class="active:text-[#C8000B] hover:font-semibold">
+                <a href="{{ route('questionnaire') }}"
+                    class="hover:font-semibold active:text-[#C8000B]">
                     <span class="material-icons-sharp">
                         quiz
                     </span>
                     <h3>Audit Quiz</h3>
                     {{-- <span class="message-count">questions count</span> --}}
                 </a>
-                <a href="{{ route('risk-analysis-questionnaire') }}" class="active:text-[#C8000B] hover:font-semibold">
+                <a href="{{ route('risk-analysis-questionnaire') }}"
+                    class="hover:font-semibold active:text-[#C8000B]">
                     <span class="material-icons-sharp">
                         security
                     </span>
                     <h3>Security Quiz</h3>
                 </a>
-                <a href="{{ route('researchers') }}" class="active:text-[#C8000B] hover:font-semibold">
+                <a href="{{ route('researchers') }}"
+                    class="hover:font-semibold active:text-[#C8000B]">
                     <span class="material-icons-sharp">
                         diversity_2
                     </span>
                     <h3>Research Team</h3>
                 </a>
                 @if (auth()->user()->role === 'admin')
-                    <a href="{{ route('project-contributors') }}" class="active:text-[#C8000B] hover:font-semibold">
+                    <a href="{{ route('project-contributors') }}"
+                        class="hover:font-semibold active:text-[#C8000B]">
                         <span class="material-icons-sharp">
                             diversity_3
                         </span>
                         <h3>Research Members</h3>
                     </a>
-                    <a href="{{ route('user-settings') }}" class="active:text-[#C8000B] hover:font-semibold">
+                    <a href="{{ route('user-settings') }}"
+                        class="hover:font-semibold active:text-[#C8000B]">
                         <span class="material-icons-sharp">
                             manage_accounts
                         </span>
                         <h3>System Users</h3>
                     </a>
-                    <a href="{{ route('privacy-cases') }}" class="active:text-[#C8000B] hover:font-semibold">
+                    <a href="{{ route('privacy-cases') }}"
+                        class="hover:font-semibold active:text-[#C8000B]">
                         <span class="material-icons-sharp">
                             phonelink_lock
                         </span>
                         <h3>Privacy Cases</h3>
                     </a>
-                    <a onclick="return false;" @click="onBoardingOpened = !onBoardingOpened" href="#"
-                        class="active:text-[#C8000B] hover:font-semibold hover:ml-0">
+                    <a onclick="return false;"
+                        @click="onBoardingOpened = !onBoardingOpened"
+                        href="#"
+                        class="hover:ml-0 hover:font-semibold active:text-[#C8000B]">
                         <span class="material-icons-sharp">
                             question_mark
                         </span>
                         <h3>OnBoarding Qtns</h3>
-                        <span :class="{ 'rotate-180': onBoardingOpened }" class="material-icons-sharp">
+                        <span
+                            :class="{ 'rotate-180': onBoardingOpened }"
+                            class="material-icons-sharp">
                             expand_more
                         </span>
                     </a>
@@ -170,7 +214,7 @@
         <!-- End of Main Content -->
 
         <!-- Right Section -->
-        <div class="mr-5 right-section">
+        <div class="right-section mr-5">
             <div class="nav">
                 <button id="menu-btn">
                     <span class="material-icons-sharp"> menu
@@ -223,7 +267,7 @@
 
                 <div class="notification deactive">
                     <span
-                        class="flex items-center justify-center flex-shrink-0 w-12 h-12 p-2 mr-4 text-white bg-black rounded-full">56%</span>
+                        class="mr-4 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-black p-2 text-white">56%</span>
                     <div class="content">
                         <div class="info">
                             <h3>Moderate</h3>
