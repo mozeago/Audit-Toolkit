@@ -179,6 +179,17 @@ new class extends Component {
             completing this questionnaire, you are taking proactive steps to safeguard data and protect the privacy
             rights of individuals.
         </p>
+        <div class="mb-4 text-start">
+            <h3 class="text-lg font-semibold text-gray-600 lg:text-xl">
+                Confidentiality and Privacy
+            </h3>
+        </div>
+        <div class="p-4 mb-4 border-l-4 rounded-md border-red-950 bg-rose-100">
+            <p class="mb-6 text-base leading-relaxed text-gray-700 lg:text-lg">
+                Please note that the information provided in this questionnaire is confidential and will be used for the
+                purpose of assessing data protection risks and providing recommendations.
+            </p>
+        </div>
         <div class="relative flex items-end justify-end mb-2">
             <button @click="onBoardingText = !onBoardingText"
                 class="hover:bg-black text-lg px-4 py-2 text-white bg-[#0E9F6E] rounded-full font-semibold custom-shadow focus:outline-none transition-all duration-300">

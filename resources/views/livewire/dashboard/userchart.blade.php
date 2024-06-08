@@ -542,19 +542,24 @@ new class extends Component {
         @foreach ($privacyCases as $privacyCase)
             <div class="flex flex-row bg-white rounded-b-lg">
                 <!-- Data Row -->
-                <div class="flex items-start justify-start w-1/4 border-r border-gray-300 sm:p-1 md:p-4">
-                    {{ $privacyCase->casename }}</div>
-                <div class="flex items-start justify-start w-1/4 border-r border-gray-300 sm:p-1 md:p-4">
-                    {{ $privacyCase->casenumber }}</div>
-                <div class="flex items-start justify-start w-1/4 border-r border-gray-300 sm:p-1 md:p-4">
-                    {{ $privacyCase->casetitle }}</div>
-                <div class="flex items-center justify-center w-1/4 sm:p-1 md:p-4">
+                <div class="flex items-start justify-start flex-none border-r border-gray-300 sm:p-1 md:p-4"
+                    style="flex-basis: 25%;">
+                    {{ $privacyCase->casename }}
+                </div>
+                <div class="flex items-start justify-start flex-none border-r border-gray-300 sm:p-1 md:p-4"
+                    style="flex-basis: 25%;">
+                    {{ $privacyCase->casenumber }}
+                </div>
+                <div class="flex items-start justify-start flex-none border-r border-gray-300 sm:p-1 md:p-4"
+                    style="flex-basis: 25%;">
+                    {{ $privacyCase->casetitle }}
+                </div>
+                <div class="flex items-center justify-center flex-none sm:p-1 md:p-4" style="flex-basis: 25%;">
                     <a target="_blank" href="{{ $privacyCase->caselink }}"
                         class="sm:px-2 sm:py-2 sm:text-xs inline-block md:px-6 md:py-2 text-white bg-gray-900 rounded-full shadow-lg hover:bg-[#C8000B] focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75">
                         Watch
                     </a>
                 </div>
-
             </div>
             <div class="flex-grow border-b border-gray-300 "></div>
         @endforeach
