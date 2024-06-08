@@ -12,8 +12,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::dropIfExists('user_responses');
-        Schema::dropIfExists('risk_analysis_responses');
+        // Schema::dropIfExists('user_responses');
+        // Schema::dropIfExists('risk_analysis_responses');
         Schema::dropIfExists('research_contributors');
         DB::statement("
             DELETE FROM migrations
