@@ -116,11 +116,6 @@ new class extends Component {
             @endforeach
         @else
             <div class="items-center">
-                {{-- <span class="material-icons-sharp">
-                    warning
-                </span>
-                <p class="font-mono">You don't have previous attempts yet.</p>
-             --}}
                 <span class="material-icons-sharp">
                     notifications_none
                 </span>
