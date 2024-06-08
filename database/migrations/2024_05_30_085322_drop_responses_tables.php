@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::dropIfExists('research_contributors');
         DB::statement("
             DELETE FROM migrations
-            WHERE migration IN ('2024_03_27_185338_create_user_responses_table', '2024_04_07_203129_create_risk_analysis_responses_table','2024_05_01_173555_create_research_contributors_models_table');
+            WHERE migration IN ('2024_05_01_173555_create_research_contributors_models_table');
         ");
     }
 
