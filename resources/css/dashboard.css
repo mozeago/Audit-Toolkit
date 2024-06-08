@@ -678,11 +678,6 @@ aside .sidebar a span {
     transition: all 0.3s ease;
 }
 
-/* aside .sidebar a:last-child {
-    bottom: 2rem;
-    width: 100%;
-} */
-
 aside .sidebar a.active {
     width: 100%;
     color: #C8000B;

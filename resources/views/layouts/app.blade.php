@@ -59,17 +59,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </head>
 
-<body x-data="{ auditOpened: false, onBoardingOpened: false, securityQuestionsOpened: false }">
+<body x-data="{ auditOpened: false, onBoardingOpened: false, securityQuestionsOpened: false }" class="bg-[#F4F2EE]">
     <?php
     use App\Models\User;
     ?>
     <livewire:common.topnav />
-    <div class="container bg-[#F6F6F9]">
+    <div class="container">
         <!-- Sidebar Section -->
         <aside class="pl-2 mb-2">
             <div class="toggle">
                 <div class="logo">
-                    <h2 class="text-lg font-bold">
+                    <h2 class="font-bold md:mt-3 md:text-2xl">
                         Audit <span class="text-[#C8000B]">Toolkit</span>
                     </h2>
                 </div>
@@ -315,7 +315,7 @@
         <!-- End of Main Content -->
 
         <!-- Right Section -->
-        <div class="mr-5 right-section">
+        <div class="p-4 mr-5 right-section">
             <div class="nav">
                 <button id="menu-btn">
                     <span class="material-icons-sharp"> menu
@@ -345,9 +345,6 @@
             <div class="reminders">
                 <div class="header">
                     <h2>Previous Attempts</h2>
-                    {{-- <span class="material-icons-sharp">
-                        notifications_none
-                    </span> --}}
                 </div>
                 <livewire:historicalscores.list />
             </div>
