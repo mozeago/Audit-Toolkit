@@ -191,7 +191,7 @@
             </span>
         </h2>
     </div>
-    <div class="flex items-start w-full pl-8">
+    <div class="flex items-start w-full pl-8 mt-6">
         <h2 class="text-xl font-bold roboto-bold">
             <span class="inline-block pb-1 uppercase border-b-2 border-black">With
                 You
