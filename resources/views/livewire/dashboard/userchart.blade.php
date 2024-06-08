@@ -566,31 +566,27 @@ new class extends Component {
     };
 
     var randomData = function() {
-        return [
-            25,
-            15,
-            10,
-            50
-        ];
+        return [25, 15, 10, 50];
     };
 
     var averageValue = function() {
-        return 0;
-    };
-    var valueToAngle = function(value) {
-        var maxAngle = 180;
         return {{ $averageScore }};
     };
+
+    var valueToAngle = function() {
+        return Math.round(({{ $averageScore }} / 100) * 180);
+    };
+
     var data = randomData();
     var value = averageValue();
-    var angle = valueToAngle(0);
+    var angle = (valueToAngle() / 180) * 50;
 
     var config = {
         type: 'gauge',
         data: {
             datasets: [{
                 data: data,
-                value: {{ $averageScore }},
+                value: angle, // Replace with actual average score value if available
                 backgroundColor: ['red', 'orange', 'yellow', 'green'],
                 borderWidth: 0
             }]
@@ -615,13 +611,13 @@ new class extends Component {
             valueLabel: {
                 formatter: Math.round
             },
-            animation: {
-                onComplete: function(animation) {
-                    var needleAngle = valueToAngle(0);
-                    window.myGauge.config.options.needle.rotation = needleAngle;
-                    window.myGauge.update();
-                }
-            }
+            // animation: {
+            //     onComplete: function(animation) {
+            //         // // var needleAngle = valueToAngle(); // Use the actual value
+            //         // window.myGauge.config.options.needle.rotation = needleAngle;
+            //         // window.myGauge.update();
+            //     }
+            // }
         }
     };
 
