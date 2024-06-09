@@ -51,14 +51,6 @@ new class extends Component {
                     </th>
                     <th scope="col"
                         class="px-6 py-3 text-sm font-medium tracking-wider text-left text-white uppercase">
-                        Organization
-                    </th>
-                    <th scope="col"
-                        class="px-6 py-3 text-sm font-medium tracking-wider text-left text-white uppercase">
-                        Department
-                    </th>
-                    <th scope="col"
-                        class="px-6 py-3 text-sm font-medium tracking-wider text-left text-white uppercase">
                         Role
                     </th>
                     <th scope="col"
@@ -69,15 +61,11 @@ new class extends Component {
             </thead>
             <tbody class="divide-y divide-gray-200">
                 @foreach ($users as $user)
-                    <tr class="text-center transition-colors duration-300 hover:bg-gray-100">
+                    <tr class="transition-colors duration-300 text-start hover:bg-gray-100">
                         <td class="px-6 py-4 whitespace-nowrap">
                             {{ $user->name }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             {{ $user->email }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            {{ $user->organization }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            {{ $user->department }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             @if ($user->is($editing))
                                 <livewire:userssettings.edit :user="$user" :key="$user->id" />
