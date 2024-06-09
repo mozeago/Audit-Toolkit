@@ -159,14 +159,17 @@
                     <h3>Templates Download</h3>
                     {{-- <span class="message-count">5 files</span> --}}
                 </a>
-                <a href="{{ route('questionnaire') }}" class="active:text-[#C8000B] hover:font-semibold">
+                <a @click="window.scrollTo({ top: 0, behavior: 'smooth' })" href="{{ route('questionnaire') }}"
+                    class="active:text-[#C8000B] hover:font-semibold">
                     <span class="material-icons-sharp">
                         quiz
                     </span>
                     <h3>Audit Quiz</h3>
                     {{-- <span class="message-count">questions count</span> --}}
                 </a>
-                <a href="{{ route('risk-analysis-questionnaire') }}" class="active:text-[#C8000B] hover:font-semibold">
+                <a @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
+                    href="{{ route('risk-analysis-questionnaire') }}"
+                    class="active:text-[#C8000B] hover:font-semibold">
                     <span class="material-icons-sharp">
                         security
                     </span>

@@ -5,14 +5,17 @@ use App\Models\UserResponse;
 use App\Models\PrivacyCasesModel;
 use App\Models\User;
 use App\Models\RiskAnalysisResponse;
+
 new class extends Component {
     public $userId;
     public $previousScores;
+
     public function mount()
     {
         $this->userId = auth()->user()->id;
         $this->previousScores = $this->getPreviousScores();
     }
+
     public function getPreviousScores()
     {
         $userId = auth()->id();
@@ -25,7 +28,6 @@ new class extends Component {
 
         // Get unique attempt numbers from both tables excluding the highest attempt number
         $userAttemptNumbers = UserResponse::where('user_id', $userId)->where('attempt_number', '<', $maxAttemptNumber)->select('attempt_number')->distinct()->pluck('attempt_number')->toArray();
-
         $riskAttemptNumbers = RiskAnalysisResponse::where('user_id', $userId)->where('attempt_number', '<', $maxAttemptNumber)->select('attempt_number')->distinct()->pluck('attempt_number')->toArray();
 
         // Merge and get unique attempt numbers
@@ -36,11 +38,11 @@ new class extends Component {
 
         foreach ($attemptNumbers as $attemptNumber) {
             $userResponses = UserResponse::where('user_id', $userId)->where('attempt_number', $attemptNumber)->get();
-
             $riskAnalysisResponses = RiskAnalysisResponse::where('user_id', $userId)->where('attempt_number', $attemptNumber)->get();
 
             $totalResponses = $userResponses->count() + $riskAnalysisResponses->count();
             $totalScore = 0;
+            $latestUpdatedAt = null;
 
             foreach ($userResponses as $response) {
                 if ($response->answer === 'true') {
@@ -49,6 +51,11 @@ new class extends Component {
                     $totalScore += 0.0;
                 } else {
                     $totalScore += 0.5;
+                }
+
+                // Update the latest updated_at timestamp
+                if (is_null($latestUpdatedAt) || $response->updated_at > $latestUpdatedAt) {
+                    $latestUpdatedAt = $response->updated_at;
                 }
             }
 
@@ -60,6 +67,11 @@ new class extends Component {
                 } else {
                     $totalScore += 0.5;
                 }
+
+                // Update the latest updated_at timestamp
+                if (is_null($latestUpdatedAt) || $response->updated_at > $latestUpdatedAt) {
+                    $latestUpdatedAt = $response->updated_at;
+                }
             }
 
             if ($totalResponses > 0) {
@@ -68,15 +80,20 @@ new class extends Component {
                 $averageScore = 0;
             }
 
+            // Format updated_at to a readable format
+            $formattedUpdatedAt = $latestUpdatedAt ? $latestUpdatedAt->format('F j, Y, g:i A') : null;
+
             $previousScores[] = [
                 'attempt_number' => $attemptNumber,
                 'average_score' => $averageScore,
+                'attempt_date' => $formattedUpdatedAt,
             ];
         }
 
         return $previousScores;
     }
-}; ?>
+};
+?>
 
 <div class="max-w-sm">
     <div
@@ -105,7 +122,7 @@ new class extends Component {
                                 @endif
                             </h3>
                             <small class="text_muted">
-                                31 April 2024
+                                {{ $previousScore['attempt_date'] }}
                             </small>
                         </div>
                         <span class="material-icons-sharp">
