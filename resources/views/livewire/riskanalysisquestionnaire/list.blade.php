@@ -191,7 +191,7 @@ new class extends Component {
             </p>
         </div>
         <div class="relative flex items-end justify-end mb-2">
-            <button @click="onBoardingText = !onBoardingText"
+            <button @click="onBoardingText = !onBoardingText; window.scrollTo({ top: 0, behavior: 'smooth' })"
                 class="hover:bg-black text-lg px-4 py-2 text-white bg-[#0E9F6E] rounded-full font-semibold custom-shadow focus:outline-none transition-all duration-300">
                 Let's begin
             </button>
@@ -200,9 +200,8 @@ new class extends Component {
     <div x-show="!onBoardingText">
         @if (count($questions) > 0)
             @if ($showOrganizationForm)
-                <div class="flex items-start justify-center px-2 m-0 md:items-center lg:min-h-screen">
-                    <div
-                        class="w-full p-8 space-y-4 bg-white border border-gray-200 rounded-lg shadow-md md:w-1/2 lg:w-1/2 xl:w-1/2">
+                <div class="flex items-start justify-center px-2 mt-8 md:items-center">
+                    <div class="w-full p-8 space-y-4 bg-white border border-gray-200 rounded-lg shadow-md md:w-1/2">
                         <h2 class="font-bold text-gray-800 md:text-center lg:text-center md:text-2xl">Organization Form
                         </h2>
                         <form wire:submit.prevent="openQuestionnaire">

@@ -150,9 +150,9 @@ new class extends Component {
 <div x-data="{ riskOpen: false, infOpen: false, }">
     @if (count($questions) > 0)
         @if ($showOrganizationForm)
-            <div class="flex items-start justify-center px-2 m-0 md:items-center lg:min-h-screen">
+            <div class="flex items-start justify-center px-2 md:items-center">
                 <div
-                    class="w-full p-8 space-y-4 bg-white border border-gray-200 rounded-lg shadow-md md:w-1/2 lg:w-1/2 xl:w-1/2">
+                    class="w-full p-8 mt-8 space-y-4 bg-white border border-gray-200 rounded-lg shadow-md md:w-1/2 lg:w-1/2 xl:w-1/2">
                     <h2 class="font-bold text-gray-800 md:text-center lg:text-center md:text-2xl">Organization Form</h2>
                     <form wire:submit.prevent="openQuestionnaire">
                         <div class="mb-4">

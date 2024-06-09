@@ -186,15 +186,15 @@
     {{-- start partnership --}}
     <div class="flex items-start w-full pl-8">
         <h2 class="text-xl font-bold roboto-bold">
-            <span class="inline-block pb-1 uppercase text-[#C8000B]">We
+            <span class="inline-block uppercase text-[#C8000B]">We
                 want to Partner
             </span>
         </h2>
     </div>
-    <div class="flex items-start w-full pl-8 mt-6">
-        <h2 class="text-xl font-bold roboto-bold">
-            <span class="inline-block pb-1 uppercase border-b-2 border-black">With
-                You
+    <div class="flex items-start w-full pl-8 mt-8">
+        <h2 class="text-xl font-bold uppercase roboto-bold">
+            <span class="inline-block pb-2 border-b-2 border-black">With</span>
+            You
         </h2>
     </div>
     <div class="flex bg-[#FCF6F6] p-8">
