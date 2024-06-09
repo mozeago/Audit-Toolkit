@@ -47,39 +47,39 @@
         <div class="flex flex-wrap items-center justify-center pb-8">
             <div class="flex items-center justify-center w-full sm:mb-2 sm:w-1/2 lg:w-auto lg:flex-grow">
                 <a class="zoom-image" href="https://engage.isaca.org/kenyachapter/home">
-                    <img src="http://137.184.46.59/images/isacakenya.webp" alt="Image 1"
-                        class="w-auto h-8 sm:w-full sm:mx-2 sm:h-12">
+                    <img src="https://data-protection-toolkit.scratchandscript.com/images/isacakenya.webp"
+                        alt="Image 1" class="w-auto h-8 sm:w-full sm:mx-2 sm:h-12">
                 </a>
             </div>
             <div class="flex items-center justify-center w-full sm:mb-2 sm:w-1/2 lg:w-auto lg:flex-grow">
                 <a class="zoom-image" href="https://engage.isaca.org/southafricachapter/home">
-                    <img src="http://137.184.46.59/images/ISACA_South_Africa.webp" alt="Image 1"
-                        class="w-auto h-8 sm:w-full sm:mx-2 sm:h-12">
+                    <img src="https://data-protection-toolkit.scratchandscript.com/images/ISACA_South_Africa.webp"
+                        alt="Image 1" class="w-auto h-8 sm:w-full sm:mx-2 sm:h-12">
                 </a>
             </div>
             <div class="flex items-center justify-center w-full sm:mb-2 sm:w-1/2 lg:w-auto lg:flex-grow">
                 <a class="zoom-image" href="https://engage.isaca.org/kampalachapter/home">
-                    <img src="http://137.184.46.59/images/kampala.webp" alt="Image 1"
+                    <img src="https://data-protection-toolkit.scratchandscript.com/images/kampala.webp" alt="Image 1"
                         class="w-auto h-8 sm:w-full sm:mx-2 sm:h-12">
                 </a>
             </div>
             <div class="flex items-center justify-center w-full sm:mb-2 sm:w-1/2 lg:w-auto lg:flex-grow">
                 <a class="zoom-image"
                     href="https://twitter.com/DataGovProsKe?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
-                    <img src="http://137.184.46.59/images/kenya data privacy.webp" alt="kenya data privacy"
-                        class="w-auto h-8 sm:mx-2 sm:h-12">
+                    <img src="https://data-protection-toolkit.scratchandscript.com/images/kenya data privacy.webp"
+                        alt="kenya data privacy" class="w-auto h-8 sm:mx-2 sm:h-12">
                 </a>
             </div>
             <div class="flex items-center justify-center w-full sm:mb-2 sm:w-1/3 lg:w-auto lg:flex-grow">
                 <a class="zoom-image" href="https://engage.isaca.org/rwandachapter/home">
-                    <img src="http://137.184.46.59/images/rwanda.webp" alt="Image 1"
+                    <img src="https://data-protection-toolkit.scratchandscript.com/images/rwanda.webp" alt="Image 1"
                         class="w-auto h-8 sm:mx-2 sm:h-12 sm:w-full">
                 </a>
             </div>
             <div class="flex items-center justify-center w-full sm:w-2/3 lg:w-auto lg:flex-grow">
                 <a class="zoom-image" href="https://www.scratchandscript.com/">
-                    <img src="http://137.184.46.59/images/scratchandscript_logo_red.webp" alt="Image 1"
-                        class="w-auto h-8 sm:mx-2 sm:h-12">
+                    <img src="https://data-protection-toolkit.scratchandscript.com/images/scratchandscript_logo_red.webp"
+                        alt="Image 1" class="w-auto h-8 sm:mx-2 sm:h-12">
                 </a>
             </div>
             <div class="flex items-center justify-center w-full sm:w-full sm:mt-2 lg:w-auto lg:flex-grow sm:p-4">
