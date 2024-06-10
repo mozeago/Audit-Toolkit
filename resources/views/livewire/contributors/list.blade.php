@@ -14,9 +14,14 @@ new class extends Component {
     {
         return $this->contributors = ResearchContributorsModel::orderBy('created_at', 'desc')->get();
     }
+    public function deleteResearcher(ResearchContributorsModel $researchMember)
+    {
+        $researchMember->delete();
+        return $this->getContributors();
+    }
 }; ?>
 
-<div>
+<div x-data="{ editReasearcher: false }">
     <div class="flex items-center justify-center mt-8 mb-8">
         <div class="flex-grow border-b-4 border-[#1C4863] "></div>
         <span class="px-3 text-xl font-bold text-center">Research Contributors</span>
@@ -34,15 +39,7 @@ new class extends Component {
                         </th>
                         <th scope="col"
                             class="px-6 py-3 text-sm font-medium tracking-wider text-left text-white uppercase">
-                            Email
-                        </th>
-                        <th scope="col"
-                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-white uppercase">
                             Role</th>
-                        <th scope="col"
-                            class="px-6 py-3 text-sm font-medium tracking-wider text-left text-white uppercase">
-                            Photo
-                        </th>
                         <th scope="col"
                             class="px-6 py-3 text-sm font-medium tracking-wider text-left text-white uppercase">
                             Action
@@ -52,14 +49,24 @@ new class extends Component {
                 <tbody class="divide-y divide-gray-200">
                     @foreach ($contributors as $contributor)
                         <tr class="text-center transition-colors duration-300 hover:bg-gray-100">
-                            <td class="px-6 py-4 text-left whitespace-nowrap">
+                            <td class="px-6 py-4 text-left">
                                 {{ $contributor->name }}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                {{ $contributor->email }}
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
+                            <td class="px-6 py-4 text-left">
                                 {{ $contributor->description }}
+                            </td>
+                            <td class="px-6 py-4 text-left">
+                                {{-- <a wire:click.prevent="deleteResearcher('{{}}')" href="your_link_here" class="mr-8 hover:text-[#C8000B]">
+                                    <span class="material-icons-sharp">
+                                        edit_note
+                                    </span>
+                                </a> --}}
+                                <a wire:click.prevent="deleteResearcher('{{ $contributor->id }}')" href="your_link_here"
+                                    class=" hover:text-[#C8000B]">
+                                    <span class="material-icons-sharp">
+                                        delete_forever
+                                    </span>
+                                </a>
                             </td>
                         </tr>
                     @endforeach
