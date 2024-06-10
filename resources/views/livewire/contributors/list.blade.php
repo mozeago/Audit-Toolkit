@@ -10,6 +10,7 @@ new class extends Component {
         $this->getContributors();
     }
     #[On('contributor-created')]
+    #[On('contributor-deleted')]
     public function getContributors()
     {
         return $this->contributors = ResearchContributorsModel::orderBy('created_at', 'desc')->get();
@@ -17,7 +18,7 @@ new class extends Component {
     public function deleteResearcher(ResearchContributorsModel $researchMember)
     {
         $researchMember->delete();
-        return $this->getContributors();
+        $this->dispatch('contributor-deleted');
     }
 }; ?>
 
@@ -61,7 +62,7 @@ new class extends Component {
                                         edit_note
                                     </span>
                                 </a> --}}
-                                <a wire:click.prevent="deleteResearcher('{{ $contributor->id }}')" href="your_link_here"
+                                <a wire:click.prevent="deleteResearcher('{{ $contributor->id }}')" href="#"
                                     class=" hover:text-[#C8000B]">
                                     <span class="material-icons-sharp">
                                         delete_forever
