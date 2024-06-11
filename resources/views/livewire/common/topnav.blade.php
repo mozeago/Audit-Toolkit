@@ -46,7 +46,7 @@ new class extends Component {
                     <h3 class="m-0">Dashboard</h3>
                 </a>
                 <button wire:click="logout" class="flex items-center hover:text-[#C8000B] hover:font-semibold">
-                    <span class="material-icons-sharp icon-container">
+                    <span class="icon-container material-icons-sharp">
                         logout
                     </span>
                     <h3>Logout</h3>

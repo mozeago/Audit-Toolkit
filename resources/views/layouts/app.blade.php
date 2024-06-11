@@ -366,6 +366,27 @@
     </div>
     @vite(['resources/js/dashboard.js', 'resources/js/app.js'])
     <livewire:common.footer />
+    <script>
+        // Check if the Material Icons font is loaded
+        const checkFont = () => {
+            const span = document.createElement('span');
+            span.classList.add('material-icons-sharp');
+            span.textContent = 'check_circle';
+            span.style.visibility = 'hidden';
+            document.body.appendChild(span);
+
+            const isFontLoaded = window.getComputedStyle(span).fontFamily.includes('Material Icons');
+            document.body.removeChild(span);
+
+            if (isFontLoaded) {
+                document.getElementById('app').classList.add('icon-loaded');
+            } else {
+                requestAnimationFrame(checkFont);
+            }
+        };
+
+        requestAnimationFrame(checkFont);
+    </script>
 </body>
 
 </html>
