@@ -164,7 +164,7 @@
                     <span class="material-icons-sharp">
                         quiz
                     </span>
-                    <h3>Audit Quiz</h3>
+                    <h3>Audit Questionnaire</h3>
                     {{-- <span class="message-count">questions count</span> --}}
                 </a>
                 <a @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
@@ -173,7 +173,7 @@
                     <span class="material-icons-sharp">
                         security
                     </span>
-                    <h3>Risk Pofile</h3>
+                    <h3>Risk Pofile Questions</h3>
                 </a>
                 <a href="{{ route('researchers') }}" class="active:text-[#C8000B] hover:font-semibold">
                     <span class="material-icons-sharp">
