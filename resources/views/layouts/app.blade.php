@@ -57,6 +57,17 @@
     </style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <style>
+        .icon-container {
+            visibility: hidden;
+            /* Hide icons by default */
+        }
+
+        .icon-loaded .icon-container {
+            visibility: visible;
+            /* Show icons when loaded */
+        }
+    </style>
 </head>
 
 <body x-data="{ auditOpened: false, onBoardingOpened: false, securityQuestionsOpened: false }" class="bg-[#F4F2EE]">
