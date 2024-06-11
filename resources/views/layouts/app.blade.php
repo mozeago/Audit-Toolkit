@@ -57,17 +57,6 @@
     </style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-    <style>
-        .icon-container {
-            visibility: hidden;
-            /* Hide icons by default */
-        }
-
-        .icon-loaded .icon-container {
-            visibility: visible;
-            /* Show icons when loaded */
-        }
-    </style>
 </head>
 
 <body x-data="{ auditOpened: false, onBoardingOpened: false, securityQuestionsOpened: false }" class="bg-[#F4F2EE]">
@@ -366,27 +355,6 @@
     </div>
     @vite(['resources/js/dashboard.js', 'resources/js/app.js'])
     <livewire:common.footer />
-    <script>
-        // Check if the Material Icons font is loaded
-        const checkFont = () => {
-            const span = document.createElement('span');
-            span.classList.add('material-icons-sharp');
-            span.textContent = 'check_circle';
-            span.style.visibility = 'hidden';
-            document.body.appendChild(span);
-
-            const isFontLoaded = window.getComputedStyle(span).fontFamily.includes('Material Icons');
-            document.body.removeChild(span);
-
-            if (isFontLoaded) {
-                document.getElementById('app').classList.add('icon-loaded');
-            } else {
-                requestAnimationFrame(checkFont);
-            }
-        };
-
-        requestAnimationFrame(checkFont);
-    </script>
 </body>
 
 </html>
