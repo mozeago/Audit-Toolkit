@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('security_questionnaires', function (Blueprint $table) {
-            $table->uud('id')->primary();
+            $table->uuid('id')->primary();
             $table->text('text');
             $table->timestamps();
             $table->softDeletes();
