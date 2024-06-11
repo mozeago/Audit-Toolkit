@@ -531,53 +531,55 @@ new class extends Component {
             </div>
         </div>
     </div>
-    <div class="flex items-center justify-center mt-8 mb-8">
-        <div class="flex-grow border-b-4 border-[#1C4863]">
-        </div>
-        <span class="px-3 text-xl font-bold text-center">Privacy
-            Cases</span>
-        <div class="flex-grow border-b-4 border-[#1C4863]">
-        </div>
+    @if ($privacyCases->isNotEmpty())
+        <div class="flex items-center justify-center mt-8 mb-8">
+            <div class="flex-grow border-b-4 border-[#1C4863]">
+            </div>
+            <span class="px-3 text-xl font-bold text-center">Privacy
+                Cases</span>
+            <div class="flex-grow border-b-4 border-[#1C4863]">
+            </div>
 
-    </div>
-    <div class="bg-white shadow-2xl hover:shadow-none">
-        <div class="flex flex-row rounded-t-lg bg-[#1C4863] text-white">
-            <!-- Header Row -->
-            <div style="flex-basis: 25%;" class="flex items-center justify-center uppercase sm:p-2 md:p-4">
-                Name</div>
-            <div style="flex-basis: 25%;" class="flex items-center justify-center uppercase sm:p-2 md:p-4">
-                Case No.</div>
-            <div style="flex-basis: 25%;" class="flex items-center justify-center uppercase sm:p-2 md:p-4">
-                Title</div>
-            <div style="flex-basis: 25%;" class="flex items-center justify-center uppercase sm:p-2 md:p-4">
-                Link</div>
         </div>
-        @foreach ($privacyCases as $privacyCase)
-            <div class="flex flex-row bg-white rounded-b-lg">
-                <!-- Data Row -->
-                <div class="flex items-start justify-start flex-none border-r border-gray-300 sm:p-1 md:p-4"
-                    style="flex-basis: 25%;">
-                    {{ $privacyCase->casename }}
-                </div>
-                <div class="flex items-start justify-start flex-none border-r border-gray-300 sm:p-1 md:p-4"
-                    style="flex-basis: 25%;">
-                    {{ $privacyCase->casenumber }}
-                </div>
-                <div class="flex items-start justify-start flex-none border-r border-gray-300 sm:p-1 md:p-4"
-                    style="flex-basis: 25%;">
-                    {{ $privacyCase->casetitle }}
-                </div>
-                <div class="flex items-center justify-center flex-none sm:p-1 md:p-4" style="flex-basis: 25%;">
-                    <a target="_blank" href="{{ $privacyCase->caselink }}"
-                        class="inline-block rounded-full bg-gray-900 text-white shadow-lg hover:bg-[#C8000B] focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75 sm:px-2 sm:py-2 sm:text-xs md:px-6 md:py-2">
-                        Watch
-                    </a>
-                </div>
+        <div class="bg-white shadow-2xl hover:shadow-none">
+            <div class="flex flex-row rounded-t-lg bg-[#1C4863] text-white">
+                <!-- Header Row -->
+                <div style="flex-basis: 25%;" class="flex items-center justify-center uppercase sm:p-2 md:p-4">
+                    Name</div>
+                <div style="flex-basis: 25%;" class="flex items-center justify-center uppercase sm:p-2 md:p-4">
+                    Case No.</div>
+                <div style="flex-basis: 25%;" class="flex items-center justify-center uppercase sm:p-2 md:p-4">
+                    Title</div>
+                <div style="flex-basis: 25%;" class="flex items-center justify-center uppercase sm:p-2 md:p-4">
+                    Link</div>
             </div>
-            <div class="flex-grow border-b border-gray-300">
-            </div>
-        @endforeach
-    </div>
+            @foreach ($privacyCases as $privacyCase)
+                <div class="flex flex-row bg-white rounded-b-lg">
+                    <!-- Data Row -->
+                    <div class="flex items-start justify-start flex-none border-r border-gray-300 sm:p-1 md:p-4"
+                        style="flex-basis: 25%;">
+                        {{ $privacyCase->casename }}
+                    </div>
+                    <div class="flex items-start justify-start flex-none border-r border-gray-300 sm:p-1 md:p-4"
+                        style="flex-basis: 25%;">
+                        {{ $privacyCase->casenumber }}
+                    </div>
+                    <div class="flex items-start justify-start flex-none border-r border-gray-300 sm:p-1 md:p-4"
+                        style="flex-basis: 25%;">
+                        {{ $privacyCase->casetitle }}
+                    </div>
+                    <div class="flex items-center justify-center flex-none sm:p-1 md:p-4" style="flex-basis: 25%;">
+                        <a target="_blank" href="{{ $privacyCase->caselink }}"
+                            class="inline-block rounded-full bg-gray-900 text-white shadow-lg hover:bg-[#C8000B] focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75 sm:px-2 sm:py-2 sm:text-xs md:px-6 md:py-2">
+                            Watch
+                        </a>
+                    </div>
+                </div>
+                <div class="flex-grow border-b border-gray-300">
+                </div>
+            @endforeach
+        </div>
+    @endif
 </div>
 <script type="text/javascript">
     var randomScalingFactor = function() {
