@@ -71,7 +71,7 @@ new class extends Component {
     }
     public function fetchQuestions()
     {
-        $this->questions = Question::with('hasOneInformation')->get();
+        $this->questions = Question::with(['belongsToControl', 'hasOneInformation'])->get();
     }
 
     public function nextQuestion()
@@ -212,7 +212,9 @@ new class extends Component {
                     </svg>
                     <div class="p-2 ml-20">
                         <div class="flex flex-col items-start p-2">
-                            <h3 class="mb-2 text-lg font-semibold">Audit Questionnaire</h3>
+                            <h3 class="mb-2 text-lg font-semibold">
+                                {{ $questions[$currentQuestionIndex]->belongsToControl->name }}
+                            </h3>
                             <p class="text-base gray-600 text-">{{ $questions[$currentQuestionIndex]->text }}</p>
                         </div>
                         <div class="flex mt-4 space-x-4">

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -19,9 +20,9 @@ class Question extends BaseModel
 
     protected $fillable = ['text', 'control_id'];
 
-    public function belongsToControl()
+    public function belongsToControl(): BelongsTo
     {
-        return $this->belongsTo(Control::class);
+        return $this->belongsTo(Control::class, 'control_id');
     }
     public function hasOneInformation(): HasOne
     {

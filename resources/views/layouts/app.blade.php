@@ -173,7 +173,7 @@
                     <span class="material-icons-sharp">
                         security
                     </span>
-                    <h3>Security Quiz</h3>
+                    <h3>Risk Pofile</h3>
                 </a>
                 <a href="{{ route('researchers') }}" class="active:text-[#C8000B] hover:font-semibold">
                     <span class="material-icons-sharp">
@@ -263,7 +263,7 @@
                         <span class="material-icons-sharp">
                             question_mark
                         </span>
-                        <h3>OnBoarding Qtns</h3>
+                        <h3>Risk Profile</h3>
                         <span :class="{ 'rotate-180': onBoardingOpened }" class="material-icons-sharp">
                             expand_more
                         </span>
