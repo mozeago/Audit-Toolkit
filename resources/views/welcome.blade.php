@@ -191,7 +191,7 @@
             </span>
         </h2>
     </div>
-    <div class="flex items-start w-full pl-8 mt-8">
+    <div class="flex items-start w-full pl-8 mt-4">
         <h2 class="text-xl font-bold uppercase roboto-bold">
             <span class="inline-block pb-2 border-b-2 border-black">With</span>
             You
