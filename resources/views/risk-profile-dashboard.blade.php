@@ -2,5 +2,4 @@
     <div class="max-w-2xl p-4 mx-auto sm:p-6 lg:p-8">
         <livewire:dashboards.risk-profile.risk-profile />
     </div>
-    <livewire:common.footer />
 </x-app-layout>
