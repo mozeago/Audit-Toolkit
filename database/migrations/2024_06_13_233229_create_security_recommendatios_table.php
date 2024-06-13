@@ -12,8 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('security_recommendations', function (Blueprint $table) {
-            $table->id();
+            $table->uuid()->primary();
+            $table->text('name');
+            $table->foreignUuid('security_information_id')->constrained();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -23,5 +26,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('security_recommendations');
+        Schema::table('security_recommendations', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 };

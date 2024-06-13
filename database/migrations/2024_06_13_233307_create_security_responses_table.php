@@ -12,8 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('security_responses', function (Blueprint $table) {
-            $table->id();
+            $table->uuid()->primary();
+            $table->enum('answer', ['true', 'false']);
+            $table->text('organization');
+            $table->text('department');
+            $table->text('attempt_number');
+            $table->foreignUuid('user_id')->constrained();
+            $table->foreignUuid('security_questions_id')->constrained();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -23,5 +30,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('security_responses');
+        Schema::table('security_responses', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 };

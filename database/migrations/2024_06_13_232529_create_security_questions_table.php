@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('security_questionnaires', function (Blueprint $table) {
+        Schema::create('security_questions', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->text('text');
+            $table->foreignUuid('security_sections_id')->constrained();
+            $table->index('security_sections_id');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -24,6 +26,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('security_questionnaires');
+        Schema::dropIfExists('security_questions');
+        Schema::table('security_questions', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 };
