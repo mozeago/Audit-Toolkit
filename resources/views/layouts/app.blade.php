@@ -102,14 +102,6 @@
                         class="z-30 hidden w-auto pr-4 font-normal bg-white border-2 border-gray-200 rounded-lg shadow-md">
                         <ul class="items-start py-2 pt-8 text-sm text-gray-700">
                             <li>
-                                <a href="{{ route('controls') }}"
-                                    class="flex items-start px-4 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
-                                    <span class="material-icons-sharp">
-                                        roundabout_left
-                                    </span>Controls
-                                </a>
-                            </li>
-                            <li>
                                 <a href="{{ route('sections') }}"
                                     class="flex items-start px-2 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
                                     <span class="mr-2 material-icons-sharp">
@@ -119,11 +111,19 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('recommendations') }}"
+                                <a href="{{ route('controls') }}"
                                     class="flex items-start px-4 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
                                     <span class="material-icons-sharp">
-                                        recommend
-                                    </span>Recommendations
+                                        roundabout_left
+                                    </span>Controls
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('questions') }}"
+                                    class="flex items-start px-4 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <span class="material-icons-sharp">
+                                        quiz
+                                    </span>Questions
                                 </a>
                             </li>
                             <li>
@@ -135,13 +135,14 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('questions') }}"
+                                <a href="{{ route('recommendations') }}"
                                     class="flex items-start px-4 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
                                     <span class="material-icons-sharp">
-                                        quiz
-                                    </span>Questions
+                                        recommend
+                                    </span>Recommendations
                                 </a>
                             </li>
+
                         </ul>
                     </div>
 
@@ -281,11 +282,11 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('risk-analysis-recommendation') }}"
+                                <a href="{{ route('risk-analysis-subsection') }}"
                                     class="flex items-start px-4 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
                                     <span class="material-icons-sharp">
-                                        recommend
-                                    </span>Recommendations
+                                        quiz
+                                    </span>Questions
                                 </a>
                             </li>
                             <li>
@@ -297,13 +298,15 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('risk-analysis-subsection') }}"
+                                <a href="{{ route('risk-analysis-recommendation') }}"
                                     class="flex items-start px-4 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
                                     <span class="material-icons-sharp">
-                                        quiz
-                                    </span>Questions
+                                        recommend
+                                    </span>Recommendations
                                 </a>
                             </li>
+
+
                         </ul>
                     </div>
                 @endif

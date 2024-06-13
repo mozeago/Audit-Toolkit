@@ -106,20 +106,20 @@ new #[Layout('layouts.guest')] class extends Component {
                 </div>
             </form>
 
-            {{-- <div class="flex items-center justify-center mt-4 mb-4 text-gray-600">
+            <div class="flex items-center justify-center mt-4 mb-4 text-gray-600">
                 <div class="flex-grow border-b border-gray-300"></div>
                 <span class="px-3 font-bold">or login with</span>
                 <div class="flex-grow border-b border-gray-300"></div>
-            </div> --}}
+            </div>
             <!-- Session Status -->
             <x-auth-session-status class="mb-4" :status="session('status')" />
-            {{-- <div class="flex items-center justify-center">
+            <div class="flex items-center justify-center">
                 <a href="{{ route('google.redirect') }}"
                     class="w-full inline-flex items-center justify-center p-2 bg-white shadow-md hover:shadow-xl hover:text-[#C8000B] hover:font-semibold focus:outline-none rounded-md">
                     <img src="{{ asset('images/google_logo.webp') }}" alt="Google Logo" class="w-8 h-8 mr-2">
                     <span>Sign in With Google</span>
                 </a>
-            </div> --}}
+            </div>
         </div>
     </div>
 </div>
