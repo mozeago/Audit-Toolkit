@@ -106,7 +106,7 @@ new #[Layout('layouts.guest')] class extends Component {
                 </div>
             </form>
 
-            <div class="flex items-center justify-center mt-4 mb-4 text-gray-600">
+            {{-- <div class="flex items-center justify-center mt-4 mb-4 text-gray-600">
                 <div class="flex-grow border-b border-gray-300"></div>
                 <span class="px-3 font-bold">or login with</span>
                 <div class="flex-grow border-b border-gray-300"></div>
@@ -119,7 +119,7 @@ new #[Layout('layouts.guest')] class extends Component {
                     <img src="{{ asset('images/google_logo.webp') }}" alt="Google Logo" class="w-8 h-8 mr-2">
                     <span>Sign in With Google</span>
                 </a>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
