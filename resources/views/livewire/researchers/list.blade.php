@@ -23,7 +23,8 @@ new class extends Component {
 
         // Calculate the offset for pagination
         $offset = ($portion - 1) * $oneThird;
-        return DB::table('research_contributors')->select('name')->distinct()->offset($offset)->limit($oneThird)->get();
+
+        return DB::table('research_contributors')->select('name')->distinct()->orderBy('name', 'asc')->offset($offset)->limit($oneThird)->get();
     }
 }; ?>
 
