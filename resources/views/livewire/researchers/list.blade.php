@@ -97,7 +97,7 @@ new class extends Component {
                 <div class="flex-grow px-6 py-4">
                     <!-- List of Names -->
                     <ul class="list-none">
-                        @foreach ($blueColumContributors as $contributor)
+                        @foreach ($greenColumContributors as $contributor)
                             <li class="flex items-center mb-2">
                                 <svg class="w-6 h-6 mr-2 text-gray-800" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
