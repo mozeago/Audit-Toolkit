@@ -15,10 +15,15 @@ new class extends Component {
     }
     public function fetchContributors($portion = 1)
     {
-        $totalUsers = DB::table('research_contributors')->count();
-        $oneThird = ceil($totalUsers / 3);
+        // Count the total number of unique names
+        $totalUniqueNames = DB::table('research_contributors')->distinct()->count('name');
+
+        // Calculate the number of unique names per portion (one third)
+        $oneThird = ceil($totalUniqueNames / 3);
+
+        // Calculate the offset for pagination
         $offset = ($portion - 1) * $oneThird;
-        return DB::table('research_contributors')->offset($offset)->limit($oneThird)->get();
+        return DB::table('research_contributors')->select('name')->distinct()->offset($offset)->limit($oneThird)->get();
     }
 }; ?>
 
