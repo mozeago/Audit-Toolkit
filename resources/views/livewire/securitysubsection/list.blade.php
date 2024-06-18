@@ -7,7 +7,7 @@ use Livewire\Attributes\On;
 use App\Models\SecuritySubSections;
 new class extends Component {
     public Collection $securitySections;
-    public ?SecuritySections $editing = null;
+    public ?SecuritySubSections $editing = null;
 
     public function mount()
     {
@@ -20,12 +20,12 @@ new class extends Component {
         $this->securitySections = SecuritySubSections::orderBy('created_at', 'desc')->get();
     }
 
-    public function edit(SecuritySections $securitySection)
+    public function edit(SecuritySubSections $securitySection)
     {
         $this->editing = $securitySection;
     }
 
-    #[On('security-sub-section-edit-canceled')]
+    #[On('security-sub-section-cancelled')]
     #[On('security-sub-section-updated')]
     public function disableEditing(): void
     {
@@ -40,14 +40,11 @@ new class extends Component {
     }
 }; ?>
 <div class="bg-white shadow-2xl hover:shadow-none">
-    <div
-        class="flex flex-row rounded-t-lg bg-[#1C4863] text-white">
+    <div class="flex flex-row rounded-t-lg bg-[#1C4863] text-white">
         <!-- Header Row -->
-        <div style="flex-basis: 50%;"
-            class="flex items-center justify-center uppercase sm:p-2 md:p-4">
+        <div style="flex-basis: 50%;" class="flex items-center justify-center uppercase sm:p-2 md:p-4">
             Name</div>
-        <div style="flex-basis: 50%;"
-            class="flex items-center justify-center uppercase sm:p-2 md:p-4">
+        <div style="flex-basis: 50%;" class="flex items-center justify-center uppercase sm:p-2 md:p-4">
             Action</div>
     </div>
     @foreach ($securitySections as $securitySection)
@@ -56,9 +53,7 @@ new class extends Component {
             <div class="flex items-start justify-start flex-none border-r border-gray-300 sm:p-1 md:p-4"
                 style="flex-basis: 50%;">
                 @if ($securitySection->is($editing))
-                    <livewire:securitysubsection.edit
-                        :securitySections="$securitySection"
-                        :key="$securitySection->id" />
+                    <livewire:securitysubsection.edit :securitySubSection="$securitySection" :key="$securitySection->id" />
                 @else
                     {{ $securitySection->name }}
                 @endif
@@ -66,9 +61,7 @@ new class extends Component {
             </div>
             <div class="flex items-center justify-center flex-none border-r border-gray-300 sm:p-1 md:p-4"
                 style="flex-basis: 50%;">
-                <button
-                    wire:click.prevent="edit('{{ $securitySection->id }}')"
-                    type="button"
+                <button wire:click.prevent="edit('{{ $securitySection->id }}')" type="button"
                     class="inline-flex px-2 py-1 text-sm font-medium text-blue-500 border rounded-full hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
                     {{ __('Edit') }}
                 </button>
