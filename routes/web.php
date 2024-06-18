@@ -18,6 +18,7 @@ use App\Http\Controllers\ResearchContributors;
 use App\Http\Controllers\ResearchersController;
 use App\Http\Controllers\SecuritySectionsController;
 use App\Http\Controllers\SecuritySubSectionsController;
+use App\Http\Controllers\SecurityQuestionsController;
 use App\Http\Controllers\UsersSettings;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
@@ -63,6 +64,8 @@ Route::get('/security-sections', [SecuritySectionsController::class, 'index'])
     ->middleware('auth')->name('security-sections');
 Route::get('/security-sub-sections', [SecuritySubSectionsController::class, 'index'])
     ->middleware('auth')->name('security-sub-sections');
+Route::get('/security-questions-create', [SecurityQuestionsController::class, 'index'])
+    ->middleware('auth')->name('security-questions-create');
 // google login routes
 Route::get('/google/redirect', [GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/google/callback', [GoogleLoginController::class, 'handleGoogleCallback'])->name('google.callback');

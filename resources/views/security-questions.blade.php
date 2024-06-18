@@ -1,3 +1,3 @@
 <x-app-layout>
-    <livewire:security.create />
+    <livewire:securityquestions.create />
 </x-app-layout>
