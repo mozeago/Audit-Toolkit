@@ -219,7 +219,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{ route('security-sub-sections') }}"
                                     class="flex items-start px-4 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
                                     <span class="material-icons-sharp">
                                         domain
