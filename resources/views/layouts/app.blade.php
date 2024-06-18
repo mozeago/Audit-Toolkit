@@ -195,7 +195,7 @@
                         </span>
                         <h3>System Users</h3>
                     </a>
-                    {{-- <a data-dropdown-toggle="securityQuestionsDropdown" onclick="return false;"
+                    <a data-dropdown-toggle="securityQuestionsDropdown" onclick="return false;"
                         @click="securityQuestionsOpened = !securityQuestionsOpened" href="#"
                         class="active:text-[#C8000B] hover:font-semibold hover:ml-0">
                         <span class="material-icons-sharp">
@@ -210,7 +210,7 @@
                         class="z-30 hidden w-auto pr-4 font-normal bg-white border-2 border-[#F97316]/5 rounded-lg shadow-md">
                         <ul class="items-start py-2 pt-8 text-sm text-gray-700">
                             <li>
-                                <a href="#"
+                                <a href="{{ route('security-sections') }}"
                                     class="flex items-start px-2 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
                                     <span class="mr-2 material-icons-sharp">
                                         repartition
@@ -251,7 +251,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </div> --}}
+                    </div>
                     <a href="{{ route('privacy-cases') }}" class="active:text-[#C8000B] hover:font-semibold">
                         <span class="material-icons-sharp">
                             phonelink_lock

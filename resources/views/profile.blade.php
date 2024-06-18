@@ -26,5 +26,4 @@
             </div>
         </div>
     </div>
-    <livewire:common.footer />
 </x-app-layout>

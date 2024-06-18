@@ -16,6 +16,7 @@ use App\Http\Controllers\GoogleLoginController;
 use App\Http\Controllers\PrivacyCasesController;
 use App\Http\Controllers\ResearchContributors;
 use App\Http\Controllers\ResearchersController;
+use App\Http\Controllers\SecuritySectionsController;
 use App\Http\Controllers\UsersSettings;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
@@ -57,6 +58,8 @@ Route::get('/project-contributors', [ResearchContributors::class, 'index'])
     ->middleware(['auth'])->name('project-contributors');
 Route::get('/privacy-cases', [PrivacyCasesController::class, 'index'])
     ->middleware('auth')->name('privacy-cases');
+Route::get('/security-sections', [SecuritySectionsController::class, 'index'])
+    ->middleware('auth')->name('security-sections');
 // google login routes
 Route::get('/google/redirect', [GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/google/callback', [GoogleLoginController::class, 'handleGoogleCallback'])->name('google.callback');
@@ -70,4 +73,5 @@ Route::view('profile', 'profile')
     ->name('profile');
 Route::get('/researchers', [ResearchersController::class, 'index'])
     ->middleware(['auth'])->name('researchers');
+
 require __DIR__ . '/auth.php';
