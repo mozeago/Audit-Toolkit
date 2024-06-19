@@ -4,6 +4,7 @@ use Livewire\Volt\Component;
 use App\Models\SecurityQuestions;
 use App\Models\SecuritySubSections;
 use Illuminate\Database\Eloquent\Collection;
+
 new class extends Component {
     public Collection $controls;
     public $questionText = '';
@@ -11,7 +12,7 @@ new class extends Component {
 
     public function mount()
     {
-        $this->fetchControls();
+        $this->fetchSections();
     }
 
     public function rules()
@@ -22,7 +23,7 @@ new class extends Component {
         ];
     }
 
-    public function fetchControls()
+    public function fetchSections()
     {
         $this->controls = SecuritySubSections::orderBy('created_at', 'desc')->get();
     }
@@ -30,31 +31,23 @@ new class extends Component {
     public function store()
     {
         $validatedData = $this->validate();
-
-        try {
-            SecurityQuestions::create([
-                'text' => $validatedData['questionText'],
-                'security_sections_id' => $validatedData['subSectionId'],
-            ]);
-            $this->dispatch('sub-section-question-created');
-            $this->resetFields();
-        } catch (\Illuminate\Database\QueryException $e) {
-            \Log::error('Failed to create security question', [
-                'error' => $e->getMessage(),
-                'questionText' => $validatedData['questionText'],
-                'security_sections_id' => $validatedData['subSectionId'],
-            ]);
-            session()->flash('error', 'Failed to create security question. Please ensure the sub-section name is valid.');
-        }
+        SecurityQuestions::create([
+            'text' => $validatedData['questionText'],
+            'security_sub_sections_id' => $validatedData['subSectionId'],
+        ]);
+        $this->dispatch('security-questions-created');
+        $this->resetFields();
+        session()->flash('message', 'Security question created successfully.');
     }
 
     public function resetFields()
     {
-        $this->reset('questionText', 'subSectionId', 'message');
+        $this->reset('questionText', 'subSectionId');
     }
-}; ?>
+};
+?>
 
-<div class="flex w-full shadow-md">
+<div class="flex w-full mb-16 shadow-md">
     <div class="w-full max-w-md min-w-full px-8 py-6 leading-normal bg-white rounded">
         @if (session()->has('error'))
             <div class="mb-4 text-red-500">

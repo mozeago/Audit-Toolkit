@@ -14,5 +14,9 @@ class SecurityQuestions extends BaseModel
     use SoftDeletes;
     protected $keyType = 'string';
     public $incrementing = false;
-    protected $fillable = ['text', 'security_sections_id'];
+    protected $fillable = ['text', 'security_sub_sections_id'];
+    public function securitySubSection()
+    {
+        return $this->belongsTo(SecuritySubSections::class, 'security_sub_sections_id');
+    }
 }

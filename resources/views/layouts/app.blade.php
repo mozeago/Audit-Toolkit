@@ -235,7 +235,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{ route('security-recommendation') }}"
                                     class="flex items-start px-4 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
                                     <span class="material-icons-sharp">
                                         recommend
@@ -243,7 +243,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{ route('security-information') }}"
                                     class="flex items-start px-4 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
                                     <span class="material-icons-sharp">
                                         tips_and_updates

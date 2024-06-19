@@ -8,34 +8,31 @@ use Illuminate\Database\Eloquent\Collection;
 
 new class extends Component {
     public SecuritySubSections $securitySubSection;
-    public Collection $sections;
+    public Collection $securitySections;
     public string $name = '';
-    public string $section_id = '';
+    public string $securitySectionsId = '';
     public function rules(): array
     {
         return [
             'name' => 'required|string|max:255',
-            'section_id' => 'required|max:36',
+            'securitySectionsId' => 'required|max:36',
         ];
     }
     public function mount()
     {
         $this->name = $this->securitySubSection->name;
-        $this->section_id = $this->securitySubSection->id;
+        $this->securitySectionsId = $this->securitySubSection->security_sections_id;
         $this->fetchSections();
     }
     public function fetchSections()
     {
-        $this->sections = SecuritySections::orderBy('created_at', 'desc')->get();
+        $this->securitySections = SecuritySections::orderBy('created_at', 'desc')->get();
     }
     public function update(): void
     {
-        $this->validate();
-        $this->control->update([
-            'name' => $this->name,
-            'security_sections_id' => $this->section_id,
-        ]);
-        $this->dispatch('control-updated');
+        $validatedData = $this->validate();
+        $this->securitySubSection->update($validatedData);
+        $this->dispatch('security-sub-section-updated');
     }
     public function cancel(): void
     {
@@ -55,14 +52,14 @@ new class extends Component {
                 @enderror
             </div>
             <div class="flex flex-col w-full mb-4">
-                <select wire:model="section_id" id="section_id"
+                <select wire:model="securitySectionsId" id="securitySectionsId"
                     class="block w-full p-3 rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:ring-opacity-50">
                     <option value="" disabled selected>{{ __('Select ...') }}</option>
-                    @foreach ($sections as $section)
-                        <option value="{{ $section_id }}">{{ $section->name }}</option>
+                    @foreach ($securitySections as $securitySection)
+                        <option value="{{ $securitySection->id }}">{{ $securitySection->name }}</option>
                     @endforeach
                 </select>
-                @error('section_id')
+                @error('securitySectionsId')
                     <div class="text-red-500 invalid-feedback error-class">{{ $message }}</div>
                 @enderror
             </div>
