@@ -2,13 +2,13 @@
 
 use Livewire\Volt\Component;
 use App\Models\SecurityQuestions;
-use App\Models\SecuritySubSections;
+use App\Models\SecurityRecommendations;
 use Illuminate\Database\Eloquent\Collection;
 
 new class extends Component {
     public Collection $securityQuestions;
-    public $questionText = '';
-    public $subSectionId = '';
+    public $recommendationText = '';
+    public $questionsId = '';
 
     public function mount()
     {
@@ -18,8 +18,8 @@ new class extends Component {
     public function rules()
     {
         return [
-            'questionText' => 'required|min:20',
-            'subSectionId' => 'required|uuid',
+            'recommendationText' => 'required|min:20',
+            'questionsId' => 'required|uuid',
         ];
     }
 
@@ -31,18 +31,18 @@ new class extends Component {
     public function store()
     {
         $validatedData = $this->validate();
-        SecurityRecommendation::create([
-            'name' => $validatedData['questionText'],
-            'security_sub_sections_id' => $validatedData['subSectionId'],
+        SecurityRecommendations::create([
+            'name' => $validatedData['recommendationText'],
+            'security_questions_id' => $validatedData['questionsId'],
         ]);
-        $this->dispatch('security-questions-created');
+        $this->dispatch('security-recommendations-created');
         $this->resetFields();
-        session()->flash('message', 'Security question created successfully.');
+        session()->flash('message', 'Security Recommendation saved !');
     }
 
     public function resetFields()
     {
-        $this->reset('questionText', 'subSectionId');
+        $this->reset('recommendationText', 'questionsId');
     }
 };
 ?>
@@ -68,16 +68,15 @@ new class extends Component {
             </div>
 
             <div class="mb-6">
-                <label for="securityQuestionId"
-                    class="block mb-2 text-sm text-gray-700">{{ __('Security Question') }}</label>
-                <select wire:model="securityQuestionId"
+                <label for="questionsId" class="block mb-2 text-sm text-gray-700">{{ __('Security Question') }}</label>
+                <select wire:model="questionsId"
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
                     <option value="" disabled selected>{{ __('Select....') }}</option>
                     @foreach ($securityQuestions as $securityQuestion)
                         <option value="{{ $securityQuestion->id }}">{{ $securityQuestion->text }}</option>
                     @endforeach
                 </select>
-                @error('securityQuestionId')
+                @error('questionsId')
                     <span class="mt-2 text-xs text-red-500">{{ $message }}</span>
                 @enderror
             </div>

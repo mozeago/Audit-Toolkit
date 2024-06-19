@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('security_recommendations', function (Blueprint $table) {
-            $table->uuid()->primary();
+            $table->uuid('id')->primary();
             $table->text('name');
-            $table->foreignUuid('security_informations_id')->constrained('security_informations');
+            $table->foreignUuid('security_questions_id')->constrained('security_questions');
             $table->timestamps();
             $table->softDeletes();
         });
