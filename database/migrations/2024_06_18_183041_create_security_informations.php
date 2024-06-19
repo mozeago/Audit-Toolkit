@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('security_informations', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->text('name');
-            $table->foreignUuid('security_questions_id')->constrained();
+            $table->foreignUuid('security_questions_id')->constrained('security_questions');
             $table->timestamps();
             $table->softDeletes();
         });

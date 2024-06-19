@@ -235,14 +235,6 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('security-recommendation') }}"
-                                    class="flex items-start px-4 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
-                                    <span class="material-icons-sharp">
-                                        recommend
-                                    </span>Recommendations
-                                </a>
-                            </li>
-                            <li>
                                 <a href="{{ route('security-information') }}"
                                     class="flex items-start px-4 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
                                     <span class="material-icons-sharp">
@@ -250,7 +242,14 @@
                                     </span>Information
                                 </a>
                             </li>
-
+                            <li>
+                                <a href="{{ route('security-recommendation') }}"
+                                    class="flex items-start px-4 py-2 hover:font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <span class="material-icons-sharp">
+                                        recommend
+                                    </span>Recommendations
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <a href="{{ route('privacy-cases') }}" class="active:text-[#C8000B] hover:font-semibold">
