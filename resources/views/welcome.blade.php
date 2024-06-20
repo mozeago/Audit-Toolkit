@@ -44,51 +44,52 @@
             <span class="inline-block border-b-2 border-[#C8000B] pb-4">Partners</span>
             Worldwide
         </h1>
-        <div class="flex flex-wrap items-center justify-center pb-8">
-            <div class="flex items-center justify-center w-full sm:mb-2 sm:w-1/2 lg:w-auto lg:flex-grow">
+        <div class="flex flex-wrap items-center justify-center pb-8 md:flex-nowrap">
+            <div class="flex items-center justify-center w-full sm:mb-2 sm:w-1/2 lg:w-auto lg:flex-grow md:flex-grow">
                 <a class="zoom-image" href="https://isacaabuja.org/">
                     <img src="https://data-protection-toolkit.scratchandscript.com/images/isaca_abuja.webp"
                         alt="Image 1" class="w-auto h-8 sm:w-full sm:mx-2 sm:h-12">
                 </a>
             </div>
-            <div class="flex items-center justify-center w-full sm:mb-2 sm:w-1/2 lg:w-auto lg:flex-grow">
+            <div class="flex items-center justify-center w-full sm:mb-2 sm:w-1/2 lg:w-auto lg:flex-grow md:flex-grow">
                 <a class="zoom-image" href="https://engage.isaca.org/kenyachapter/home">
                     <img src="https://data-protection-toolkit.scratchandscript.com/images/isacakenya.webp"
                         alt="Image 1" class="w-auto h-8 sm:w-full sm:mx-2 sm:h-12">
                 </a>
             </div>
-            <div class="flex items-center justify-center w-full sm:mb-2 sm:w-1/2 lg:w-auto lg:flex-grow">
+            <div class="flex items-center justify-center w-full sm:mb-2 sm:w-1/2 lg:w-auto lg:flex-grow md:flex-grow">
                 <a class="zoom-image" href="https://engage.isaca.org/southafricachapter/home">
                     <img src="https://data-protection-toolkit.scratchandscript.com/images/ISACA_South_Africa.webp"
                         alt="Image 1" class="w-auto h-8 sm:w-full sm:mx-2 sm:h-12">
                 </a>
             </div>
-            <div class="flex items-center justify-center w-full sm:mb-2 sm:w-1/2 lg:w-auto lg:flex-grow">
+            <div class="flex items-center justify-center w-full sm:mb-2 sm:w-1/2 lg:w-auto lg:flex-grow md:flex-grow">
                 <a class="zoom-image" href="https://engage.isaca.org/kampalachapter/home">
                     <img src="https://data-protection-toolkit.scratchandscript.com/images/kampala.webp" alt="Image 1"
                         class="w-auto h-8 sm:w-full sm:mx-2 sm:h-12">
                 </a>
             </div>
-            <div class="flex items-center justify-center w-full sm:mb-2 sm:w-1/2 lg:w-auto lg:flex-grow">
+            <div class="flex items-center justify-center w-full sm:mb-2 sm:w-1/2 lg:w-auto lg:flex-grow md:flex-grow">
                 <a class="zoom-image"
                     href="https://twitter.com/DataGovProsKe?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
                     <img src="https://data-protection-toolkit.scratchandscript.com/images/kenya data privacy.webp"
                         alt="kenya data privacy" class="w-auto h-8 sm:mx-2 sm:h-12">
                 </a>
             </div>
-            <div class="flex items-center justify-center w-full sm:mb-2 sm:w-1/3 lg:w-auto lg:flex-grow">
+            <div class="flex items-center justify-center w-full sm:mb-2 sm:w-1/3 lg:w-auto lg:flex-grow md:flex-grow">
                 <a class="zoom-image" href="https://engage.isaca.org/rwandachapter/home">
                     <img src="https://data-protection-toolkit.scratchandscript.com/images/rwanda.webp" alt="Image 1"
                         class="w-auto h-8 sm:mx-2 sm:h-12 sm:w-full">
                 </a>
             </div>
-            <div class="flex items-center justify-center w-full sm:w-2/3 lg:w-auto lg:flex-grow">
+            <div class="flex items-center justify-center w-full sm:w-2/3 lg:w-auto lg:flex-grow md:flex-grow">
                 <a class="zoom-image" href="https://www.scratchandscript.com/">
                     <img src="https://data-protection-toolkit.scratchandscript.com/images/scratchandscript_logo_red.webp"
                         alt="Image 1" class="w-auto h-8 sm:mx-2 sm:h-12">
                 </a>
             </div>
-            <div class="flex items-center justify-center w-full sm:w-full sm:mt-2 lg:w-auto lg:flex-grow sm:p-4">
+            <div
+                class="flex items-center justify-center w-full sm:w-full sm:mt-2 lg:w-auto lg:flex-grow sm:p-4 md:flex-grow">
                 <a href="https://www.scratchandscript.com/user_contact" class="w-full">
                     <button
                         class="sm:w-full min-h-8 sm:min-h-12 flex items-center justify-center rounded bg-[#C8000B] px-2 py-1 text-white hover:bg-black hover:shadow-2xl sm:px-4 sm:py-2">
@@ -104,6 +105,7 @@
                 </a>
             </div>
         </div>
+
     </div>
     {{-- end partners --}}
     {{-- start report --}}
