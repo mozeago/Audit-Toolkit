@@ -10,6 +10,7 @@ use App\Models\SecurityResponses;
 use Livewire\Attributes\On;
 use App\Models\ResearchContributorsModel;
 new class extends Component {
+    public $successMessage;
     public $averageScore;
     public $userId;
     public $auditScore;
@@ -183,12 +184,16 @@ new class extends Component {
             'commercialUseOfData' => $this->commercialUseOfData,
             'businessOperation' => $this->businessOperation,
         ];
-
-        // Send the email
-        Mail::to($user->email)->send(new UserResponseMail($responseData));
+        try {
+            Mail::to($user->email)->send(new UserResponseMail($responseData));
+            $this->successMessage = 'Email sent successfully!';
+        } catch (\Exception $e) {
+            $this->successMessage = 'Failed to send email.';
+        }
     }
 }; ?>
-<div class="mb-4">
+<div class="mb-4" x-data="{ successMessage: true }">
+
     <div class="w-full mt-0 mb-4">
         <div class="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm min-h-8 hover:shadow-none">
             <!-- Fixed column at the start -->
@@ -219,6 +224,31 @@ new class extends Component {
             </div>
         </div>
     </div>
+    @if ($successMessage)
+        <div x-show="successMessage"
+            class="px-4 py-3 mb-4 text-teal-900 bg-teal-100 border-t-4 border-teal-500 rounded-b shadow-md"
+            role="alert">
+            <div class="flex">
+                <div class="py-1"><svg class="w-6 h-6 mr-4 text-teal-500 fill-current"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path
+                            d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
+                    </svg></div>
+                <div>
+                    <p class="font-bold">Email Sending...</p>
+                    <p class="text-sm">we have sent you a copy of your scores !</p>
+                </div>
+                <div class="py-1 ml-auto" @click="successMessage = !successMessage">
+                    <svg class="w-6 h-6 text-teal-500 cursor-pointer" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor"
+                        onclick="document.getElementById('alert-box').style.display='none'">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="w-full mb-8">
         <div
             class="flex flex-col items-center justify-between p-4 bg-white rounded-lg shadow-sm min-h-8 hover:shadow-none sm:flex-row">
