@@ -8,53 +8,17 @@
     <meta name="description"
         content="The Data Protection Toolkit 2024 offers a cutting-edge solution for organizations aiming to enhance their data security practices. At its core,this toolkit includes an advanced online self-assessment tool. Through this tool, organizations can seamlessly evaluate their adherence to data protection laws, receiving detailed compliance reports and insightful scorecards." />
     <title>{{ config('app.name', 'Toolkit') }}</title>
+    <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" />
+    </noscript>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" />
     @vite(['resources/css/dashboard.css'])
     @vite(['resources/css/app.css'])
     <title>Audit Tookit</title>
     <script src="https://unpkg.com/chart.js@2.8.0/dist/Chart.bundle.js"></script>
     <script src="https://unpkg.com/chartjs-gauge@0.3.0/dist/chartjs-gauge.js"></script>
-    <!-- Livewire Styles -->
-    <style>
-        [wire\:loading][wire\:loading],
-        [wire\:loading\.delay][wire\:loading\.delay],
-        [wire\:loading\.inline-block][wire\:loading\.inline-block],
-        [wire\:loading\.inline][wire\:loading\.inline],
-        [wire\:loading\.block][wire\:loading\.block],
-        [wire\:loading\.flex][wire\:loading\.flex],
-        [wire\:loading\.table][wire\:loading\.table],
-        [wire\:loading\.grid][wire\:loading\.grid],
-        [wire\:loading\.inline-flex][wire\:loading\.inline-flex] {
-            display: none;
-        }
-
-        [wire\:loading\.delay\.none][wire\:loading\.delay\.none],
-        [wire\:loading\.delay\.shortest][wire\:loading\.delay\.shortest],
-        [wire\:loading\.delay\.shorter][wire\:loading\.delay\.shorter],
-        [wire\:loading\.delay\.short][wire\:loading\.delay\.short],
-        [wire\:loading\.delay\.default][wire\:loading\.delay\.default],
-        [wire\:loading\.delay\.long][wire\:loading\.delay\.long],
-        [wire\:loading\.delay\.longer][wire\:loading\.delay\.longer],
-        [wire\:loading\.delay\.longest][wire\:loading\.delay\.longest] {
-            display: none;
-        }
-
-        [wire\:offline][wire\:offline] {
-            display: none;
-        }
-
-        [wire\:dirty]:not(textarea):not(input):not(select) {
-            display: none;
-        }
-
-        :root {
-            --livewire-progress-bar-color: #2299dd;
-        }
-
-        [x-cloak] {
-            display: none !important;
-        }
-    </style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </head>

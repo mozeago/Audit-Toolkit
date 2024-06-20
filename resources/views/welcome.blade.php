@@ -5,9 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
     <title>Data Protection Toolkit</title>
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,600&display=swap" rel="stylesheet">
-    <!-- Styles -->
+    <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" />
+    </noscript><!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
