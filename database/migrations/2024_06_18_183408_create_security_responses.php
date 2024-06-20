@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('security_responses', function (Blueprint $table) {
-            $table->uuid()->primary();
+            $table->uuid('id')->primary();
             $table->enum('answer', ['true', 'false']);
             $table->text('organization');
             $table->text('department');
