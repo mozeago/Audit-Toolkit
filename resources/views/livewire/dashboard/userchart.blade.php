@@ -6,12 +6,14 @@ use App\Models\UserResponse;
 use App\Models\PrivacyCasesModel;
 use App\Models\User;
 use App\Models\RiskAnalysisResponse;
+use App\Models\SecurityResponses;
 use Livewire\Attributes\On;
 use App\Models\ResearchContributorsModel;
 new class extends Component {
     public $averageScore;
     public $userId;
     public $auditScore;
+    public $securityScore;
     public $riskValue;
     public $processorController;
     public $personalDataProcessedByOrganisation;
@@ -28,6 +30,7 @@ new class extends Component {
         $this->calculateAverageScore();
         $this->userId = auth()->user()->id;
         $this->auditScore = $this->calculateAuditPercentage(UserResponse::class, $this->userId) ?? 0;
+        $this->securityScore = $this->calculateAuditPercentage(SecurityResponses::class, $this->userId) ?? 0;
         $automatedDecisionProfiling = $this->calculateProcessingActivityTypePercentage('Automated Decision and Profiling');
         $largeScaleProcessing = $this->calculateProcessingActivityTypePercentage('Large Scale Processing');
         $systematicMonitoring = $this->calculateProcessingActivityTypePercentage('Systematic monitoring');
@@ -111,8 +114,8 @@ new class extends Component {
 
         $userResponses = UserResponse::where('user_id', $userId)->get();
         $riskAnalysisResponses = RiskAnalysisResponse::where('user_id', $userId)->get();
-
-        $totalResponses = $userResponses->count() + $riskAnalysisResponses->count();
+        $securityResponse = SecurityResponses::where('user_id', $userId)->get();
+        $totalResponses = $userResponses->count() + $riskAnalysisResponses->count() + $securityResponse->count();
         $totalScore = 0;
 
         // Loop through user responses
@@ -131,6 +134,15 @@ new class extends Component {
             if ($response->answer === 'true') {
                 $totalScore += 1.0;
             } elseif ($response->answer === 'false') {
+                $totalScore += 0.0;
+            } else {
+                $totalScore += 0.5;
+            }
+        }
+        foreach ($securityResponse as $securityRes) {
+            if ($securityRes->answer === 'true') {
+                $totalScore += 1.0;
+            } elseif ($securityRes->answer === 'false') {
                 $totalScore += 0.0;
             } else {
                 $totalScore += 0.5;
@@ -508,7 +520,7 @@ new class extends Component {
                                 </svg>
 
                                 <h3 class="ml-3 text-sm text-left text-wrap">
-                                    Risk Score</h3>
+                                    Security Score</h3>
                             </div>
                             <!-- Score Percentage -->
                             <div class="flex items-center justify-end p-0 m-0">
@@ -521,7 +533,7 @@ new class extends Component {
                                     <path class="circle" stroke-dasharray="{{ $auditScore }}, 100" d="M18 2.0845
                             a 15.9155 15.9155 0 0 1 0 31.831
                             a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <text x="18" y="20.35" class="font-bold percentage">{{ $auditScore }}
+                                    <text x="18" y="20.35" class="font-bold percentage">{{ $securityScore }}
                                         %</text>
                                 </svg>
                             </div>
