@@ -39,7 +39,7 @@ new class extends Component {
     }
     public function cancel(): void
     {
-        $this->dispatch('security-questions-edit-canceled');
+        $this->dispatch('security-recommendation-edit-canceled');
     }
 }; ?>
 

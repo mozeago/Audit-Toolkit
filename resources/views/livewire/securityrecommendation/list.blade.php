@@ -27,7 +27,7 @@ new class extends Component {
         $this->editing = $securityRecommendations;
     }
 
-    #[On('security-information-edit-canceled')]
+    #[On('security-recommendation-edit-canceled')]
     #[On('security-recommendation-updated')]
     public function disableEditing(): void
     {

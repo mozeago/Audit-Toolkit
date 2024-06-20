@@ -30,14 +30,24 @@ new class extends Component {
 
     public function store()
     {
-        $validatedData = $this->validate();
-        SecurityInformations::create([
-            'name' => $validatedData['informationText'],
-            'security_questions_id' => $validatedData['securityQuestionId'],
-        ]);
-        $this->dispatch('security-information-created');
-        $this->resetFields();
-        session()->flash('message', 'Security information Saved !.');
+        try {
+            $validatedData = $this->validate();
+
+            SecurityInformations::create([
+                'name' => $validatedData['informationText'],
+                'security_questions_id' => $validatedData['securityQuestionId'],
+            ]);
+
+            $this->dispatch('security-information-created');
+            $this->resetFields();
+            session()->flash('message', 'Security information saved!');
+        } catch (\Exception $e) {
+            // Log the error message
+            \Log::error('Error saving security information: ' . $e->getMessage());
+
+            // Flash an error message to the session
+            session()->flash('error', 'There was an error saving the security information. Please try again.');
+        }
     }
 
     public function resetFields()
