@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('security_responses', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->enum('answer', ['true', 'false']);
+            $table->enum('answer', ['true', 'false', 'partial']);
             $table->text('organization');
             $table->text('department');
             $table->text('attempt_number');
             $table->foreignUuid('user_id')->constrained();
-            $table->foreignUuid('security_questions_id')->constrained();
+            $table->foreignUuid('security_questions_id')->constrained('security_questions');
             $table->timestamps();
             $table->softDeletes();
         });

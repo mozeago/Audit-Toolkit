@@ -2,6 +2,7 @@
 
 use Livewire\Volt\Component;
 use App\Models\UserResponse;
+use App\Models\SecurityResponses;
 use App\Models\SecurityQuestions;
 use App\Models\Information;
 use App\Models\User;
@@ -101,13 +102,13 @@ new class extends Component {
     private function saveUserResponse($userAnswer)
     {
         $attemptNumber =
-            UserResponse::where('user_id', $userAnswer['user_id'])
-                ->where('question_id', $userAnswer['question_id'])
+            SecurityResponses::where('user_id', $userAnswer['user_id'])
+                ->where('security_questions_id', $userAnswer['question_id'])
                 ->max('attempt_number') + 1;
 
-        $userResponse = new UserResponse();
+        $userResponse = new SecurityResponses();
         $userResponse->user_id = $userAnswer['user_id'];
-        $userResponse->question_id = $userAnswer['question_id'];
+        $userResponse->security_questions_id = $userAnswer['question_id'];
         $userResponse->answer = $userAnswer['answer'];
         $userResponse->organization = $userAnswer['organization'];
         $userResponse->department = $userAnswer['department'];
@@ -213,7 +214,7 @@ new class extends Component {
                     <div class="p-2 ml-20">
                         <div class="flex flex-col items-start p-2">
                             <h3 class="mb-2 text-lg font-semibold">
-                                {{ $questions[$currentQuestionIndex]->belongsToControl->name }}
+                                {{ $questions[$currentQuestionIndex]->belongsToSubsection->name }}
                             </h3>
                             <p class="text-base gray-600 text-">{{ $questions[$currentQuestionIndex]->text }}</p>
                         </div>
@@ -261,7 +262,7 @@ new class extends Component {
                             <div x-show="riskOpen" class="mt-4 prose max-w-none">
                                 <p>
                                     @if ($questions[$currentQuestionIndex]->hasOneInformation)
-                                        {{ $questions[$currentQuestionIndex]->hasOneInformation->content }}
+                                        {{ $questions[$currentQuestionIndex]->hasOneInformation->name }}
                                     @else
                                         No related information available for this question.
                                     @endif
