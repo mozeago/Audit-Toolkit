@@ -22,6 +22,7 @@ use App\Http\Controllers\SecurityQuestionsController;
 use App\Http\Controllers\UsersSettings;
 use App\Http\Controllers\SecurityRecommendationController;
 use App\Http\Controllers\SecurityInformationController;
+use App\Http\Controllers\SecurityQuestionnaireController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
 
@@ -72,7 +73,8 @@ Route::get('/security-recommendation', [SecurityRecommendationController::class,
     ->middleware('auth')->name('security-recommendation');
 Route::get('/security-information', [SecurityInformationController::class, 'index'])
     ->middleware('auth')->name('security-information');
-
+Route::get('/security-questionnaire', [SecurityQuestionnaireController::class, 'index'])
+    ->middleware('auth')->name('security-questionnaire');
 // google login routes
 Route::get('/google/redirect', [GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/google/callback', [GoogleLoginController::class, 'handleGoogleCallback'])->name('google.callback');

@@ -19,7 +19,7 @@ new class extends Component {
     {
         return [
             'informationText' => 'required|min:20',
-            'securityQuestionId' => 'required|uuid',
+            'securityQuestionId' => 'required',
         ];
     }
 

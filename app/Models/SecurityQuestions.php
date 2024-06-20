@@ -15,8 +15,16 @@ class SecurityQuestions extends BaseModel
     protected $keyType = 'string';
     public $incrementing = false;
     protected $fillable = ['text', 'security_sub_sections_id'];
-    public function securitySubSection()
+    public function belongsToSubsection()
     {
         return $this->belongsTo(SecuritySubSections::class, 'security_sub_sections_id');
+    }
+    public function hasOneInformation()
+    {
+        return $this->hasOne(SecurityInformations::class);
+    }
+    public function hasOneRecommendation()
+    {
+        return $this->hasOne(SecurityRecommendations::class);
     }
 }

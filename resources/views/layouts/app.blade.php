@@ -176,6 +176,13 @@
                     </span>
                     <h3>Risk Pofile Questions</h3>
                 </a>
+                <a @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
+                    href="{{ route('security-questionnaire') }}" class="active:text-[#C8000B] hover:font-semibold">
+                    <span class="material-icons-sharp">
+                        security
+                    </span>
+                    <h3>Security Questions</h3>
+                </a>
                 <a href="{{ route('researchers') }}" class="active:text-[#C8000B] hover:font-semibold">
                     <span class="material-icons-sharp">
                         diversity_2
