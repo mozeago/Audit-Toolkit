@@ -106,6 +106,120 @@
         </div>
     </div>
     {{-- end partners --}}
+    {{-- START COHORT JOIN US --}}
+    <div class="flex flex-col px-32 mb-4">
+        <div class="container grid items-center justify-center grid-cols-12 px-4 pt-2 mx-auto sm:w-full">
+            <div class="col-span-1 sm:col-span-4 md:block lg:block"></div>
+            <span class="col-span-1 ">
+            </span>
+            <div class="col-span-6 text-3xl font-bold text-center sm:col-span-2">
+                <span class=" text-nowrap">Cohorts</span>
+            </div>
+            <span class="col-span-1 ">
+            </span>
+            <div class="col-span-1 sm:col-span-4 md:block lg:block"></div>
+        </div>
+        <div class="container grid items-center justify-center grid-cols-12 p-4 mx-auto mb-2 text-center sm:w-full">
+            <p class="col-span-12 text-2xl text-wrap">We hope you apply and join us on this journey today !</p>
+        </div>
+        <div class="grid grid-cols-12 gap-2 pb-2">
+            <div class="col-span-4">
+                <div class="flex-auto max-w-xs mr-4 bg-gray-200 rounded-sm md:max-w-md">
+                    <div class="flex flex-col justify-between max-w-sm bg-white rounded-lg shadow-lg">
+                        <!-- Title Row -->
+                        <div class="px-6 py-4 text-xl font-bold text-center text-white bg-black rounded-t-lg">
+                            Cohort 1
+                        </div>
+                        <div class="flex-grow px-6 py-4">
+                            <h4 class="mb-3 font-semibold text-pretty">Application Deadline: <span
+                                    class="text-[#C8000B]">
+                                    closed!</span></h4>
+                            <div class="flex items-center justify-center mt-1 h-28">
+                                <a href="https://www.scratchandscript.com/register">
+                                    <button
+                                        class="flex items-center justify-center w-full px-2 py-1 text-white bg-black rounded-lg min-h-8 sm:min-h-12 hover:bg-black hover:shadow-2xl sm:px-4 sm:py-2">
+                                        <span class="ml-1 font-bold uppercase roboto-regular sm:ml-2">Apply</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+                                        </svg>
+
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-4">
+                <div class="flex-auto max-w-xs mr-4 bg-gray-200 rounded-sm md:max-w-md">
+                    <div class="flex flex-col justify-between max-w-sm bg-white rounded-lg shadow-lg">
+                        <!-- Title Row -->
+                        <div class="px-6 py-4 text-xl font-bold text-center text-white bg-black rounded-t-lg">
+                            Cohort 2
+                        </div>
+                        <div class="flex-grow px-6 py-4">
+                            <h4 class="font-semibold text-pretty">Application Deadline: <span
+                                    class="text-[#C8000B]">Tuesday , May
+                                    7, 2024 at 11:59p.m EAT.</span></h4>
+                            <p class="font-medium text-pretty">Cohort 2 program dates: <span
+                                    class="text-[#C8000B]">May
+                                    19th-June 30
+                                    2024</span></p>
+                            <div class="flex items-center justify-center mt-1">
+                                <a href="https://www.scratchandscript.com/register">
+                                    <button
+                                        class="w-full min-h-8 sm:min-h-12 flex items-center justify-center bg-[#C8000B] px-2 py-1 text-white hover:bg-black rounded-lg hover:shadow-2xl sm:px-4 sm:py-2">
+                                        <span class="ml-1 font-bold uppercase roboto-regular sm:ml-2">Apply</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+                                        </svg>
+
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-4">
+                <div class="flex-auto max-w-xs mr-4 bg-gray-200 rounded-sm md:max-w-md">
+                    <div class="flex flex-col justify-between max-w-sm bg-white rounded-lg shadow-lg">
+                        <!-- Title Row -->
+                        <div class="px-6 py-4 text-xl font-bold text-center text-white bg-black rounded-t-lg">
+                            Cohort 3
+                        </div>
+                        <div class="flex-grow px-6 py-4">
+                            <h4 class="font-semibold text-pretty">Application Deadline: <span
+                                    class="text-[#C8000B]">Tuesday , May
+                                    7, 2024 at 11:59p.m EAT.</span></h4>
+                            <p class="font-medium text-pretty">Cohort 3 program dates: <span
+                                    class="text-[#C8000B]">August 25th -
+                                    October 13 2024.</span></p>
+                            <div class="flex items-center justify-center mt-1">
+                                <a href="https://www.scratchandscript.com/register">
+                                    <button
+                                        class="w-full min-h-8 sm:min-h-12 flex items-center justify-center bg-[#C8000B] px-2 py-1 text-white hover:bg-black rounded-lg hover:shadow-2xl sm:px-4 sm:py-2">
+                                        <span class="ml-1 font-bold uppercase roboto-regular sm:ml-2">Apply</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+                                        </svg>
+
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- END CHOHORT JOIN US --}}
     {{-- start report --}}
     <div class="flex flex-col px-32 mb-8 border-b-2 border-gray-100 shadow-sm">
         <div class="container grid items-center justify-center grid-cols-12 p-4 mx-auto mb-2 sm:w-full">
