@@ -128,43 +128,13 @@
                     <div class="flex flex-col justify-between max-w-sm bg-white rounded-lg shadow-lg">
                         <!-- Title Row -->
                         <div class="px-6 py-4 text-xl font-bold text-center text-white bg-black rounded-t-lg">
-                            Cohort 1
-                        </div>
-                        <div class="flex-grow px-6 py-4">
-                            <h4 class="mb-3 font-semibold text-pretty">Application Deadline: <span
-                                    class="text-[#C8000B]">
-                                    closed!</span></h4>
-                            <div class="flex items-center justify-center mt-1 h-28">
-                                <a href="https://www.scratchandscript.com/register">
-                                    <button
-                                        class="flex items-center justify-center w-full px-2 py-1 text-white bg-black rounded-lg min-h-8 sm:min-h-12 hover:bg-black hover:shadow-2xl sm:px-4 sm:py-2">
-                                        <span class="ml-1 font-bold uppercase roboto-regular sm:ml-2">Apply</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
-                                        </svg>
-
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-span-4">
-                <div class="flex-auto max-w-xs mr-4 bg-gray-200 rounded-sm md:max-w-md">
-                    <div class="flex flex-col justify-between max-w-sm bg-white rounded-lg shadow-lg">
-                        <!-- Title Row -->
-                        <div class="px-6 py-4 text-xl font-bold text-center text-white bg-black rounded-t-lg">
                             Cohort 2
                         </div>
                         <div class="flex-grow px-6 py-4">
                             <h4 class="font-semibold text-pretty">Application Deadline: <span
                                     class="text-[#C8000B]">Tuesday , May
                                     7, 2024 at 11:59p.m EAT.</span></h4>
-                            <p class="font-medium text-pretty">Cohort 2 program dates: <span
-                                    class="text-[#C8000B]">May
+                            <p class="font-medium text-pretty">Cohort 2 program dates: <span class="text-[#C8000B]">May
                                     19th-June 30
                                     2024</span></p>
                             <div class="flex items-center justify-center mt-1">
@@ -210,6 +180,34 @@
                                                 d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
                                         </svg>
 
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-4">
+                <div class="flex-auto max-w-xs mr-4 bg-gray-200 rounded-sm md:max-w-md">
+                    <div class="flex flex-col justify-between max-w-sm bg-white rounded-lg shadow-lg">
+                        <!-- Title Row -->
+                        <div class="px-6 py-4 text-xl font-bold text-center text-white bg-black rounded-t-lg">
+                            Cohort 1
+                        </div>
+                        <div class="flex-grow px-6 py-4">
+                            <h4 class="mb-3 font-semibold text-pretty">Application Deadline: <span
+                                    class="text-[#C8000B]">
+                                    closed!</span></h4>
+                            <div class="flex items-center justify-center mt-1 h-28">
+                                <a href="#">
+                                    <button disabled
+                                        class="flex items-center justify-center w-full px-2 py-1 text-white bg-black rounded-lg min-h-8 sm:min-h-12 hover:bg-black hover:shadow-2xl sm:px-4 sm:py-2">
+                                        <span class="ml-1 font-bold uppercase roboto-regular sm:ml-2">Apply</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+                                        </svg>
                                     </button>
                                 </a>
                             </div>
