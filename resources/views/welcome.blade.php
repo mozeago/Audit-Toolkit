@@ -20,7 +20,7 @@
         <h1 class="p-8 text-4xl font-bold text-left text-white roboto-bold">
             Our Impact</h1>
     </div>
-    <div class="px-6 mb-8 text-black bg-gray-100 py-9">
+    <div class="px-6 mb-2 text-black bg-gray-100 py-9">
         <p class="text-black roboto-regular">The IGNITE
             Youth Training Program is a dynamic initiative
             designed to
@@ -39,8 +39,7 @@
         </p>
     </div>
     {{-- start partners --}}
-    <div
-        class="flex flex-col items-center justify-center w-full pt-4 pb-8 bg-white border-b-2 border-gray-100 sm:pt-2 min-h-52">
+    <div class="flex flex-col items-center justify-center w-full pt-4 pb-8 bg-white border-b-2 border-gray-100 sm:pt-2">
         <h1 class="mb-4 text-2xl font-bold text-center">
             IGNITE
             <span class="inline-block border-b-2 border-[#C8000B] pb-4">Partners</span>
@@ -164,13 +163,13 @@
     </div>
     {{-- end report --}}
     {{-- Start SDG focus --}}
-    <div class="flex flex-col justify-center px-32 py-8 mt-4 mb-16 border-b-2 border-gray-100">
+    <div class="flex flex-col justify-center px-32 py-2 mt-2 mb-16 border-b-2 border-gray-100">
         <h1 class="mb-8 text-xl font-bold roboto-bold text-start">
             Our <span class="inline-block border-b-2 border-[#C8000B] pb-1 text-[#C8000B]">SDG</span>
             Focus
         </h1>
-        <div class="grid grid-cols-12 gap-2">
-            <div class="col-span-2">
+        <div class="grid grid-cols-12 gap-2 pb-2">
+            <div class="col-span-4">
                 <div class="flex justify-center">
                     <div class="flex items-center justify-center">
                         <a href="https://tinyurl.com/39975atx" class="flex items-center justify-center">
@@ -180,7 +179,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-span-2">
+            <div class="col-span-4">
                 <div class="flex justify-center">
                     <div class="flex items-center justify-center">
                         <a href="https://tinyurl.com/33x8dmst">
@@ -190,7 +189,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-span-2">
+            <div class="col-span-4">
                 <div class="flex justify-center">
                     <div class="flex items-center justify-center">
                         <a href="https://tinyurl.com/ycy9s5kn">
