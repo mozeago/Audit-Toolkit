@@ -20,6 +20,8 @@ class Question extends BaseModel
 
     protected $fillable = ['text', 'control_id'];
 
+    protected $table = 'questions';
+
     public function belongsToControl(): BelongsTo
     {
         return $this->belongsTo(Control::class, 'control_id');
@@ -27,5 +29,14 @@ class Question extends BaseModel
     public function hasOneInformation(): HasOne
     {
         return $this->hasOne(Information::class);
+    }
+    public function recommendation()
+    {
+        return $this->hasOne(Recommendation::class, 'question_id');
+    }
+
+    public function responses()
+    {
+        return $this->hasMany(UserResponse::class, 'question_id');
     }
 }

@@ -8,11 +8,13 @@ use App\Models\User;
 use App\Models\RiskAnalysisResponse;
 use App\Models\SecurityResponses;
 use Livewire\Attributes\On;
+use Illuminate\Support\Facades\Auth;
 use App\Models\ResearchContributorsModel;
 new class extends Component {
     public $successMessage;
     public $averageScore;
     public $userId;
+    public $user_id;
     public $auditScore;
     public $securityScore;
     public $riskValue;
@@ -30,6 +32,7 @@ new class extends Component {
         $this->privacyCases = $this->getPrivacyViolationCases();
         $this->calculateAverageScore();
         $this->userId = auth()->user()->id;
+        $this->user_id = Auth::id();
         $this->auditScore = $this->calculateAuditPercentage(UserResponse::class, $this->userId) ?? 0;
         $this->securityScore = $this->calculateAuditPercentage(SecurityResponses::class, $this->userId) ?? 0;
         $automatedDecisionProfiling = $this->calculateProcessingActivityTypePercentage('Automated Decision and Profiling');
@@ -113,10 +116,22 @@ new class extends Component {
     {
         $userId = Auth::id();
 
-        $userResponses = UserResponse::where('user_id', $userId)->get();
-        $riskAnalysisResponses = RiskAnalysisResponse::where('user_id', $userId)->get();
-        $securityResponse = SecurityResponses::where('user_id', $userId)->get();
-        $totalResponses = $userResponses->count() + $riskAnalysisResponses->count() + $securityResponse->count();
+        $userResponses = UserResponse::where('user_id', $userId)
+            ->where('attempt_number', function ($query) use ($userId) {
+                $query->selectRaw('MAX(attempt_number)')->from('user_responses')->where('user_id', $userId);
+            })
+            ->get();
+        $riskAnalysisResponses = RiskAnalysisResponse::where('user_id', $userId)
+            ->where('attempt_number', function ($query) use ($userId) {
+                $query->selectRaw('MAX(attempt_number)')->from('risk_analysis_responses')->where('user_id', $userId);
+            })
+            ->get();
+        $securityResponses = SecurityResponses::where('user_id', $userId)
+            ->where('attempt_number', function ($query) use ($userId) {
+                $query->selectRaw('MAX(attempt_number)')->from('security_responses')->where('user_id', $userId);
+            })
+            ->get();
+        $totalResponses = $userResponses->count() + $riskAnalysisResponses->count() + $securityResponses->count();
         $totalScore = 0;
 
         // Loop through user responses
@@ -140,7 +155,7 @@ new class extends Component {
                 $totalScore += 0.5;
             }
         }
-        foreach ($securityResponse as $securityRes) {
+        foreach ($securityResponses as $securityRes) {
             if ($securityRes->answer === 'true') {
                 $totalScore += 1.0;
             } elseif ($securityRes->answer === 'false') {
@@ -163,13 +178,31 @@ new class extends Component {
     {
         return PrivacyCasesModel::orderBy('created_at', 'desc')->get();
     }
+    public function getUserResponses()
+    {
+        $userId = $this->user_id;
+        $userResponses = UserResponse::where('user_id', $userId)
+            ->where('attempt_number', function ($query) use ($userId) {
+                $query->selectRaw('MAX(attempt_number)')->from('user_responses')->where('user_id', $userId);
+            })
+            ->with(['question.recommendation'])
+            ->get();
+
+        $userResponses = $userResponses->map(function ($response) {
+            return [
+                'question' => $response->question->text,
+                'answer' => $response->answer,
+                'recommendation' => $response->question->recommendation->content ?? 'No recommendation available',
+            ];
+        });
+    }
     public function emailCopy()
     {
         $user = auth()->user();
         $userId = $user->id;
 
         // Gather user responses
-        $userResponses = UserResponse::where('user_id', $userId)->get();
+        $userResponses = $this->getUserResponses();
         $riskAnalysisResponses = RiskAnalysisResponse::where('user_id', $userId)->get();
 
         // Formatting data for emailing

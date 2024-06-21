@@ -12,9 +12,16 @@ class UserResponse extends BaseModel
     use HasFactory;
     use HasUuids;
     use SoftDeletes;
+
+    protected $table = 'user_responses';
     protected $fillable = ['answer', 'user_id', 'question_id', 'organization', 'department'];
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function question()
+    {
+        return $this->belongsTo(Question::class, 'question_id');
     }
 }

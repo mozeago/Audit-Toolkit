@@ -18,4 +18,10 @@ class Recommendation extends Model
     {
         return $this->belongsToInformations(Information::class);
     }
+    protected $table = 'recommendations';
+
+    public function question()
+    {
+        return $this->belongsTo(Question::class, 'question_id');
+    }
 }
