@@ -205,10 +205,12 @@ new class extends Component {
         $userId = $user->id;
         // Gather user responses
         $userResponses = UserResponse::where('user_id', $userId)->get();
+        $securityResponses = SecurityResponses::where('user_id', $userId)->get();
         $riskAnalysisResponses = RiskAnalysisResponse::where('user_id', $userId)->get();
         // Formatting data for emailing
         $responseData = [
             'userResponses' => $userResponses,
+            'securityResponse' => $securityResponses,
             'riskAnalysisResponses' => $riskAnalysisResponses,
             'averageScore' => $this->calculateAverageScore(),
             'auditScore' => $this->calculateAuditPercentage(UserResponse::class, $userId),
