@@ -1,4 +1,4 @@
-<footer class="mt-8 text-white bg-black">
+<footer class="text-white bg-black ">
     <div class="flex flex-col px-8 md:flex-row">
         <div class="sm:w-full md:px-16 sm:p-4 md:w-2/5">
             <a class="mr-8" href="/" wire:navigate>
