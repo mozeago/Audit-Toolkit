@@ -132,6 +132,20 @@
                     </div>
                     <!-- Add other score blocks here -->
                 </div>
+                <div class="grid">
+                    <div class="p-6 rounded-lg shadow-md bg-gray-50">
+                        <p class="text-lg font-medium text-gray-600">Average Score</p>
+                        <p class="text-xl font-bold text-gray-900">80%</p>
+                    </div>
+                    <!-- Add other score blocks here -->
+                </div>
+                <div class="grid">
+                    <div class="p-6 rounded-lg shadow-md bg-gray-50">
+                        <p class="text-lg font-medium text-gray-600">Average Score</p>
+                        <p class="text-xl font-bold text-gray-900">80%</p>
+                    </div>
+                    <!-- Add other score blocks here -->
+                </div>
             </div>
         </div>
 
