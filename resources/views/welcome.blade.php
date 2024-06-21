@@ -46,7 +46,7 @@
             <span class="inline-block border-b-2 border-[#C8000B] pb-4">Partners</span>
             Worldwide
         </h1>
-        <div class="w-9/12 mx-auto">
+        <div class="w-full px-4 mx-2">
             <div class="flex">
                 <div class="mr-6 w-1/8">
                     <a class="zoom-image" href="https://isacaabuja.org/">
