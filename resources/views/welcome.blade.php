@@ -107,7 +107,7 @@
     </div>
     {{-- end partners --}}
     {{-- START COHORT JOIN US --}}
-    <div class="flex flex-col px-32 mb-4">
+    <div class="flex flex-col px-32 pb-6 mb-4 border-b-2 border-gray-100">
         <div class="container grid items-center justify-center grid-cols-12 px-4 pt-2 mx-auto sm:w-full">
             <div class="col-span-1 sm:col-span-4 md:block lg:block"></div>
             <span class="col-span-1 ">
@@ -133,7 +133,7 @@
                         <div class="flex-grow px-6 py-4">
                             <h4 class="font-semibold text-pretty">Application Deadline: <span
                                     class="text-[#C8000B]">Tuesday , May
-                                    7, 2024 at 11:59p.m EAT.</span></h4>
+                                    7, 2024 at 11:59 p.m EAT.</span></h4>
                             <p class="font-medium text-pretty">Cohort 2 program dates: <span class="text-[#C8000B]">May
                                     19th-June 30
                                     2024</span></p>
@@ -164,8 +164,8 @@
                         </div>
                         <div class="flex-grow px-6 py-4">
                             <h4 class="font-semibold text-pretty">Application Deadline: <span
-                                    class="text-[#C8000B]">Tuesday , May
-                                    7, 2024 at 11:59p.m EAT.</span></h4>
+                                    class="text-[#C8000B]">Tuesday , August
+                                    13, 2024 at 11:59 p.m EAT.</span></h4>
                             <p class="font-medium text-pretty">Cohort 3 program dates: <span
                                     class="text-[#C8000B]">August 25th -
                                     October 13 2024.</span></p>
