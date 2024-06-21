@@ -207,7 +207,7 @@
     </div>
     {{-- end SDG focus --}}
     {{-- start partnership --}}
-    <div class="px-32">
+    <div class="px-10">
         <div class="flex items-start w-full pl-8">
             <h2 class="text-xl font-bold roboto-bold">
                 <span class="inline-block uppercase text-[#C8000B]">We
@@ -223,7 +223,7 @@
         </div>
     </div>
     <div class="flex rounded-lg">
-        <div class="flex px-32">
+        <div class="flex px-10">
             <div class="flex bg-[#FCF6F6] p-8 ">
                 <div class="flex-col flex-grow w-1/2">
                     <p class="mt-2 roboto-regular">To drive forward
