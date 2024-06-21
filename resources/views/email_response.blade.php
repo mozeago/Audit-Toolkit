@@ -27,6 +27,10 @@
                 <h4 class="font-medium" style="display: block">Audit Score:</h4>
                 <h4>{{ $responseData['auditScore'] }} %</h4>
             </div>
+            <div>
+                <h4 class="font-medium" style="display: block">Security Score:</h4>
+                <h4>{{ $responseData['securityScore'] }} %</h4>
+            </div>
         </div>
 
         <h3 class="mb-4 text-xl font-semibold">Audit Response</h3>

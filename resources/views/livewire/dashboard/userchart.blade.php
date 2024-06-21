@@ -214,6 +214,7 @@ new class extends Component {
             'riskAnalysisResponses' => $riskAnalysisResponses,
             'averageScore' => $this->calculateAverageScore(),
             'auditScore' => $this->calculateAuditPercentage(UserResponse::class, $userId),
+            'securityScore' => $this->calculateAuditPercentage(SecurityResponses::class, $userId),
             'processorController' => $this->processorController,
             'personalDataProcessedByOrganisation' => $this->personalDataProcessedByOrganisation,
             'sensitivePersonalData' => $this->sensitivePersonalData,
