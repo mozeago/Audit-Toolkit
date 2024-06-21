@@ -174,7 +174,8 @@
                     <div class="flex items-center justify-center">
                         <a href="https://tinyurl.com/39975atx" class="flex items-center justify-center">
                             <img src="{{ asset('images/Sustainable_Development_Goal_04QualityEducation.webp') }}"
-                                alt="Sustainable_Development_Goal_4_Quality_Education" class="rounded-md shadow-2xl">
+                                alt="Sustainable_Development_Goal_4_Quality_Education"
+                                class="h-64 rounded-md shadow-2xl w-96">
                         </a>
                     </div>
                 </div>
@@ -184,7 +185,8 @@
                     <div class="flex items-center justify-center">
                         <a href="https://tinyurl.com/33x8dmst">
                             <img src="{{ asset('images/Sustainable_Development_Goal_05GenderEquality.webp') }}"
-                                alt="Sustainable_Development_Goal_5_Gender_Equality" class="rounded-md shadow-2xl">
+                                alt="Sustainable_Development_Goal_5_Gender_Equality"
+                                class="h-64 rounded-md shadow-2xl w-96">
                         </a>
                     </div>
                 </div>
@@ -194,7 +196,8 @@
                     <div class="flex items-center justify-center">
                         <a href="https://tinyurl.com/ycy9s5kn">
                             <img src="{{ asset('images/Sustainable_Development_Goal_08DecentWork.webp') }}"
-                                alt="Sustainable_Development_Goal_8_DecentWork" class="rounded-md shadow-2xl">
+                                alt="Sustainable_Development_Goal_8_DecentWork"
+                                class="h-64 rounded-md shadow-2xl w-96">
                         </a>
                     </div>
                 </div>
