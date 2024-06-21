@@ -40,8 +40,8 @@
     </div>
     {{-- start partners --}}
     <div
-        class="flex flex-col items-center justify-center w-full pt-8 pb-8 bg-white border-b-2 border-gray-100 sm:pt-2 min-h-52">
-        <h1 class="mb-8 text-xl font-bold text-center roboto-bold">
+        class="flex flex-col items-center justify-center w-full pt-4 pb-8 bg-white border-b-2 border-gray-100 sm:pt-2 min-h-52">
+        <h1 class="mb-4 text-2xl font-bold text-center">
             IGNITE
             <span class="inline-block border-b-2 border-[#C8000B] pb-4">Partners</span>
             Worldwide
@@ -113,7 +113,7 @@
             <div class="col-span-1 sm:col-span-4 md:block lg:block"></div>
             <span class="col-span-1 border-2 border-black">
             </span>
-            <div class="col-span-6 text-3xl font-bold text-center sm:col-span-2">
+            <div class="col-span-6 text-2xl font-bold text-center sm:col-span-2">
                 <span class="text-nowrap">Skills Report</span>
             </div>
             <span class="col-span-1 border-2 border-black">
@@ -123,18 +123,18 @@
         <div class="flex w-full pb-8">
             <div class="flex flex-col flex-grow w-full sm:w-1/2">
                 <img src="{{ asset('images/Annual-report-ignite.webp') }}" alt="Skills Report"
-                    class="w-full fade-left-5 rounded-bl-xl rounded-tl-xl max-h-96">
+                    class="w-full fade-left-5 rounded-bl-xl rounded-tl-xl max-h-72">
             </div>
             <div class="flex flex-col flex-grow w-1/2 py-0 pl-8">
                 <h2 class="mb-2 text-xl font-bold leading-snug roboto-bold">
-                    <span class="inline-block pb-1 text-[#C8000B]">2024
+                    <span class="inline-block text-2xl pb-1 text-[#C8000B]">2024
                         SUB-SAHARA
                     </span>
-                    <span class="inline-block pb-1">CYBERSECURITY
+                    <span class="inline-block pb-1 text-2xl">CYBERSECURITY
                         AND DATA PROTECTION
                         SKILLS REPORT
                 </h2>
-                <p class="roboto-regular-24">
+                <p class="mb-2 roboto-bold-18">
                     In the IGNITE 2024 Sub-Sahara Learning &
                     Skills Trends Report, we delve into
                     these three key areas
