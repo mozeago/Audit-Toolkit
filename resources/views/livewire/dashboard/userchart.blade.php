@@ -196,15 +196,16 @@ new class extends Component {
             ];
         });
     }
+    public function fetchResponses($userId)
+    {
+    }
     public function emailCopy()
     {
         $user = auth()->user();
         $userId = $user->id;
-
         // Gather user responses
-        $userResponses = $this->getUserResponses();
+        $userResponses = UserResponse::where('user_id', $userId)->get();
         $riskAnalysisResponses = RiskAnalysisResponse::where('user_id', $userId)->get();
-
         // Formatting data for emailing
         $responseData = [
             'userResponses' => $userResponses,

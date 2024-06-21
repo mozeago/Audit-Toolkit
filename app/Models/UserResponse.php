@@ -24,4 +24,8 @@ class UserResponse extends BaseModel
     {
         return $this->belongsTo(Question::class, 'question_id');
     }
+    public function recommendation()
+    {
+        return $this->belongsTo(Recommendation::class, 'question_id');
+    }
 }

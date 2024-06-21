@@ -18,4 +18,8 @@ class RiskAnalysisResponse extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function riskquestion()
+    {
+        return $this->belongsTo(RiskSubSection::class, 'risk_sub_section_id');
+    }
 }
