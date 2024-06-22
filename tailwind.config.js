@@ -17,6 +17,15 @@ export default {
             boxShadow: {
                 custom: "0 2rem 3rem rgba(132, 139, 200, 0.18)",
             },
+            keyframes: {
+                slideIn: {
+                    "0%": { transform: "translateY(100%)", opacity: "0" },
+                    "100%": { transform: "translateY(0)", opacity: "1" },
+                },
+            },
+            animation: {
+                slideIn: "slideIn 0.5s ease-out",
+            },
         },
         screens: {
             sm: "320px",

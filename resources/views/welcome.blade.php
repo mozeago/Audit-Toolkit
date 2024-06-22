@@ -11,6 +11,54 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" />
     </noscript><!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .animate-slideIn {
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .time-unit {
+            display: inline-block;
+            background-color: black;
+            text-align: center;
+            padding: 4px;
+            color: white;
+            min-width: 60px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+        }
+
+        .number {
+            font-size: 2rem;
+            display: block;
+            font-weight: bold;
+        }
+
+        .label {
+            font-size: 0.75rem;
+            margin-left: 0px;
+            color: #555;
+        }
+    </style>
+
+
 </head>
 
 <body class="antialiased">
@@ -122,25 +170,27 @@
         <div class="container grid items-center justify-center grid-cols-12 p-4 mx-auto mb-2 text-center sm:w-full">
             <p class="col-span-12 text-2xl text-wrap">We hope you apply and join us on this journey today !</p>
         </div>
-        <div class="grid grid-cols-12 gap-2 pb-2">
-            <div class="col-span-4">
-                <div class="flex-auto max-w-xs mr-4 bg-gray-200 rounded-sm md:max-w-md">
-                    <div class="flex flex-col justify-between max-w-sm bg-white rounded-lg shadow-lg">
-                        <!-- Title Row -->
-                        <div class="px-6 py-4 text-xl font-bold text-center text-white bg-black rounded-t-lg">
-                            Cohort 1
-                        </div>
-                        <div class="flex-grow px-6 py-4">
-                            <h4 class="font-semibold text-pretty">Application Deadline:</h4>
-                            <h4 class=" text-[#C8000B] block font-bold">
-                                closed!</h4>
-                            <div class="flex items-center justify-center">
-                                <a href="https://bit.ly/IGNITECOHORT-2">
+        <div class="container py-8 mx-auto">
+            <div class="grid grid-cols-12 gap-2 pb-2">
+                <div class="col-span-4">
+                    <div class="flex flex-col h-full max-w-xs mr-4 bg-gray-200 rounded-sm md:max-w-md">
+                        <div class="flex flex-col justify-between flex-grow bg-white rounded-lg shadow-lg">
+                            <!-- Title Row -->
+                            <div class="px-6 py-4 text-xl font-bold text-center text-white bg-black rounded-t-lg">
+                                Cohort 1
+                            </div>
+                            <div class="flex-grow px-6 py-4">
+                                <h4 class="block text-2xl font-bold text-pretty">Application Deadline:
+                                </h4>
+                                <h4 class="text-[#C8000B] block font-bold text-2xl">CLOSED !</h4>
+                            </div>
+                            <div class="flex items-center justify-center mb-4 ">
+                                <a href="https://bit.ly/IGNITECOHORT-1">
                                     <button disabled
                                         class="flex items-center justify-center w-full px-2 py-1 text-white bg-gray-400 rounded-lg min-h-8 sm:min-h-12 sm:px-4 sm:py-2">
-                                        <span class="ml-1 font-bold uppercase roboto-regular sm:ml-2">Apply</span>
+                                        <span class="font-bold uppercase roboto-regular">Apply</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ml-2">
                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                 d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
                                         </svg>
@@ -150,59 +200,66 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-span-4">
-                <div class="flex-auto max-w-xs mr-4 bg-gray-200 rounded-sm md:max-w-md">
-                    <div class="flex flex-col justify-between max-w-sm bg-white rounded-lg shadow-lg">
-                        <!-- Title Row -->
-                        <div class="px-6 py-4 text-xl font-bold text-center text-white bg-black rounded-t-lg">
-                            Cohort 2
-                        </div>
-                        <div class="flex-grow px-4 py-4">
-                            <h4 class="font-semibold text-pretty">Application Deadline:</h4>
-                            <h4 class="text-[#C8000B] text-nowrap block font-bold text-sm">Saturday, July
-                                20, 2024 at 11:59 p.m EAT.</h4>
-                            <div class="flex items-center justify-center mt-1">
+                <div class="col-span-4">
+                    <div class="flex flex-col h-full max-w-xs mr-4 bg-gray-200 rounded-sm md:max-w-md">
+                        <div class="flex flex-col justify-between flex-grow bg-white rounded-lg shadow-lg">
+                            <!-- Title Row -->
+                            <div class="px-6 py-4 text-xl font-bold text-center text-white bg-black rounded-t-lg">
+                                Cohort 2
+                            </div>
+                            <div class="flex-grow px-4 py-4">
+                                <h4 class="block text-2xl font-bold text-pretty">Application Deadline:</h4>
+                                <h4 class="text-[#C8000B] block font-bold text-2xl">Saturday, July 20, 2024 at
+                                    11:59
+                                    p.m
+                                    EAT.</h4>
+                                <!-- Countdown Timer -->
+                                <div id="countdown" class="mt-4 text-lg font-bold text-center text-red-600 countdown">
+                                </div>
+
+                            </div>
+                            <div class="flex items-center justify-center mb-4">
                                 <a href="https://bit.ly/IGNITECOHORT-2">
                                     <button
-                                        class="w-full min-h-8 sm:min-h-12 flex items-center justify-center bg-[#C8000B] px-2 py-1 text-white hover:bg-black rounded-lg hover:shadow-2xl sm:px-4 sm:py-2">
-                                        <span class="ml-1 font-bold uppercase roboto-regular sm:ml-2">Apply</span>
+                                        class="w-full px-2 py-1 text-white bg-[#C8000B] hover:bg-black rounded-lg min-h-8 sm:min-h-12 sm:px-4 sm:py-2 flex items-center justify-center">
+                                        <span class="font-bold uppercase roboto-regular">Apply</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ml-2">
                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                 d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
                                         </svg>
-
                                     </button>
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-span-4">
-                <div class="flex-auto max-w-xs mr-4 bg-gray-200 rounded-sm md:max-w-md">
-                    <div class="flex flex-col justify-between max-w-sm bg-white rounded-lg shadow-lg">
-                        <!-- Title Row -->
-                        <div class="px-6 py-4 text-xl font-bold text-center text-white bg-black rounded-t-lg">
-                            Cohort 3
-                        </div>
-                        <div class="flex-grow px-4 py-4">
-                            <h4 class="font-semibold text-pretty">Application Deadline:</h4>
-                            <h4 class="text-[#C8000B] block font-bold text-sm text-nowrap">Tuesday, August 13, 2024 at
-                                11:59 p.m
-                                EAT.</h4>
-                            <div class="flex items-center justify-center mt-1">
-                                <a href="https://bit.ly/IGNITECOHORT-2">
+                <div class="col-span-4">
+                    <div class="flex flex-col h-full max-w-xs mr-4 bg-gray-200 rounded-sm md:max-w-md">
+                        <div class="flex flex-col justify-between flex-grow bg-white rounded-lg shadow-lg">
+                            <!-- Title Row -->
+                            <div class="px-6 py-4 text-xl font-bold text-center text-white bg-black rounded-t-lg">
+                                Cohort 3
+                            </div>
+                            <div class="flex-grow px-4 py-4">
+                                <h4 class="block text-2xl font-bold text-pretty">Application Deadline:
+                                </h4>
+                                <h4 class="text-[#C8000B] block font-bold text-2xl">Tuesday, August 13, 2024 at
+                                </h4>
+                                <h4 class="text-[#C8000B] block font-bold text-2xl">11:59
+                                    p.m
+                                    EAT.</h4>
+                            </div>
+                            <div class="flex items-center justify-center mb-4">
+                                <a href="https://bit.ly/IGNITECOHORT-3">
                                     <button
-                                        class="w-full min-h-8 sm:min-h-12 flex items-center justify-center bg-[#C8000B] px-2 py-1 text-white hover:bg-black rounded-lg hover:shadow-2xl sm:px-4 sm:py-2">
-                                        <span class="ml-1 font-bold uppercase roboto-regular sm:ml-2">Apply</span>
+                                        class="w-full px-2 py-1 text-white bg-[#C8000B] hover:bg-black rounded-lg min-h-8 sm:min-h-12 sm:px-4 sm:py-2 flex items-center justify-center">
+                                        <span class="font-bold uppercase roboto-regular">Apply</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ml-2">
                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                 d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
                                         </svg>
-
                                     </button>
                                 </a>
                             </div>
@@ -210,7 +267,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
     {{-- END CHOHORT JOIN US --}}
@@ -414,5 +470,47 @@
     </div>
     {{-- end partnership --}}
     <livewire:common.footer />
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("July 20, 2024 23:59:00").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="countdown"
+            document.getElementById("countdown").innerHTML =
+                `
+                <div class="time-unit"><span class="number">${days}</span><span class="label">Days</span></div>
+                <div class="time-unit"><span class="number">${hours}</span><span class="label">Hours</span></div>
+                <div class="time-unit"><span class="number">${minutes}</span><span class="label">Minutes</span></div>
+                <div class="time-unit seconds"><span class="number animate-slideIn">${seconds}</span><span class="label">Seconds</span></div>`;
+
+            // Add animation class to seconds
+            document.querySelector('#countdown .seconds .number').classList.add('animate-slideIn');
+
+            // Remove animation class after animation ends
+            setTimeout(() => {
+                document.querySelector('#countdown .seconds .number').classList.remove('animate-slideIn');
+            }, 500);
+
+            // If the count down is over, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
 
 </html>
