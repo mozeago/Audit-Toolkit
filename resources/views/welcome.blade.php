@@ -209,7 +209,7 @@
                             </div>
                             <div class="flex-grow px-4 py-4">
                                 <h4 class="block text-2xl font-bold text-pretty">Application Deadline:</h4>
-                                <h4 class="text-[#C8000B] block font-bold text-2xl">Saturday, July 20, 2024 at
+                                <h4 class="text-[#C8000B] block font-bold text-lg">Saturday, July 20, 2024 at
                                     11:59
                                     p.m
                                     EAT.</h4>
@@ -244,9 +244,9 @@
                             <div class="flex-grow px-4 py-4">
                                 <h4 class="block text-2xl font-bold text-pretty">Application Deadline:
                                 </h4>
-                                <h4 class="text-[#C8000B] block font-bold text-2xl">Tuesday, August 13, 2024 at
+                                <h4 class="text-[#C8000B] block font-bold text-lg">Tuesday, August 13, 2024 at
                                 </h4>
-                                <h4 class="text-[#C8000B] block font-bold text-2xl">11:59
+                                <h4 class="text-[#C8000B] block font-bold text-lg">11:59
                                     p.m
                                     EAT.</h4>
                             </div>
