@@ -158,7 +158,7 @@
                         <div class="px-6 py-4 text-xl font-bold text-center text-white bg-black rounded-t-lg">
                             Cohort 2
                         </div>
-                        <div class="flex-grow px-6 py-4">
+                        <div class="flex-grow px-4 py-4">
                             <h4 class="font-semibold text-pretty">Application Deadline: <span
                                     class="text-[#C8000B] block">Saturday, July
                                     20, 2024 at 11:59 p.m EAT.</span></h4>
