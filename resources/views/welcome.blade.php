@@ -160,7 +160,7 @@
                         </div>
                         <div class="flex-grow px-4 py-4">
                             <h4 class="font-semibold text-pretty">Application Deadline:</h4>
-                            <h4 class="text-[#C8000B] block font-bold text-sm">Saturday, July
+                            <h4 class="text-[#C8000B] text-nowrap block font-bold text-sm">Saturday, July
                                 20, 2024 at 11:59 p.m EAT.</h4>
                             <div class="flex items-center justify-center mt-1">
                                 <a href="https://bit.ly/IGNITECOHORT-2">
@@ -189,7 +189,8 @@
                         </div>
                         <div class="flex-grow px-4 py-4">
                             <h4 class="font-semibold text-pretty">Application Deadline:</h4>
-                            <h4 class="text-[#C8000B] block font-bold text-sm">Tuesday, August 13, 2024 at 11:59 p.m
+                            <h4 class="text-[#C8000B] block font-bold text-sm text-nowrap">Tuesday, August 13, 2024 at
+                                11:59 p.m
                                 EAT.</h4>
                             <div class="flex items-center justify-center mt-1">
                                 <a href="https://bit.ly/IGNITECOHORT-2">
