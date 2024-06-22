@@ -132,7 +132,7 @@
                         </div>
                         <div class="flex-grow px-6 py-4">
                             <h4 class="font-semibold text-pretty">Application Deadline:</h4>
-                            <h4 class="mb-2 text-[#C8000B] block font-bold">
+                            <h4 class=" text-[#C8000B] block font-bold">
                                 closed!</h4>
                             <div class="flex items-center justify-center mt-1 h-28">
                                 <a href="https://bit.ly/IGNITECOHORT-2">
@@ -193,7 +193,7 @@
                         </div>
                         <div class="flex-grow px-6 py-4">
                             <h4 class="font-semibold text-pretty">Application Deadline: </h4>
-                            <h4 class="text-[#C8000B] block font-bold text-sm">Tuesday , August
+                            <h4 class="text-[#C8000B] block font-bold text-sm">Tuesday ,August
                                 13, 2024 at 11:59 p.m EAT.
                             </h4>
                             <h4 class="font-medium text-pretty">Cohort 3 program dates: </h4>
