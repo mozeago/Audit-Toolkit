@@ -131,13 +131,13 @@
                             Cohort 1
                         </div>
                         <div class="flex-grow px-6 py-4">
-                            <h4 class="mb-3 font-semibold text-pretty">Application Deadline: <span
-                                    class="text-[#C8000B]">
+                            <h4 class="mb-5 font-semibold text-pretty">Application Deadline: <span
+                                    class="text-[#C8000B] block font-bold">
                                     closed!</span></h4>
-                            <div class="flex items-center justify-center mt-1 h-28">
-                                <a href="#">
+                            <div class="flex items-center justify-center h-20 mt-1">
+                                <a href="https://bit.ly/IGNITECOHORT-2">
                                     <button disabled
-                                        class="flex items-center justify-center w-full px-2 py-1 text-white bg-black rounded-lg min-h-8 sm:min-h-12 hover:bg-black hover:shadow-2xl sm:px-4 sm:py-2">
+                                        class="flex items-center justify-center w-full px-2 py-1 text-white bg-gray-400 rounded-lg min-h-8 sm:min-h-12 sm:px-4 sm:py-2">
                                         <span class="ml-1 font-bold uppercase roboto-regular sm:ml-2">Apply</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -160,14 +160,14 @@
                         </div>
                         <div class="flex-grow px-6 py-4">
                             <h4 class="font-semibold text-pretty">Application Deadline: <span
-                                    class="text-[#C8000B]">Tuesday , May
-                                    7, 2024 at 11:59 p.m EAT.</span></h4>
+                                    class="text-[#C8000B] block">Saturday, July
+                                    20, 2024 at 11:59 p.m EAT.</span></h4>
                             <p class="font-medium text-pretty">Cohort 2 program dates: <span
-                                    class="text-[#C8000B]">May
+                                    class="text-[#C8000B] block">May
                                     19th-June 30
                                     2024</span></p>
                             <div class="flex items-center justify-center mt-1">
-                                <a href="https://www.scratchandscript.com/register">
+                                <a href="https://bit.ly/IGNITECOHORT-2">
                                     <button
                                         class="w-full min-h-8 sm:min-h-12 flex items-center justify-center bg-[#C8000B] px-2 py-1 text-white hover:bg-black rounded-lg hover:shadow-2xl sm:px-4 sm:py-2">
                                         <span class="ml-1 font-bold uppercase roboto-regular sm:ml-2">Apply</span>
@@ -193,13 +193,13 @@
                         </div>
                         <div class="flex-grow px-6 py-4">
                             <h4 class="font-semibold text-pretty">Application Deadline: <span
-                                    class="text-[#C8000B]">Tuesday , August
+                                    class="text-[#C8000B] block">Tuesday , August
                                     13, 2024 at 11:59 p.m EAT.</span></h4>
                             <p class="font-medium text-pretty">Cohort 3 program dates: <span
-                                    class="text-[#C8000B]">August 25th -
+                                    class="text-[#C8000B] block">August 25th -
                                     October 13 2024.</span></p>
                             <div class="flex items-center justify-center mt-1">
-                                <a href="https://www.scratchandscript.com/register">
+                                <a href="https://bit.ly/IGNITECOHORT-2">
                                     <button
                                         class="w-full min-h-8 sm:min-h-12 flex items-center justify-center bg-[#C8000B] px-2 py-1 text-white hover:bg-black rounded-lg hover:shadow-2xl sm:px-4 sm:py-2">
                                         <span class="ml-1 font-bold uppercase roboto-regular sm:ml-2">Apply</span>
