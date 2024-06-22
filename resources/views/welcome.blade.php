@@ -131,7 +131,7 @@
                             Cohort 1
                         </div>
                         <div class="flex-grow px-6 py-4">
-                            <h4 class="mb-5 font-semibold text-pretty">Application Deadline: <span
+                            <h4 class="mb-3 font-semibold text-pretty">Application Deadline: <span
                                     class="text-[#C8000B] block font-bold">
                                     closed!</span></h4>
                             <div class="flex items-center justify-center mt-1 h-28">
