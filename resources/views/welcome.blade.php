@@ -134,7 +134,7 @@
                             <h4 class="mb-5 font-semibold text-pretty">Application Deadline: <span
                                     class="text-[#C8000B] block font-bold">
                                     closed!</span></h4>
-                            <div class="flex items-center justify-center h-20 mt-1">
+                            <div class="flex items-center justify-center mt-1 h-28">
                                 <a href="https://bit.ly/IGNITECOHORT-2">
                                     <button disabled
                                         class="flex items-center justify-center w-full px-2 py-1 text-white bg-gray-400 rounded-lg min-h-8 sm:min-h-12 sm:px-4 sm:py-2">
