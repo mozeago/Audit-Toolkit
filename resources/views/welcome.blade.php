@@ -134,7 +134,7 @@
                             <h4 class="font-semibold text-pretty">Application Deadline:</h4>
                             <h4 class=" text-[#C8000B] block font-bold">
                                 closed!</h4>
-                            <div class="flex items-center justify-center mt-1 h-28">
+                            <div class="flex items-center justify-center">
                                 <a href="https://bit.ly/IGNITECOHORT-2">
                                     <button disabled
                                         class="flex items-center justify-center w-full px-2 py-1 text-white bg-gray-400 rounded-lg min-h-8 sm:min-h-12 sm:px-4 sm:py-2">
@@ -162,10 +162,6 @@
                             <h4 class="font-semibold text-pretty">Application Deadline:</h4>
                             <h4 class="text-[#C8000B] block font-bold text-sm">Saturday, July
                                 20, 2024 at 11:59 p.m EAT.</h4>
-                            <h4 class="font-medium text-pretty">Cohort 2 program dates:</h4>
-                            <h4 class="text-[#C8000B] block font-bold text-sm">May
-                                19th-June 30
-                                2024</h4>
                             <div class="flex items-center justify-center mt-1">
                                 <a href="https://bit.ly/IGNITECOHORT-2">
                                     <button
@@ -196,9 +192,6 @@
                             <h4 class="text-[#C8000B] block font-bold text-sm">Tuesday ,August
                                 13, 2024 at 11:59 p.m EAT.
                             </h4>
-                            <h4 class="font-medium text-pretty">Cohort 3 program dates: </h4>
-                            <h4 class="text-[#C8000B] block font-bold text-sm">August 25th -
-                                October 13 2024.</h4>
                             <div class="flex items-center justify-center mt-1">
                                 <a href="https://bit.ly/IGNITECOHORT-2">
                                     <button
