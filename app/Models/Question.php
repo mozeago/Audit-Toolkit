@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -35,8 +36,12 @@ class Question extends BaseModel
         return $this->hasOne(Recommendation::class, 'question_id');
     }
 
-    public function responses()
+    public function responses(): HasMany
     {
         return $this->hasMany(UserResponse::class, 'question_id');
+    }
+    public function userResponse(): HasOne
+    {
+        return $this->hasOne(UserResponse::class, 'question_id');
     }
 }

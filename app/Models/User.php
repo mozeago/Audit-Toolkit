@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\RiskAnalysisResponse;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -54,5 +55,9 @@ class User extends Authenticatable
     public function riskAnalysisResponses()
     {
         return $this->hasMany(RiskAnalysisResponse::class);
+    }
+    public function userResponses(): HasMany
+    {
+        return $this->hasMany(UserResponse::class);
     }
 }

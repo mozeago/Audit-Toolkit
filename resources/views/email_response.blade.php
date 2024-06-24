@@ -4,67 +4,191 @@
 <head>
     <title>Audit Report Data</title>
     <style>
-        /* Tailwind CSS CDN Link for demonstration purposes */
-        @import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
-
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f9fafb;
             color: #333;
+            font-size: 16px;
+            padding: 24px;
+        }
+
+        .score-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .score-box {
+            flex: 1;
+            padding: 12px;
+            background-color: #edf2f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-size: 14px;
+            margin-right: 12px;
+            /* Adjust the margin as needed */
+        }
+
+        .score-box:last-child {
+            margin-right: 0;
+            /* Remove right margin from the last score box */
+        }
+
+        .score-box h4 {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .score-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .response-list {
+            margin-top: 24px;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .response-item {
+            padding: 12px;
+            margin-bottom: 12px;
+            background-color: #edf2f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .response-item h4 {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .response-answer {
+            font-style: italic;
+            font-weight: bold;
+            color: #4a5568;
+            /* Adjust the color as needed */
+            margin-top: 8px;
+            /* Add space between question and answer */
+        }
+
+        .footer {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 14px;
+            color: #4a5568;
+            background-color: #f1f5f8;
+            padding: 16px;
+            border-top: 1px solid #e2e8f0;
+            border-radius: 8px;
+        }
+
+        .footer a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 
-<body class="p-6 bg-gray-100" style="font-size: 16px">
-    <div class="max-w-3xl p-6 mx-auto bg-white rounded-lg shadow-md">
-        <h3 class="mb-4 text-2xl font-semibold">Your Response Data</h3>
-        <div class="grid grid-cols-1 gap-4 mb-6 md:grid-cols-2">
-            <div>
-                <h4 class="font-medium" style="display: block">Average Score:</h4>
-                <h4>{{ $responseData['averageScore'] }} %</h4>
+<body>
+    <div style="max-width: 600px; margin: 0 auto;">
+        <h3 style="text-align: center; font-size: 18px; font-weight: bold; font-family: Arial, sans-serif;">Your Response
+            Data</h3>
+        <div class="score-container">
+            <div class="score-box">
+                <h4>Average Score</h4>
+                <div class="score-value">{{ $responseData['averageScore'] ?? 'N/A' }} %</div>
             </div>
-            <div>
-                <h4 class="font-medium" style="display: block">Audit Score:</h4>
-                <h4>{{ $responseData['auditScore'] }} %</h4>
+            <div class="score-box">
+                <h4>Audit Score</h4>
+                <div class="score-value">{{ $responseData['auditScore'] ?? 'N/A' }} %</div>
             </div>
-            <div>
-                <h4 class="font-medium" style="display: block">Security Score:</h4>
-                <h4>{{ $responseData['securityScore'] }} %</h4>
+            <div class="score-box">
+                <h4>Security Score</h4>
+                <div class="score-value">{{ $responseData['securityScore'] ?? 'N/A' }} %</div>
+            </div>
+            <div class="score-box">
+                <h4>Risk Profile Score</h4>
+                <div class="score-value">{{ $responseData['riskProfileScore'] ?? 'N/A' }} %</div>
             </div>
         </div>
-
         <h3 class="mb-4 text-xl font-semibold">Audit Response</h3>
-        <ul class="mb-6">
-            @foreach ($responseData['userResponses'] as $response)
-                <li class="p-3 mb-2 rounded bg-gray-50">
-                    <p class="font-medium">{{ $response->question->text }}</p>
-                    <p style="font-weight: bold;font-style: italic;">{{ $response->answer }}</p>
-
-                    <p style="font-style: italic;">{{ $response->recommendation }}</p>
-                </li>
-            @endforeach
+        <ul class="response-list">
+            @php
+                $auditIndex = 1;
+            @endphp
+            @if (!empty($responseData['userResponses']))
+                @foreach ($responseData['userResponses'] as $userResponse)
+                    <li class="response-item">
+                        <h4>{{ $auditIndex }}. {{ $userResponse->question->text }}</h4>
+                        <p class="response-answer">{{ $userResponse->answer }}</p>
+                        @php
+                            $auditIndex++;
+                        @endphp
+                    </li>
+                @endforeach
+            @else
+                <li class="response-item">No audit response available.</li>
+            @endif
         </ul>
 
-        <h3 class="mb-4 text-xl font-semibold">Risk Analysis Responses</h3>
-        <ul>
-            @foreach ($responseData['riskAnalysisResponses'] as $response)
-                <li class="p-3 mb-2 rounded bg-gray-50">
-                    <p class="font-medium">{{ $response->riskquestion->text }}</p>
-                    <p style="font-weight: bold;font-style: italic;">{{ $response->answer }}</p>
-                </li>
-            @endforeach
+        <h3 class="mb-4 text-xl font-semibold">Risk Analysis Response</h3>
+        <ul class="response-list">
+            @php
+                $riskIndex = 1;
+            @endphp
+            @if (!empty($responseData['riskAnalysisResponses']))
+                @foreach ($responseData['riskAnalysisResponses'] as $response)
+                    <li class="response-item">
+                        <h4>{{ $riskIndex }}. {{ $response['riskquestion']->text }}</h4>
+                        <p class="response-answer">{{ $response['answer'] }}</p>
+                        @php
+                            $riskIndex++;
+                        @endphp
+                    </li>
+                @endforeach
+            @else
+                <li class="response-item">No risk analysis responses available.</li>
+            @endif
         </ul>
+
         <h3 class="mb-4 text-xl font-semibold">Security Response</h3>
-        <ul class="mb-6">
-            @foreach ($responseData['securityResponse'] as $securityResponse)
-                <li class="p-3 mb-2 rounded bg-gray-50">
-                    <p class="font-medium">{{ $securityResponse->question->text }}</p>
-                    <p style="font-weight: bold;font-style: italic;">{{ $securityResponse->answer }}</p>
-
-                    {{-- <p style="font-style: italic;">{{ $response->recommendation }}</p> --}}
-                </li>
-            @endforeach
+        <ul class="response-list">
+            @php
+                $securityIndex = 1;
+            @endphp
+            @if (!empty($responseData['securityResponses']))
+                @foreach ($responseData['securityResponses'] as $securityResponse)
+                    <li class="response-item">
+                        <h4>{{ $securityIndex }}. {{ $securityResponse->question->text }}</h4>
+                        <p class="response-answer">{{ $securityResponse->answer }}</p>
+                        {{-- Uncomment the line below if recommendation needs to be displayed --}}
+                        {{-- <p style="font-style: italic;">{{ $response->recommendation }}</p> --}}
+                        @php
+                            $securityIndex++;
+                        @endphp
+                    </li>
+                @endforeach
+            @else
+                <li class="response-item">No security responses available. Kindly take questionnaire for security</li>
+            @endif
         </ul>
+
+        <div class="footer">
+            <p>Kind Regards,</p>
+            <p>Data Protection Toolkit</p>
+            <p>Website: <a
+                    href="https://data-protection-toolkit.scratchandscript.com">https://data-protection-toolkit.scratchandscript.com</a>
+            </p>
+        </div>
     </div>
 </body>
 

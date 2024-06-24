@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Information;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Recommendation extends Model
@@ -23,5 +24,13 @@ class Recommendation extends Model
     public function question()
     {
         return $this->belongsTo(Question::class, 'question_id');
+    }
+    public function response()
+    {
+        return $this->belongsTo(UserResponse::class, 'question_id');
+    }
+    public function userResponse(): BelongsTo
+    {
+        return $this->belongsTo(UserResponse::class, 'question_id');
     }
 }

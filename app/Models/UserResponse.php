@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class UserResponse extends BaseModel
@@ -24,8 +25,8 @@ class UserResponse extends BaseModel
     {
         return $this->belongsTo(Question::class, 'question_id');
     }
-    public function recommendation()
+    public function recommendation(): HasOne
     {
-        return $this->belongsTo(Recommendation::class, 'question_id');
+        return $this->hasOne(Recommendation::class, 'question_id');
     }
 }

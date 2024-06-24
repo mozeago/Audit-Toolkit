@@ -196,17 +196,19 @@ new class extends Component {
             ];
         });
     }
-    public function fetchResponses($userId)
-    {
-    }
     public function emailCopy()
     {
         $user = auth()->user();
         $userId = $user->id;
         // Gather user responses
-        $userResponses = UserResponse::where('user_id', $userId)->get();
-        $securityResponses = SecurityResponses::where('user_id', $userId)->get();
-        $riskAnalysisResponses = RiskAnalysisResponse::where('user_id', $userId)->get();
+        // Fetch the maximum attempt number for the given user
+        $maxAttemptNumber = UserResponse::where('user_id', $userId)->max('attempt_number');
+        $maxAttemptNumberSecurity = SecurityResponses::where('user_id', $userId)->max('attempt_number');
+        $maxAttemptNumberRisk = RiskAnalysisResponse::where('user_id', $userId)->max('attempt_number');
+        // Fetch the user responses with the maximum attempt number
+        $userResponses = UserResponse::where('user_id', $userId)->where('attempt_number', $maxAttemptNumber)->with('question', 'recommendation')->get();
+        $securityResponses = SecurityResponses::where('user_id', $userId)->where('attempt_number', $maxAttemptNumberSecurity)->with('question')->get();
+        $riskAnalysisResponses = RiskAnalysisResponse::where('user_id', $userId)->where('attempt_number', $maxAttemptNumberRisk)->get();
         // Formatting data for emailing
         $responseData = [
             'userResponses' => $userResponses,
@@ -215,6 +217,7 @@ new class extends Component {
             'averageScore' => $this->calculateAverageScore(),
             'auditScore' => $this->calculateAuditPercentage(UserResponse::class, $userId),
             'securityScore' => $this->calculateAuditPercentage(SecurityResponses::class, $userId),
+            'riskProfileScore' => $this->calculateAuditPercentage(RiskAnalysisResponse::class, $userId),
             'processorController' => $this->processorController,
             'personalDataProcessedByOrganisation' => $this->personalDataProcessedByOrganisation,
             'sensitivePersonalData' => $this->sensitivePersonalData,
@@ -225,7 +228,8 @@ new class extends Component {
             Mail::to($user->email)->send(new UserResponseMail($responseData));
             $this->successMessage = 'Email sent successfully!';
         } catch (\Exception $e) {
-            $this->successMessage = 'Failed to send email.';
+            $this->successMessage = 'Failed to send email.' . $e->getMessage();
+            logger()->error('Failed to send email: ' . $e->getMessage());
         }
     }
 }; ?>
@@ -272,8 +276,10 @@ new class extends Component {
                             d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
                     </svg></div>
                 <div>
-                    <p class="font-bold">Email Sending...</p>
-                    <p class="text-sm">we have sent you a copy of your scores !</p>
+                    <p class="font-bold">Email Sent</p>
+                    <p class="text-sm">we have sent you a copy of your scores to your email <span
+                            class="italic font-bold">{{ auth()->user()->email }} !</span></p>
+                    <p class="font-bold">{{ $successMessage }}</p>
                 </div>
                 <div class="py-1 ml-auto" @click="successMessage = !successMessage">
                     <svg class="w-6 h-6 text-teal-500 cursor-pointer" xmlns="http://www.w3.org/2000/svg" fill="none"
