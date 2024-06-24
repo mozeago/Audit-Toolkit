@@ -246,10 +246,10 @@
                                 </h4>
                                 <h4 class="text-[#C8000B] block font-bold text-2xl capitalize">Coming Soon !</h4>
                             </div>
-                            <div class="flex items-center justify-center mb-4">
-                                <a href="https://bit.ly/IGNITECOHORT-3">
-                                    <button
-                                        class="w-full px-2 py-1 text-white bg-[#C8000B] hover:bg-black rounded-lg min-h-8 sm:min-h-12 sm:px-4 sm:py-2 flex items-center justify-center">
+                            <div class="flex items-center justify-center mb-4 ">
+                                <a href="https://bit.ly/IGNITECOHORT-1">
+                                    <button disabled
+                                        class="flex items-center justify-center w-full px-2 py-1 text-white bg-gray-400 rounded-lg min-h-8 sm:min-h-12 sm:px-4 sm:py-2">
                                         <span class="font-bold uppercase roboto-regular">Apply</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ml-2">
