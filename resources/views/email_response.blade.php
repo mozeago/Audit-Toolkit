@@ -165,8 +165,8 @@
             @php
                 $securityIndex = 1;
             @endphp
-            @if (!empty($responseData['securityResponses']))
-                @foreach ($responseData['securityResponses'] as $securityResponse)
+            @if (!empty($responseData['securityResponse']))
+                @foreach ($responseData['securityResponse'] as $securityResponse)
                     <li class="response-item">
                         <h4>{{ $securityIndex }}. {{ $securityResponse->question->text }}</h4>
                         <p class="response-answer">{{ $securityResponse->answer }}</p>
@@ -184,7 +184,7 @@
 
         <div class="footer">
             <p>Kind Regards,</p>
-            <p>Data Protection Toolkit</p>
+            <p>IGNITE Data Protection Toolkit</p>
             <p>Website: <a
                     href="https://data-protection-toolkit.scratchandscript.com">https://data-protection-toolkit.scratchandscript.com</a>
             </p>
