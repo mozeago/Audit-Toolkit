@@ -77,17 +77,17 @@
 
         .footer {
             margin-top: 24px;
+            line-height: 20pt;
             text-align: center;
             font-size: 14px;
             color: #4a5568;
-            background-color: #f1f5f8;
             padding: 16px;
             border-top: 1px solid #e2e8f0;
             border-radius: 8px;
         }
 
         .footer a {
-            color: #007BFF;
+            color: #C8000B;
             text-decoration: none;
             font-weight: bold;
         }
