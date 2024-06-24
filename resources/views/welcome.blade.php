@@ -155,36 +155,34 @@
     </div>
     {{-- end partners --}}
     {{-- START COHORT JOIN US --}}
-    <div class="flex flex-col px-32 pb-6 mb-4 border-b-2 border-gray-100">
+    <div class="flex flex-col border-2 border-b-2 border-gray-100 border-red-500 md:px-32">
         <div class="container grid items-center justify-center grid-cols-12 px-4 pt-2 mx-auto sm:w-full">
-            <div class="col-span-1 sm:col-span-4 md:block lg:block"></div>
-            <span class="col-span-1 ">
-            </span>
-            <div class="col-span-6 text-3xl font-bold text-center sm:col-span-2">
-                <span class=" text-nowrap">Cohorts</span>
+            <div class="hidden col-span-1 sm:block sm:col-span-4 md:block lg:block"></div>
+            <span class="col-span-1"></span>
+            <div class="col-span-12 text-3xl font-bold text-center sm:col-span-12">
+                <span class="text-nowrap">Cohorts</span>
             </div>
-            <span class="col-span-1 ">
-            </span>
-            <div class="col-span-1 sm:col-span-4 md:block lg:block"></div>
+            <span class="col-span-1"></span>
+            <div class="hidden col-span-1 sm:block sm:col-span-4 md:block lg:block"></div>
         </div>
-        <div class="container grid items-center justify-center grid-cols-12 p-4 mx-auto mb-2 text-center sm:w-full">
-            <p class="col-span-12 text-2xl text-wrap">We hope you apply and join us on this journey today !</p>
+        <div
+            class="container grid items-center justify-start grid-cols-12 p-4 mx-auto mb-2 text-center border-2 border-red-500 sm:text-start sm:p-0 sm:items-start sm:w-full">
+            <p class="col-span-12 text-2xl text-pretty">We hope you apply and join us on this journey today!</p>
         </div>
         <div class="container py-8 mx-auto">
-            <div class="grid grid-cols-12 gap-2 pb-2">
-                <div class="col-span-4">
-                    <div class="flex flex-col h-full max-w-xs mr-4 bg-gray-200 rounded-sm md:max-w-md">
+            <div class="grid grid-cols-1 gap-2 pb-2 md:grid-cols-12">
+                <div class="col-span-1 md:col-span-4 sm:mb-8 md:mb-0">
+                    <div class="flex flex-col w-full h-full bg-gray-200 rounded-sm">
                         <div class="flex flex-col justify-between flex-grow bg-white rounded-lg shadow-lg">
                             <!-- Title Row -->
                             <div class="px-6 py-4 text-xl font-bold text-center text-white bg-black rounded-t-lg">
                                 Cohort 1
                             </div>
                             <div class="flex-grow px-6 py-4">
-                                <h4 class="block text-2xl font-bold text-pretty">Application Deadline:
-                                </h4>
-                                <h4 class="text-[#C8000B] block font-bold text-2xl capitalize">Closed !</h4>
+                                <h4 class="block text-2xl font-bold text-pretty">Application Deadline:</h4>
+                                <h4 class="text-[#C8000B] block font-bold text-2xl capitalize">Closed!</h4>
                             </div>
-                            <div class="flex items-center justify-center mb-4 ">
+                            <div class="flex items-center justify-center mb-4">
                                 <a href="https://bit.ly/IGNITECOHORT-1">
                                     <button disabled
                                         class="flex items-center justify-center w-full px-2 py-1 text-white bg-gray-400 rounded-lg min-h-8 sm:min-h-12 sm:px-4 sm:py-2">
@@ -200,23 +198,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-span-4">
-                    <div class="flex flex-col h-full max-w-xs mr-4 bg-gray-200 rounded-sm md:max-w-md">
+                <div class="col-span-1 md:col-span-4 sm:mb-8 md:mb-0">
+                    <div class="flex flex-col w-full h-full bg-gray-200 rounded-sm">
                         <div class="flex flex-col justify-between flex-grow bg-white rounded-lg shadow-lg">
                             <!-- Title Row -->
                             <div class="px-6 py-4 text-xl font-bold text-center text-white bg-black rounded-t-lg">
                                 Cohort 2
                             </div>
-                            <div class="flex-grow px-4 py-4">
+                            <div class="flex-grow px-6 py-4">
                                 <h4 class="block text-2xl font-bold text-pretty">Application Deadline:</h4>
-                                <h4 class="text-[#C8000B] block font-bold text-lg">Saturday, July 20, 2024 at
-                                    11:59
-                                    p.m
+                                <h4 class="text-[#C8000B] block font-bold text-lg">Saturday, July 20, 2024 at 11:59 p.m
                                     EAT.</h4>
                                 <!-- Countdown Timer -->
                                 <div id="countdown" class="mt-4 text-lg font-bold text-center text-red-600 countdown">
                                 </div>
-
                             </div>
                             <div class="flex items-center justify-center mb-4">
                                 <a href="https://bit.ly/IGNITECOHORT-2">
@@ -234,19 +229,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-span-4">
-                    <div class="flex flex-col h-full max-w-xs mr-4 bg-gray-200 rounded-sm md:max-w-md">
+                <div class="col-span-1 md:col-span-4 sm:mb-8 md:mb-0">
+                    <div class="flex flex-col w-full h-full bg-gray-200 rounded-sm">
                         <div class="flex flex-col justify-between flex-grow bg-white rounded-lg shadow-lg">
                             <!-- Title Row -->
                             <div class="px-6 py-4 text-xl font-bold text-center text-white bg-black rounded-t-lg">
                                 Cohort 3
                             </div>
                             <div class="flex-grow px-6 py-4">
-                                <h4 class="block text-2xl font-bold text-pretty">Application Deadline:
-                                </h4>
-                                <h4 class="text-[#C8000B] block font-bold text-2xl capitalize">Coming Soon !</h4>
+                                <h4 class="block text-2xl font-bold text-pretty">Application Deadline:</h4>
+                                <h4 class="text-[#C8000B] block font-bold text-2xl capitalize">Coming Soon!</h4>
                             </div>
-                            <div class="flex items-center justify-center mb-4 ">
+                            <div class="flex items-center justify-center mb-4">
                                 <a href="https://bit.ly/IGNITECOHORT-1">
                                     <button disabled
                                         class="flex items-center justify-center w-full px-2 py-1 text-white bg-gray-400 rounded-lg min-h-8 sm:min-h-12 sm:px-4 sm:py-2">
