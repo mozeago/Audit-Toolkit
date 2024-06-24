@@ -130,6 +130,8 @@
                     <li class="response-item">
                         <h4>{{ $auditIndex }}. {{ $userResponse->question->text }}</h4>
                         <p class="response-answer">{{ $userResponse->answer }}</p>
+                        <p class="response-answer">{{ $userResponse->recommendation->content ?? 'Recommendation: N/A' }}
+                        </p>
                         @php
                             $auditIndex++;
                         @endphp
