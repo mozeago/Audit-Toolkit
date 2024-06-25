@@ -27,6 +27,6 @@ class UserResponse extends BaseModel
     }
     public function recommendation(): HasOne
     {
-        return $this->hasOne(Recommendation::class, 'question_id');
+        return $this->hasOne(Recommendation::class, 'question_id', 'question_id');
     }
 }

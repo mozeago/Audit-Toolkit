@@ -31,6 +31,6 @@ class Recommendation extends Model
     }
     public function userResponse(): BelongsTo
     {
-        return $this->belongsTo(UserResponse::class, 'question_id');
+        return $this->belongsTo(UserResponse::class);
     }
 }
