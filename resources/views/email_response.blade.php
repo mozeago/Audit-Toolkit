@@ -131,7 +131,7 @@
                         <h4>{{ $auditIndex }}. {{ $userResponse->question->text }}</h4>
                         <p class="response-answer">{{ $userResponse->answer }}</p>
                         <p class="response-answer" style="font-style: italic;">
-                            {{ 'Recommendation: ' . $userResponse->recommendation->content ?? 'N/A' }}
+                            {{ 'Recommendation: ' . ($userResponse->recommendation ? $userResponse->recommendation->content : 'N/A') }}
                         </p>
                         @php
                             $auditIndex++;
