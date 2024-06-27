@@ -2,23 +2,23 @@
 
 use Livewire\Volt\Component;
 use App\Models\RiskRecommendation;
-use App\Models\RiskInformation;
+use App\Models\RiskSubSection;
 
 new class extends Component {
     public string $message = '';
-    public $riskInformation = [];
+    public $riskSubsection = [];
     public $text = '';
-    public $riskInformationId = '';
+    public $riskSubsectionId = '';
     public $recommendationFor = '';
     public function mount()
     {
-        $this->riskInformation = RiskInformation::orderBy('created_at', 'desc')->get();
+        $this->riskSubsection = RiskSubSection::orderBy('created_at', 'desc')->get();
     }
     public function rules(): array
     {
         return [
             'text' => 'required|string|min:20',
-            'riskInformationId' => 'required|uuid|max:36',
+            'riskSubsectionId' => 'required|uuid|max:36',
             'recommendationFor' => 'required|in:true,false',
         ];
     }
@@ -27,7 +27,7 @@ new class extends Component {
         $validatedData = $this->validate();
         $riskRecommendation = RiskRecommendation::create([
             'text' => $validatedData['text'],
-            'risk_information_id' => $validatedData['riskInformationId'],
+            'risk_sub_section_id' => $validatedData['riskSubsectionId'],
             'question_response' => $validatedData['recommendationFor'],
         ]);
 
@@ -37,7 +37,7 @@ new class extends Component {
     }
     public function resetFields()
     {
-        return $this->reset('text', 'riskInformationId', 'message');
+        return $this->reset('text', 'riskSubsectionId', 'message');
     }
 }; ?>
 
@@ -62,21 +62,20 @@ new class extends Component {
                 </label>
                 <label for="answer-no" class="flex items-center space-x-2">
                     <input id="answer-no" type="radio" name="answer" wire:model="recommendationFor" value="false"
-                        class="w-6 h-6 bg-gray-200 border-gray-300 rounded-full focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 checked:bg-indigo-500 checked:border-transparent">
+                        class="w-6 h-6 bg-gray-200 border-gray-300 rounded-full focus:ring-2 focus:ring-offset-2 focus:ring-[#C8000B] checked:bg-[#C8000B] checked:border-transparent">
                     <span class="text-sm font-medium text-gray-700">No</span>
                 </label>
             </div>
             <div class="flex flex-col w-full mt-4">
-                <label for="riskInformationId"
-                    class="mb-2 text-sm font-semibold">{{ __('Risk Information Text') }}</label>
-                <select wire:model="riskInformationId" id="riskInformationId"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-indigo-500">
+                <label for="riskSubsectionId" class="mb-2 text-sm font-semibold">{{ __('Risk Question Text') }}</label>
+                <select wire:model="riskSubsectionId" id="riskSubsectionId"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-[#C8000B]">
                     <option value="" disabled selected>Select...</option>
-                    @foreach ($riskInformation as $riskInfo)
-                        <option value="{{ $riskInfo->id }}">{{ $riskInfo->text }}</option>
+                    @foreach ($riskSubsection as $riskSubsect)
+                        <option value="{{ $riskSubsect->id }}">{{ $riskSubsect->text }}</option>
                     @endforeach
                 </select>
-                @error('riskInformationId')
+                @error('riskSubsectionId')
                     <span class="mt-2 text-xs text-red-500">{{ $message }}</span>
                 @enderror
             </div>

@@ -16,7 +16,7 @@ class RiskRecommendation extends BaseModel
     protected $keyType = 'string';
     public $incrementing = false;
 
-    protected $fillable = ['text', 'risk_information_id', 'question_response'];
+    protected $fillable = ['text', 'risk_sub_section_id', 'question_response'];
     public function belongsToRiskInformation()
     {
         return $this->belongsTo(RiskInformation::class);
