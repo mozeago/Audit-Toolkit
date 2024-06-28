@@ -100,8 +100,7 @@
 
 <body>
     <div style="max-width: 600px; margin: 0 auto;">
-        <h3
-            style="text-align: center; font-size: 18px; font-weight: bold; font-family: Arial, sans-serif;">
+        <h3 style="text-align: center; font-size: 18px; font-weight: bold; font-family: Arial, sans-serif;">
             Your Response
             Data</h3>
         <div class="score-container">
@@ -144,8 +143,7 @@
                         </h4>
                         <p class="response-answer">
                             {{ $userResponse->answer }}</p>
-                        <p class="response-answer"
-                            style="font-style: italic;">
+                        <p class="response-answer" style="font-style: italic;">
                             {{ 'Recommendation: ' . ($userResponse->recommendation ? $userResponse->recommendation->content : 'N/A') }}
                         </p>
                         @php
@@ -173,8 +171,7 @@
                         </h4>
                         <p class="response-answer">
                             {{ $response['answer'] }}</p>
-                        <p class="response-answer"
-                            style="font-style: italic;">
+                        <p class="response-answer" style="font-style: italic;">
                             {{ 'Recommendation: ' . ($response->riskRecommendation ? $response->riskRecommendation->text : 'N/A') }}
                         </p>
                         @php
@@ -203,8 +200,9 @@
                         <p class="response-answer">
                             {{ $securityResponse->answer }}
                         </p>
-                        {{-- Uncomment the line below if recommendation needs to be displayed --}}
-                        {{-- <p style="font-style: italic;">{{ $response->recommendation }}</p> --}}
+                        <p class="response-answer" style="font-style: italic;">
+                            {{ 'Recommendation: ' . ($securityResponse->securityRecommendation ? $securityResponse->securityRecommendation->name : 'N/A') }}
+                        </p>
                         @php
                             $securityIndex++;
                         @endphp

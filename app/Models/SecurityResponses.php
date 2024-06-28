@@ -22,4 +22,8 @@ class SecurityResponses extends Model
     {
         return $this->belongsTo(SecurityQuestions::class, 'security_questions_id');
     }
+    public function securityRecommendation()
+    {
+        return $this->hasOne(SecurityRecommendations::class, 'security_questions_id', 'security_questions_id');
+    }
 }

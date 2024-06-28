@@ -19,4 +19,8 @@ class SecurityRecommendations extends BaseModel
     {
         return $this->belongsTo(SecurityQuestions::class, 'security_questions_id');
     }
+    public function securityResponses()
+    {
+        return $this->belongsTo(SecurityResponses::class, 'security_questions_id');
+    }
 }

@@ -27,4 +27,8 @@ class SecurityQuestions extends BaseModel
     {
         return $this->hasOne(SecurityRecommendations::class);
     }
+    public function recommendation()
+    {
+        return $this->hasOne(SecurityRecommendations::class, 'security_questions_id');
+    }
 }
