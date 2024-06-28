@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class RiskSubSection extends BaseModel
@@ -21,8 +23,16 @@ class RiskSubSection extends BaseModel
     {
         return $this->belongsTo(RiskSection::class);
     }
-    public function hasManyRiskInformation()
+    public function riskInformation(): HasOne
     {
-        return $this->hasMany(RiskInformation::class);
+        return $this->hasOne(RiskInformation::class, 'risk_sub_section_id');
+    }
+    public function riskRecommendation(): HasOne
+    {
+        return $this->hasOne(RiskRecommendation::class, 'risk_sub_section_id');
+    }
+    public function riskAnalysysResponse(): HasMany
+    {
+        return $this->hasMany(RiskAnalysisResponse::class, 'risk_sub_section_id');
     }
 }

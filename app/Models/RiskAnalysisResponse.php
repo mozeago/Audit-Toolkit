@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class RiskAnalysisResponse extends Model
 {
@@ -18,8 +19,12 @@ class RiskAnalysisResponse extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function riskquestion()
+    public function riskQuestion()
     {
         return $this->belongsTo(RiskSubSection::class, 'risk_sub_section_id');
+    }
+    public function riskRecommendation(): HasOne
+    {
+        return $this->hasOne(RiskRecommendation::class, 'risk_sub_section_id', 'risk_sub_section_id');
     }
 }
